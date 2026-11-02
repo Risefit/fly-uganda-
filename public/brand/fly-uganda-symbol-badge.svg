@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Fly Uganda">
+  <title>Fly Uganda — badge</title>
+  <rect width="256" height="256" rx="56" fill="#07251F"/>
+  <g transform="translate(128,128) scale(0.62)"><defs><linearGradient id="l" x1="0" y1="0" x2="0.75" y2="1"><stop offset="0" stop-color="#F2D484"/><stop offset="1" stop-color="#D2A017"/></linearGradient><linearGradient id="d" x1="0" y1="0" x2="0.75" y2="1"><stop offset="0" stop-color="#C79317"/><stop offset="1" stop-color="#8A6512"/></linearGradient></defs><path d="M88 -9 A 76 76 0 0 0 -64 -9 Z" fill="url(#l)"/><path d="M-88 9 A 76 76 0 0 0 64 9 Z" fill="url(#d)"/></g>
+</svg>

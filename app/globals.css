@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Set by next/font/local in app/layout.tsx; the fallbacks below only
+       matter if the self-hosted woff2 files are missing from public/fonts. */
+    --font-display: Georgia, "Times New Roman", serif;
+    --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Crane Gold keyboard-focus ring (WCAG 2.4.7) */
+  :focus-visible {
+    outline: 2px solid #d2a017;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: #f0cf72;
+    color: #07251f;
+  }
+}
+
+@layer components {
+  /* The Reed — the system's only divider: a single thin gold line, after the
+     papyrus reed of the Lake Victoria shoreline. */
+  .reed {
+    display: inline-block;
+    width: 1px;
+    height: 26px;
+    background: #d2a017;
+  }
+  .hairline {
+    @apply h-px w-full bg-gold/50;
+  }
+
+  /* Section eyebrow — Archivo small caps, deep gold, wide tracking */
+  .kicker {
+    @apply font-sans text-[0.7rem] font-semibold uppercase tracking-kicker text-gold-600;
+  }
+
+  /* The Welcome Word — "Webale" (Luganda: thank you) */
+  .webale {
+    @apply font-serif uppercase tracking-[0.3em] text-gold-600;
+  }
+
+  .container-site {
+    @apply mx-auto w-full max-w-site px-5 sm:px-8;
+  }
+
+  /* Primary CTA — gold gradient fill, Source Green label */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3
+      font-sans text-xs font-semibold uppercase tracking-wide2 text-nile-900
+      transition-transform duration-200 hover:-translate-y-px;
+    background-image: linear-gradient(135deg, #f0cf72, #d2a017);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gold/50
+      bg-transparent px-6 py-3 font-sans text-xs font-semibold uppercase tracking-wide2
+      text-gold-600 transition-colors duration-200 hover:bg-gold/[0.08];
+  }
+
+  /* Ceremonial Ugandan flag band — black · yellow · red · black · yellow · red */
+  .flag-band {
+    display: flex;
+    height: 4px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .flag-band > span {
+    flex: 1;
+  }
+
+  .ticket-edge {
+    position: relative;
+  }
+  .ticket-edge::before,
+  .ticket-edge::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background: #f4f1e6;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .ticket-edge::before { left: -7px; }
+  .ticket-edge::after { right: -7px; }
+}
+
+@layer utilities {
+  /* Fraunces is a variable font with real weights 100–900, so no synthetic-bold
+     safeguard is needed here (unlike a single-weight display face). Display
+     headings carry a slightly tighter optical setting. */
+  .font-serif {
+    font-variation-settings: "SOFT" 0, "WONK" 0;
+    letter-spacing: -0.01em;
+  }
+  .flight-code {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+  }
+  /* Timetables and fare tables must not jitter as digits change */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+  .bg-pearl-sky {
+    background-image: linear-gradient(180deg, #fffefa 0%, #f4f1e6 46%, #ede7d2 76%, #e3d9b4 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

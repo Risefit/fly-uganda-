@@ -1,0 +1,174 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { LogIn, Plane, ArrowUpRight, ArrowDownRight, Info } from "lucide-react";
+import { TIERS, PROGRAMME } from "@/lib/loyalty";
+import { BirdMark } from "@/components/loyalty/BirdMark";
+
+const FIELD =
+  "w-full rounded-md border border-nile/15 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slatey/60 focus:border-nile focus:outline-none focus:ring-2 focus:ring-nile/20";
+
+// Illustrative member — replaced by live data from the AeroCRS API at launch.
+const MEMBER = {
+  name: "Aluel Deng",
+  ffNumber: "PC-204815",
+  tierKey: "shoebill" as const,
+  statusPearls: 52000,
+  awardMiles: 38450,
+};
+
+const ACTIVITY = [
+  { date: "12 Oct 2026", desc: "Flight FU101 · Kajjansi → Kihihi", miles: 4200, type: "earn" },
+  { date: "12 Oct 2026", desc: "Tier bonus (+50%)", miles: 2100, type: "earn" },
+  { date: "28 Sep 2026", desc: "Award seat FU141 · Kajjansi → Pakuba", miles: -11000, type: "spend" },
+  { date: "14 Sep 2026", desc: "Flight FU161 · Kajjansi → Kidepo", miles: 3600, type: "earn" },
+];
+
+export function MemberDashboard() {
+  const [signedIn, setSignedIn] = useState(false);
+
+  if (!signedIn) {
+    return (
+      <div className="mx-auto max-w-md">
+        <div className="rounded-2xl border border-nile/10 bg-white p-7 shadow-card">
+          <div className="flex items-center gap-2 text-nile">
+            <LogIn className="h-5 w-5" aria-hidden />
+            <h2 className="font-serif text-xl font-semibold text-ink">Member sign in</h2>
+          </div>
+          <p className="mt-2 text-sm text-slatey">
+            Sign in with your membership number to see your tier, Pearls balance and activity.
+          </p>
+          <form
+            className="mt-5 space-y-3"
+            onSubmit={(e) => {
+              e.preventDefault();
+              setSignedIn(true);
+            }}
+          >
+            <label className="flex flex-col gap-1.5">
+              <span className="text-xs font-semibold text-ink">Membership number</span>
+              <input className={`${FIELD} flight-code uppercase`} placeholder="PC-XXXXXX" aria-label="Membership number" />
+            </label>
+            <label className="flex flex-col gap-1.5">
+              <span className="text-xs font-semibold text-ink">Password / PIN</span>
+              <input type="password" className={FIELD} placeholder="••••••" aria-label="Password" />
+            </label>
+            <button type="submit" className="btn-primary w-full">View my account</button>
+          </form>
+          <p className="mt-4 flex items-start gap-2 rounded-lg bg-nile/[0.04] px-3 py-2 text-xs text-slatey">
+            <Info className="mt-0.5 h-3.5 w-3.5 shrink-0 text-nile" aria-hidden />
+            Preview mode — sign-in connects to our reservation partner at launch. Press the button to see a sample account.
+          </p>
+          <p className="mt-4 text-center text-sm text-slatey">
+            Not a member yet?{" "}
+            <Link href="/pearl-club/join" className="font-semibold text-nile hover:underline">Join free →</Link>
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const tier = TIERS.find((t) => t.key === MEMBER.tierKey)!;
+  const tierIdx = TIERS.findIndex((t) => t.key === MEMBER.tierKey);
+  const nextTier = TIERS[tierIdx + 1];
+  const nextThreshold = nextTier ? 80000 : MEMBER.statusPearls; // illustrative
+  const pct = Math.min(100, Math.round((MEMBER.statusPearls / nextThreshold) * 100));
+
+  return (
+    <div className="grid gap-6 lg:grid-cols-[1fr_1.3fr]">
+      {/* Membership card */}
+      <div className="space-y-6">
+        <div className="overflow-hidden rounded-2xl text-nile-900 shadow-card" style={{ background: tier.accent }}>
+          <div className="flex items-start justify-between p-6">
+            <div>
+              <p className="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-nile-900/70">
+                {PROGRAMME.name}
+              </p>
+              <p className="mt-6 font-serif text-2xl">{MEMBER.name}</p>
+              <p className="flight-code mt-1 text-sm text-nile-900/80">{MEMBER.ffNumber}</p>
+            </div>
+            <span className="text-nile-900">
+              <BirdMark tier={tier.key} className="h-12 w-12" />
+            </span>
+          </div>
+          <div className="flex items-center justify-between bg-black/10 px-6 py-3">
+            <span className="text-sm font-medium">{tier.name}</span>
+            <span className="text-xs text-nile-900/70">{tier.tagline}</span>
+          </div>
+        </div>
+
+        {/* Balance */}
+        <div className="rounded-2xl border border-nile/10 bg-white p-6">
+          <p className="text-xs uppercase tracking-wide text-slatey">Award balance</p>
+          <p className="mt-1 font-serif text-4xl font-semibold text-nile">
+            {MEMBER.awardMiles.toLocaleString()}
+          </p>
+          <p className="text-sm text-slatey">Pearls available to spend</p>
+          <Link href="/book" className="btn-primary mt-4 w-full">
+            <Plane className="h-4 w-4" aria-hidden /> Use Miles for a flight
+          </Link>
+        </div>
+      </div>
+
+      {/* Tier progress + activity */}
+      <div className="space-y-6">
+        <div className="rounded-2xl border border-nile/10 bg-white p-6">
+          <div className="flex items-center justify-between">
+            <h2 className="font-serif text-lg font-semibold text-ink">Your tier this year</h2>
+            <span className="text-sm font-semibold" style={{ color: tier.accent }}>{tier.name}</span>
+          </div>
+          {nextTier ? (
+            <>
+              <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-nile/10">
+                <div className="h-full rounded-full" style={{ width: `${pct}%`, background: tier.accent }} />
+              </div>
+              <p className="mt-2 text-sm text-slatey">
+                <span className="font-semibold text-ink">{MEMBER.statusPearls.toLocaleString()}</span> /{" "}
+                {nextThreshold.toLocaleString()} Status Pearls —{" "}
+                <span className="font-semibold text-ink">{(nextThreshold - MEMBER.statusPearls).toLocaleString()}</span>{" "}
+                more to <span className="font-semibold" style={{ color: nextTier.accent }}>{nextTier.name}</span>
+              </p>
+            </>
+          ) : (
+            <p className="mt-4 text-sm text-slatey">You're at the top tier — thank you for flying with us.</p>
+          )}
+        </div>
+
+        <div className="overflow-hidden rounded-2xl border border-nile/10 bg-white">
+          <div className="flex items-center justify-between border-b border-nile/10 px-6 py-4">
+            <h2 className="font-serif text-lg font-semibold text-ink">Recent activity</h2>
+            <span className="text-xs text-slatey">Last 30 days</span>
+          </div>
+          <ul className="divide-y divide-nile/10">
+            {ACTIVITY.map((a, i) => (
+              <li key={i} className="flex items-center justify-between gap-4 px-6 py-3.5">
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`inline-flex h-8 w-8 items-center justify-center rounded-full ${
+                      a.type === "earn" ? "bg-success/10 text-success" : "bg-gold/15 text-gold-600"
+                    }`}
+                  >
+                    {a.type === "earn" ? <ArrowUpRight className="h-4 w-4" aria-hidden /> : <ArrowDownRight className="h-4 w-4" aria-hidden />}
+                  </span>
+                  <div>
+                    <p className="text-sm font-medium text-ink">{a.desc}</p>
+                    <p className="text-xs text-slatey">{a.date}</p>
+                  </div>
+                </div>
+                <span className={`flight-code text-sm font-semibold ${a.type === "earn" ? "text-success" : "text-gold-600"}`}>
+                  {a.miles > 0 ? "+" : ""}{a.miles.toLocaleString()}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="flex items-center justify-between rounded-xl bg-nile/[0.04] px-5 py-3 text-sm">
+          <span className="text-slatey">Signed in as {MEMBER.name} (preview)</span>
+          <button onClick={() => setSignedIn(false)} className="font-semibold text-nile hover:underline">Sign out</button>
+        </div>
+      </div>
+    </div>
+  );
+}
