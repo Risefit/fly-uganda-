@@ -56,7 +56,8 @@ export type Guide = {
   image: string;
 };
 
-// ⚠️ IMAGERY: Unsplash placeholders. Replace with Fly Uganda / KEA photography.
+// ⚠️ IMAGERY: first-party brand illustrations in /public/scenes (no stock
+// licence involved). Replace with real photography — PROJECT-HANDOVER.md §6.
 export const GUIDES: Guide[] = [
   {
     code: "HUKJ",
@@ -163,14 +164,20 @@ export const CARGO_SERVICES = [
 ];
 
 // Stylised node layout for OilCorridorMap — Albertine Graben, not a real projection.
-export const OIL_CORRIDOR = [
+export const OIL_CORRIDOR: {
+  name: string;
+  x: number;
+  y: number;
+  hub?: boolean;
+  below?: boolean; // drop the label beneath the node to avoid a collision
+}[] = [
   { name: "Kajjansi (base)", x: 360, y: 370, hub: true },
   { name: "Hoima", x: 258, y: 268 },
-  { name: "Kingfisher", x: 212, y: 296 },
-  { name: "Buliisa / Tilenga", x: 206, y: 206 },
-  { name: "Bugungu", x: 232, y: 178 },
-  { name: "Pakwach", x: 258, y: 140 },
-  { name: "Pakuba", x: 212, y: 132 },
+  { name: "Kingfisher", x: 212, y: 296, below: true },
+  { name: "Buliisa / Tilenga", x: 206, y: 206, below: true },
+  { name: "Bugungu", x: 238, y: 178, below: true },
+  { name: "Pakwach", x: 290, y: 146 },
+  { name: "Pakuba", x: 206, y: 124 },
 ];
 
 export const CARGO_TARIFF = {

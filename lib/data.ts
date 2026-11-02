@@ -72,12 +72,13 @@ export const CHARTER_DESTINATIONS = [
 ];
 
 // Regional links flown with partner carriers, or under development.
+// Every entry here must also have a node in RouteMapFull → PLANNED_NODES,
+// or it is named in the caption but never drawn on the map.
 export const PLANNED_CITIES = [
   "Serengeti",
   "Masai Mara",
   "Kigali",
   "Nairobi Wilson",
-  "Zanzibar",
 ];
 
 // ⚠️ INDICATIVE retail seat fares — placeholders for the brochure build.
@@ -101,7 +102,7 @@ export const PROMISES = [
   },
   {
     title: "Built for the bush",
-    body: "Grand Caravans sized for short murram strips, big windows and two pilots up front. The flight is part of the safari, not a transfer between them.",
+    body: "Grand Caravans sized for short murram strips, with big windows and a high wing that keeps the view clear. The flight is part of the safari, not a transfer between them.",
   },
   {
     title: "Scheduled and charter, one operator",
@@ -149,7 +150,7 @@ export const FLEET: Aircraft[] = [
   {
     name: "Airbus H125 & H130",
     role: "Helicopter safari",
-    seats: "Up to 6 seats",
+    seats: "Up to 7 seats",
     range: "Operated with Elevate",
     count: "Scenic & access",
     blurb:
@@ -166,9 +167,9 @@ export type Destination = {
 };
 
 // Editorial destination tiles on the homepage.
-// ⚠️ IMAGERY: these are Unsplash placeholders so the homepage runs today.
-// Replace every one with Fly Uganda / KEA photography before launch — see §6
-// of PROJECT-HANDOVER.md.
+// ⚠️ IMAGERY: /scenes/*.svg are FIRST-PARTY brand illustrations built for this
+// project (no third-party stock, no licence to clear). They are placeholders
+// for real photography — see §6 of PROJECT-HANDOVER.md.
 export const DESTINATION_TILES: Destination[] = [
   {
     code: "KHX",

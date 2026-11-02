@@ -22,11 +22,17 @@ const NODES: Record<string, { x: number; y: number; label: string; below?: boole
 };
 
 // Regional links flown with partners — placed at the edge to show direction.
-const PLANNED_NODES: Record<string, { x: number; y: number }> = {
-  Kigali: { x: 150, y: 512 },
-  "Masai Mara": { x: 568, y: 452 },
-  Serengeti: { x: 520, y: 505 },
-  "Nairobi Wilson": { x: 592, y: 400 },
+// Edge markers for partner links, placed to preserve real compass order:
+// Nairobi is east of the Mara, which is east of and north of the Serengeti.
+const PLANNED_NODES: Record<
+  string,
+  { x: number; y: number; anchor?: "start" | "middle" | "end" }
+> = {
+  Kigali: { x: 155, y: 512 },
+  Serengeti: { x: 500, y: 516 },
+  "Masai Mara": { x: 548, y: 482 },
+  // Right up against the frame, so the label is right-aligned to avoid clipping.
+  "Nairobi Wilson": { x: 614, y: 452, anchor: "end" },
 };
 
 function arcPath(ax: number, ay: number, bx: number, by: number) {
@@ -145,7 +151,7 @@ export function RouteMapFull() {
           {Object.entries(PLANNED_NODES).map(([name, n]) => (
             <g key={name}>
               <circle cx={n.x} cy={n.y} r="3" fill="rgba(244,241,230,0.5)" />
-              <text x={n.x} y={n.y - 8} textAnchor="middle" fontSize="10" fill="rgba(244,241,230,0.5)">
+              <text x={n.x} y={n.y - 8} textAnchor={n.anchor ?? "middle"} className="text-[17px] sm:text-[13px] lg:text-[10px]" fill="rgba(244,241,230,0.6)">
                 {name}
               </text>
             </g>
@@ -164,7 +170,9 @@ export function RouteMapFull() {
                   x={n.x}
                   y={n.below ? n.y + 19 : n.y - (isHub || isActive ? 16 : 13)}
                   textAnchor="middle"
-                  fontSize="13"
+                  /* SVG user units: scale labels up on narrow screens, where the
+                     map renders at roughly half size. */
+                  className="text-[21px] sm:text-[16px] lg:text-[13px]"
                   fontWeight={isHub || isActive ? 700 : 500}
                   fill={isActive ? "#E6CB8A" : "rgba(244,241,230,0.9)"}
                 >

@@ -3,7 +3,7 @@ import { PearlMark } from "@/components/brand";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-nile px-6 text-center text-paper">
+    <main id="main" className="flex min-h-screen flex-col items-center justify-center bg-nile px-6 text-center text-paper">
       <PearlMark className="h-10 w-10 text-gold" />
       <p className="mt-6 flight-code text-sm uppercase tracking-widest text-gold-300">Error 404</p>
       <h1 className="mt-3 font-serif text-4xl font-semibold sm:text-5xl">This route isn&rsquo;t on our map</h1>

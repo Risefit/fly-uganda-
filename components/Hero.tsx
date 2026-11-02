@@ -32,7 +32,7 @@ export function Hero() {
         <div className="max-w-2xl">
           <div className="mb-5 flex items-center gap-3">
             <Meridian className="!h-5 bg-gold-300" />
-            <Webale className="text-gold-300 text-sm" />
+            <Webale tone="dark" className="text-sm" />
             <span className="text-warm/60">·</span>
             <span className="text-[0.72rem] font-semibold uppercase tracking-wide2 text-warm/75">
               Uganda&rsquo;s safari airline
@@ -43,8 +43,8 @@ export function Hero() {
           </h1>
           <p className="mt-5 max-w-xl text-base text-warm/85 sm:text-lg">
             Scheduled seats from Kajjansi to Bwindi, Queen Elizabeth, Murchison Falls and
-            Kidepo. Twelve seats, two pilots, and the whole of Uganda out of the window — leaving
-            from the Kampala side of Entebbe.
+            Kidepo. Twelve seats, every one of them a window, and the whole of Uganda
+            underneath — leaving from the Kampala side of Entebbe.
           </p>
         </div>
 

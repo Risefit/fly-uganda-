@@ -112,7 +112,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="mt-4 font-serif text-lg text-ink">{l.role}</h3>
                 <p className="mt-1 text-sm text-slatey">{l.note}</p>
-                <p className="mt-2 text-xs italic text-slatey/80">{l.name}</p>
+                <p className="mt-2 text-xs italic text-slatey">{l.name}</p>
               </div>
             ))}
           </div>

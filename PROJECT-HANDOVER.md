@@ -18,7 +18,9 @@ A production-ready marketing site for a scheduled safari airline, built so the b
 a booking engine — booking is scaffolded to host a PSS embed (AeroCRS / Go7) that drops
 in later.
 
-- **24 page routes**, 20 components, responsive, SEO-ready, WCAG AA contrast verified.
+- **20 page modules** (plus a branded 404) rendering **37 URLs**, responsive, SEO-ready.
+  Palette contrast is verified by `npm run contrast`; rendered-text contrast was checked
+  with axe-core across every page.
 - Identity: **"The Pearl"** — gold-on-Source-Green. See `01-brand-brief.md`.
 - Positioning: scheduled per-seat flights from **Kajjansi**, the Kampala-side alternative
   to Entebbe, to Uganda's national parks. Charter and cargo on the same fleet.
@@ -185,7 +187,7 @@ images and should not outlive the placeholders.
 - **OilCorridorMap** — Albertine Graben cargo network.
 - **loyalty/** — `TierLadder`, `MemberDashboard` (**mock data**), `BirdMark`.
 
-## 8. Pages / routes (24)
+## 8. Pages / routes (20 modules → 37 URLs)
 
 Home · Routes (+ per-route `[code]`, 8) · Schedule · Book · Manage · Check-in · Cargo ·
 About · Contact · Careers · Press · Travel info · Destinations (+ `[city]`, 8) ·
@@ -213,11 +215,29 @@ Everything below is marked in the code with `⚠️` comments.
 | **Legal documents** | `lib/content.ts → LEGAL` | Placeholder summaries. Need drafted conditions of carriage, privacy, cookies, programme terms. |
 | **Social links** | `components/Footer.tsx → SOCIAL` | All `href="#"`. |
 | **Imagery** | `public/scenes/` | See §6. |
-| **Airport codes** | `lib/data.ts` | IATA where allocated (EBB, KHX, KXO, KSE, PAF), ICAO where not (HUKJ, HUMW, HUGG, HUKD). Worth a second pair of eyes from operations. |
+| **Airport codes** | `lib/data.ts` | IATA where allocated (EBB, KHX, KXO, KSE, PAF), ICAO where not (HUMW, HUGG, HUKD). **Exception:** Kajjansi has an allocated IATA code (**KJJ**) but ships as `HUKJ`, because HUKJ is what handlers and crews actually quote. Confirm which you want public. |
+| **Forms do nothing** | `ContactForm.tsx`, `pearl-club/join`, `manage`, `check-in`, `SearchWidget` | All five submit nowhere. The contact and join forms flip local state and show a success message; `/manage` and `/check-in` post back to themselves; the search widget has no `name` attributes, so `action="/book"` carries no parameters. Wire to a backend, or label them as previews. |
+| **Newsroom** | `components/Press.tsx`, `app/(site)/press/page.tsx` | `const NEWS = []` — hardcoded empty, renders a "coming soon" state. |
+| **Member dashboard sample data** | `components/loyalty/MemberDashboard.tsx` | Mock member, balance, tier and activity. The sample name is a placeholder, not a real member. |
+| **Company history** | `app/(site)/about/page.tsx` | "Thirty years of Ugandan flying" and the Kampala Aero Club lineage are checkable claims about your own business — confirm the dates before publishing. |
+| **French placeholder** | `app/fr/page.tsx` | Static "coming soon" page. In the sitemap and `hreflang`, but there is no translated content behind it. |
+| **Fleet size** | `lib/data.ts → FLEET` | No aircraft counts are published. Note that the illustrative timetable implies **seven Caravans airborne simultaneously** in the morning bank — see §9a. |
 
 **On fares specifically:** the published seat fare is a commercial decision against
 Aerolink's Entebbe pricing, and the placeholder is a market-rate guess, not a
 recommendation. Nothing on the site should go live on it.
+
+### 9a. The timetable implies a fleet you may not have
+
+`lib/content.ts → SCHEDULE` currently departs Kajjansi at 07:00, 07:30 ×2, 07:45 ×2 and
+08:00 ×2 — **seven simultaneous departures**, all typed Grand Caravan, none of which can
+be flown by a returning aircraft because the first inbound does not land until 09:00.
+`/routes` headlines this as "one morning departure bank".
+
+That is a plausible shape for a mature network and an implausible one for a small fleet.
+Before this goes in front of the trade, either thin the bank to what the fleet can
+actually fly, or stagger the departures across the morning. It is the kind of detail a
+DMC planning connections will notice immediately.
 
 ## 10. Before you ship — checklist
 

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Clock, CalendarDays, Plane, Globe2 } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { ROUTES, FARES } from "@/lib/data";
-import { SCHEDULE, routeByCode } from "@/lib/content";
+import { SCHEDULE, GUIDES, routeByCode } from "@/lib/content";
 
 export function generateStaticParams() {
   return ROUTES.map((r) => ({ code: r.to.toLowerCase() }));
@@ -26,6 +26,9 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
   const flights = SCHEDULE.filter(
     (f) => (f.from === r.from && f.to === r.to) || (f.from === r.to && f.to === r.from)
   );
+  const hasGuide = GUIDES.some((g) => g.code === r.to);
+  // Entebbe is an interline connection, not a park seat — no park fare applies.
+  const isConnection = r.type === "Connection";
   const fare = FARES.parkOneWay;
 
   const facts = [
@@ -40,7 +43,11 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
       <PageHero
         kicker={`${r.from} → ${r.to}`}
         title={`Kajjansi to ${r.city}`}
-        subtitle={`${r.park} · ${r.frequency} · ${r.blockTime} · ${fare} per person, one way.`}
+        subtitle={
+          isConnection
+            ? `${r.park} · ${r.frequency} · ${r.blockTime}.`
+            : `${r.park} · ${r.frequency} · ${r.blockTime} · ${fare} per person, one way.`
+        }
         crumbs={[{ label: "Home", href: "/" }, { label: "Routes", href: "/routes" }, { label: r.city }]}
       />
 
@@ -58,6 +65,14 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
 
           {/* Illustrative timetable */}
           <h2 className="mt-12 font-serif text-2xl font-semibold text-ink">Flights on this route</h2>
+          {flights.length === 0 ? (
+            <div className="mt-4 rounded-2xl border border-dashed border-nile/20 bg-white px-6 py-10 text-center">
+              <p className="text-ink">This sector runs on demand rather than to a published timetable.</p>
+              <p className="mx-auto mt-2 max-w-md text-sm text-slatey">
+                Tell us your connecting flight and we will position around it.
+              </p>
+            </div>
+          ) : (
           <div className="mt-4 overflow-x-auto rounded-2xl border border-nile/10 bg-white">
             <table className="w-full text-left text-sm">
               <thead className="bg-nile/[0.04] text-xs uppercase tracking-wide text-slatey">
@@ -82,6 +97,7 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
               </tbody>
             </table>
           </div>
+          )}
           <p className="mt-3 text-xs text-slatey">
             Times are illustrative for this pre-launch website. Bush strips are weather- and surface-dependent; confirm at booking.
           </p>
@@ -90,9 +106,11 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
             <Link href="/book" className="btn-primary">
               Book {r.from}–{r.to} <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
-            <Link href={`/destinations/${r.city.toLowerCase().split(" ")[0]}`} className="btn-ghost">
-              About {r.city.split(" ")[0]}
-            </Link>
+            {hasGuide && (
+              <Link href={`/destinations/${r.city.toLowerCase().split(" ")[0]}`} className="btn-ghost">
+                About {r.city.split(" ")[0]}
+              </Link>
+            )}
             <Link href="/routes" className="btn-ghost">All routes</Link>
           </div>
         </div>

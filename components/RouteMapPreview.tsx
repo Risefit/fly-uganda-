@@ -148,8 +148,7 @@ export function RouteMapPreview() {
                         x={n.x}
                         y={n.below ? n.y + 18 : n.y - (isActive ? 16 : 12)}
                         textAnchor="middle"
-                        className="transition-all duration-300"
-                        fontSize="12"
+                        className="text-[20px] transition-all duration-300 sm:text-[15px] lg:text-[12px]"
                         fontWeight={isHub || isActive ? 700 : 500}
                         fill={isActive ? "#7A590F" : "rgba(15,29,25,0.75)"}
                       >
@@ -178,7 +177,7 @@ export function RouteMapPreview() {
           <div className="order-1 lg:order-2">
             <Kicker>The network</Kicker>
             <h2 id="map-heading" className="mt-4 font-serif text-3xl leading-tight tracking-wide text-ink sm:text-4xl">
-              Eight strips, one morning departure bank
+              Seven park strips, one departure bank
             </h2>
             <p className="mt-3 max-w-md text-slatey">
               Hover a route to trace the flight. Everything leaves Kajjansi in the morning and is

@@ -38,7 +38,7 @@ export function LaunchingNotice() {
   return (
     <div className="mt-6 rounded-xl border border-dashed border-gold/50 bg-gold/[0.06] px-5 py-4 text-sm text-ink">
       <strong className="font-semibold text-nile">Online booking is launching shortly.</strong>{" "}
-      In the meantime, please call <a className="font-semibold text-nile hover:underline" href="tel:+211">+211 (TBC)</a> or
+      In the meantime, please call <a className="font-semibold text-nile hover:underline" href="tel:+256">+256 (TBC)</a> or
       email <a className="font-semibold text-nile hover:underline" href="mailto:reservations@flyuganda.com">reservations@flyuganda.com</a> to make a reservation.
     </div>
   );

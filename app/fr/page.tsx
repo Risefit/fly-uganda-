@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 // properties, so adding locales is structural rather than a rebuild.
 export default function FrenchPlaceholder() {
   return (
-    <main lang="fr" className="flex min-h-screen flex-col items-center justify-center bg-nile px-6 text-center text-paper">
+    <main id="main" lang="fr" className="flex min-h-screen flex-col items-center justify-center bg-nile px-6 text-center text-paper">
       <PearlMark className="h-10 w-10 text-gold" />
       <h1 className="mt-6 font-serif text-3xl font-semibold sm:text-4xl">Version française à venir</h1>
       <p className="mt-4 max-w-md text-paper/80">

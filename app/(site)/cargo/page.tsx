@@ -19,7 +19,7 @@ export default function CargoPage() {
     <>
       <PageHero
         kicker="Fly Uganda Cargo"
-        title="The nation's freight, carried with care"
+        title="Charter and cargo, from Kajjansi"
         subtitle="Crew rotations into the Albertine, resupply into the parks, and dedicated aircraft for relief operations and beyond."
         crumbs={[{ label: "Home", href: "/" }, { label: "Cargo" }]}
       />
@@ -33,14 +33,14 @@ export default function CargoPage() {
               The Albertine corridor, on the schedule
             </h2>
             <p className="mt-4 text-slatey">
-              Kajjansi is an hour&rsquo;s flying from Hoima, Buliisa and Pakwach, and the same hangar
+              Kajjansi is thirty-five minutes&rsquo; flying from Hoima and about an hour from Pakwach, and the same hangar
               that flies the park schedule flies the crew rotations and the freight. One operator, one
               AOC, one invoice — whether it is a pallet into Bugungu or a fortnightly rotation.
             </p>
             <dl className="mt-6 grid grid-cols-2 gap-4">
               <div className="rounded-2xl border border-nile/10 bg-white p-5">
                 <dt className="text-xs uppercase tracking-wide text-slatey">Fleet</dt>
-                <dd className="font-serif text-lg text-ink">Caravan · 1900D · Bell 412</dd>
+                <dd className="font-serif text-lg text-ink">Caravan · 1900D · C206/210</dd>
               </div>
               <div className="rounded-2xl border border-nile/10 bg-white p-5">
                 <dt className="text-xs uppercase tracking-wide text-slatey">Clients</dt>

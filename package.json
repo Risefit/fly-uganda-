@@ -2,7 +2,7 @@
   "name": "flyuganda-web",
   "version": "1.0.0",
   "private": true,
-  "description": "Fly Uganda \u2014 marketing website (flyuganda.com)",
+  "description": "Fly Uganda — marketing website (flyuganda.com)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

@@ -47,9 +47,9 @@ export function OilCorridorMap() {
             {p.hub && <circle cx={p.x} cy={p.y} r="12" fill="none" stroke="#D2A017" strokeWidth="1" opacity="0.5" />}
             <text
               x={p.x}
-              y={p.y - 12}
+              y={p.below ? p.y + 20 : p.y - 12}
               textAnchor="middle"
-              fontSize="12"
+              className="text-[19px] sm:text-[15px] lg:text-[12px]"
               fontWeight={p.hub ? 700 : 500}
               fill="rgba(244,241,230,0.9)"
             >
@@ -58,7 +58,7 @@ export function OilCorridorMap() {
           </g>
         ))}
       </svg>
-      <p className="px-3 pb-2 pt-1 text-right text-[0.65rem] uppercase tracking-widest text-paper/40">
+      <p className="px-3 pb-2 pt-1 text-right text-[0.65rem] uppercase tracking-widest text-paper/70">
         Charter &amp; cargo network · Albertine Graben
       </p>
     </div>

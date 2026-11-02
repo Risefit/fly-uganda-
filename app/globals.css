@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* Set by next/font/local in app/layout.tsx; the fallbacks below only
-       matter if the self-hosted woff2 files are missing from public/fonts. */
+       matter if the self-hosted woff2 files are missing from app/fonts. */
     --font-display: Georgia, "Times New Roman", serif;
     --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
     --font-mono: ui-monospace, "SFMono-Regular", monospace;
@@ -52,9 +52,12 @@
     @apply font-sans text-[0.7rem] font-semibold uppercase tracking-kicker text-gold-600;
   }
 
-  /* The Welcome Word — "Webale" (Luganda: thank you) */
+  /* The Welcome Word — "Webale" (Luganda: thank you).
+     Colour is NOT set here: the word appears on both paper and Source Green,
+     and a single hard-coded gold fails contrast on one of them. Call sites
+     pass text-gold-600 on light and text-gold-300 on dark. */
   .webale {
-    @apply font-serif uppercase tracking-[0.3em] text-gold-600;
+    @apply font-serif uppercase tracking-[0.3em];
   }
 
   .container-site {

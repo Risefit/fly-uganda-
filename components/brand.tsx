@@ -17,16 +17,20 @@ import { cn } from "@/lib/utils";
 export function Pearl({
   className,
   title = "Fly Uganda",
+  decorative = false,
 }: {
   className?: string;
   title?: string;
+  /** Set when the mark sits beside the wordmark, so it is not announced twice. */
+  decorative?: boolean;
 }) {
   return (
     <svg
       viewBox="-100 -92 200 184"
       className={cn("h-10 w-auto", className)}
-      role="img"
-      aria-label={title}
+      {...(decorative
+        ? { "aria-hidden": true as const, focusable: false }
+        : { role: "img", "aria-label": title })}
     >
       <defs>
         <linearGradient id="fuPearlLight" x1="0" y1="0" x2="0.75" y2="1">
@@ -113,9 +117,29 @@ export function Kicker({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** The Welcome Word — "Webale" (Luganda: thank you). Easily replaceable. */
-export function Webale({ className }: { className?: string }) {
-  return <span className={cn("webale text-sm", className)}>Webale</span>;
+/**
+ * The Welcome Word — "Webale" (Luganda: thank you).
+ * `tone` picks a gold that clears WCAG AA on that background: gold-600 on
+ * paper (5.69:1), gold-300 on Source Green (10.73:1).
+ */
+export function Webale({
+  className,
+  tone = "light",
+}: {
+  className?: string;
+  tone?: "light" | "dark";
+}) {
+  return (
+    <span
+      className={cn(
+        "webale text-sm",
+        tone === "light" ? "text-gold-600" : "text-gold-300",
+        className
+      )}
+    >
+      Webale
+    </span>
+  );
 }
 
 /** Wordmark lockup — Pearl + Fraunces name + Archivo descriptor. */
@@ -128,7 +152,7 @@ export function Wordmark({
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <Pearl className="h-8 w-auto" />
+      <Pearl className="h-8 w-auto" decorative />
       <span className="leading-none">
         <span
           className={cn(
@@ -139,6 +163,7 @@ export function Wordmark({
           FLY UGANDA
         </span>
         <span
+          aria-hidden="true"
           className={cn(
             "mt-1 block font-sans text-[0.5rem] font-semibold uppercase tracking-[0.34em]",
             tone === "light" ? "text-gold-600" : "text-gold-300"

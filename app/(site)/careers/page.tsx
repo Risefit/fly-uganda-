@@ -5,7 +5,7 @@ import { Kicker, PearlMark } from "@/components/brand";
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Join Fly Uganda — build the national flag carrier with us. Roles opening soon.",
+  description: "Join Fly Uganda — fly, engineer and sell Uganda's safari airline from Kajjansi. Roles opening soon.",
 };
 
 const AREAS = [
@@ -20,8 +20,8 @@ export default function CareersPage() {
     <>
       <PageHero
         kicker="Careers"
-        title="Build a national airline with us"
-        subtitle="We&rsquo;re assembling the team that will carry the pride of a new nation. Roles are opening soon."
+        title="Fly for the Pearl of Africa"
+        subtitle="Crew, engineers and reservations — based at Kajjansi, flying the whole of Uganda. Roles are opening soon."
         crumbs={[{ label: "Home", href: "/" }, { label: "Careers" }]}
       />
       <section className="bg-paper py-16">

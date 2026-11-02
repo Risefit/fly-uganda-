@@ -37,7 +37,7 @@ export default function ContactPage() {
             <h2 className="mt-4 font-serif text-3xl font-semibold text-ink">Customer service</h2>
 
             <div className="mt-6 space-y-4">
-              <a href={`tel:+211`} className="flex items-center gap-3 rounded-2xl border border-nile/10 bg-white p-5 hover:border-nile/30">
+              <a href={`tel:+256`} className="flex items-center gap-3 rounded-2xl border border-nile/10 bg-white p-5 hover:border-nile/30">
                 <Phone className="h-5 w-5 text-nile" aria-hidden />
                 <span>
                   <span className="block text-xs uppercase tracking-wide text-slatey">Phone</span>

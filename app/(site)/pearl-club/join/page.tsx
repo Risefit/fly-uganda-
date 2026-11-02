@@ -52,7 +52,7 @@ export default function JoinPage() {
               </label>
               <label className="flex flex-col gap-1.5">
                 <span className="text-xs font-semibold text-ink">Phone</span>
-                <input type="tel" className={FIELD} autoComplete="tel" placeholder="+211 …" />
+                <input type="tel" className={FIELD} autoComplete="tel" placeholder="+256 …" />
               </label>
               <label className="flex flex-col gap-1.5 sm:col-span-2">
                 <span className="text-xs font-semibold text-ink">Home country</span>

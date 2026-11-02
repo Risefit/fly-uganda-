@@ -16,7 +16,7 @@ export default function DestinationsPage() {
       <PageHero
         kicker="Where we fly"
         title="Destinations"
-        subtitle="Eight strips, five national parks and the Rwenzori — and the Pearl of Africa in between."
+        subtitle="Seven park strips, six national parks, and the Pearl of Africa in between."
         crumbs={[{ label: "Home", href: "/" }, { label: "Destinations" }]}
       />
       <section className="bg-paper py-16">

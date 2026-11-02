@@ -48,6 +48,41 @@ for Fly Uganda.
 - Search-widget swap control no longer overlaps the destination field.
 - Hard-coded `USD 190` fare removed from the search widget; it now reads from `FARES`.
 
+### Fixed after independent review
+- **Mobile navigation was invisible.** The header's `backdrop-filter` made it the
+  containing block for the `position: fixed` overlay, collapsing the menu to 0px while
+  still locking body scroll — tapping the hamburger froze the page with no navigation.
+  Escape now closes the menu too.
+- **South Sudan dialling code `+211`** was still live in three places, including a
+  `tel:` link on `/contact` whose visible label read `+256`.
+- **Careers and cargo pages still claimed national flag-carrier status** ("build the
+  national flag carrier", "the pride of a new nation", "the nation's freight") —
+  contradicting the brand brief and misstating Fly Uganda's position against Uganda
+  Airlines.
+- `/book` overflowed horizontally by up to 314px between 768 and 1023px.
+- `/routes/ebb` linked to a non-existent `/destinations/entebbe` (the site's only 404),
+  quoted a USD 290 park fare for a 15-minute connection, and rendered an empty timetable.
+- `hreflang` advertised `/en`, which does not exist; `/fr` was missing from the sitemap.
+- "Miles" still surfaced to users in the account CTA and the Pearl Club meta description.
+- The member dashboard hardcoded an 80,000 tier threshold against the published 60,000;
+  thresholds now derive from `lib/loyalty.ts`. Sample member identity de-branded.
+- Cargo page advertised a Bell 412, which is not in `FLEET`.
+- Seven WCAG AA contrast failures on rendered text, including the footer greeting at
+  2.52:1 — `.webale` hardcoded a light-background gold while being used on dark.
+- Desktop "Where we fly" dropdown was hover-only and unreachable by keyboard.
+- Skip link targeted `#main`, which `/fr` and the 404 page did not define.
+- Footer column headings were `<h3>` with no `<h2>` above them, skipping a heading level
+  on four pages.
+- SVG map labels rendered at ~6.6px on a 390px screen; cargo map labels collided.
+- Partner markers were mis-plotted (Nairobi west of the Masai Mara) and Zanzibar was
+  named in the caption but never drawn.
+- Scene plates depicted a swept-wing jet while the alt text claimed a Grand Caravan;
+  redrawn as a high-wing single-engine turboprop.
+- Removed the unverifiable "two pilots up front" service promise, corrected the H130
+  seat count, and corrected the Hoima flight time.
+- Code comments still said "The Crested Crane", `WhiteNileClubPage`, and "Unsplash
+  placeholders" (the plates are first-party, with no stock licence involved).
+
 ### Added
 - `npm run contrast` — WCAG AA guard on the palette.
 - `npm run audit:classes` — catches Tailwind utilities that silently compile to nothing.

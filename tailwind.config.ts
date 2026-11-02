@@ -1,10 +1,11 @@
 import type { Config } from "tailwindcss";
 
 /**
- * FLY UGANDA — "The Crested Crane" brand system.
+ * FLY UGANDA — "The Pearl" brand system.
  *
- * Source Green for depth and the Victoria Nile, Crane Gold for the national
- * bird's crest, Savannah Linen for light ground, Equator Clay for sparing heat.
+ * Source Green for depth and the Victoria Nile, Crane Gold for warmth,
+ * Savannah Linen for light ground, Equator Clay for sparing heat.
+ * (The mark is deliberately not a crane — see 01-brand-brief.md §2.)
  *
  * Every token name is semantic, not literal, so a future palette swap is a
  * one-file change. Every foreground/background pair below is WCAG AA at body

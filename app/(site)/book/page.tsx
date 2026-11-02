@@ -23,8 +23,8 @@ export default function BookPage() {
       />
 
       <section className="bg-paper py-14">
-        <div className="container-site grid gap-10 lg:grid-cols-[1.6fr_0.9fr]">
-          <div>
+        <div className="container-site grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,0.9fr)]">
+          <div className="min-w-0">
             <AeroCRSFrame
               heading="Reservations powered by our booking partner"
               blurb="The full search → seat selection → payment → confirmation flow runs in the secure booking widget below. Until it goes live, you can search here and reserve by phone or email."
@@ -48,7 +48,7 @@ export default function BookPage() {
             </div>
           </div>
 
-          <aside className="space-y-4">
+          <aside className="min-w-0 space-y-4">
             <div className="rounded-2xl bg-nile p-6 text-paper">
               <h2 className="font-serif text-xl font-semibold">Fares from</h2>
               <div className="mt-4 space-y-3">

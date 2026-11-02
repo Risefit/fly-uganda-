@@ -20,8 +20,13 @@ export function Header({ solid = false }: { solid?: boolean }) {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    if (open) window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
   }, [open]);
 
@@ -31,23 +36,29 @@ export function Header({ solid = false }: { solid?: boolean }) {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        elevated ? "bg-paper/95 backdrop-blur shadow-[0_1px_0_rgba(201,162,39,0.5)]" : "bg-paper/70 backdrop-blur-sm"
+        elevated ? "bg-paper/95 shadow-[0_1px_0_rgba(210,160,23,0.5)]" : "bg-paper/70",
+        // A backdrop-filter ancestor becomes the containing block for its
+        // position:fixed descendants, which collapses the mobile overlay below
+        // to 0px. Drop the blur while the menu is open — the bar is opaque then
+        // anyway, so there is nothing to see through.
+        !open && (elevated ? "backdrop-blur" : "backdrop-blur-sm")
       )}
     >
       {/* Utility bar */}
       <div className="hidden border-b border-gold/20 lg:block">
         <div className="container-site flex h-9 items-center justify-between text-[0.7rem] text-ink/70">
-          <span className="webale text-[0.7rem]">Webale — welcome aboard</span>
+          <span className="webale text-[0.7rem] text-gold-600">Webale — welcome aboard</span>
           <div className="flex items-center gap-5">
             {NAV.utility.map((u) => (
               <Link key={u.href} href={u.href} className="uppercase tracking-wide2 hover:text-gold-600">
                 {u.label}
               </Link>
             ))}
+            {/* TODO: replace with the real reservations number (see CONTACT.phone) */}
             <a href="tel:+256" className="inline-flex items-center gap-1.5 hover:text-gold-600">
               <Phone className="h-3.5 w-3.5" aria-hidden /> +256 (TBC)
             </a>
-            <div className="flex items-center gap-1 text-ink/50">
+            <div className="flex items-center gap-1 text-slatey">
               <span className="font-semibold text-ink" aria-current="true">EN</span>
               <span aria-hidden>·</span>
               <Link href="/fr" className="hover:text-gold-600" lang="fr">FR</Link>
@@ -58,7 +69,9 @@ export function Header({ solid = false }: { solid?: boolean }) {
 
       {/* Main bar */}
       <div className="container-site flex h-16 items-center justify-between lg:h-[68px]">
-        <Link href="/" aria-label="Fly Uganda — home">
+        {/* No aria-label: the visible wordmark is the accessible name. An
+            aria-label here duplicates it and trips WCAG 2.5.3 (label in name). */}
+        <Link href="/">
           <Wordmark tone="light" />
         </Link>
 
@@ -66,11 +79,15 @@ export function Header({ solid = false }: { solid?: boolean }) {
           {NAV.primary.map((item) =>
             item.children ? (
               <div key={item.href} className="group relative">
-                <button className="inline-flex items-center gap-1 py-2 text-[0.72rem] font-medium uppercase tracking-wide2 text-ink hover:text-gold-600">
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  className="inline-flex items-center gap-1 py-2 text-[0.72rem] font-medium uppercase tracking-wide2 text-ink hover:text-gold-600"
+                >
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" aria-hidden />
                 </button>
-                <div className="invisible absolute left-1/2 top-full w-56 -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
+                <div className="invisible absolute left-1/2 top-full w-56 -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                   <div className="overflow-hidden rounded-lg border border-gold/20 bg-warm py-2 shadow-card">
                     {item.children.map((c) => (
                       <Link

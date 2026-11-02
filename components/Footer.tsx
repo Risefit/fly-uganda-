@@ -61,7 +61,7 @@ export function Footer() {
           <Wordmark tone="dark" />
           <p className="mt-5 font-serif text-lg font-medium text-gold-300">The Pearl, from above</p>
           <p className="mt-1 text-sm text-warm/60">
-            <Webale /> — thank you for flying with us.
+            <Webale tone="dark" /> — thank you for flying with us.
           </p>
           <address className="mt-5 not-italic text-sm leading-relaxed text-warm/70">
             {CONTACT.office}
@@ -87,7 +87,7 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {COLUMNS.map((col) => (
             <nav key={col.title} aria-label={col.title}>
-              <h3 className="text-[0.7rem] font-medium uppercase tracking-wide2 text-gold-300">{col.title}</h3>
+              <h2 className="text-[0.7rem] font-medium uppercase tracking-wide2 text-gold-300">{col.title}</h2>
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((l) => (
                   <li key={l.href}>
@@ -107,7 +107,7 @@ export function Footer() {
             {NAV.utility.map((u) => (
               <Link key={u.href} href={u.href} className="hover:text-warm">{u.label}</Link>
             ))}
-            <span className="text-warm/40">Kajjansi · HUKJ</span>
+            <span className="text-warm/70">Kajjansi · HUKJ</span>
           </div>
         </div>
       </div>

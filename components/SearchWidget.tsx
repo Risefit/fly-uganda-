@@ -25,7 +25,7 @@ function Field({
   const reduce = useReducedMotion();
   return (
     <label
-      className={cn("group relative flex flex-1 flex-col gap-1 px-4 py-3 text-left", className)}
+      className={cn("group relative flex min-w-0 flex-1 flex-col gap-1 px-4 py-3 text-left", className)}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
     >
@@ -78,8 +78,8 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
         ))}
       </div>
 
-      <div className="flex flex-col divide-y divide-white/10 md:flex-row md:divide-x md:divide-y-0">
-        <div className="relative flex flex-[2] items-stretch">
+      <div className="flex flex-col divide-y divide-white/10 lg:flex-row lg:divide-x lg:divide-y-0">
+        <div className="relative flex min-w-0 flex-[2] items-stretch">
           <Field label="From">
             <select
               aria-label="Origin"
@@ -153,12 +153,12 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
       {variant === "page" && (
         <div className="flex flex-col gap-1.5 border-t border-white/10 px-4 py-3 sm:flex-row sm:items-center sm:gap-3">
           <label className="text-[0.62rem] font-medium uppercase tracking-wide2 text-warm/55" htmlFor="ff-number">
-            Pearl Club number <span className="normal-case text-warm/40">(optional — earn Pearls)</span>
+            Pearl Club number <span className="normal-case text-warm/70">(optional — earn Pearls)</span>
           </label>
           <input
             id="ff-number"
             placeholder="PC-XXXXXX"
-            className="flight-code w-full max-w-[180px] rounded-md border border-gold/25 bg-nile-700 px-3 py-1.5 text-sm uppercase text-warm placeholder:text-warm/40 focus:border-gold focus:outline-none"
+            className="flight-code w-full max-w-[180px] rounded-md border border-gold/25 bg-nile-700 px-3 py-1.5 text-sm uppercase text-warm placeholder:text-warm/60 focus:border-gold focus:outline-none"
           />
         </div>
       )}

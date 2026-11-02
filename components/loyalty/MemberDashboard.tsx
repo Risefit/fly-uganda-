@@ -11,11 +11,11 @@ const FIELD =
 
 // Illustrative member — replaced by live data from the AeroCRS API at launch.
 const MEMBER = {
-  name: "Aluel Deng",
+  name: "Sample Member",
   ffNumber: "PC-204815",
   tierKey: "shoebill" as const,
   statusPearls: 52000,
-  awardMiles: 38450,
+  awardPearls: 38450,
 };
 
 const ACTIVITY = [
@@ -72,7 +72,8 @@ export function MemberDashboard() {
   const tier = TIERS.find((t) => t.key === MEMBER.tierKey)!;
   const tierIdx = TIERS.findIndex((t) => t.key === MEMBER.tierKey);
   const nextTier = TIERS[tierIdx + 1];
-  const nextThreshold = nextTier ? 80000 : MEMBER.statusPearls; // illustrative
+  // Read from lib/loyalty.ts so the dashboard cannot drift from the published ladder.
+  const nextThreshold = nextTier ? nextTier.statusThreshold : MEMBER.statusPearls;
   const pct = Math.min(100, Math.round((MEMBER.statusPearls / nextThreshold) * 100));
 
   return (
@@ -102,11 +103,11 @@ export function MemberDashboard() {
         <div className="rounded-2xl border border-nile/10 bg-white p-6">
           <p className="text-xs uppercase tracking-wide text-slatey">Award balance</p>
           <p className="mt-1 font-serif text-4xl font-semibold text-nile">
-            {MEMBER.awardMiles.toLocaleString()}
+            {MEMBER.awardPearls.toLocaleString()}
           </p>
           <p className="text-sm text-slatey">Pearls available to spend</p>
           <Link href="/book" className="btn-primary mt-4 w-full">
-            <Plane className="h-4 w-4" aria-hidden /> Use Miles for a flight
+            <Plane className="h-4 w-4" aria-hidden /> Use Pearls for a seat
           </Link>
         </div>
       </div>
@@ -138,7 +139,7 @@ export function MemberDashboard() {
         <div className="overflow-hidden rounded-2xl border border-nile/10 bg-white">
           <div className="flex items-center justify-between border-b border-nile/10 px-6 py-4">
             <h2 className="font-serif text-lg font-semibold text-ink">Recent activity</h2>
-            <span className="text-xs text-slatey">Last 30 days</span>
+            <span className="text-xs text-slatey">Recent sectors</span>
           </div>
           <ul className="divide-y divide-nile/10">
             {ACTIVITY.map((a, i) => (

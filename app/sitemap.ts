@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/pearl-club",
     "/pearl-club/join",
     "/pearl-club/account",
+    "/fr",
   ];
 
   const dynamic = [

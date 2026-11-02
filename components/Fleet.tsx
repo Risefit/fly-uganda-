@@ -23,7 +23,7 @@ export function Fleet() {
               {/* ⚠️ PLACEHOLDER ART — replace with fleet photography. */}
               <Image
                 src="/scenes/fleet.svg"
-                alt="A Grand Caravan on a Ugandan bush strip"
+                alt="A Grand Caravan over the Ugandan highlands"
                 fill
                 sizes="(max-width: 1024px) 100vw, 760px"
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"

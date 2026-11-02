@@ -17,7 +17,7 @@ export default function RoutesPage() {
     <>
       <PageHero
         kicker="Where we fly"
-        title="Eight strips, one morning departure bank"
+        title="Seven park strips, one morning departure bank"
         subtitle="Every national park worth flying to, served from Kajjansi — most of them before the morning game drive is over."
         crumbs={[{ label: "Home", href: "/" }, { label: "Routes & network" }]}
       />

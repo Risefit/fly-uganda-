@@ -9,12 +9,12 @@ import { PROGRAMME, EARN_STEPS, REWARD_CHART, FAQ } from "@/lib/loyalty";
 export const metadata: Metadata = {
   title: "Pearl Club — frequent flyer programme",
   description:
-    "Join the Pearl Club and earn Pearls on every Fly Uganda flight. Rise through the Birds of Uganda and redeem Miles for award flights.",
+    "Join the Pearl Club and earn Pearls on every Fly Uganda flight. Rise through the Birds of Uganda and redeem Pearls for award seats.",
 };
 
 const STEP_ICONS = [Plane, TrendingUp, Gift];
 
-export default function WhiteNileClubPage() {
+export default function PearlClubPage() {
   return (
     <>
       <PageHero
@@ -120,7 +120,7 @@ export default function WhiteNileClubPage() {
                 ))}
               </tbody>
             </table>
-            <p className="px-5 py-3 text-xs text-paper/50">Illustrative — set at programme launch.</p>
+            <p className="px-5 py-3 text-xs text-paper/70">Illustrative — set at programme launch.</p>
           </div>
         </div>
       </section>

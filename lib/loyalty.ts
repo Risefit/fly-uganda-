@@ -10,7 +10,8 @@ export type Tier = {
   name: string;
   tagline: string;
   accent: string; // hex for the emblem + card trim
-  statusPearls: string; // illustrative annual Status Pearls to reach
+  statusPearls: string; // illustrative annual Status Pearls to reach (display)
+  statusThreshold: number; // the same figure as a number — keep the two in step
   bonus: string; // earning bonus vs base
   benefits: string[];
 };
@@ -30,6 +31,7 @@ export const TIERS: Tier[] = [
     tagline: "Quick off the mark",
     accent: "#F0CF72",
     statusPearls: "Join free",
+    statusThreshold: 0,
     bonus: "Base earning",
     benefits: [
       "Earn Pearls on every flight",
@@ -43,6 +45,7 @@ export const TIERS: Tier[] = [
     tagline: "The colour of Bwindi",
     accent: "#D2A017",
     statusPearls: "8 sectors or 12,000 Status Pearls",
+    statusThreshold: 12000,
     bonus: "+25% bonus Pearls",
     benefits: [
       "Everything in Kingfisher",
@@ -57,6 +60,7 @@ export const TIERS: Tier[] = [
     tagline: "Rare, and worth the wait",
     accent: "#B8871A",
     statusPearls: "20 sectors or 30,000 Status Pearls",
+    statusThreshold: 30000,
     bonus: "+50% bonus Pearls",
     benefits: [
       "Everything in Great Blue Turaco",
@@ -72,6 +76,7 @@ export const TIERS: Tier[] = [
     tagline: "The national bird flies first",
     accent: "#7A590F",
     statusPearls: "40 sectors or 60,000 Status Pearls",
+    statusThreshold: 60000,
     bonus: "+100% bonus Pearls",
     benefits: [
       "Everything in Shoebill",
