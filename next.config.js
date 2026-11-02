@@ -14,6 +14,19 @@ const nextConfig = {
     // No remote image hosts: every image is first-party and version-controlled.
     remotePatterns: [],
   },
+  // robots.txt is advisory; this header is not. Both are lifted together by
+  // setting SITE_INDEXABLE=true in the production environment.
+  async headers() {
+    if (process.env.SITE_INDEXABLE === "true") return [];
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

@@ -2,7 +2,9 @@ import type { MetadataRoute } from "next";
 import { ROUTES } from "@/lib/data";
 import { GUIDES, LEGAL } from "@/lib/content";
 
-const BASE = "https://flyuganda.com";
+import { SITE_URL } from "@/lib/site";
+
+const BASE = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [

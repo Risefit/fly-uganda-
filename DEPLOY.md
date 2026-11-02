@@ -39,11 +39,19 @@ then point the DNS records Vercel shows you at the registrar.
 pages. Decide which of its URLs are worth keeping and add redirects in `next.config.js`
 (`async redirects()`), or you will drop that search equity on cutover.
 
-The domain is also hard-coded in three places — update them if it changes:
+The domain is defined once, in `lib/site.ts`, and read by `app/layout.tsx`,
+`app/sitemap.ts` and `app/robots.ts`. To change it, set `NEXT_PUBLIC_SITE_URL`
+in the Vercel environment rather than editing the file.
 
-- `app/layout.tsx` → `SITE_URL`
-- `app/sitemap.ts` → `BASE`
-- `app/robots.ts` → `sitemap` and `host`
+## 3a. Turn indexing on — do this last
+
+Every deployment is `noindex` by default so the `*.vercel.app` URL cannot be
+indexed with pre-launch fares. Once flyuganda.com serves this build:
+
+Vercel → Project → **Settings → Environment Variables** → add
+`SITE_INDEXABLE` = `true`, scoped to **Production only**, then redeploy.
+
+Leave preview deployments without it — they should never be indexable.
 
 ## 4. Everyday workflow
 

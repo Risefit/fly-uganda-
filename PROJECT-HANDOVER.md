@@ -245,8 +245,9 @@ DMC planning connections will notice immediately.
 2. `npm run contrast` — confirm the palette still passes.
 3. Work through §9 and replace every placeholder, or consciously accept it.
 4. Replace the hero image (§6) and dial back the scrim.
-5. Confirm `flyuganda.com` is the final domain — it is hard-coded in `app/layout.tsx`
-   (`SITE_URL`), `app/sitemap.ts` and `app/robots.ts`.
+5. Confirm `flyuganda.com` is the final domain. It is defined once in `lib/site.ts`
+   and read by `app/layout.tsx`, `app/sitemap.ts` and `app/robots.ts`; override with
+   `NEXT_PUBLIC_SITE_URL` rather than editing three files.
 6. Decide what happens to the **existing flyuganda.com** — the live site still shows 2020
    route information. This build replaces it wholesale; plan the redirects for any
    indexed URLs worth keeping.
@@ -255,6 +256,34 @@ DMC planning connections will notice immediately.
 8. Add analytics (Plausible or similar — the cookie policy already describes
    privacy-friendly, cookieless analytics, so keep it that way).
 9. New GitHub repo → import to Vercel → add the domain. See `DEPLOY.md`.
+10. **Switch indexing on.** Every deployment is `noindex` by default — see §10a.
+    Set `SITE_INDEXABLE=true` in the Vercel **production** environment only, and
+    redeploy, once flyuganda.com is serving this build.
+
+### 10a. Indexing is off by default, deliberately
+
+`app/robots.ts` emits `Disallow: /` and `next.config.js` sends
+`X-Robots-Tag: noindex, nofollow` unless `SITE_INDEXABLE=true` is set.
+
+Without that, the `*.vercel.app` deployment is publicly crawlable, and Google can
+index the pre-launch site — placeholder fares, placeholder timetable,
+"appointment to be confirmed" leadership and all — under the Fly Uganda name,
+competing with the real domain in results. A tour operator who finds the staging
+URL in search could quote a fare you never agreed to.
+
+Two switches, both lifted by the same variable:
+
+| Switch | File | Default |
+|---|---|---|
+| `robots.txt` | `app/robots.ts` | `Disallow: /` |
+| `X-Robots-Tag` header | `next.config.js → headers()` | `noindex, nofollow` |
+
+Set it on the production environment only. Preview deployments should stay
+`noindex` permanently.
+
+The canonical URL now lives in one place, `lib/site.ts`, and is read by
+`app/layout.tsx`, `app/sitemap.ts` and `app/robots.ts`. Override it with
+`NEXT_PUBLIC_SITE_URL` if the domain changes.
 
 ## 11. Booking integration (AeroCRS / Go7)
 

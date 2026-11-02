@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 /**
@@ -31,8 +32,6 @@ const display = localFont({
   variable: "--font-display",
   fallback: ["Georgia", "Times New Roman", "serif"],
 });
-
-const SITE_URL = "https://flyuganda.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
