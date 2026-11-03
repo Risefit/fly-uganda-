@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.2.1 · November 2026
+Version 1.2.2 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -266,7 +266,7 @@ Everything below is marked in the code with `⚠️` comments.
 | **Legal documents** | `lib/content.ts → LEGAL` | Placeholder summaries. Need drafted conditions of carriage, privacy, cookies, programme terms. |
 | **Social links** | `components/Footer.tsx → SOCIAL` | All `href="#"`. |
 | **Imagery** | `public/scenes/` | See §6. |
-| **Airport codes** | `lib/data.ts` | IATA where allocated (EBB, KHX, KXO, KSE, PAF), ICAO where not (HUMW, HUGG, HUKD). **Exception:** Kajjansi has an allocated IATA code (**KJJ**) but ships as `HUKJ`, because HUKJ is what handlers and crews actually quote. Confirm which you want public. |
+| **Airport codes** | `lib/data.ts` | IATA where allocated (HUEN, HUKH, HUKI, HUKS, PAF), ICAO where not (HUMW, HUGG, HUKD). **Exception:** Kajjansi has an allocated IATA code (**KJJ**) but ships as `HUKJ`, because HUKJ is what handlers and crews actually quote. Confirm which you want public. |
 | **Forms do nothing** | `ContactForm.tsx`, `pearl-club/join`, `manage`, `check-in`, `SearchWidget` | All five submit nowhere. The contact and join forms flip local state and show a success message; `/manage` and `/check-in` post back to themselves; the search widget has no `name` attributes, so `action="/book"` carries no parameters. Wire to a backend, or label them as previews. |
 | **Newsroom** | `components/Press.tsx`, `app/(site)/press/page.tsx` | `const NEWS = []` — hardcoded empty, renders a "coming soon" state. |
 | **Member dashboard sample data** | `components/loyalty/MemberDashboard.tsx` | Mock member, balance, tier and activity. The sample name is a placeholder, not a real member. |
@@ -371,12 +371,25 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   guard from the Dawn Star system is gone. `font-bold` works on headings now.
 - Do not push from a stale Codespace — treat the Mac as the single source of truth.
 
-## 14. What changed in v1.2.1 — network, fares, /book
+## 14. What changed in v1.2.2 — ICAO codes, tier cards, widget
+
+- **Codes:** `Airport.code` is ICAO for every airport and is the `/routes/[code]` slug,
+  the `data-code` on the map, the key in `lib/photos.ts`, the `public/photos/<code>.jpg`
+  slot and the CSS highlight rules in `globals.css`. `Airport.iata` carries KHX, KXO,
+  KSE, RUA, ULU, EBB for the PSS. **Confirm with UCAA:** HUKH (Kihihi/Savannah has no
+  published indicator) and HUKF (Kabalega International).
+- **Tier emblem** is `components/loyalty/TierEmblem.tsx` (pearl strand, 1–4 pearls, tier
+  accent). `BirdMark.tsx` is deleted. If the toolkit's four motif icons are ever drawn
+  properly, they go here.
+- **TierLadder** uses fixed row heights (`min-h-[6.25rem]` header, `min-h-[2.75rem]`
+  tagline, `min-h-[4.5rem]` qualification box) so the four cards align whatever wraps.
+
+## 15. What changed in v1.2.1 — network, fares, /book
 
 - **Network is now ten destinations:** Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua,
   Gulu, Moroto, Kidepo, Entebbe. Mweya and Pakuba are withdrawn (their scene plates and
   Unsplash entries deleted). Codes: Hoima = **HUKF** (Kabalega International; AC-U-KWIK
-  also lists IATA KBG — confirm with UCAA), Arua = RUA, Gulu = ULU, Moroto = **HUMO**
+  also lists IATA KBG — confirm with UCAA), Arua = HUAR, Gulu = HUGU, Moroto = **HUMO**
   (no IATA). Coordinates in `lib/geo.ts`; Hoima's are from the Wikipedia entry for the
   new airport (1.4275 N, 31.0778 E) — verify against the AIP once it is published.
 - **Block times for the four new sectors are illustrative** (Hoima 0h55, Gulu 1h15,
@@ -386,11 +399,11 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   is signed off. The map panel and route pages show aircraft type in the fare's place.
   `FARES` remains in `lib/data.ts` for later; nothing reads it.
 - **Imagery:** Hoima, Arua and Gulu have first-party SVG plates
-  (`public/scenes/{hukf,rua,ulu}.svg`, generated — brand-safe, no licence); Moroto uses
+  (`public/scenes/{hukf,huar,hugu}.svg`, generated — brand-safe, no licence); Moroto uses
   the Karamoja aerial (`public/photos/humo.jpg`). Unsplash has no verifiable photo of any
-  of the four. Drop KEA's own photos into `public/photos/{hukf,rua,ulu,humo}.jpg`.
+  of the four. Drop KEA's own photos into `public/photos/{hukf,huar,hugu,humo}.jpg`.
 
-## 15. What changed in v1.2.0 — domestic-airline positioning, real map, hero
+## 16. What changed in v1.2.0 — domestic-airline positioning, real map, hero
 
 - **Positioning.** "Uganda's safari airline" → **"Uganda's domestic airline"** in the
   logo tagline (regenerated through `logo/`), metadata, hero, footer and about. Charter is
@@ -415,7 +428,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   launch — they were placed from published coordinates, not surveyed.
 - **Hero** is `public/photos/hero.jpg` (needs the full-res original — §6).
 
-## 16. What changed in v1.1.0 — the Brand Identity Toolkit
+## 17. What changed in v1.1.0 — the Brand Identity Toolkit
 
 Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) did not change.
 
@@ -430,7 +443,7 @@ Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) d
   suppressing the self-hosted fonts since the fork, and the unquoted "Source Sans 3" that
   voided body `font-family` — both now in §5.
 
-## 17. What changed from the South Sudan Airlines fork (v1.0.0)
+## 18. What changed from the South Sudan Airlines fork (v1.0.0)
 
 For anyone comparing the two codebases:
 

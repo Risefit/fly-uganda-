@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Kicker } from "@/components/brand";
-import { BirdMark } from "@/components/loyalty/BirdMark";
+import { TierEmblem } from "@/components/loyalty/TierEmblem";
 import { TIERS } from "@/lib/loyalty";
 
 export function LoyaltyTeaser() {
@@ -31,14 +31,9 @@ export function LoyaltyTeaser() {
 
             {/* Tier birds */}
             <div className="grid grid-cols-4 gap-3">
-              {TIERS.map((t) => (
+              {TIERS.map((t, i) => (
                 <div key={t.key} className="flex flex-col items-center gap-2 rounded-2xl bg-white/5 p-4 text-center ring-1 ring-white/10">
-                  <span
-                    className="inline-flex h-12 w-12 items-center justify-center rounded-full text-opportunity-300"
-                    style={{ background: `${t.accent}2E` }}
-                  >
-                    <BirdMark tier={t.key} className="h-8 w-8" />
-                  </span>
+                  <TierEmblem tier={i + 1} accent={t.accent} className="h-12 w-12" />
                   <span className="text-xs font-medium text-warm">{t.name}</span>
                 </div>
               ))}

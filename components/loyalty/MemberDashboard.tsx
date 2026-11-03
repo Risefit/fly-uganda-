@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { LogIn, Plane, ArrowUpRight, ArrowDownRight, Info } from "lucide-react";
 import { TIERS, PROGRAMME } from "@/lib/loyalty";
-import { BirdMark } from "@/components/loyalty/BirdMark";
+import { TierEmblem } from "@/components/loyalty/TierEmblem";
 
 const FIELD =
   "w-full rounded-md border border-aviation/15 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/60 focus:border-aviation focus:outline-none focus:ring-2 focus:ring-aviation/20";
@@ -89,9 +89,7 @@ export function MemberDashboard() {
               <p className="mt-6 font-display text-2xl">{MEMBER.name}</p>
               <p className="flight-code mt-1 text-sm text-aviation-900/80">{MEMBER.ffNumber}</p>
             </div>
-            <span className="text-aviation-900">
-              <BirdMark tier={tier.key} className="h-12 w-12" />
-            </span>
+            <TierEmblem tier={TIERS.findIndex((x) => x.key === tier.key) + 1} accent="#0B1F3B" className="h-12 w-12" />
           </div>
           <div className="flex items-center justify-between bg-black/10 px-6 py-3">
             <span className="text-sm font-medium">{tier.name}</span>

@@ -3,10 +3,10 @@
 Drop a file named after the airport code and rebuild. It replaces the stock photo for
 that destination everywhere on the site, with no code change:
 
-    hukj.jpg   Kajjansi        khx.jpg   Kihihi         kxo.jpg   Kisoro
-    hukf.jpg   Hoima           kse.jpg   Kasese         rua.jpg   Arua
-    ulu.jpg    Gulu            humo.jpg  Moroto (currently the Karamoja aerial)
-    hugg.jpg   Bugungu         hukd.jpg  Kidepo         ebb.jpg   Entebbe
+    hukj.jpg   Kajjansi        hukh.jpg   Kihihi         huki.jpg   Kisoro
+    hukf.jpg   Hoima           huks.jpg   Kasese         huar.jpg   Arua
+    hugu.jpg    Gulu            humo.jpg  Moroto (currently the Karamoja aerial)
+    hugg.jpg   Bugungu         hukd.jpg  Kidepo         huen.jpg   Entebbe
 
 `.jpg`, `.jpeg`, `.png` and `.webp` all work. Landscape orientation, at least 1600 px
 wide; next/image handles the resizing. Aerials from the aircraft are exactly what this

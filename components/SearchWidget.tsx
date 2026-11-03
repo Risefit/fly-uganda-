@@ -46,7 +46,7 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
   const reduce = useReducedMotion();
   const [tripType, setTripType] = useState<"round" | "oneway">("round");
   const [origin, setOrigin] = useState("HUKJ");
-  const [destination, setDestination] = useState("KHX");
+  const [destination, setDestination] = useState("HUKH");
 
   const swap = () => {
     setOrigin(destination);
@@ -80,12 +80,12 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
 
       <div className="flex flex-col divide-y divide-white/10 lg:flex-row lg:divide-x lg:divide-y-0">
         <div className="relative flex min-w-0 flex-[2] items-stretch">
-          <Field label="From">
+          <Field label="From" className="!pr-6">
             <select
               aria-label="Origin"
               value={origin}
               onChange={(e) => setOrigin(e.target.value)}
-              className="appearance-none bg-transparent text-base font-medium text-warm focus:outline-none"
+              className="w-full min-w-0 appearance-none truncate bg-transparent text-base font-medium text-warm focus:outline-none"
             >
               {ALL_AIRPORTS.map((a) => (
                 <option key={a.code} value={a.code}>{a.city} ({a.code})</option>
@@ -101,18 +101,18 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
               animate={reduce ? undefined : { rotate: origin === "HUKJ" ? 0 : 180 }}
               transition={{ type: "spring", stiffness: 380, damping: 18 }}
               aria-label="Swap origin and destination"
-              className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-opportunity/40 bg-aviation-700 p-2 text-opportunity-300 hover:bg-aviation-500"
+              className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-opportunity/40 bg-aviation-700 p-1.5 text-opportunity-300 hover:bg-aviation-500"
             >
-              <ArrowLeftRight className="h-4 w-4" aria-hidden />
+              <ArrowLeftRight className="h-3.5 w-3.5" aria-hidden />
             </motion.button>
           </div>
 
-          <Field label="To" className="!pl-9">
+          <Field label="To" className="!pl-11 border-l border-white/10">
             <select
               aria-label="Destination"
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
-              className="appearance-none bg-transparent text-base font-medium text-warm focus:outline-none"
+              className="w-full min-w-0 appearance-none truncate bg-transparent text-base font-medium text-warm focus:outline-none"
             >
               {ALL_AIRPORTS.map((a) => (
                 <option key={a.code} value={a.code}>{a.city} ({a.code})</option>
@@ -134,7 +134,7 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
         <Field label="Passengers">
           <div className="flex items-center gap-2">
             <Users className="h-4 w-4 text-warm/50" aria-hidden />
-            <select aria-label="Number of passengers" className="appearance-none bg-transparent text-base font-medium text-warm focus:outline-none" defaultValue="1">
+            <select aria-label="Number of passengers" className="w-full min-w-0 appearance-none truncate bg-transparent text-base font-medium text-warm focus:outline-none" defaultValue="1">
               {[1, 2, 3, 4, 5, 6].map((n) => (
                 <option key={n} value={n}>{n} {n === 1 ? "adult" : "adults"}</option>
               ))}

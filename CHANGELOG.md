@@ -2,10 +2,23 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.2.2 — November 2026
+
+- **ICAO codes everywhere.** Every airport is now its ICAO location indicator (HUKJ, HUKH,
+  HUKI, HUKS, HUKF, HUGG, HUAR, HUGU, HUMO, HUKD, HUEN); IATA codes kept in
+  `Airport.iata` for the PSS feed. Route URLs change accordingly (`/routes/hukh`).
+  **HUKH (Kihihi) and HUKF (Hoima) are working designators to confirm with UCAA.**
+- **Pearl Club tier cards:** rows now align across the four cards (fixed-height header,
+  tagline and qualification box; qualification box is two stacked cells). Bird
+  silhouettes replaced by a **pearl-strand emblem** — one to four pearls per tier — used
+  on the ladder, the homepage teaser and the member card.
+- **Search widget:** swap button sits on the From/To divider with clear space either
+  side; selects shrink properly on mobile.
+
 ## v1.2.1 — November 2026
 
 - **Network:** Mweya and Pakuba withdrawn; **Hoima (Kabalega International, HUKF)**,
-  **Arua (RUA)**, **Gulu (ULU)** and **Moroto (HUMO)** added — ten destinations. Arua and
+  **Arua (HUAR)**, **Gulu (HUGU)** and **Moroto (HUMO)** added — ten destinations. Arua and
   Gulu timetabled on the 1900D; map, geo, schedule, guides and copy updated.
 - **Fares removed from the site.** No "from USD" anywhere; the fare tiles on /book,
   /routes, the route pages and the map panel are gone (the map and route pages show the
@@ -13,7 +26,7 @@ Format: `vMAJOR.MINOR.PATCH`.
   fare sheet is signed off.
 - **/book layout:** booking widget spans the page; "Already booked?" is a single row
   beneath it.
-- Placeholder plates for Hoima, Arua and Gulu (`public/scenes/{hukf,rua,ulu}.svg`);
+- Placeholder plates for Hoima, Arua and Gulu (`public/scenes/{hukf,huar,hugu}.svg`);
   Moroto uses the Karamoja aerial. Real photography needed for all four — handover §6.
 
 ## v1.2.0 — November 2026
@@ -146,7 +159,7 @@ for Fly Uganda.
   contradicting the brand brief and misstating Fly Uganda's position against Uganda
   Airlines.
 - `/book` overflowed horizontally by up to 314px between 768 and 1023px.
-- `/routes/ebb` linked to a non-existent `/destinations/entebbe` (the site's only 404),
+- `/routes/huen` linked to a non-existent `/destinations/entebbe` (the site's only 404),
   quoted a USD 290 park fare for a 15-minute connection, and rendered an empty timetable.
 - `hreflang` advertised `/en`, which does not exist; `/fr` was missing from the sitemap.
 - "Miles" still surfaced to users in the account CTA and the Pearl Club meta description.

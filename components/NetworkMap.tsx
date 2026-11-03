@@ -119,7 +119,7 @@ export function NetworkMap({
     const fU = fit(geo.uganda, 130);
 
     // Label placement: below the node for the strips that collide otherwise.
-    const BELOW = new Set(["EBB", "HUGG", "KXO"]);
+    const BELOW = new Set(["HUEN", "HUGG", "HUKI"]);
 
     function render(x: number) {
       const k = Math.max(0, Math.min(1, x));

@@ -36,18 +36,18 @@ const STOCK: Record<string, Photo> = {
     alt: "Green hills and smallholdings outside Kampala — the country the Caravan climbs out over",
     credit: { name: "Michael Starkie", url: "https://unsplash.com/@starkie_pics", source: "Unsplash" },
   },
-  KHX: {
+  HUKH: {
     src: U("photo-1620148878899-7c9b16ce9651"),
     alt: "Mountain gorillas in Bwindi Impenetrable Forest — ninety minutes from Kajjansi",
     credit: { name: "Ylenia Vimercati Molano", url: "https://unsplash.com/@ylenia_vimercati", source: "Unsplash" },
   },
-  KXO: {
+  HUKI: {
     src: U("photo-1551357141-f73a8402ceb3"),
     alt: "Lake Bunyonyi from the air — the terraced hills on the approach to Kisoro",
     credit: { name: "Random Institute", url: "https://unsplash.com/@randominstitute", source: "Unsplash" },
     aerial: true,
   },
-  KSE: {
+  HUKS: {
     src: U("photo-1583140310426-9187b6489be3"),
     alt: "The Rwenzori Mountains at sunset, seen from the Fort Portal side",
     credit: { name: "Itote Rubombora", url: "https://unsplash.com/@itote", source: "Unsplash" },
@@ -63,7 +63,7 @@ const STOCK: Record<string, Photo> = {
     alt: "The Narus Valley, Kidepo Valley National Park, near Apoka",
     credit: { name: "Mark Nsubuga", url: "https://unsplash.com/@marknsubuga", source: "Unsplash" },
   },
-  EBB: {
+  HUEN: {
     src: U("photo-1570053279529-9f2b1003c57c", 2000),
     alt: "The water's edge on Lake Victoria at Entebbe",
     credit: { name: "bill wegener", url: "https://unsplash.com/@wegener", source: "Unsplash" },
