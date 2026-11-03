@@ -17,7 +17,8 @@ const R = (a, b) => {
 };
 
 const P = {
-  cream: "#F6E9DB", warm: "#FFFCF5",
+  cream: "#F4EFE6", warm: "#FFFCF5", sand: "#E9E1D2",
+  graphite: "#2A2824", graphite700: "#35332E", graphite500: "#4A4740",
   aviation: "#0B1F3B", aviation700: "#122B4E", aviation500: "#1A3862", aviation100: "#E4E8EF",
   opportunity: "#FFA400", opportunity300: "#FFC861", opportunity700: "#8A5600", opportunity900: "#7A4D00",
   energy: "#D71920", energy300: "#FF6B70", energy700: "#C2151C",
@@ -50,6 +51,15 @@ const pairs = [
   ["growth300", "aviation", "green on navy", 4.5],
   ["connection300", "aviation", "blue on navy", 4.5],
   ["energy300", "aviation", "red on navy", 4.5],
+  // on graphite (the contour bands)
+  ["cream", "graphite", "body on graphite", 4.5],
+  ["cream", "graphite700", "body on graphite-700", 4.5],
+  ["opportunity300", "graphite", "light amber on graphite", 4.5],
+  ["opportunity", "graphite", "amber on graphite", 4.5],
+  ["growth300", "graphite", "green on graphite", 4.5],
+  ["connection300", "graphite", "blue on graphite", 4.5],
+  ["ink", "sand", "body on sand", 4.5],
+  ["muted", "sand", "secondary text on sand", 4.5],
   // the call to action
   ["aviation", "opportunity", "CTA label on amber fill", 4.5],
   ["aviation", "opportunity300", "CTA label on light amber", 4.5],

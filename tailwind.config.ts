@@ -24,8 +24,17 @@ const config: Config = {
     extend: {
       colors: {
         // Warm Neutral — the page ground
-        cream: "#F6E9DB",
-        paper: "#F6E9DB", // alias
+        cream: "#F4EFE6", // bone — the Zulia page ground (was #F6E9DB)
+        paper: "#F4EFE6", // alias
+        sand: "#E9E1D2", // a shade deeper, for alternating light bands
+
+        // Graphite — warm charcoal for the dark bands, with the contour texture over it
+        graphite: {
+          DEFAULT: "#2A2824",
+          700: "#35332E",
+          500: "#4A4740",
+        },
+        kopje: "#8A6A4B", // the contour tint on graphite
         white: "#FFFCF5",
         warm: "#FFFCF5", // card and panel surfaces
 

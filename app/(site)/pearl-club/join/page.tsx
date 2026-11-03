@@ -74,7 +74,7 @@ export default function JoinPage() {
           </AeroCRSFrame>
 
           <aside className="space-y-4">
-            <div className="rounded-2xl bg-aviation p-6 text-cream">
+            <div className="rounded-2xl bg-graphite p-6 text-cream">
               <div className="flex items-center gap-2">
                 <Chip className="h-5 w-5 text-opportunity" />
                 <h2 className="font-display text-lg font-semibold">Why join</h2>

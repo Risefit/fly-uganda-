@@ -73,7 +73,7 @@ export default function DestinationPage({ params }: { params: { city: string } }
             </div>
 
             {route && (
-              <div className="rounded-2xl bg-aviation p-6 text-cream">
+              <div className="rounded-2xl bg-graphite p-6 text-cream">
                 <div className="flex items-center gap-2 text-opportunity-300">
                   <Plane className="h-4 w-4" aria-hidden />
                   <span className="text-xs font-semibold uppercase tracking-wide">From Kajjansi</span>

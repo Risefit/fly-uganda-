@@ -84,7 +84,7 @@ export default function CargoPage() {
       </section>
 
       {/* Tariff */}
-      <section className="bg-aviation py-16 text-cream">
+      <section className="band-dark py-16 text-cream">
         <div className="container-site grid gap-10 lg:grid-cols-2">
           <div>
             <div className="[&_.kicker]:text-opportunity-300"><Kicker>Tariff</Kicker></div>

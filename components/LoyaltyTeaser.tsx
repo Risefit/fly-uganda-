@@ -8,7 +8,7 @@ export function LoyaltyTeaser() {
   return (
     <section className="bg-white py-16 sm:py-20" aria-labelledby="club-heading">
       <div className="container-site">
-        <div className="overflow-hidden rounded-3xl bg-aviation-900 text-warm">
+        <div className="band-dark rounded-3xl text-warm">
           <div className="grid items-center gap-8 p-8 sm:p-12 lg:grid-cols-2">
             <div>
               <div className="[&_.kicker]:text-opportunity-300"><Kicker>Pearl Club</Kicker></div>

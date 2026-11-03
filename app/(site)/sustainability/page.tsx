@@ -66,7 +66,7 @@ export default function SustainabilityPage() {
         </div>
       </section>
 
-      <section className="bg-aviation py-16 text-cream">
+      <section className="band-dark py-16 text-cream">
         <div className="container-site grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <div className="[&_.kicker]:text-opportunity"><Kicker>What we are not claiming</Kicker></div>

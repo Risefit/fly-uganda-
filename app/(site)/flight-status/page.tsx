@@ -62,7 +62,7 @@ export default function FlightStatusPage() {
         </div>
 
         <div className="container-site mt-10">
-          <div className="flex flex-wrap items-center justify-between gap-6 rounded-2xl bg-aviation p-7 text-cream">
+          <div className="flex flex-wrap items-center justify-between gap-6 rounded-2xl bg-graphite p-7 text-cream">
             <div>
               <p className="font-display text-xs font-semibold uppercase tracking-wide2 text-opportunity">On the day</p>
               <p className="mt-2 max-w-xl">

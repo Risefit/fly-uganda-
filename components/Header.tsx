@@ -40,7 +40,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 bg-aviation text-cream transition-shadow duration-300",
+        "fixed inset-x-0 top-0 z-50 bg-graphite text-cream transition-shadow duration-300",
         elevated && "shadow-[0_1px_0_rgba(255,164,0,0.35),0_12px_32px_-20px_rgba(11,31,59,0.8)]"
         // NB: no backdrop-filter here. A backdrop-filter ancestor becomes the
         // containing block for position:fixed descendants and collapses the
@@ -66,7 +66,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
                   <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" aria-hidden />
                 </button>
                 <div className="invisible absolute left-1/2 top-full w-60 -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="overflow-hidden rounded-xl border border-white/10 bg-aviation-700 py-2 shadow-widget">
+                  <div className="overflow-hidden rounded-xl border border-white/10 bg-graphite-700 py-2 shadow-widget">
                     {item.children.map((c) => (
                       <Link
                         key={c.href}
@@ -123,7 +123,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
 
       {/* Mobile overlay */}
       {open && (
-        <div className="fixed inset-0 top-[72px] z-40 overflow-y-auto bg-aviation lg:hidden">
+        <div className="fixed inset-0 top-[72px] z-40 overflow-y-auto bg-graphite lg:hidden">
           <nav className="container-site flex flex-col py-6" aria-label="Mobile">
             <Link
               href="/book"

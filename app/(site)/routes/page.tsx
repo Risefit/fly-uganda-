@@ -52,7 +52,7 @@ export default function RoutesPage() {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-6 rounded-2xl bg-aviation p-7 text-cream">
+          <div className="mt-10 flex flex-wrap gap-6 rounded-2xl bg-graphite p-7 text-cream">
             <div>
               <p className="text-xs uppercase tracking-wide text-opportunity-300">Published fares</p>
               <p className="font-display text-2xl font-semibold">Shown at booking</p>

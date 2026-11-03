@@ -2,6 +2,15 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.2.3 — November 2026
+
+- **Backgrounds moved to the Zulia concession-page scheme:** page ground is bone
+  `#F4EFE6` (`cream` token; was `#F6E9DB`), dark bands are warm charcoal **graphite**
+  `#2A2824` with the contour texture over them at 40% in kopje brown (`.band-dark`),
+  header, footer, mobile menu, Pearl Club teaser and every dark panel included.
+  Navy (`aviation`) stays for text, the logo wordmark, links and the map. `themeColor`
+  now graphite. Contrast guard extended for graphite and sand pairs — all pass.
+
 ## v1.2.2 — November 2026
 
 - **ICAO codes everywhere.** Every airport is now its ICAO location indicator (HUKJ, HUKH,

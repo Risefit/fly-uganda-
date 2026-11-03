@@ -135,8 +135,38 @@
   .tnum {
     font-variant-numeric: tabular-nums;
   }
+  /* Topographic contour ground (Zulia pattern). Colour from currentColor; opacity from the caller. */
+  .contours {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("/contours.svg");
+    background-size: 1400px auto;
+    background-repeat: repeat;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.35) 60%, transparent);
+  }
+  /* A dark band: graphite ground, contour texture, content lifted above it. */
+  .band-dark {
+    position: relative;
+    overflow: hidden;
+    background-color: #2a2824;
+  }
+  .band-dark::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    color: #8a6a4b;
+    opacity: 0.4;
+    background-image: url("/contours.svg");
+    background-size: 1400px auto;
+    background-repeat: repeat;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.35) 60%, transparent);
+  }
+  .band-dark > * { position: relative; }
+
   .bg-horizon {
-    background-image: linear-gradient(180deg, #fffcf5 0%, #f6e9db 52%, #f0dfcb 80%, #e8d3b8 100%);
+    background-image: linear-gradient(180deg, #fffcf5 0%, #f4efe6 52%, #ede5d6 80%, #e9e1d2 100%);
   }
 }
 

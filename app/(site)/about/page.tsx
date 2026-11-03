@@ -78,7 +78,7 @@ export default function AboutPage() {
       </section>
 
       {/* Distribution */}
-      <section className="bg-aviation-900 py-16 text-cream">
+      <section className="band-dark py-16 text-cream">
         <div className="container-site grid gap-10 lg:grid-cols-[1fr_1.2fr]">
           <div>
             <div className="[&_.kicker]:text-opportunity-300"><Kicker>How we sell</Kicker></div>
@@ -153,7 +153,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-aviation py-14 text-cream">
+      <section className="band-dark py-14 text-cream">
         <div className="container-site flex flex-wrap items-center justify-between gap-6">
           <h2 className="font-display text-2xl font-semibold">Ready to fly with us?</h2>
           <div className="flex gap-3">

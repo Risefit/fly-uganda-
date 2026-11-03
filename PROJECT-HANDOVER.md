@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.2.2 · November 2026
+Version 1.2.3 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -371,7 +371,20 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   guard from the Dawn Star system is gone. `font-bold` works on headings now.
 - Do not push from a stale Codespace — treat the Mac as the single source of truth.
 
-## 14. What changed in v1.2.2 — ICAO codes, tier cards, widget
+## 14. What changed in v1.2.3 — graphite + contour backgrounds
+
+- Tokens: `cream`/`paper` = `#F4EFE6` (bone), `sand` = `#E9E1D2`, `graphite` =
+  `#2A2824` / 700 `#35332E` / 500 `#4A4740`, `kopje` = `#8A6A4B`. Navy `aviation` is
+  unchanged and still the text/ink colour.
+- `.band-dark` (globals.css) = graphite ground + `::before` contour texture from
+  `public/contours.svg` (40%, kopje, fading downward via mask). Use it on any
+  full-width dark section or large dark panel; children are lifted with
+  `position: relative`. `.contours` is the raw overlay if you need a different tint.
+- Small dark CTA cards use plain `bg-graphite`. Header, mobile menu and footer are
+  graphite. Hero scrims still use `aviation-900` (over the photo, reads as shadow).
+- Brand brief §4 palette table should be updated to match when next revised.
+
+## 15. What changed in v1.2.2 — ICAO codes, tier cards, widget
 
 - **Codes:** `Airport.code` is ICAO for every airport and is the `/routes/[code]` slug,
   the `data-code` on the map, the key in `lib/photos.ts`, the `public/photos/<code>.jpg`
@@ -384,7 +397,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
 - **TierLadder** uses fixed row heights (`min-h-[6.25rem]` header, `min-h-[2.75rem]`
   tagline, `min-h-[4.5rem]` qualification box) so the four cards align whatever wraps.
 
-## 15. What changed in v1.2.1 — network, fares, /book
+## 16. What changed in v1.2.1 — network, fares, /book
 
 - **Network is now ten destinations:** Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua,
   Gulu, Moroto, Kidepo, Entebbe. Mweya and Pakuba are withdrawn (their scene plates and
@@ -403,7 +416,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   the Karamoja aerial (`public/photos/humo.jpg`). Unsplash has no verifiable photo of any
   of the four. Drop KEA's own photos into `public/photos/{hukf,huar,hugu,humo}.jpg`.
 
-## 16. What changed in v1.2.0 — domestic-airline positioning, real map, hero
+## 17. What changed in v1.2.0 — domestic-airline positioning, real map, hero
 
 - **Positioning.** "Uganda's safari airline" → **"Uganda's domestic airline"** in the
   logo tagline (regenerated through `logo/`), metadata, hero, footer and about. Charter is
@@ -428,7 +441,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   launch — they were placed from published coordinates, not surveyed.
 - **Hero** is `public/photos/hero.jpg` (needs the full-res original — §6).
 
-## 17. What changed in v1.1.0 — the Brand Identity Toolkit
+## 18. What changed in v1.1.0 — the Brand Identity Toolkit
 
 Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) did not change.
 
@@ -443,7 +456,7 @@ Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) d
   suppressing the self-hosted fonts since the fork, and the unquoted "Source Sans 3" that
   voided body `font-family` — both now in §5.
 
-## 18. What changed from the South Sudan Airlines fork (v1.0.0)
+## 19. What changed from the South Sudan Airlines fork (v1.0.0)
 
 For anyone comparing the two codebases:
 

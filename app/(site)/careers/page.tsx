@@ -40,7 +40,7 @@ export default function CareersPage() {
             ))}
           </div>
 
-          <div className="mt-12 flex flex-col items-start gap-4 rounded-2xl bg-aviation p-8 text-cream sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-12 flex flex-col items-start gap-4 rounded-2xl bg-graphite p-8 text-cream sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-3">
               <Chip className="mt-1 h-6 w-6 shrink-0 text-opportunity" />
               <div>

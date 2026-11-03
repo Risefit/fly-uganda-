@@ -87,7 +87,7 @@ export default function PearlClubPage() {
       </section>
 
       {/* Rewards */}
-      <section className="bg-aviation py-16 text-cream sm:py-20">
+      <section className="band-dark py-16 text-cream sm:py-20">
         <div className="container-site grid gap-10 lg:grid-cols-2">
           <div>
             <div className="[&_.kicker]:text-opportunity-300"><Kicker>Spend your Pearls</Kicker></div>
@@ -142,7 +142,7 @@ export default function PearlClubPage() {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-aviation p-7 text-cream">
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-graphite p-7 text-cream">
             <div className="flex items-center gap-3">
               <Chip className="h-6 w-6 text-opportunity" />
               <p className="font-display text-xl">Ready to start earning?</p>

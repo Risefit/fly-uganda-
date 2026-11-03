@@ -55,7 +55,7 @@ const SOCIAL = [
 
 export function Footer() {
   return (
-    <footer className="bg-aviation-900 text-warm">
+    <footer className="band-dark text-warm">
       <RibbonBand className="!h-1.5" />
 
       <div className="container-site grid gap-10 py-14 lg:grid-cols-[1.3fr_2fr]">
