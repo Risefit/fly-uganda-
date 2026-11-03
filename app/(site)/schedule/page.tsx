@@ -18,14 +18,14 @@ export default function SchedulePage() {
         subtitle="Our current Phase 1 timetable. Times are illustrative for this pre-launch website and confirmed at booking."
         crumbs={[{ label: "Home", href: "/" }, { label: "Schedule" }]}
       />
-      <section className="bg-paper py-16">
+      <section className="bg-cream py-16">
         <div className="container-site">
           <ScheduleTable />
-          <p className="mt-6 text-sm text-slatey">
+          <p className="mt-6 text-sm text-muted">
             Looking to travel?{" "}
-            <Link href="/book" className="font-semibold text-nile hover:underline">Book a flight</Link>{" "}
+            <Link href="/book" className="font-semibold text-aviation hover:underline">Book a flight</Link>{" "}
             or view the full{" "}
-            <Link href="/routes" className="font-semibold text-nile hover:underline">route network</Link>.
+            <Link href="/routes" className="font-semibold text-aviation hover:underline">route network</Link>.
           </p>
         </div>
       </section>

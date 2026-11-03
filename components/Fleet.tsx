@@ -7,18 +7,18 @@ import { Kicker } from "@/components/brand";
 export function Fleet() {
   const [lead, ...charter] = FLEET;
   return (
-    <section className="bg-paper py-20 sm:py-28" aria-labelledby="fleet-heading">
+    <section className="bg-cream py-20 sm:py-28" aria-labelledby="fleet-heading">
       <div className="container-site">
         <div className="max-w-2xl">
           <Kicker>The fleet</Kicker>
-          <h2 id="fleet-heading" className="mt-4 font-serif text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+          <h2 id="fleet-heading" className="mt-4 font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl">
             Sized for the strip you are landing on
           </h2>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.55fr_1fr]">
           {/* Lead — the scheduled workhorse */}
-          <article className="group overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-nile/[0.06]">
+          <article className="group overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-aviation/[0.06]">
             <div className="relative aspect-[16/9] overflow-hidden">
               {/* ⚠️ PLACEHOLDER ART — replace with fleet photography. */}
               <Image
@@ -30,18 +30,18 @@ export function Fleet() {
               />
             </div>
             <div className="flex flex-col gap-3 p-7">
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-600">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-opportunity-700">
                 {lead.role} · {lead.count}
               </span>
-              <h3 className="font-serif text-2xl font-semibold text-ink">{lead.name}</h3>
-              <p className="max-w-lg text-sm leading-relaxed text-slatey">{lead.blurb}</p>
+              <h3 className="font-display text-2xl font-semibold text-ink">{lead.name}</h3>
+              <p className="max-w-lg text-sm leading-relaxed text-muted">{lead.blurb}</p>
               <dl className="mt-2 flex flex-wrap gap-x-10 gap-y-2 text-sm">
                 <div>
-                  <dt className="text-xs uppercase tracking-wide text-slatey">Cabin</dt>
+                  <dt className="text-xs uppercase tracking-wide text-muted">Cabin</dt>
                   <dd className="font-semibold text-ink">{lead.seats}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-wide text-slatey">Built for</dt>
+                  <dt className="text-xs uppercase tracking-wide text-muted">Built for</dt>
                   <dd className="font-semibold text-ink">{lead.range}</dd>
                 </div>
               </dl>
@@ -49,12 +49,12 @@ export function Fleet() {
           </article>
 
           {/* Charter fleet */}
-          <article className="flex flex-col justify-between rounded-2xl bg-nile-900 p-7 text-warm">
+          <article className="flex flex-col justify-between rounded-2xl bg-aviation-900 p-7 text-warm">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-opportunity-300">
                 Charter fleet
               </span>
-              <h3 className="mt-3 font-serif text-2xl font-semibold">Charter the whole aircraft</h3>
+              <h3 className="mt-3 font-display text-2xl font-semibold">Charter the whole aircraft</h3>
               <p className="mt-3 text-sm leading-relaxed text-warm/80">
                 When the schedule does not fit the itinerary, the same hangar flies it on charter.
               </p>
@@ -71,7 +71,7 @@ export function Fleet() {
             </div>
             <Link
               href="/cargo"
-              className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-gold-300 hover:text-gold"
+              className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-opportunity-300 hover:text-opportunity"
             >
               Charter &amp; cargo
               <ArrowRight className="h-4 w-4" aria-hidden />

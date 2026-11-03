@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const FIELD =
-  "w-full rounded-md border border-nile/15 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slatey/60 focus:border-nile focus:outline-none focus:ring-2 focus:ring-nile/20";
+  "w-full rounded-md border border-aviation/15 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/60 focus:border-aviation focus:outline-none focus:ring-2 focus:ring-aviation/20";
 
 export default function CheckInPage() {
   return (
@@ -21,7 +21,7 @@ export default function CheckInPage() {
         subtitle="Check in from 24 hours and up to 90 minutes before departure."
         crumbs={[{ label: "Home", href: "/" }, { label: "Check-in" }]}
       />
-      <section className="bg-paper py-14">
+      <section className="bg-cream py-14">
         <div className="container-site max-w-2xl">
           <AeroCRSFrame
             heading="Online check-in — opens in our reservation partner"
@@ -43,11 +43,11 @@ export default function CheckInPage() {
             <LaunchingNotice />
           </AeroCRSFrame>
 
-          <div className="mt-6 flex items-start gap-3 rounded-2xl border border-nile/10 bg-white p-5 text-sm text-slatey">
-            <Clock className="mt-0.5 h-5 w-5 shrink-0 text-nile" aria-hidden />
+          <div className="mt-6 flex items-start gap-3 rounded-2xl border border-aviation/10 bg-white p-5 text-sm text-muted">
+            <Clock className="mt-0.5 h-5 w-5 shrink-0 text-aviation" aria-hidden />
             <p>
               Airport check-in deadlines and boarding times are listed in our{" "}
-              <Link href="/travel-info#checkin" className="font-semibold text-nile hover:underline">travel information</Link>.
+              <Link href="/travel-info#checkin" className="font-semibold text-aviation hover:underline">travel information</Link>.
             </p>
           </div>
         </div>

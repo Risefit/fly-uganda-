@@ -19,6 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/destinations",
     "/travel-info",
+    "/sustainability",
+    "/flight-status",
     "/careers",
     "/press",
     "/pearl-club",

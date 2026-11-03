@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.0.0 · November 2026
+Version 1.1.0 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -21,7 +21,8 @@ in later.
 - **20 page modules** (plus a branded 404) rendering **37 URLs**, responsive, SEO-ready.
   Palette contrast is verified by `npm run contrast`; rendered-text contrast was checked
   with axe-core across every page.
-- Identity: **"The Pearl"** — gold-on-Source-Green. See `01-brand-brief.md`.
+- Identity: **"The Ribbon"** — Modern Pan-African, from the Brand Identity Toolkit.
+  See `01-brand-brief.md`.
 - Positioning: scheduled per-seat flights from **Kajjansi**, the Kampala-side alternative
   to Entebbe, to Uganda's national parks. Charter and cargo on the same fleet.
 
@@ -32,7 +33,7 @@ in later.
 | Framework | **Next.js 14.2.35** (App Router) + **TypeScript** |
 | Styling | **Tailwind CSS** (design tokens in `tailwind.config.ts`) |
 | Animation | **Framer Motion** (search-widget swap, route-map arc trace) |
-| Fonts | **Self-hosted** Fraunces + Archivo via `next/font/local` |
+| Fonts | **Self-hosted** Montserrat + Source Sans 3 via `next/font/local` |
 | Icons | **lucide-react** |
 | Hosting | **Vercel** (auto-deploy from GitHub `main`) |
 | Booking (planned) | AeroCRS / **Go7** PSS embed |
@@ -68,7 +69,7 @@ app/
   layout.tsx            Self-hosted fonts, metadata, Airline JSON-LD, favicon, theme-color
   globals.css           Base styles + component classes (.btn-primary, .kicker, .reed, .flag-band …)
   page.tsx              Homepage composition
-  fonts/                ★ Self-hosted variable woff2 (Fraunces, Archivo)
+  fonts/                ★ Self-hosted variable woff2 (Montserrat ×2, Source Sans 3)
   sitemap.ts, robots.ts SEO
   not-found.tsx         Branded 404
   fr/page.tsx           French placeholder — i18n scaffold
@@ -81,9 +82,12 @@ app/
     legal/[doc]/
     pearl-club/ , pearl-club/join/ , pearl-club/account/
 components/
-  brand.tsx             ★ Pearl, PearlMark, Meridian, FlagBand, Kicker, Webale, Wordmark
+  brand.tsx             ★ Logo, Ribbon, Chip, RibbonBand, Rule, Kicker, Webale
+  brand-paths.ts        GENERATED logo geometry — edit logo/build.js, not this
   Header.tsx  Footer.tsx  Hero.tsx  PageHero.tsx
-  SearchWidget.tsx      ★ Booking search (PSS-ready) — the Source Green panel
+  SearchWidget.tsx      ★ Booking search (PSS-ready) — the Aviation panel, on /book
+  QuickActions.tsx      Book / Manage / Check-in / Flight status bar under the hero
+  FeatureTiles.tsx      Destinations / Experience / About / Sustainability tiles
   WhyFlyUs.tsx  RouteMapPreview.tsx  Fleet.tsx  Destinations.tsx  LoyaltyTeaser.tsx  Press.tsx
   RouteMapFull.tsx      Interactive network map — real Uganda geography
   OilCorridorMap.tsx    Albertine Graben cargo map
@@ -95,9 +99,10 @@ lib/
   loyalty.ts            ★ Pearl Club (tiers, earn/redeem, FAQ)
   utils.ts              cn() class helper
 public/
-  brand/                Logo SVGs (pearl, symbol, badge, lockups, wordmark)
+  brand/                Logo package: 6 SVG lockups + png/ raster set
+  og-image.png          1200×630 social-share card
   scenes/               ⚠️ PLACEHOLDER brand illustrations — see §6
-  pearl.svg             Favicon
+  favicon.svg           The ribbon icon
 scripts/contrast.js     WCAG guard for the palette
 tailwind.config.ts      ★ COLOUR PALETTE + fonts + shadows + gradients
 Docs:                   01-brand-brief.md, 02-loyalty-program-design.md, this file,
@@ -109,14 +114,35 @@ Docs:                   01-brand-brief.md, 02-loyalty-program-design.md, this fi
 
 Three files control ~90% of the look:
 
-1. **`tailwind.config.ts` → `theme.extend.colors`** — the entire palette. Token names
-   are semantic, so changing hex values recolours the whole site. Full table in
-   `01-brand-brief.md` §3. **Run `npm run contrast` after any change** — it exits
-   non-zero if a pair drops below WCAG AA.
+1. **`tailwind.config.ts` → `theme.extend.colors`** — the palette. Token names are
+   semantic, so changing hex values recolours the whole site. Full table with the
+   text-safety rules in `01-brand-brief.md` §3. **Run `npm run contrast` after any
+   change** — it exits non-zero if a pair drops below WCAG AA.
 2. **`app/fonts/` + `app/layout.tsx`** — swap the `.woff2` files and keep the CSS
-   variable names.
-3. **`app/globals.css`** — component classes built on the tokens: `.btn-primary`,
-   `.kicker`, `.reed`, `.webale`, `.flag-band`, focus ring, selection colour, `.tnum`.
+   variable names. See the two font traps below before touching this.
+3. **`app/globals.css`** — component classes on the tokens: `.btn-primary` (the amber
+   pill), `.btn-ghost`, `.btn-ghost-dark`, `.kicker`, `.rule`, `.ribbon-band`, `.webale`,
+   plus a base rule making every heading Montserrat Bold.
+
+**The logo** is a fourth place, and the one not to edit by hand. `logo/build.js`
+generates the ribbon from Bézier geometry and composes it with outlined glyphs from
+`logo/outline.py` (HarfBuzz-shaped, so kerning is exact). It writes `public/brand/*.svg`
+and `components/brand-paths.ts`. To change the mark: edit the generator, re-run it, then
+`python3 -I logo/export.py` for the PNG set and OG card.
+
+### ⚠️ Two font traps — both hit during this build
+
+**1. Never declare `--font-display` or `--font-body` in `:root`.** next/font sets them on
+`<html>` through a generated class. A `:root` fallback has equal specificity and lands
+later in the cascade, so it silently wins — every page renders the fallback and the
+self-hosted font is never requested. The v1.0 build carried exactly this from the SSA
+fork. The fallback chain belongs in `tailwind.config.ts → fontFamily` only.
+
+**2. A font name ending in a digit must be quoted inside the config string:**
+`'"Source Sans 3"'`, not `"Source Sans 3"`. Tailwind emits family names unquoted, and
+`Source Sans 3` is not a valid unquoted identifier (the `3`). That voids the **entire**
+`font-family` declaration on `<body>` and the browser falls back to Times New Roman —
+with no error anywhere.
 
 ### ⚠️ Tailwind opacity gotcha — read this before editing any colour class
 
@@ -145,8 +171,8 @@ compiled CSS, with file and line, and exits non-zero. Run it before you push.
 Sudan Airlines aircraft, which obviously could not carry over, and shipping unverified
 stock would have been worse.
 
-`public/scenes/*.svg` are **brand-built illustrations** — layered equatorial ridges with
-the Pearl as the sun, generated in the brand palette. They are intentionally illustrative
+`public/scenes/*.svg` are **brand-built illustrations** — layered green ridges under a
+cream-to-gold sky, with Aviation navy at the top of the golden-hour plates. No purple. They are intentionally illustrative
 rather than photo-realistic so nobody mistakes them for the real thing. They look
 finished, and the site is presentable today, but they are placeholders.
 
@@ -171,13 +197,16 @@ images and should not outlive the placeholders.
 
 ## 7. Components
 
-- **brand.tsx** — `Pearl` (gradient emblem), `PearlMark` (flat mono, for bullets and
-  small sizes), `Meridian` (the divider), `FlagBand`, `Kicker`, `Webale`, `Wordmark`.
-  Rebrand starts here.
-- **Header / Footer** — global nav from `lib/data.ts → NAV`, utility bar, footer columns
-  + flag band + greeting.
-- **Hero** — full-bleed scene + headline + search widget.
-- **PageHero** — reusable internal-page banner with the Pearl as a watermark.
+- **brand.tsx** — `Logo` (full lockup, `tone` light/dark, optional tagline), `Ribbon`
+  (the mark alone), `Chip` (bullet mark), `RibbonBand`, `Rule`, `Kicker`, `Webale`.
+  Draws from the generated `brand-paths.ts`.
+- **Header** — Aviation navy bar, always: logo, primary nav, search, Sign-in pill, amber
+  Book pill. Mobile overlay with Escape to close. **Footer** — ribbon band, reversed logo,
+  four link columns.
+- **Hero** — full-bleed scene, headline, amber CTA + ghost secondary. The flight search
+  moved to `/book`; **QuickActions** (Book / Manage / Check-in / Flight status) sits under
+  the hero and **FeatureTiles** follows it — the structure from the toolkit's website panel.
+- **PageHero** — reusable internal-page banner with the ribbon as a watermark.
 - **SearchWidget** — flight search; styled placeholder for the PSS embed.
 - **RouteMapFull / RouteMapPreview** — self-contained SVG maps. Node positions are
   **projected from real airstrip coordinates** (equirectangular, `scripts/` in the build
@@ -187,10 +216,11 @@ images and should not outlive the placeholders.
 - **OilCorridorMap** — Albertine Graben cargo network.
 - **loyalty/** — `TierLadder`, `MemberDashboard` (**mock data**), `BirdMark`.
 
-## 8. Pages / routes (20 modules → 37 URLs)
+## 8. Pages / routes (22 modules → 39 URLs)
 
 Home · Routes (+ per-route `[code]`, 8) · Schedule · Book · Manage · Check-in · Cargo ·
-About · Contact · Careers · Press · Travel info · Destinations (+ `[city]`, 8) ·
+About · Contact · Careers · Press · Travel info · **Sustainability** · **Flight status** ·
+Destinations (+ `[city]`, 8) ·
 Legal (`[doc]`: terms / privacy / cookies / pearl-club-terms) · Pearl Club (+ /join,
 /account) · `/fr` placeholder · 404.
 
@@ -221,6 +251,8 @@ Everything below is marked in the code with `⚠️` comments.
 | **Member dashboard sample data** | `components/loyalty/MemberDashboard.tsx` | Mock member, balance, tier and activity. The sample name is a placeholder, not a real member. |
 | **Company history** | `app/(site)/about/page.tsx` | "Thirty years of Ugandan flying" and the Kampala Aero Club lineage are checkable claims about your own business — confirm the dates before publishing. |
 | **French placeholder** | `app/fr/page.tsx` | Static "coming soon" page. In the sitemap and `hreflang`, but there is no translated content behind it. |
+| **Flight status** | `app/(site)/flight-status/page.tsx` | Renders the published timetable, not live data. The page says so. Wire to the PSS/ops feed or leave the caveat. |
+| **Sustainability figures** | `app/(site)/sustainability/page.tsx` | Framing only, no audited numbers — and the page is careful not to claim any. Add measured fuel-burn per seat when you have a year of it. |
 | **Fleet size** | `lib/data.ts → FLEET` | No aircraft counts are published. Note that the illustrative timetable implies **seven Caravans airborne simultaneously** in the morning bank — see §9a. |
 
 **On fares specifically:** the published seat fare is a commercial decision against
@@ -318,7 +350,22 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   guard from the Dawn Star system is gone. `font-bold` works on headings now.
 - Do not push from a stale Codespace — treat the Mac as the single source of truth.
 
-## 14. What changed from the South Sudan Airlines fork
+## 14. What changed in v1.1.0 — the Brand Identity Toolkit
+
+Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) did not change.
+
+- **Identity:** The Pearl → **The Ribbon**. Palette Heritage / Energy / Opportunity /
+  Growth / Connection / Aviation on cream; Montserrat + Source Sans 3; outlined logo
+  package with PNG set and OG card. Flag band → ribbon band.
+- **Layout:** navy header with Sign-in and Book pills; hero with amber CTA; quick-action
+  bar; four feature tiles. Two new pages: Sustainability, Flight status.
+- **Deliberate departures from the toolkit** — `01-brand-brief.md` §7: no flag-carrier
+  claim, no "Uganda to Africa and Beyond", Warm Neutral read as `#F6E9DB`, no purple dusk.
+- **Fixed on the way:** the `:root` font-variable override that had been silently
+  suppressing the self-hosted fonts since the fork, and the unquoted "Source Sans 3" that
+  voided body `font-family` — both now in §5.
+
+## 15. What changed from the South Sudan Airlines fork (v1.0.0)
 
 For anyone comparing the two codebases:
 

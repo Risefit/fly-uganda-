@@ -51,31 +51,31 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
         crumbs={[{ label: "Home", href: "/" }, { label: "Routes", href: "/routes" }, { label: r.city }]}
       />
 
-      <section className="bg-paper py-14">
+      <section className="bg-cream py-14">
         <div className="container-site">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {facts.map((f) => (
-              <div key={f.label} className="rounded-2xl border border-nile/10 bg-white p-5">
-                <f.icon className="h-5 w-5 text-nile" aria-hidden />
-                <p className="mt-3 text-xs uppercase tracking-wide text-slatey">{f.label}</p>
-                <p className="font-serif text-lg text-ink">{f.value}</p>
+              <div key={f.label} className="rounded-2xl border border-aviation/10 bg-white p-5">
+                <f.icon className="h-5 w-5 text-aviation" aria-hidden />
+                <p className="mt-3 text-xs uppercase tracking-wide text-muted">{f.label}</p>
+                <p className="font-display text-lg text-ink">{f.value}</p>
               </div>
             ))}
           </div>
 
           {/* Illustrative timetable */}
-          <h2 className="mt-12 font-serif text-2xl font-semibold text-ink">Flights on this route</h2>
+          <h2 className="mt-12 font-display text-2xl font-semibold text-ink">Flights on this route</h2>
           {flights.length === 0 ? (
-            <div className="mt-4 rounded-2xl border border-dashed border-nile/20 bg-white px-6 py-10 text-center">
+            <div className="mt-4 rounded-2xl border border-dashed border-aviation/20 bg-white px-6 py-10 text-center">
               <p className="text-ink">This sector runs on demand rather than to a published timetable.</p>
-              <p className="mx-auto mt-2 max-w-md text-sm text-slatey">
+              <p className="mx-auto mt-2 max-w-md text-sm text-muted">
                 Tell us your connecting flight and we will position around it.
               </p>
             </div>
           ) : (
-          <div className="mt-4 overflow-x-auto rounded-2xl border border-nile/10 bg-white">
+          <div className="mt-4 overflow-x-auto rounded-2xl border border-aviation/10 bg-white">
             <table className="w-full text-left text-sm">
-              <thead className="bg-nile/[0.04] text-xs uppercase tracking-wide text-slatey">
+              <thead className="bg-aviation/[0.04] text-xs uppercase tracking-wide text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Flight</th>
                   <th className="px-4 py-3 font-semibold">Route</th>
@@ -84,10 +84,10 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
                   <th className="px-4 py-3 font-semibold">Days</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-nile/10">
+              <tbody className="divide-y divide-aviation/10">
                 {flights.map((f) => (
                   <tr key={f.flightNo}>
-                    <td className="flight-code px-4 py-3 font-semibold text-nile">{f.flightNo}</td>
+                    <td className="flight-code px-4 py-3 font-semibold text-aviation">{f.flightNo}</td>
                     <td className="flight-code px-4 py-3">{f.from} → {f.to}</td>
                     <td className="px-4 py-3">{f.dep}</td>
                     <td className="px-4 py-3">{f.arr}</td>
@@ -98,7 +98,7 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
             </table>
           </div>
           )}
-          <p className="mt-3 text-xs text-slatey">
+          <p className="mt-3 text-xs text-muted">
             Times are illustrative for this pre-launch website. Bush strips are weather- and surface-dependent; confirm at booking.
           </p>
 

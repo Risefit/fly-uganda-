@@ -8,7 +8,7 @@ export function TierLadder() {
       {TIERS.map((t, i) => (
         <div
           key={t.key}
-          className="relative flex flex-col overflow-hidden rounded-2xl border border-nile/10 bg-white shadow-card"
+          className="relative flex flex-col overflow-hidden rounded-2xl border border-aviation/10 bg-white shadow-card"
         >
           <span
             aria-hidden
@@ -23,18 +23,18 @@ export function TierLadder() {
               <BirdMark tier={t.key} className="h-9 w-9" />
             </span>
             <div>
-              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-slatey">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-muted">
                 Tier {i + 1}
               </p>
-              <h3 className="font-serif text-xl font-semibold text-ink">{t.name}</h3>
+              <h3 className="font-display text-xl font-semibold text-ink">{t.name}</h3>
             </div>
           </div>
 
-          <p className="px-6 text-sm italic text-slatey">{t.tagline}</p>
+          <p className="px-6 text-sm italic text-muted">{t.tagline}</p>
 
-          <div className="mx-6 mt-4 flex items-center justify-between rounded-lg bg-nile/[0.04] px-3 py-2 text-xs">
-            <span className="font-semibold text-nile">{t.statusPearls}</span>
-            <span className="text-slatey">{t.bonus}</span>
+          <div className="mx-6 mt-4 flex items-center justify-between rounded-lg bg-aviation/[0.04] px-3 py-2 text-xs">
+            <span className="font-semibold text-aviation">{t.statusPearls}</span>
+            <span className="text-muted">{t.bonus}</span>
           </div>
 
           <ul className="flex flex-1 flex-col gap-2 p-6 pt-4">

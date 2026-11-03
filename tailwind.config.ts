@@ -1,15 +1,18 @@
 import type { Config } from "tailwindcss";
 
 /**
- * FLY UGANDA — "The Pearl" brand system.
+ * FLY UGANDA — Modern Pan-African brand system.
  *
- * Source Green for depth and the Victoria Nile, Crane Gold for warmth,
- * Savannah Linen for light ground, Equator Clay for sparing heat.
- * (The mark is deliberately not a crane — see 01-brand-brief.md §2.)
+ * Six brand colours from the identity toolkit, plus the text-safe derivatives
+ * the toolkit does not define. Every foreground/background pair used in the UI
+ * is WCAG AA at body size — run `npm run contrast` after any change here.
  *
- * Every token name is semantic, not literal, so a future palette swap is a
- * one-file change. Every foreground/background pair below is WCAG AA at body
- * size — see scripts/contrast.js and §5 of PROJECT-HANDOVER.md before editing.
+ * TEXT-SAFETY NOTE: three of the six brand colours are NOT legible as body text
+ * on the cream ground and exist only as fills:
+ *   Opportunity #FFA400  1.67:1  → use opportunity-700 for text
+ *   Energy      #D71920  4.35:1  → use energy-700 for text
+ *   Connection  #007CBA  3.83:1  → use connection-700 for text
+ * Growth #006B4F (5.47:1) and Heritage #7A0019 (9.56:1) are safe as text.
  */
 const config: Config = {
   content: [
@@ -20,80 +23,93 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Papyrus White replaces stark white everywhere
-        white: "#FFFEFA",
-        paper: "#F4F1E6", // Savannah Linen — page background
-        ivory: "#F4F1E6",
-        warm: "#FFFEFA", // cards/surfaces
+        // Warm Neutral — the page ground
+        cream: "#F6E9DB",
+        paper: "#F6E9DB", // alias
+        white: "#FFFCF5",
+        warm: "#FFFCF5", // card and panel surfaces
 
-        // Crane Gold is the primary accent
-        gold: {
-          DEFAULT: "#D2A017", // Crane Gold
-          300: "#F0CF72", // Crest Light — on dark
-          600: "#7A590F", // Deep Gold — text on light (5.69:1 on paper)
-          900: "#5E4309",
+        // Aviation — navigation, footer, dark panels, body text
+        aviation: {
+          DEFAULT: "#0B1F3B",
+          900: "#0B1F3B",
+          700: "#122B4E",
+          500: "#1A3862",
+          100: "#E4E8EF",
         },
 
-        // Equator Clay — laterite earth, the crane's cheek patch. Used sparingly.
-        amber: {
-          DEFAULT: "#B54A24", // 4.68:1 on paper
-          300: "#E08A5F", // on dark
+        // Opportunity — the primary call to action
+        opportunity: {
+          DEFAULT: "#FFA400",
+          300: "#FFC861", // on dark
+          700: "#8A5600", // text on light (5.16:1 on cream)
+          900: "#7A4D00",
         },
 
-        // `nile` is Source Green — the Victoria Nile rises in Uganda. Dark
-        // contrast sections, footer, booking panel.
-        nile: {
-          DEFAULT: "#07251F", // Source Green
-          900: "#07251F",
-          700: "#0D3A31",
-          500: "#175145",
-          100: "#EDE7D2", // warm light fill (pair with gold-600)
+        // Energy — urgency, alerts, the ribbon's red strand
+        energy: {
+          DEFAULT: "#D71920",
+          300: "#FF6B70", // on dark
+          700: "#C2151C", // text on light
         },
-        midnight: {
-          DEFAULT: "#07251F",
-          2: "#0D3A31",
+
+        // Heritage — depth and gravitas; the ribbon's darkest strand
+        heritage: "#7A0019",
+
+        // Growth — confirmations, sustainability, the ribbon's green strand
+        growth: {
+          DEFAULT: "#006B4F",
+          300: "#4FBF95", // on dark
+        },
+
+        // Connection — links to partners, maps, network lines
+        connection: {
+          DEFAULT: "#007CBA",
+          300: "#5FB9E8", // on dark
+          700: "#006A9F", // text on light
         },
 
         // Text
-        ink: "#0F1D19", // Forest Ink
-        slatey: "#6B6453", // warm taupe secondary
+        ink: "#0B1F3B",
+        muted: "#5C5244",
+        slatey: "#5C5244", // alias
 
-        // Semantic success — confirmations, credits, "earned" states.
-        // 5.75:1 on paper. Deliberately NOT a flag colour: the flag is
-        // ceremonial and appears only in the FlagBand.
-        success: {
-          DEFAULT: "#1A6B43",
-          600: "#15603B",
-        },
-
-        // Uganda's flag — full strength only, in thin ceremonial bands
+        // Uganda's flag — ceremonial only, in the ribbon and pattern
         flag: {
           black: "#1A1A1A",
-          yellow: "#FCDC04",
-          red: "#D90429",
+          yellow: "#FFA400",
+          red: "#D71920",
         },
       },
       fontFamily: {
-        // Fraunces for display/headings/wordmark; Archivo for body/UI.
+        // Montserrat for display and UI; Source Sans 3 for body copy.
         // Both self-hosted variable fonts — see app/layout.tsx.
-        serif: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        //
+        // "Source Sans 3" MUST carry its own quotes inside the string. Tailwind
+        // emits family names unquoted, and an unquoted name ending in a digit
+        // is invalid CSS — which silently voids the whole font-family rule on
+        // <body> and drops every page to the browser's default serif.
+        display: ["var(--font-display)", "Montserrat", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", '"Source Sans 3"', "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: { site: "1280px" },
       letterSpacing: {
-        kicker: "0.32em",
-        wide2: "0.24em",
+        kicker: "0.22em",
+        wide2: "0.16em",
       },
       boxShadow: {
-        // Warm umbra only — never grey-black
-        card: "0 1px 2px rgba(122,89,15,0.06), 0 16px 40px -18px rgba(122,89,15,0.26)",
-        widget: "0 10px 44px -14px rgba(7,37,31,0.48)",
+        card: "0 1px 2px rgba(11,31,59,0.06), 0 16px 40px -18px rgba(11,31,59,0.28)",
+        widget: "0 10px 44px -14px rgba(11,31,59,0.5)",
+        lift: "0 2px 4px rgba(11,31,59,0.06), 0 24px 48px -24px rgba(11,31,59,0.35)",
       },
       backgroundImage: {
-        "pearl-sky":
-          "linear-gradient(180deg,#FFFEFA 0%,#F4F1E6 46%,#EDE7D2 76%,#E3D9B4 100%)",
-        gold: "linear-gradient(135deg,#F0CF72,#D2A017)",
+        horizon:
+          "linear-gradient(180deg,#FFFCF5 0%,#F6E9DB 52%,#F0DFCB 80%,#E8D3B8 100%)",
+        // Named distinctly from the `opportunity` colour so `bg-*` is never ambiguous
+        "amber-sweep": "linear-gradient(135deg,#FFC861,#FFA400)",
+        ribbon:
+          "linear-gradient(90deg,#006B4F 0%,#FFA400 34%,#D71920 67%,#7A0019 100%)",
       },
       keyframes: {
         "fade-up": {

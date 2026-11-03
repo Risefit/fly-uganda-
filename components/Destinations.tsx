@@ -6,18 +6,18 @@ import { Kicker } from "@/components/brand";
 
 export function Destinations() {
   return (
-    <section className="bg-paper pb-20 sm:pb-28" aria-labelledby="dest-heading">
+    <section className="bg-cream pb-20 sm:pb-28" aria-labelledby="dest-heading">
       <div className="container-site">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">
             <Kicker>Where we fly</Kicker>
-            <h2 id="dest-heading" className="mt-4 font-serif text-3xl leading-tight tracking-wide text-ink sm:text-4xl">
+            <h2 id="dest-heading" className="mt-4 font-display text-3xl leading-tight text-ink sm:text-4xl">
               Every park, on the daily schedule
             </h2>
           </div>
           <Link
             href="/destinations"
-            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide2 text-gold-600 hover:text-gold"
+            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide2 text-opportunity-700 hover:text-opportunity"
           >
             All destinations
             <ArrowRight className="h-4 w-4" aria-hidden />
@@ -38,11 +38,11 @@ export function Destinations() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-nile-900/85 via-nile-900/15 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5 text-paper">
-                <span className="flight-code text-xs font-semibold text-gold-300">{d.code}</span>
-                <h3 className="mt-1 font-serif text-xl font-semibold">{d.city}</h3>
-                <p className="mt-1 max-h-0 overflow-hidden text-sm text-paper/85 opacity-0 transition-all duration-300 group-hover:max-h-20 group-hover:opacity-100">
+              <div className="absolute inset-0 bg-gradient-to-t from-aviation-900/85 via-aviation-900/15 to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 p-5 text-cream">
+                <span className="flight-code text-xs font-semibold text-opportunity-300">{d.code}</span>
+                <h3 className="mt-1 font-display text-xl font-semibold">{d.city}</h3>
+                <p className="mt-1 max-h-0 overflow-hidden text-sm text-cream/85 opacity-0 transition-all duration-300 group-hover:max-h-20 group-hover:opacity-100">
                   {d.blurb}
                 </p>
               </div>

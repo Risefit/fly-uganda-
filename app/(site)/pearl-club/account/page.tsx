@@ -16,7 +16,7 @@ export default function AccountPage() {
         subtitle="Your tier, your Pearls, your recent flights — all in one place."
         crumbs={[{ label: "Home", href: "/" }, { label: "Pearl Club", href: "/pearl-club" }, { label: "My Account" }]}
       />
-      <section className="bg-paper py-14">
+      <section className="bg-cream py-14">
         <div className="container-site">
           <MemberDashboard />
         </div>

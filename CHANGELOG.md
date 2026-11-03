@@ -2,6 +2,54 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.1.0 — November 2026
+
+Visual refresh to the **Brand Identity Toolkit (Concept 6 — Modern Pan-African)**. The
+product did not change: Kajjansi, the park network, the Caravan fleet and the Pearl Club
+are as before. The look did.
+
+### Identity
+- **The Ribbon** replaces the Pearl. Four strands — Growth, Opportunity, Energy, Heritage —
+  generated from Bézier geometry; wordmark in Montserrat Bold Italic and tagline outlined
+  via HarfBuzz, so no logo file depends on a font. Six SVG lockups, a PNG set and a
+  1200×630 social card, all from one generator (`logo/build.js`).
+- Palette: Aviation navy, Opportunity amber, Energy red, Heritage maroon, Growth green,
+  Connection blue, on Warm Neutral cream — with text-safe `-700` derivatives the toolkit
+  did not define. Every pair AA; the three fill-only brand colours are documented as such.
+- Type: Montserrat (display, headings bold by base rule) + Source Sans 3 (body),
+  self-hosted. Pearl Club tier accents re-mapped to the brand colours.
+- Scene plates regenerated in the new palette; golden hour is navy → amber, no purple.
+
+### Layout
+- Header is the toolkit's navy bar: logo, nav, search, Sign-in pill, amber Book pill.
+- Hero: headline, body, amber CTA and ghost secondary. Flight search moved to `/book`.
+- New **QuickActions** bar (Book / Manage / Check-in / Flight status) under the hero and
+  **FeatureTiles** (Destinations / Experience / About / Sustainability) after it.
+- New pages: **Sustainability** and **Flight status** (the latter renders the published
+  timetable and says so — no live feed yet).
+
+### Deliberately not taken from the toolkit
+- "Uganda's national airline" — Uganda Airlines is the flag carrier; the site says
+  "Uganda's safari airline".
+- "Uganda to Africa and Beyond" — contradicts a Kajjansi park network.
+- Warm Neutral `#F6E90B` read as the cream swatch, `#F6E9DB`.
+- The purple dusk skyline.
+
+### Fixed
+- **Self-hosted fonts were never loading.** A `:root { --font-body … }` fallback in
+  `globals.css`, inherited from the SSA fork, sat later in the cascade than next/font's
+  variable and overrode it on every page. Removed; fallbacks live in `tailwind.config.ts`.
+- **Body text fell back to Times New Roman** after the switch: Tailwind emits `Source Sans 3`
+  unquoted, which is invalid CSS (the `3`) and voided the whole `font-family` rule. Quoted.
+- A `Pearl → Ribbon` identifier rename briefly turned "Pearl Club" into "Ribbon Club" in
+  copy; restored.
+- Cargo tariff tiles overflowed at 390px once headings went bold; they now stack.
+- `audit:classes` token list updated to the new palette (it had silently been checking the
+  old names).
+
+Verified: axe-core clean on all 21 pages, no horizontal overflow at 390/768/1024/1360,
+all 38 internal links resolve, no console errors, both fonts confirmed loaded in-browser.
+
 ## v1.0.0 — November 2026
 
 First release. Forked from the South Sudan Airlines codebase and rebranded end to end

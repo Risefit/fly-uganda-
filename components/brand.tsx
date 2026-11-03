@@ -1,70 +1,62 @@
 import { cn } from "@/lib/utils";
+import {
+  RIBBON,
+  RIBBON_BOX,
+  WORDMARK_D,
+  WORDMARK_ADVANCE,
+  TAGLINE_D,
+  TAGLINE_ADVANCE,
+} from "@/components/brand-paths";
 
 /**
- * FLY UGANDA brand primitives.
+ * FLY UGANDA brand primitives — Modern Pan-African system.
  *
- * THE MARK — "The Pearl". A sun-disc bisected by the equator, the upper half
- * carried forward in flight. Uganda is one of thirteen countries the equator
- * crosses, and Kajjansi sits almost exactly on it; the Pearl of Africa, seen
- * from above. The straight gap is the equator and must stay dead horizontal —
- * it is the one line in the system that never tilts.
+ * THE MARK — "The Ribbon". Four strands of the identity (Growth, Opportunity,
+ * Energy, Heritage) caught in a tailwind: thick at the left, rising through a
+ * gentle S, tapering to a flick above the wordmark. The wordmark is Montserrat
+ * Bold Italic, outlined to paths; nothing here depends on a font at render time.
  *
- * Deliberately NOT a crested crane: Uganda Airlines, the flag carrier, already
- * owns that device, and a second crane would read as derivative.
- *
- * Replacing the mark means editing THIS FILE plus public/brand/*.svg.
+ * Geometry is GENERATED — see logo/build.js. Edit the generator, not the paths.
  */
-export function Pearl({
+
+const STRAND: Record<(typeof RIBBON)[number]["colour"], string> = {
+  growth: "#006B4F",
+  opportunity: "#FFA400",
+  energy: "#D71920",
+  heritage: "#7A0019",
+};
+
+/** The ribbon on its own — decorative, for heroes, cards and the app icon. */
+export function Ribbon({
   className,
+  mono,
   title = "Fly Uganda",
   decorative = false,
 }: {
   className?: string;
+  /** Single colour (e.g. "currentColor") for monochrome contexts. */
+  mono?: string;
   title?: string;
-  /** Set when the mark sits beside the wordmark, so it is not announced twice. */
   decorative?: boolean;
 }) {
+  const { x, y, w, h } = RIBBON_BOX;
   return (
     <svg
-      viewBox="-100 -92 200 184"
+      viewBox={`${x} ${y} ${w} ${h}`}
       className={cn("h-10 w-auto", className)}
       {...(decorative
         ? { "aria-hidden": true as const, focusable: false }
         : { role: "img", "aria-label": title })}
     >
-      <defs>
-        <linearGradient id="fuPearlLight" x1="0" y1="0" x2="0.75" y2="1">
-          <stop offset="0" stopColor="#F2D484" />
-          <stop offset="1" stopColor="#D2A017" />
-        </linearGradient>
-        <linearGradient id="fuPearlDeep" x1="0" y1="0" x2="0.75" y2="1">
-          <stop offset="0" stopColor="#C79317" />
-          <stop offset="1" stopColor="#8A6512" />
-        </linearGradient>
-        <clipPath id="fuAboveEquator">
-          <rect x="-120" y="-120" width="240" height="111" />
-        </clipPath>
-        <clipPath id="fuBelowEquator">
-          <rect x="-120" y="9" width="240" height="120" />
-        </clipPath>
-      </defs>
-      {/* Northern half, carried forward */}
-      <g clipPath="url(#fuAboveEquator)">
-        <circle cx="12" cy="0" r="76" fill="url(#fuPearlLight)" />
-      </g>
-      {/* Southern half */}
-      <g clipPath="url(#fuBelowEquator)">
-        <circle cx="-12" cy="0" r="76" fill="url(#fuPearlDeep)" />
-      </g>
+      {RIBBON.map((s) => (
+        <path key={s.colour} d={s.d} fill={mono ?? STRAND[s.colour]} />
+      ))}
     </svg>
   );
 }
 
-/**
- * Flat single-colour Pearl — for small sizes, bullets and icons. Inherits
- * currentColor, so it takes the colour of whatever it sits in.
- */
-export function PearlMark({
+/** A small three-strand chip — bullets, list marks, tier accents. currentColor. */
+export function Chip({
   className,
   title = "Fly Uganda",
 }: {
@@ -73,45 +65,85 @@ export function PearlMark({
 }) {
   return (
     <svg
-      viewBox="-100 -92 200 184"
+      viewBox="0 0 24 24"
       className={cn("h-4 w-4", className)}
       role="img"
       aria-label={title}
       fill="currentColor"
     >
-      <path d="M88 -9 A 76 76 0 0 0 -64 -9 Z" />
-      <path d="M-88 9 A 76 76 0 0 0 64 9 Z" />
+      <path d="M2 18 C 7 11, 13 7, 22 4 L 22 7 C 14 9.5, 8.5 13, 4 20 Z" />
+      <path d="M2 23 C 7 16, 13 12, 22 9 L 22 12 C 14 14.5, 8.5 18, 4 24.5 Z" opacity=".55" />
     </svg>
   );
 }
 
 /**
- * The Meridian — a single thin vertical gold line. The system's only divider.
- * The equator runs through the mark; the meridian runs through the page.
+ * The full lockup — ribbon over the wordmark, optional tagline.
+ * `tone="dark"` sets a cream wordmark for navy backgrounds.
  */
-export function Meridian({ className }: { className?: string }) {
-  return <span className={cn("reed", className)} aria-hidden="true" />;
+export function Logo({
+  className,
+  tone = "light",
+  tagline = false,
+  title = "Fly Uganda",
+}: {
+  className?: string;
+  tone?: "light" | "dark";
+  tagline?: boolean;
+  title?: string;
+}) {
+  const word = tone === "light" ? "#0B1F3B" : "#FFFCF5";
+  // Same proportions as public/brand/fly-uganda-primary.svg
+  const CAP = 112, X = 70, BASE = 292;
+  const s = CAP / 700;
+  const H = tagline ? 400 : 330;
+  return (
+    <svg viewBox={`0 0 1180 ${H}`} className={cn("h-12 w-auto", className)} role="img" aria-label={title}>
+      <g transform={`translate(${X - 6} 60) scale(0.78)`}>
+        {RIBBON.map((r) => (
+          <path key={r.colour} d={r.d} fill={STRAND[r.colour]} />
+        ))}
+      </g>
+      <g transform={`translate(${X} ${BASE}) scale(${s})`} fill={word}>
+        <path d={WORDMARK_D} />
+      </g>
+      {tagline && (
+        <g>
+          <rect x={X + 4} y={BASE + 65} width="46" height="3" fill="#FFA400" />
+          <g transform={`translate(${X + 4 + 46 + 18} ${BASE + 73}) scale(${21 / 700})`} fill="#FFA400">
+            <path d={TAGLINE_D} />
+          </g>
+        </g>
+      )}
+    </svg>
+  );
 }
 
-/** Ugandan flag band — black · yellow · red · black · yellow · red. */
-export function FlagBand({ className }: { className?: string }) {
+/** Exposed so layouts can reserve the right aspect ratio. */
+export const LOGO_ASPECT = { wordmark: WORDMARK_ADVANCE, tagline: TAGLINE_ADVANCE };
+
+/** The Rule — a single thin amber line. The system's quiet divider. */
+export function Rule({ className }: { className?: string }) {
+  return <span className={cn("rule", className)} aria-hidden="true" />;
+}
+
+/** The Ribbon Band — the four strands as a 4px bar. Footer top, card edges. */
+export function RibbonBand({ className }: { className?: string }) {
   return (
-    <span className={cn("flag-band", className)} aria-hidden="true">
-      <span style={{ background: "#1A1A1A" }} />
-      <span style={{ background: "#FCDC04" }} />
-      <span style={{ background: "#D90429" }} />
-      <span style={{ background: "#1A1A1A" }} />
-      <span style={{ background: "#FCDC04" }} />
-      <span style={{ background: "#D90429" }} />
+    <span className={cn("ribbon-band", className)} aria-hidden="true">
+      <span style={{ background: STRAND.growth }} />
+      <span style={{ background: STRAND.opportunity }} />
+      <span style={{ background: STRAND.energy }} />
+      <span style={{ background: STRAND.heritage }} />
     </span>
   );
 }
 
-/** Section eyebrow — the meridian line before a small-caps gold label. */
+/** Section eyebrow — the rule before a small-caps amber label. */
 export function Kicker({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3">
-      <Meridian className="!h-[26px]" />
+      <Rule className="!h-[22px]" />
       <span className="kicker">{children}</span>
     </div>
   );
@@ -119,8 +151,7 @@ export function Kicker({ children }: { children: React.ReactNode }) {
 
 /**
  * The Welcome Word — "Webale" (Luganda: thank you).
- * `tone` picks a gold that clears WCAG AA on that background: gold-600 on
- * paper (5.69:1), gold-300 on Source Green (10.73:1).
+ * `tone` picks a colour that clears WCAG AA on that background.
  */
 export function Webale({
   className,
@@ -133,45 +164,11 @@ export function Webale({
     <span
       className={cn(
         "webale text-sm",
-        tone === "light" ? "text-gold-600" : "text-gold-300",
+        tone === "light" ? "text-opportunity-700" : "text-opportunity",
         className
       )}
     >
       Webale
-    </span>
-  );
-}
-
-/** Wordmark lockup — Pearl + Fraunces name + Archivo descriptor. */
-export function Wordmark({
-  className,
-  tone = "light",
-}: {
-  className?: string;
-  tone?: "light" | "dark";
-}) {
-  return (
-    <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <Pearl className="h-8 w-auto" decorative />
-      <span className="leading-none">
-        <span
-          className={cn(
-            "block font-serif text-[1.05rem] font-semibold tracking-[0.11em]",
-            tone === "light" ? "text-ink" : "text-warm"
-          )}
-        >
-          FLY UGANDA
-        </span>
-        <span
-          aria-hidden="true"
-          className={cn(
-            "mt-1 block font-sans text-[0.5rem] font-semibold uppercase tracking-[0.34em]",
-            tone === "light" ? "text-gold-600" : "text-gold-300"
-          )}
-        >
-          Safari Airline
-        </span>
-      </span>
     </span>
   );
 }

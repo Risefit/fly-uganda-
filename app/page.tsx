@@ -1,5 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
+import { QuickActions } from "@/components/QuickActions";
+import { FeatureTiles } from "@/components/FeatureTiles";
 import { WhyFlyUs } from "@/components/WhyFlyUs";
 import { RouteMapPreview } from "@/components/RouteMapPreview";
 import { Fleet } from "@/components/Fleet";
@@ -14,6 +16,8 @@ export default function HomePage() {
       <Header />
       <main id="main">
         <Hero />
+        <QuickActions />
+        <FeatureTiles />
         <WhyFlyUs />
         <RouteMapPreview />
         <Fleet />

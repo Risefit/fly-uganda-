@@ -28,8 +28,8 @@ export function ScheduleTable() {
             className={cn(
               "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
               filter === f.key
-                ? "border-nile bg-nile text-paper"
-                : "border-nile/20 text-nile hover:bg-nile/[0.05]"
+                ? "border-aviation bg-aviation text-cream"
+                : "border-aviation/20 text-aviation hover:bg-aviation/[0.05]"
             )}
           >
             {f.label}
@@ -37,9 +37,9 @@ export function ScheduleTable() {
         ))}
       </div>
 
-      <div className="mt-6 overflow-x-auto rounded-2xl border border-nile/10 bg-white">
+      <div className="mt-6 overflow-x-auto rounded-2xl border border-aviation/10 bg-white">
         <table className="w-full text-left text-sm">
-          <thead className="bg-nile/[0.04] text-xs uppercase tracking-wide text-slatey">
+          <thead className="bg-aviation/[0.04] text-xs uppercase tracking-wide text-muted">
             <tr>
               <th className="px-4 py-3 font-semibold">Flight</th>
               <th className="px-4 py-3 font-semibold">From</th>
@@ -50,16 +50,16 @@ export function ScheduleTable() {
               <th className="hidden px-4 py-3 font-semibold sm:table-cell">Aircraft</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-nile/10">
+          <tbody className="divide-y divide-aviation/10">
             {rows.map((f) => (
-              <tr key={f.flightNo} className="hover:bg-nile/[0.02]">
-                <td className="flight-code px-4 py-3 font-semibold text-nile">{f.flightNo}</td>
+              <tr key={f.flightNo} className="hover:bg-aviation/[0.02]">
+                <td className="flight-code px-4 py-3 font-semibold text-aviation">{f.flightNo}</td>
                 <td className="px-4 py-3">{f.from}</td>
                 <td className="px-4 py-3">{f.to}</td>
                 <td className="px-4 py-3">{f.dep}</td>
                 <td className="px-4 py-3">{f.arr}</td>
                 <td className="px-4 py-3">{f.days}</td>
-                <td className="hidden px-4 py-3 text-slatey sm:table-cell">{f.aircraft}</td>
+                <td className="hidden px-4 py-3 text-muted sm:table-cell">{f.aircraft}</td>
               </tr>
             ))}
           </tbody>

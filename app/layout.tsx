@@ -5,32 +5,33 @@ import "./globals.css";
 
 /**
  * Fonts are SELF-HOSTED variable woff2 files in app/fonts/ (sourced from
- * @fontsource-variable/{fraunces,archivo}). Deliberately not next/font/google:
- * self-hosting removes a third-party round-trip on slow East African
- * connections, keeps the build working offline/in CI, and avoids sending
- * visitor IPs to Google. To update a face, drop in a new woff2 and keep the
- * variable name. See §5 of PROJECT-HANDOVER.md.
+ * @fontsource-variable/{montserrat,source-sans-3}). Deliberately not
+ * next/font/google: self-hosting removes a third-party round-trip on slow East
+ * African connections, keeps the build working offline and in CI, and avoids
+ * sending visitor IPs to Google. To update a face, drop in a new woff2 and keep
+ * the variable name. See §5 of PROJECT-HANDOVER.md.
  */
 
-// Archivo — body + UI, wide-tracked micro-labels, strong tabular figures
-// for timetables and fare tables.
+// Source Sans 3 — body copy. Open and highly legible at small sizes.
 const body = localFont({
-  src: "./fonts/archivo-var.woff2",
-  weight: "100 900",
+  src: "./fonts/source-sans-3-var.woff2",
+  weight: "200 900",
   style: "normal",
   display: "swap",
   variable: "--font-body",
   fallback: ["system-ui", "-apple-system", "Segoe UI", "sans-serif"],
 });
 
-// Fraunces — warm high-contrast display serif for headings and the wordmark.
+// Montserrat — display, headings and UI labels. The italic cut ships for
+// editorial use; the logo itself is outlined to paths and needs no font.
 const display = localFont({
-  src: "./fonts/fraunces-var.woff2",
-  weight: "100 900",
-  style: "normal",
+  src: [
+    { path: "./fonts/montserrat-var.woff2", weight: "100 900", style: "normal" },
+    { path: "./fonts/montserrat-var-italic.woff2", weight: "100 900", style: "italic" },
+  ],
   display: "swap",
   variable: "--font-display",
-  fallback: ["Georgia", "Times New Roman", "serif"],
+  fallback: ["system-ui", "-apple-system", "Segoe UI", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Fly Uganda",
-    title: "Fly Uganda — The Pearl, from above",
+    title: "Fly Uganda — scheduled safari flights from Kajjansi",
     description:
       "Scheduled safari seats from Kajjansi, 30 minutes closer to Kampala than Entebbe. Bwindi, Queen Elizabeth, Murchison Falls and Kidepo — daily.",
     url: SITE_URL,
@@ -64,10 +65,10 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Fly Uganda",
-    description: "The Pearl, from above. Uganda's safari airline.",
+    description: "Uganda's safari airline — scheduled seats to every national park.",
   },
   icons: {
-    icon: [{ url: "/pearl.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
   alternates: {
     canonical: SITE_URL,
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#07251F",
+  themeColor: "#0B1F3B",
   width: "device-width",
   initialScale: 1,
 };
@@ -89,7 +90,7 @@ const airlineJsonLd = {
   alternateName: "FlyUganda",
   url: SITE_URL,
   iataCode: "",
-  slogan: "The Pearl, from above",
+  slogan: "Uganda's safari airline",
   areaServed: "Uganda and East Africa",
   parentOrganization: {
     "@type": "Organization",
@@ -113,7 +114,7 @@ export default function RootLayout({
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-nile focus:px-4 focus:py-2 focus:text-paper"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-aviation focus:px-4 focus:py-2 focus:text-cream"
         >
           Skip to content
         </a>

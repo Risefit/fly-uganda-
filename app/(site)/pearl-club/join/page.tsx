@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { AeroCRSFrame } from "@/components/AeroCRSFrame";
-import { PearlMark } from "@/components/brand";
+import { Chip } from "@/components/brand";
 
 export const metadata: Metadata = {
   title: "Join the Pearl Club",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const FIELD =
-  "w-full rounded-md border border-nile/15 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slatey/60 focus:border-nile focus:outline-none focus:ring-2 focus:ring-nile/20";
+  "w-full rounded-md border border-aviation/15 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted/60 focus:border-aviation focus:outline-none focus:ring-2 focus:ring-aviation/20";
 
 const PERKS = [
   "Earn Pearls from your first flight",
@@ -31,7 +31,7 @@ export default function JoinPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Pearl Club", href: "/pearl-club" }, { label: "Join" }]}
       />
 
-      <section className="bg-paper py-14">
+      <section className="bg-cream py-14">
         <div className="container-site grid gap-10 lg:grid-cols-[1.4fr_0.9fr]">
           <AeroCRSFrame
             heading="Membership enrolment — powered by our reservation partner"
@@ -58,13 +58,13 @@ export default function JoinPage() {
                 <span className="text-xs font-semibold text-ink">Home country</span>
                 <input className={FIELD} placeholder="Country" autoComplete="country-name" />
               </label>
-              <label className="flex items-start gap-2 text-xs text-slatey sm:col-span-2">
+              <label className="flex items-start gap-2 text-xs text-muted sm:col-span-2">
                 <input type="checkbox" className="mt-0.5" />
                 <span>
                   I agree to the{" "}
-                  <Link href="/legal/pearl-club-terms" className="font-semibold text-nile hover:underline">programme terms</Link>{" "}
+                  <Link href="/legal/pearl-club-terms" className="font-semibold text-aviation hover:underline">programme terms</Link>{" "}
                   and the{" "}
-                  <Link href="/legal/privacy" className="font-semibold text-nile hover:underline">privacy policy</Link>.
+                  <Link href="/legal/privacy" className="font-semibold text-aviation hover:underline">privacy policy</Link>.
                 </span>
               </label>
               <div className="sm:col-span-2">
@@ -74,23 +74,23 @@ export default function JoinPage() {
           </AeroCRSFrame>
 
           <aside className="space-y-4">
-            <div className="rounded-2xl bg-nile p-6 text-paper">
+            <div className="rounded-2xl bg-aviation p-6 text-cream">
               <div className="flex items-center gap-2">
-                <PearlMark className="h-5 w-5 text-gold" />
-                <h2 className="font-serif text-lg font-semibold">Why join</h2>
+                <Chip className="h-5 w-5 text-opportunity" />
+                <h2 className="font-display text-lg font-semibold">Why join</h2>
               </div>
               <ul className="mt-4 space-y-2.5">
                 {PERKS.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-sm text-paper/90">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" aria-hidden />
+                  <li key={p} className="flex items-start gap-2 text-sm text-cream/90">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-opportunity-300" aria-hidden />
                     {p}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl border border-nile/10 bg-white p-6 text-sm text-slatey">
+            <div className="rounded-2xl border border-aviation/10 bg-white p-6 text-sm text-muted">
               Already a member?{" "}
-              <Link href="/pearl-club/account" className="font-semibold text-nile hover:underline">Sign in to My Account →</Link>
+              <Link href="/pearl-club/account" className="font-semibold text-aviation hover:underline">Sign in to My Account →</Link>
             </div>
           </aside>
         </div>

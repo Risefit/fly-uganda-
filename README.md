@@ -18,7 +18,7 @@ npm run audit:classes    # catch Tailwind classes that compile to nothing (run a
 | Doc | What it covers |
 |---|---|
 | **`PROJECT-HANDOVER.md`** | Everything: structure, rebrand knobs, **what is placeholder**, pre-launch checklist. Start here. |
-| `01-brand-brief.md` | The Pearl identity — palette, type, mark, devices, voice. |
+| `01-brand-brief.md` | The Ribbon identity — palette, type, mark, devices, voice, and departures from the toolkit. |
 | `02-loyalty-program-design.md` | Pearl Club design and PSS module mapping. |
 | `DEPLOY.md` | GitHub → Vercel deployment. |
 
@@ -32,7 +32,7 @@ listed in `PROJECT-HANDOVER.md` §9. Do not launch without working through §10.
 ## Where the brand lives
 
 - `tailwind.config.ts` — the full palette. Run `npm run contrast` after changing it.
-- `app/fonts/` + `app/layout.tsx` — self-hosted Fraunces (display) and Archivo (UI).
+- `app/fonts/` + `app/layout.tsx` — self-hosted Montserrat (display) and Source Sans 3 (body).
 - `components/brand.tsx` — the Pearl mark and brand primitives.
 - `lib/data.ts`, `lib/content.ts`, `lib/loyalty.ts` — all network, page and programme content.
 

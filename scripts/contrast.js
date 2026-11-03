@@ -1,9 +1,9 @@
 /**
- * WCAG contrast check for the Fly Uganda palette.
+ * WCAG contrast guard for the Fly Uganda palette.
  * Run after ANY change to theme.extend.colors in tailwind.config.ts:
- *   node scripts/contrast.js
- * Keep the palette in sync with tailwind.config.ts by hand — this file is the
- * guard, not the source of truth.
+ *   npm run contrast
+ * Keep the P map below in step with tailwind.config.ts by hand — this file is
+ * the guard, not the source of truth.
  */
 const L = (h) => {
   const c = [1, 3, 5]
@@ -17,33 +17,45 @@ const R = (a, b) => {
 };
 
 const P = {
-  paper: "#F4F1E6", warm: "#FFFEFA",
-  gold: "#D2A017", gold300: "#F0CF72", gold600: "#7A590F", gold900: "#5E4309",
-  amber: "#B54A24", amber300: "#E08A5F",
-  nile: "#07251F", nile700: "#0D3A31", nile500: "#175145", nile100: "#EDE7D2",
-  ink: "#0F1D19", slatey: "#6B6453",
+  cream: "#F6E9DB", warm: "#FFFCF5",
+  aviation: "#0B1F3B", aviation700: "#122B4E", aviation500: "#1A3862", aviation100: "#E4E8EF",
+  opportunity: "#FFA400", opportunity300: "#FFC861", opportunity700: "#8A5600", opportunity900: "#7A4D00",
+  energy: "#D71920", energy300: "#FF6B70", energy700: "#C2151C",
+  heritage: "#7A0019",
+  growth: "#006B4F", growth300: "#4FBF95",
+  connection: "#007CBA", connection300: "#5FB9E8", connection700: "#006A9F",
+  ink: "#0B1F3B", muted: "#5C5244",
 };
 
-// [foreground, background, where it is used, minimum required ratio]
+// [foreground, background, where it is used, minimum ratio]
 const pairs = [
-  ["ink", "paper", "body text", 4.5],
+  ["ink", "cream", "body text", 4.5],
   ["ink", "warm", "body text on cards", 4.5],
-  ["slatey", "paper", "muted/secondary text", 4.5],
-  ["slatey", "warm", "muted text on cards", 4.5],
-  ["gold600", "paper", "kicker / eyebrow / links", 4.5],
-  ["gold600", "warm", "links on cards", 4.5],
-  ["gold600", "nile100", "text on warm light fill", 4.5],
-  ["gold900", "paper", "deep gold text", 4.5],
-  ["amber", "paper", "clay accent text", 4.5],
-  ["amber", "warm", "clay accent on cards", 4.5],
-  ["gold300", "nile", "gold text on dark", 4.5],
-  ["gold", "nile", "solid gold on dark", 4.5],
-  ["paper", "nile", "footer / dark-panel body", 4.5],
-  ["paper", "nile700", "text on nile-700", 4.5],
-  ["paper", "nile500", "text on nile-500", 4.5],
-  ["nile", "gold", "CTA label on gold fill", 4.5],
-  ["nile", "gold300", "CTA label on light gold", 4.5],
-  ["amber300", "nile", "clay accent on dark (large only)", 3],
+  ["muted", "cream", "secondary text", 4.5],
+  ["muted", "warm", "secondary text on cards", 4.5],
+  ["opportunity700", "cream", "kicker / links on cream", 4.5],
+  ["opportunity700", "warm", "links on cards", 4.5],
+  ["opportunity700", "aviation100", "text on navy tint fill", 4.5],
+  ["energy700", "cream", "red text on cream", 4.5],
+  ["energy700", "warm", "red text on cards", 4.5],
+  ["heritage", "cream", "heritage text", 4.5],
+  ["growth", "cream", "growth / confirmation text", 4.5],
+  ["connection700", "cream", "partner links", 4.5],
+  // on dark
+  ["cream", "aviation", "body on navy", 4.5],
+  ["cream", "aviation700", "body on navy-700", 4.5],
+  ["cream", "aviation500", "body on navy-500", 4.5],
+  ["opportunity", "aviation", "amber on navy", 4.5],
+  ["opportunity300", "aviation", "light amber on navy", 4.5],
+  ["growth300", "aviation", "green on navy", 4.5],
+  ["connection300", "aviation", "blue on navy", 4.5],
+  ["energy300", "aviation", "red on navy", 4.5],
+  // the call to action
+  ["aviation", "opportunity", "CTA label on amber fill", 4.5],
+  ["aviation", "opportunity300", "CTA label on light amber", 4.5],
+  ["cream", "energy700", "label on red fill (use energy-700, not energy)", 4.5],
+  ["cream", "heritage", "label on heritage fill", 4.5],
+  ["cream", "growth", "label on green fill", 4.5],
 ];
 
 let fail = 0;
@@ -51,8 +63,13 @@ for (const [a, b, label, min] of pairs) {
   const r = R(P[a], P[b]);
   const ok = r >= min;
   if (!ok) fail++;
-  const tag = ok ? (min === 3 ? "AA-lg" : "AA   ") : "FAIL ";
-  console.log(`${tag} ${r.toFixed(2).padStart(5)}:1 (min ${min})  ${a} on ${b} — ${label}`);
+  console.log(`${ok ? "AA   " : "FAIL "} ${r.toFixed(2).padStart(5)}:1 (min ${min})  ${a} on ${b} — ${label}`);
 }
+
+// Brand colours that must never be used as body text on light
+console.log("\nFill-only brand colours (documented, not failures):");
+for (const [n, h] of [["opportunity", P.opportunity], ["energy", P.energy], ["connection", P.connection]])
+  console.log(`  ${n.padEnd(12)} ${R(h, P.cream).toFixed(2)}:1 on cream — decorative fills only (pattern strands, rules, bars).\n               For a filled block carrying a label, use ${n}-700.`);
+
 console.log(`\n${fail} pair(s) failing.`);
 process.exit(fail ? 1 : 0);

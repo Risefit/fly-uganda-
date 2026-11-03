@@ -83,26 +83,26 @@ export function RouteMapPreview() {
   }, []);
 
   return (
-    <section className="bg-paper py-20 sm:py-28" aria-labelledby="map-heading">
+    <section className="bg-cream py-20 sm:py-28" aria-labelledby="map-heading">
       <div className="container-site">
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="order-2 lg:order-1">
-            <div className="relative overflow-hidden rounded-2xl bg-warm p-2 ring-1 ring-gold/20">
+            <div className="relative overflow-hidden rounded-2xl bg-warm p-2 ring-1 ring-opportunity/20">
               <svg viewBox="0 0 600 480" className="h-auto w-full" role="img" aria-label="Fly Uganda scheduled network from Kajjansi">
                 <defs>
                   <linearGradient id="arc" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#F0CF72" />
-                    <stop offset="100%" stopColor="#D2A017" />
+                    <stop offset="0%" stopColor="#FFC861" />
+                    <stop offset="100%" stopColor="#FFA400" />
                   </linearGradient>
                 </defs>
 
                 <path
                   d="M200.7 55.3 L282.9 72.4 L351.4 66.9 L419.8 72.4 L486.9 73.8 L474.6 161.4 L433.5 243.6 L426.7 284.6 L413 318.9 L416.4 394.2 L351.4 394.2 L269.2 395.6 L200.7 394.2 L142.5 416.8 L118.6 418.2 L126.8 387.3 L122 325.7 L130.9 277.8 L159.6 243.6 L176.8 209.3 L200.7 168.2 L214.4 127.2 L204.1 86.1 Z"
-                  fill="rgba(210,160,23,0.05)"
-                  stroke="rgba(210,160,23,0.3)"
+                  fill="rgba(255,164,0,0.05)"
+                  stroke="rgba(255,164,0,0.3)"
                   strokeWidth="1"
                 />
-                <g fill="rgba(23,81,69,0.08)" stroke="rgba(23,81,69,0.16)" strokeWidth="0.75">
+                <g fill="rgba(26,56,98,0.08)" stroke="rgba(26,56,98,0.16)" strokeWidth="0.75">
                   <path d="M265.8 394.2 L416.4 394.2 L413 318.9 L378.7 297 L330.8 305.2 L282.9 332.6 L262.3 363.4 Z" />
                   <path d="M303.4 221.6 L344.5 209.3 L382.2 216.2 L371.9 238.1 L334.2 240.1 L310.3 235.3 Z" />
                   <path d="M176.8 250.4 L214.4 209.3 L241.8 169.6 L229.5 161.4 L193.9 199.1 L163.1 242.2 Z" />
@@ -111,7 +111,7 @@ export function RouteMapPreview() {
                 <path
                   d="M365 297 L354.8 253.8 L344.5 223 L300 171.7 L261 169.6 L241.8 169.6 L228.1 134 L252.1 86.1"
                   fill="none"
-                  stroke="rgba(23,81,69,0.25)"
+                  stroke="rgba(26,56,98,0.25)"
                   strokeWidth="1.5"
                   strokeDasharray="2 5"
                 />
@@ -124,7 +124,7 @@ export function RouteMapPreview() {
                     }}
                     d={arcPath(r.from, r.to)}
                     fill="none"
-                    stroke={active === i ? "url(#arc)" : "rgba(15,29,25,0.2)"}
+                    stroke={active === i ? "url(#arc)" : "rgba(11,31,59,0.2)"}
                     strokeWidth={active === i ? 2.5 : 1.5}
                     strokeLinecap="round"
                     className="transition-all duration-300"
@@ -141,16 +141,16 @@ export function RouteMapPreview() {
                         cx={n.x}
                         cy={n.y}
                         r={isHub ? 6 : isActive ? 6 : 4}
-                        fill={isHub || isActive ? "#D2A017" : "#0F1D19"}
+                        fill={isHub || isActive ? "#FFA400" : "#0B1F3B"}
                       />
-                      {isHub && <circle cx={n.x} cy={n.y} r="11" fill="none" stroke="#D2A017" strokeWidth="1" opacity="0.5" />}
+                      {isHub && <circle cx={n.x} cy={n.y} r="11" fill="none" stroke="#FFA400" strokeWidth="1" opacity="0.5" />}
                       <text
                         x={n.x}
                         y={n.below ? n.y + 18 : n.y - (isActive ? 16 : 12)}
                         textAnchor="middle"
                         className="text-[20px] transition-all duration-300 sm:text-[15px] lg:text-[12px]"
                         fontWeight={isHub || isActive ? 700 : 500}
-                        fill={isActive ? "#7A590F" : "rgba(15,29,25,0.75)"}
+                        fill={isActive ? "#8A5600" : "rgba(11,31,59,0.75)"}
                       >
                         {n.label}
                       </text>
@@ -160,9 +160,9 @@ export function RouteMapPreview() {
 
                 {plane && (
                   <g transform={`translate(${plane.x} ${plane.y}) rotate(${plane.a})`}>
-                    <circle r="9" fill="#0F1D19" stroke="#D2A017" strokeWidth="1.5" />
+                    <circle r="9" fill="#0B1F3B" stroke="#FFA400" strokeWidth="1.5" />
                     <g transform="rotate(45) translate(-5 -5) scale(0.42)">
-                      <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#FFFEFA" />
+                      <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#FFFCF5" />
                     </g>
                   </g>
                 )}
@@ -176,15 +176,15 @@ export function RouteMapPreview() {
 
           <div className="order-1 lg:order-2">
             <Kicker>The network</Kicker>
-            <h2 id="map-heading" className="mt-4 font-serif text-3xl leading-tight tracking-wide text-ink sm:text-4xl">
+            <h2 id="map-heading" className="mt-4 font-display text-3xl leading-tight text-ink sm:text-4xl">
               Seven park strips, one departure bank
             </h2>
-            <p className="mt-3 max-w-md text-slatey">
+            <p className="mt-3 max-w-md text-muted">
               Hover a route to trace the flight. Everything leaves Kajjansi in the morning and is
               back before lunch, so a park transfer costs you half a day instead of two.
             </p>
 
-            <ul className="mt-7 divide-y divide-gold/15 border-y border-gold/15">
+            <ul className="mt-7 divide-y divide-opportunity/15 border-y border-opportunity/15">
               {ROUTES.map((r, i) => (
                 <li key={r.to}>
                   <button
@@ -195,13 +195,13 @@ export function RouteMapPreview() {
                     onBlur={() => activate(null)}
                     className={cn(
                       "flex w-full items-center justify-between gap-4 py-3.5 text-left transition-colors",
-                      active === i ? "text-gold-600" : "text-ink hover:text-gold-600"
+                      active === i ? "text-opportunity-700" : "text-ink hover:text-opportunity-700"
                     )}
                   >
                     <span className="flight-code text-sm font-semibold">
                       {r.from} <ArrowRight className="inline h-3.5 w-3.5" aria-hidden /> {r.to}
                     </span>
-                    <span className="flex items-center gap-4 text-xs text-slatey">
+                    <span className="flex items-center gap-4 text-xs text-muted">
                       <span className="hidden sm:inline">{r.frequency}</span>
                       <span>{r.blockTime}</span>
                     </span>
@@ -210,7 +210,7 @@ export function RouteMapPreview() {
               ))}
             </ul>
 
-            <p className="mt-5 text-xs text-slatey">
+            <p className="mt-5 text-xs text-muted">
               <Plane className="mb-0.5 mr-1 inline h-3.5 w-3.5" aria-hidden />
               With partners: {PLANNED_CITIES.slice(0, 4).join(" · ")} and more.
             </p>

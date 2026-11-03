@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 @layer base {
+  /* NB: do NOT declare --font-display / --font-body here. next/font sets them
+     on <html> via a class; a :root fallback with equal specificity lands later
+     in the cascade and silently overrides the real font on every page. The
+     fallback chain lives in tailwind.config.ts → fontFamily instead. */
   :root {
-    /* Set by next/font/local in app/layout.tsx; the fallbacks below only
-       matter if the self-hosted woff2 files are missing from app/fonts. */
-    --font-display: Georgia, "Times New Roman", serif;
-    --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
     --font-mono: ui-monospace, "SFMono-Regular", monospace;
   }
 
@@ -17,75 +17,88 @@
   }
 
   body {
-    @apply bg-paper text-ink font-sans antialiased;
+    @apply bg-cream text-ink font-sans antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  /* Crane Gold keyboard-focus ring (WCAG 2.4.7) */
+  /* Headings are Montserrat Bold throughout — the identity toolkit's one rule
+     for display type. Set here so no page can drift back to a lighter cut. */
+  h1, h2, h3, h4 {
+    @apply font-display font-bold;
+  }
+
+  /* Opportunity-amber keyboard focus ring (WCAG 2.4.7) */
   :focus-visible {
-    outline: 2px solid #d2a017;
+    outline: 2px solid #ffa400;
     outline-offset: 2px;
     border-radius: 2px;
   }
 
   ::selection {
-    background: #f0cf72;
-    color: #07251f;
+    background: #ffc861;
+    color: #0b1f3b;
   }
 }
 
 @layer components {
-  /* The Reed — the system's only divider: a single thin gold line, after the
-     papyrus reed of the Lake Victoria shoreline. */
-  .reed {
+  /* The Rule — a single thin amber line. The system's quiet divider. */
+  .rule {
     display: inline-block;
     width: 1px;
-    height: 26px;
-    background: #d2a017;
+    height: 24px;
+    background: #ffa400;
   }
   .hairline {
-    @apply h-px w-full bg-gold/50;
+    @apply h-px w-full bg-aviation/10;
   }
 
-  /* Section eyebrow — Archivo small caps, deep gold, wide tracking */
+  /* Section eyebrow — Montserrat semibold caps in deep amber */
   .kicker {
-    @apply font-sans text-[0.7rem] font-semibold uppercase tracking-kicker text-gold-600;
+    @apply font-display text-[0.7rem] font-semibold uppercase tracking-kicker text-opportunity-700;
   }
 
   /* The Welcome Word — "Webale" (Luganda: thank you).
-     Colour is NOT set here: the word appears on both paper and Source Green,
-     and a single hard-coded gold fails contrast on one of them. Call sites
-     pass text-gold-600 on light and text-gold-300 on dark. */
+     Colour is NOT set here: it sits on both cream and navy, and one hard-coded
+     value fails contrast on one of them. Call sites pass the tone. */
   .webale {
-    @apply font-serif uppercase tracking-[0.3em];
+    @apply font-display font-semibold uppercase tracking-[0.2em];
   }
 
   .container-site {
     @apply mx-auto w-full max-w-site px-5 sm:px-8;
   }
 
-  /* Primary CTA — gold gradient fill, Source Green label */
+  /* Primary call to action — Opportunity amber with an Aviation label (8.29:1) */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3
-      font-sans text-xs font-semibold uppercase tracking-wide2 text-nile-900
-      transition-transform duration-200 hover:-translate-y-px;
-    background-image: linear-gradient(135deg, #f0cf72, #d2a017);
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+      font-display text-[0.78rem] font-bold uppercase tracking-wide2 text-aviation-900
+      shadow-[0_6px_18px_-8px_rgba(255,164,0,0.9)]
+      transition-all duration-200 hover:-translate-y-px hover:brightness-105;
+    background-image: linear-gradient(135deg, #ffc861, #ffa400);
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gold/50
-      bg-transparent px-6 py-3 font-sans text-xs font-semibold uppercase tracking-wide2
-      text-gold-600 transition-colors duration-200 hover:bg-gold/[0.08];
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-aviation/25
+      bg-transparent px-6 py-3 font-display text-[0.78rem] font-bold uppercase tracking-wide2
+      text-aviation transition-colors duration-200 hover:bg-aviation/[0.06];
   }
 
-  /* Ceremonial Ugandan flag band — black · yellow · red · black · yellow · red */
-  .flag-band {
+  /* On a dark panel */
+  .btn-ghost-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/30
+      bg-transparent px-6 py-3 font-display text-[0.78rem] font-bold uppercase tracking-wide2
+      text-cream transition-colors duration-200 hover:bg-white/10;
+  }
+
+  /* The Ribbon — the brand's signature band. Four strands of the identity,
+     in the order they appear in the mark. Replaces the old flag band. */
+  .ribbon-band {
     display: flex;
     height: 4px;
     width: 100%;
     overflow: hidden;
   }
-  .flag-band > span {
+  .ribbon-band > span {
     flex: 1;
   }
 
@@ -99,7 +112,7 @@
     width: 14px;
     height: 14px;
     border-radius: 9999px;
-    background: #f4f1e6;
+    background: #f6e9db;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -108,12 +121,10 @@
 }
 
 @layer utilities {
-  /* Fraunces is a variable font with real weights 100–900, so no synthetic-bold
-     safeguard is needed here (unlike a single-weight display face). Display
-     headings carry a slightly tighter optical setting. */
-  .font-serif {
-    font-variation-settings: "SOFT" 0, "WONK" 0;
-    letter-spacing: -0.01em;
+  /* Montserrat is a variable font with real weights, so no synthetic-bold
+     safeguard is needed. Display headings run slightly tighter. */
+  .font-display {
+    letter-spacing: -0.015em;
   }
   .flight-code {
     font-family: var(--font-mono);
@@ -124,8 +135,8 @@
   .tnum {
     font-variant-numeric: tabular-nums;
   }
-  .bg-pearl-sky {
-    background-image: linear-gradient(180deg, #fffefa 0%, #f4f1e6 46%, #ede7d2 76%, #e3d9b4 100%);
+  .bg-horizon {
+    background-image: linear-gradient(180deg, #fffcf5 0%, #f6e9db 52%, #f0dfcb 80%, #e8d3b8 100%);
   }
 }
 

@@ -2,11 +2,16 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, Phone, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Search, User } from "lucide-react";
 import { NAV } from "@/lib/data";
-import { Wordmark } from "@/components/brand";
+import { Logo } from "@/components/brand";
 import { cn } from "@/lib/utils";
 
+/**
+ * Aviation-navy bar, always. Logo left, primary nav centre, Sign In pill and
+ * the amber Book pill right — the structure from the identity toolkit's
+ * website panel.
+ */
 export function Header({ solid = false }: { solid?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -35,44 +40,17 @@ export function Header({ solid = false }: { solid?: boolean }) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        elevated ? "bg-paper/95 shadow-[0_1px_0_rgba(210,160,23,0.5)]" : "bg-paper/70",
-        // A backdrop-filter ancestor becomes the containing block for its
-        // position:fixed descendants, which collapses the mobile overlay below
-        // to 0px. Drop the blur while the menu is open — the bar is opaque then
-        // anyway, so there is nothing to see through.
-        !open && (elevated ? "backdrop-blur" : "backdrop-blur-sm")
+        "fixed inset-x-0 top-0 z-50 bg-aviation text-cream transition-shadow duration-300",
+        elevated && "shadow-[0_1px_0_rgba(255,164,0,0.35),0_12px_32px_-20px_rgba(11,31,59,0.8)]"
+        // NB: no backdrop-filter here. A backdrop-filter ancestor becomes the
+        // containing block for position:fixed descendants and collapses the
+        // mobile overlay below to 0px.
       )}
     >
-      {/* Utility bar */}
-      <div className="hidden border-b border-gold/20 lg:block">
-        <div className="container-site flex h-9 items-center justify-between text-[0.7rem] text-ink/70">
-          <span className="webale text-[0.7rem] text-gold-600">Webale — welcome aboard</span>
-          <div className="flex items-center gap-5">
-            {NAV.utility.map((u) => (
-              <Link key={u.href} href={u.href} className="uppercase tracking-wide2 hover:text-gold-600">
-                {u.label}
-              </Link>
-            ))}
-            {/* TODO: replace with the real reservations number (see CONTACT.phone) */}
-            <a href="tel:+256" className="inline-flex items-center gap-1.5 hover:text-gold-600">
-              <Phone className="h-3.5 w-3.5" aria-hidden /> +256 (TBC)
-            </a>
-            <div className="flex items-center gap-1 text-slatey">
-              <span className="font-semibold text-ink" aria-current="true">EN</span>
-              <span aria-hidden>·</span>
-              <Link href="/fr" className="hover:text-gold-600" lang="fr">FR</Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main bar */}
-      <div className="container-site flex h-16 items-center justify-between lg:h-[68px]">
-        {/* No aria-label: the visible wordmark is the accessible name. An
-            aria-label here duplicates it and trips WCAG 2.5.3 (label in name). */}
-        <Link href="/">
-          <Wordmark tone="light" />
+      <div className="container-site flex h-[72px] items-center justify-between gap-6">
+        {/* No aria-label: the visible wordmark is the accessible name (WCAG 2.5.3). */}
+        <Link href="/" className="shrink-0">
+          <Logo tone="dark" className="h-9 w-auto sm:h-10" />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
@@ -82,18 +60,18 @@ export function Header({ solid = false }: { solid?: boolean }) {
                 <button
                   type="button"
                   aria-haspopup="true"
-                  className="inline-flex items-center gap-1 py-2 text-[0.72rem] font-medium uppercase tracking-wide2 text-ink hover:text-gold-600"
+                  className="inline-flex items-center gap-1 py-2 font-display text-[0.78rem] font-semibold text-cream/90 hover:text-opportunity"
                 >
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" aria-hidden />
                 </button>
-                <div className="invisible absolute left-1/2 top-full w-56 -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="overflow-hidden rounded-lg border border-gold/20 bg-warm py-2 shadow-card">
+                <div className="invisible absolute left-1/2 top-full w-60 -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="overflow-hidden rounded-xl border border-white/10 bg-aviation-700 py-2 shadow-widget">
                     {item.children.map((c) => (
                       <Link
                         key={c.href}
                         href={c.href}
-                        className="block px-4 py-2.5 text-sm text-ink hover:bg-gold/[0.08] hover:text-gold-600"
+                        className="block px-4 py-2.5 text-sm text-cream/90 hover:bg-white/[0.06] hover:text-opportunity"
                       >
                         {c.label}
                       </Link>
@@ -105,17 +83,36 @@ export function Header({ solid = false }: { solid?: boolean }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="py-2 text-[0.72rem] font-medium uppercase tracking-wide2 text-ink hover:text-gold-600"
+                className="py-2 font-display text-[0.78rem] font-semibold text-cream/90 hover:text-opportunity"
               >
                 {item.label}
               </Link>
             )
           )}
-          <Link href="/book" className="btn-primary !px-5 !py-2.5">Book</Link>
         </nav>
 
+        <div className="hidden items-center gap-3 lg:flex">
+          <Link
+            href="/routes"
+            aria-label="Search routes"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-cream/80 hover:bg-white/[0.08] hover:text-opportunity"
+          >
+            <Search className="h-4 w-4" aria-hidden />
+          </Link>
+          <Link
+            href="/pearl-club/account"
+            className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 font-display text-[0.72rem] font-semibold uppercase tracking-wide2 text-cream hover:border-opportunity hover:text-opportunity"
+          >
+            <User className="h-3.5 w-3.5" aria-hidden />
+            Sign in
+          </Link>
+          <Link href="/book" className="btn-primary !px-5 !py-2.5">
+            Book a flight
+          </Link>
+        </div>
+
         <button
-          className="inline-flex items-center justify-center rounded-md p-2 text-ink lg:hidden"
+          className="inline-flex items-center justify-center rounded-md p-2 text-cream lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -126,7 +123,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
 
       {/* Mobile overlay */}
       {open && (
-        <div className="fixed inset-0 top-16 z-40 overflow-y-auto bg-paper lg:hidden">
+        <div className="fixed inset-0 top-[72px] z-40 overflow-y-auto bg-aviation lg:hidden">
           <nav className="container-site flex flex-col py-6" aria-label="Mobile">
             <Link
               href="/book"
@@ -136,11 +133,11 @@ export function Header({ solid = false }: { solid?: boolean }) {
               Book a flight
             </Link>
             {NAV.primary.map((item) => (
-              <div key={item.href} className="border-b border-gold/15">
+              <div key={item.href} className="border-b border-white/10">
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="block py-4 font-serif text-lg tracking-wide text-ink"
+                  className="block py-4 font-display text-lg font-semibold text-cream"
                 >
                   {item.label}
                 </Link>
@@ -151,7 +148,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
                         key={c.href}
                         href={c.href}
                         onClick={() => setOpen(false)}
-                        className="py-1.5 text-sm text-ink/70"
+                        className="py-1.5 text-sm text-cream/75"
                       >
                         {c.label}
                       </Link>
@@ -160,9 +157,9 @@ export function Header({ solid = false }: { solid?: boolean }) {
                 )}
               </div>
             ))}
-            <div className="mt-6 flex items-center gap-6 text-xs uppercase tracking-wide2 text-ink/70">
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 font-display text-xs font-semibold uppercase tracking-wide2 text-cream/80">
               {NAV.utility.map((u) => (
-                <Link key={u.href} href={u.href} onClick={() => setOpen(false)} className="hover:text-gold-600">
+                <Link key={u.href} href={u.href} onClick={() => setOpen(false)} className="hover:text-opportunity">
                   {u.label}
                 </Link>
               ))}

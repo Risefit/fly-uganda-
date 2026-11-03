@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-label="Fly Uganda">
-  <title>Fly Uganda — horizontal lockup</title>
-  
-  <g transform="translate(60,60) scale(0.37)"><defs><linearGradient id="l" x1="0" y1="0" x2="0.75" y2="1"><stop offset="0" stop-color="#F2D484"/><stop offset="1" stop-color="#D2A017"/></linearGradient><linearGradient id="d" x1="0" y1="0" x2="0.75" y2="1"><stop offset="0" stop-color="#C79317"/><stop offset="1" stop-color="#8A6512"/></linearGradient></defs><path d="M88 -9 A 76 76 0 0 0 -64 -9 Z" fill="url(#l)"/><path d="M-88 9 A 76 76 0 0 0 64 9 Z" fill="url(#d)"/></g>
-  <text x="112" y="56" font-family="Fraunces, Georgia, serif" font-weight="600" font-size="38" letter-spacing="4.2" fill="#0F1D19">FLY UGANDA</text>
-  <text x="114" y="80" font-family="Archivo, system-ui, sans-serif" font-weight="600" font-size="12" letter-spacing="4.1" fill="#7A590F">SAFARI AIRLINE</text>
-</svg>

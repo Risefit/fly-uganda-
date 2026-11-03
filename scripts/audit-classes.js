@@ -41,7 +41,7 @@ const PREFIX = "(?:from|via|to|bg|text|border|ring|divide|fill|stroke|shadow|out
 // 1. opacity modifiers: bg-gold/15, from-nile-900/88 …
 const withAlpha = new Set(all.match(new RegExp(`\\b${PREFIX}-[a-z0-9-]+/\\d{1,3}\\b`, "g")) || []);
 // 2. plain colour utilities naming a project token
-const TOKENS = "(?:gold|nile|amber|paper|warm|ivory|ink|slatey|success|midnight|flag-[a-z]+)";
+const TOKENS = "(?:cream|paper|warm|aviation|opportunity|energy|heritage|growth|connection|ink|muted|slatey|flag-[a-z]+)";
 const plain = new Set(all.match(new RegExp(`\\b${PREFIX}-${TOKENS}(?:-\\d{2,3})?\\b`, "g")) || []);
 
 const missing = [];

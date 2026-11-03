@@ -1,109 +1,119 @@
 # Brand brief — Fly Uganda
 
-**"The Pearl, from above."**
+**Modern Pan-African.** Contemporary and premium, proudly African, connected and global,
+ambitious and growth-focused, warm and welcoming.
 
-Version 1.0 · November 2026 · supersedes the South Sudan Airlines "Dawn Star" brief.
+Version 2.0 · November 2026 · supersedes the v1.0 "Pearl" brief. Built from the Brand
+Identity Toolkit (Concept 6) with two deliberate departures, noted in §7.
 
 ---
 
 ## 1. Positioning
 
 Fly Uganda is **Uganda's safari airline**: scheduled per-seat flights from Kajjansi
-Airfield to the national parks, plus charter and cargo on the same fleet, flown under
-the Kampala Executive Aviation Air Operator Certificate.
+Airfield to the national parks, plus charter and cargo on the same fleet, flown under the
+Kampala Executive Aviation Air Operator Certificate.
 
-The commercial wedge is **Kajjansi**. It sits on the Kampala side of Entebbe, which is
-roughly thirty minutes off the transfer at each end of the day, with no international
-terminal to clear. Aerolink, the main scheduled competitor, flies from Entebbe. Every
+The commercial wedge is **Kajjansi** — the Kampala side of Entebbe, roughly thirty minutes
+off the transfer at each end of the day, with no international terminal to clear. Every
 piece of copy on the site can lean on that difference, and most of it does.
 
-**Audience, in order of commercial weight**
-
-1. Inbound tour operators and DMCs booking seats on behalf of clients.
-2. Direct leisure travellers planning a fly-in safari.
-3. Corporate, NGO and energy charter buyers (Albertine Graben, UN/NGO rotations).
-
 **Voice.** Plain, specific, and operator-confident. We quote block times, weights and
-baggage limits because the people booking us care about them. We do not write "unforgettable",
-"breathtaking" or "gateway to adventure". The landscape does that work; we do the flying.
+baggage limits because the people booking us care about them. The landscape does the
+"breathtaking"; we do the flying.
+
+**What we do not say.** *National airline* and *flag carrier*. Uganda Airlines is the
+state-owned flag carrier; the claim is not ours to make and would read as a provocation in
+a small market. The toolkit uses the phrase; the public site does not.
 
 ---
 
-## 2. The mark — "The Pearl"
+## 2. The mark — "The Ribbon"
 
-A sun-disc bisected by the equator, the upper half carried forward in flight.
+Four strands of the identity — Growth, Opportunity, Energy, Heritage — caught in a
+tailwind: thick at the left, rising through a gentle S, tapering to a flick above the
+wordmark. The wordmark is **Montserrat Bold Italic**.
 
-- Uganda is one of thirteen countries the equator crosses, and Kajjansi sits almost
-  exactly on it. The Pearl of Africa, seen from above.
-- The straight gap **is** the equator. It is the one line in the system that never tilts.
-  Do not rotate the mark, and do not let the gap close.
-- The offset between the halves is motion. It is deliberate, not a registration error —
-  do not "correct" it.
+**How it is built.** The ribbon is generated from Bézier geometry (`logo/build.js`), not
+traced. The wordmark and tagline are shaped with HarfBuzz and converted to outlines, so
+**no logo file depends on a font being installed anywhere**. A logo that reflows because a
+font is missing is not a logo.
 
-**Deliberately not a crested crane.** Uganda Airlines, the national flag carrier, already
-owns the crane as its device. A second crane would read as derivative of the flag carrier
-and would weaken the trade's ability to tell the two apart. The crane survives in the
-brand only as the top Pearl Club tier.
+**Package** (`public/brand/`):
 
-**Where it lives:** `components/brand.tsx` (`Pearl`, `PearlMark`) and `public/brand/*.svg`.
-Changing the mark means editing both.
+| File | Use |
+|---|---|
+| `fly-uganda-primary.svg` | Horizontal lockup with tagline, on light |
+| `fly-uganda-reversed.svg` | Same, on Aviation navy |
+| `fly-uganda-stacked.svg` | Centred lockup for square formats |
+| `fly-uganda-mono-black.svg` / `-mono-white.svg` | Single-colour, for print and embroidery |
+| `fly-uganda-icon.svg` | The ribbon alone on navy — app icon, favicon, avatar |
+| `png/` | Raster set for places that refuse vector: 2000px lockups, 512/192/180/32 icons |
+| `../og-image.png` | 1200×630 social-share card |
 
-**Clear space:** one half-disc height on all sides. **Minimum size:** 20 px tall on screen
-for the gradient emblem; below that use `PearlMark`, the flat single-colour version.
+In code: `Logo`, `Ribbon`, `Chip` and `RibbonBand` in `components/brand.tsx`, drawing from
+the generated `components/brand-paths.ts`. **Edit the generator, never the paths.**
+
+**Rules.** Minimum height 24 px on screen for the full lockup; below that use the icon.
+Clear space one ribbon-height on all sides. Never rotate, recolour or re-order the strands.
+Never set the wordmark in live text.
 
 ---
 
 ## 3. Palette
 
-Every pair below is WCAG AA at body size. `npm run contrast` re-checks it — run it after
-any change to `theme.extend.colors`.
+Six brand colours from the toolkit, plus the text-safe derivatives the toolkit does not
+define. **Three of the six are not legible as text on cream** and exist only as fills —
+the table says which. Every pair the UI uses is WCAG AA; `npm run contrast` re-checks.
 
 | Token | Hex | Name | Use |
 |---|---|---|---|
-| `paper` / `ivory` | `#F4F1E6` | Savannah Linen | Page background |
-| `white` / `warm` | `#FFFEFA` | Papyrus White | Cards and surfaces |
-| `gold` | `#D2A017` | Crane Gold | Primary accent, CTAs, the mark |
-| `gold-300` | `#F0CF72` | Crest Light | Gold on dark backgrounds |
-| `gold-600` | `#7A590F` | Deep Gold | Gold **text** on light (5.69:1 on paper) |
-| `gold-900` | `#5E4309` | — | Deepest gold text |
-| `amber` | `#B54A24` | Equator Clay | Sparing warm accent (4.68:1 on paper) |
-| `amber-300` | `#E08A5F` | — | Clay on dark, large text only |
-| `nile` / `nile-900` | `#07251F` | Source Green | Dark sections, footer, booking panel |
-| `nile-700` | `#0D3A31` | — | Second dark tone |
-| `nile-500` | `#175145` | — | Third dark tone |
-| `nile-100` | `#EDE7D2` | — | Warm light fill (pair with `gold-600`) |
-| `ink` | `#0F1D19` | Forest Ink | Body text |
-| `slatey` | `#6B6453` | — | Secondary text |
-| `success` | `#1A6B43` | — | Confirmations and credits |
-| `flag` | `#1A1A1A` `#FCDC04` `#D90429` | — | **Ceremonial only** — the FlagBand, nowhere else |
+| `cream` | `#F6E9DB` | Warm Neutral | Page ground |
+| `white` / `warm` | `#FFFCF5` | — | Cards and panels |
+| `aviation` | `#0B1F3B` | Aviation | Nav, footer, dark panels, **body text** |
+| `aviation-700` / `-500` | `#122B4E` / `#1A3862` | — | Layered dark tones |
+| `aviation-100` | `#E4E8EF` | — | Light navy tint fill |
+| `opportunity` | `#FFA400` | Opportunity | **Primary CTA fill**, accents on dark. *Not text on light* (1.67:1) |
+| `opportunity-300` | `#FFC861` | — | Light amber on dark |
+| `opportunity-700` | `#8A5600` | — | Amber **text** on light (5.16:1) — kickers, links |
+| `energy` | `#D71920` | Energy | Ribbon strand, decorative fills. *Not text on light* (4.35:1) |
+| `energy-700` | `#C2151C` | — | Red text on light; red block with a label |
+| `energy-300` | `#FF6B70` | — | Red on dark |
+| `heritage` | `#7A0019` | Heritage | Ribbon strand; safe as text (9.56:1) |
+| `growth` | `#006B4F` | Growth | Ribbon strand; confirmations; safe as text (5.47:1) |
+| `growth-300` | `#4FBF95` | — | Green on dark |
+| `connection` | `#007CBA` | Connection | Map lines, partner marks. *Not text on light* (3.83:1) |
+| `connection-700` | `#006A9F` | — | Blue text on light |
+| `connection-300` | `#5FB9E8` | — | Blue on dark |
+| `muted` | `#5C5244` | — | Secondary text (6.41:1 on cream) |
 
-`nile` is Source Green rather than a blue: the Victoria Nile rises in Uganda, which is why
-the token name survived the rebrand unchanged.
+**The Warm Neutral hex.** The toolkit prints `#F6E90B`, which is a bright yellow. The
+swatch is cream, and a yellow there would collide with Opportunity. `#F6E9DB` is used,
+as agreed.
 
-**The flag rule.** Uganda's black-yellow-red is powerful and easy to cheapen. It appears
-only as the six-stripe `FlagBand` at the top of the footer. It is never a background, a
-button, or a text colour. Success states use `success`, not the flag's green — Uganda's
-flag has no green.
+**The call to action** is always Opportunity amber with an Aviation label (8.29:1), as a
+pill. One per view.
 
 ---
 
 ## 4. Typography
 
-| Role | Face | Notes |
+| Role | Face | Weights |
 |---|---|---|
-| Display | **Fraunces** (variable, 100–900) | Headings, wordmark. Warm, high-contrast, real bold. |
-| UI / body | **Archivo** (variable, 100–900) | Strong tabular figures for timetables and fare tables. |
+| Display, headings, UI labels, the wordmark | **Montserrat** (variable) | Bold for headings — set globally; SemiBold for labels |
+| Body copy | **Source Sans 3** (variable) | Regular; SemiBold for emphasis |
 
-Both are **self-hosted** from `app/fonts/*.woff2`, loaded via `next/font/local` — not
-`next/font/google`. This removes a third-party round-trip on slow East African connections,
-keeps the build working offline and in CI, and avoids sending visitor IPs to Google.
-To change a face, drop in a new `.woff2` and keep the CSS variable name.
+Both are **self-hosted** from `app/fonts/*.woff2` via `next/font/local`. Headings are
+Montserrat Bold by a base rule in `globals.css` so no page can drift to a lighter cut.
 
-Fraunces has real weights, so the single-weight `.font-serif { font-weight: 400 }` guard
-from the Dawn Star system has been **removed**. `font-bold` on a heading now does what
-you expect.
+**Two traps, both hit during this build and now documented in the handover:**
 
-Use `.tnum` on any column of figures that updates in place.
+1. Never declare `--font-display` or `--font-body` in a `:root` block. next/font sets them
+   on `<html>` via a class; a `:root` fallback lands later in the cascade and silently
+   overrides the real font on every page.
+2. `"Source Sans 3"` must carry its own quotes inside the Tailwind config string. An
+   unquoted family name ending in a digit is invalid CSS and voids the entire
+   `font-family` rule.
 
 ---
 
@@ -111,22 +121,38 @@ Use `.tnum` on any column of figures that updates in place.
 
 | Device | What it is | Where |
 |---|---|---|
-| **The Meridian** | A single thin vertical gold line. The system's only divider. | `Meridian`, `.reed` |
-| **The Kicker** | Meridian + small-caps deep-gold label. Every section eyebrow. | `Kicker`, `.kicker` |
-| **The Flag Band** | Six Ugandan stripes, 4 px. Footer only. | `FlagBand`, `.flag-band` |
-| **Webale** | Luganda for *thank you*. The welcome word, in the header utility bar and the footer. | `Webale`, `.webale` |
+| **The Ribbon Band** | The four strands as a 4px bar. Footer top. | `RibbonBand`, `.ribbon-band` |
+| **The Rule** | A single thin amber line. The quiet divider. | `Rule`, `.rule` |
+| **The Kicker** | Rule + Montserrat SemiBold caps in deep amber. Every section eyebrow. | `Kicker`, `.kicker` |
+| **The Chip** | A three-strand mini-ribbon in currentColor. Bullets and list marks. | `Chip` |
+| **Webale** | Luganda for *thank you*. The welcome word, header and footer. | `Webale` |
 
-The equator runs through the mark; the meridian runs through the page. That is the whole
-geometric idea, and it is enough.
+The toolkit's pattern and motif panel (woven stripes; Air / Connection / Culture /
+Progress icons) is **not yet built**. The ribbon carries the identity on the site for now;
+the pattern is the natural next asset for environmental and print work.
 
 ---
 
-## 6. Pearl Club
+## 6. Imagery
 
-The frequent flyer programme. Currency: **Pearls**. Tiers are **Birds of Uganda**:
+The toolkit's image style is photographic: portraiture, misty green highlands, golden
+light. The site currently runs on **brand-built SVG scene plates** in `public/scenes/` —
+green ridges under a cream-to-gold sky, with Aviation navy at the top of the golden-hour
+plates. They are intentionally illustrative so no one mistakes them for photography, and
+they are placeholders. See the handover §6 for the swap order.
 
-Kingfisher → Great Blue Turaco → Shoebill → Crowned Crane
+**No purple dusk.** The toolkit's dusk skyline was explicitly excluded; the golden-hour
+plates use navy → amber instead.
 
-Programme data lives in `lib/loyalty.ts`; tier emblems in `components/loyalty/BirdMark.tsx`.
-All thresholds and award values are illustrative until the PSS earning and spending rules
-are configured — see `02-loyalty-program-design.md`.
+---
+
+## 7. Departures from the toolkit
+
+| Toolkit | Site | Why |
+|---|---|---|
+| "Uganda's national airline" | "Uganda's safari airline" | Uganda Airlines is the flag carrier — §1 |
+| "Uganda to Africa and Beyond" | Dropped | Contradicts a Kajjansi park network; the product did not change, only the look |
+| Entebbe International on stationery | Kajjansi on everything | The base is Kajjansi |
+| ATR-class livery | Grand Caravan | The fleet |
+| Warm Neutral `#F6E90B` | `#F6E9DB` | Printed hex reads as yellow; swatch is cream |
+| Purple dusk skyline | Navy → amber golden hour | Excluded by instruction |

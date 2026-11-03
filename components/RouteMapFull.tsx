@@ -87,12 +87,12 @@ export function RouteMapFull() {
 
   return (
     <div className="grid items-start gap-8 lg:grid-cols-[1.25fr_0.75fr]">
-      <div className="relative overflow-hidden rounded-2xl bg-nile p-3 ring-1 ring-nile/15">
+      <div className="relative overflow-hidden rounded-2xl bg-aviation p-3 ring-1 ring-aviation/15">
         <svg viewBox="0 0 640 540" className="h-auto w-full" role="img" aria-label="Fly Uganda route map">
           <defs>
             <linearGradient id="arcFull" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#F0CF72" />
-              <stop offset="100%" stopColor="#D2A017" />
+              <stop offset="0%" stopColor="#FFC861" />
+              <stop offset="100%" stopColor="#FFA400" />
             </linearGradient>
           </defs>
 
@@ -100,11 +100,11 @@ export function RouteMapFull() {
           <path
             d="M209 66.5 L300.9 85.6 L377.4 79.5 L454 85.6 L529.1 87.2 L515.3 185.2 L469.3 277.1 L461.7 323 L446.4 361.3 L450.2 445.5 L377.4 445.5 L285.5 447.1 L209 445.5 L143.9 470.8 L117.1 472.3 L126.3 437.9 L120.9 369 L130.9 315.4 L163 277.1 L182.2 238.8 L209 192.8 L224.3 146.9 L212.8 100.9 Z"
             fill="rgba(255,255,255,0.05)"
-            stroke="rgba(210,160,23,0.28)"
+            stroke="rgba(255,164,0,0.28)"
             strokeWidth="1"
           />
           {/* The great lakes — Victoria, Kyoga, Albert, Edward */}
-          <g fill="rgba(140,200,220,0.14)" stroke="rgba(140,200,220,0.22)" strokeWidth="0.75">
+          <g fill="rgba(0,124,186,0.14)" stroke="rgba(0,124,186,0.22)" strokeWidth="0.75">
             <path d="M281.7 445.5 L450.2 445.5 L446.4 361.3 L408.1 336.8 L354.5 346 L300.9 376.6 L277.9 411.1 Z" />
             <path d="M323.8 252.6 L369.8 238.8 L411.9 246.4 L400.4 270.9 L358.3 273.2 L331.5 267.9 Z" />
             <path d="M182.2 284.7 L224.3 238.8 L254.9 194.4 L241.1 185.2 L201.3 227.3 L166.8 275.5 Z" />
@@ -114,7 +114,7 @@ export function RouteMapFull() {
           <path
             d="M392.7 336.8 L381.3 288.6 L369.8 254.1 L320 196.7 L276.4 194.4 L254.9 194.4 L239.6 154.5 L266.4 100.9"
             fill="none"
-            stroke="rgba(140,200,220,0.3)"
+            stroke="rgba(0,124,186,0.3)"
             strokeWidth="1.5"
             strokeDasharray="2 5"
           />
@@ -150,8 +150,8 @@ export function RouteMapFull() {
           {/* Planned nodes */}
           {Object.entries(PLANNED_NODES).map(([name, n]) => (
             <g key={name}>
-              <circle cx={n.x} cy={n.y} r="3" fill="rgba(244,241,230,0.5)" />
-              <text x={n.x} y={n.y - 8} textAnchor={n.anchor ?? "middle"} className="text-[17px] sm:text-[13px] lg:text-[10px]" fill="rgba(244,241,230,0.6)">
+              <circle cx={n.x} cy={n.y} r="3" fill="rgba(246,233,219,0.5)" />
+              <text x={n.x} y={n.y - 8} textAnchor={n.anchor ?? "middle"} className="text-[17px] sm:text-[13px] lg:text-[10px]" fill="rgba(246,233,219,0.6)">
                 {name}
               </text>
             </g>
@@ -164,8 +164,8 @@ export function RouteMapFull() {
             const isActive = idx === active;
             return (
               <g key={code}>
-                <circle cx={n.x} cy={n.y} r={isHub ? 6.5 : isActive ? 6 : 4.5} fill={isHub || isActive ? "#D2A017" : "#F4F1E6"} />
-                {isHub && <circle cx={n.x} cy={n.y} r="12" fill="none" stroke="#D2A017" strokeWidth="1" opacity="0.5" />}
+                <circle cx={n.x} cy={n.y} r={isHub ? 6.5 : isActive ? 6 : 4.5} fill={isHub || isActive ? "#FFA400" : "#F6E9DB"} />
+                {isHub && <circle cx={n.x} cy={n.y} r="12" fill="none" stroke="#FFA400" strokeWidth="1" opacity="0.5" />}
                 <text
                   x={n.x}
                   y={n.below ? n.y + 19 : n.y - (isHub || isActive ? 16 : 13)}
@@ -174,7 +174,7 @@ export function RouteMapFull() {
                      map renders at roughly half size. */
                   className="text-[21px] sm:text-[16px] lg:text-[13px]"
                   fontWeight={isHub || isActive ? 700 : 500}
-                  fill={isActive ? "#E6CB8A" : "rgba(244,241,230,0.9)"}
+                  fill={isActive ? "#E6CB8A" : "rgba(246,233,219,0.9)"}
                 >
                   {n.label}
                 </text>
@@ -184,25 +184,25 @@ export function RouteMapFull() {
 
           {plane && (
             <g transform={`translate(${plane.x} ${plane.y}) rotate(${plane.a})`}>
-              <circle r="9" fill="#07251F" stroke="#D2A017" strokeWidth="1.5" />
+              <circle r="9" fill="#0B1F3B" stroke="#FFA400" strokeWidth="1.5" />
               <g transform="rotate(45) translate(-5 -5) scale(0.42)">
-                <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#F4F1E6" />
+                <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#F6E9DB" />
               </g>
             </g>
           )}
         </svg>
 
         {/* Legend */}
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 px-3 pb-2 pt-3 text-xs text-paper/80">
-          <span className="inline-flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-gold" /> Kajjansi hub</span>
-          <span className="inline-flex items-center gap-2"><span className="h-0.5 w-5 bg-paper/60" /> Scheduled</span>
-          <span className="inline-flex items-center gap-2"><span className="h-0.5 w-5 border-t border-dashed border-paper/50" /> Planned</span>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 px-3 pb-2 pt-3 text-xs text-cream/80">
+          <span className="inline-flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-opportunity" /> Kajjansi hub</span>
+          <span className="inline-flex items-center gap-2"><span className="h-0.5 w-5 bg-cream/60" /> Scheduled</span>
+          <span className="inline-flex items-center gap-2"><span className="h-0.5 w-5 border-t border-dashed border-cream/50" /> Planned</span>
         </div>
       </div>
 
       {/* Route list */}
       <div>
-        <ul className="divide-y divide-nile/10 overflow-hidden rounded-2xl border border-nile/10 bg-white">
+        <ul className="divide-y divide-aviation/10 overflow-hidden rounded-2xl border border-aviation/10 bg-white">
           {ROUTES.map((r, i) => (
             <li key={r.to}>
               <button
@@ -213,16 +213,16 @@ export function RouteMapFull() {
                 onBlur={() => animate(null)}
                 className={cn(
                   "flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition-colors",
-                  active === i ? "bg-nile/[0.05]" : "hover:bg-nile/[0.03]"
+                  active === i ? "bg-aviation/[0.05]" : "hover:bg-aviation/[0.03]"
                 )}
               >
                 <span>
-                  <span className="flight-code block text-sm font-semibold text-nile">
+                  <span className="flight-code block text-sm font-semibold text-aviation">
                     {r.from} → {r.to}
                   </span>
-                  <span className="text-xs text-slatey">{r.city}</span>
+                  <span className="text-xs text-muted">{r.city}</span>
                 </span>
-                <span className="text-right text-xs text-slatey">
+                <span className="text-right text-xs text-muted">
                   <span className="block font-medium text-ink">{r.frequency}</span>
                   <span>{r.blockTime}</span>
                 </span>
@@ -230,8 +230,8 @@ export function RouteMapFull() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-xs text-slatey">
-          <span className="font-semibold text-nile">Planned network:</span>{" "}
+        <p className="mt-4 text-xs text-muted">
+          <span className="font-semibold text-aviation">Planned network:</span>{" "}
           {PLANNED_CITIES.join(", ")}. Flown with partner carriers or under development — no dates committed.
         </p>
       </div>

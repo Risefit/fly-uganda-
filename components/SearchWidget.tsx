@@ -34,7 +34,7 @@ function Field({
       <span
         aria-hidden
         className={cn(
-          "absolute inset-x-3 bottom-0 h-[2px] origin-left bg-gold transition-transform duration-200 ease-out",
+          "absolute inset-x-3 bottom-0 h-[2px] origin-left bg-opportunity transition-transform duration-200 ease-out",
           focused && !reduce ? "scale-x-100" : "scale-x-0"
         )}
       />
@@ -57,7 +57,7 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
     <form
       action="/book"
       style={{ colorScheme: "dark" }}
-      className="w-full overflow-hidden rounded-2xl bg-nile-900 text-warm shadow-widget ring-1 ring-gold/25"
+      className="w-full overflow-hidden rounded-2xl bg-aviation-900 text-warm shadow-widget ring-1 ring-opportunity/25"
       aria-label="Search flights"
     >
       <div className="flex items-center gap-1 border-b border-white/10 px-4 pt-3">
@@ -69,11 +69,11 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
             aria-pressed={tripType === t}
             className={cn(
               "rounded-t-md px-3 py-2 text-xs font-medium uppercase tracking-wide2 transition-colors",
-              tripType === t ? "text-gold-300" : "text-warm/60 hover:text-warm"
+              tripType === t ? "text-opportunity-300" : "text-warm/60 hover:text-warm"
             )}
           >
             {t === "round" ? "Return" : "One way"}
-            {tripType === t && <span className="mx-auto mt-1.5 block h-[2px] w-full bg-gold" />}
+            {tripType === t && <span className="mx-auto mt-1.5 block h-[2px] w-full bg-opportunity" />}
           </button>
         ))}
       </div>
@@ -101,7 +101,7 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
               animate={reduce ? undefined : { rotate: origin === "HUKJ" ? 0 : 180 }}
               transition={{ type: "spring", stiffness: 380, damping: 18 }}
               aria-label="Swap origin and destination"
-              className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-gold/40 bg-nile-700 p-2 text-gold-300 hover:bg-nile-500"
+              className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-opportunity/40 bg-aviation-700 p-2 text-opportunity-300 hover:bg-aviation-500"
             >
               <ArrowLeftRight className="h-4 w-4" aria-hidden />
             </motion.button>
@@ -158,14 +158,14 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
           <input
             id="ff-number"
             placeholder="PC-XXXXXX"
-            className="flight-code w-full max-w-[180px] rounded-md border border-gold/25 bg-nile-700 px-3 py-1.5 text-sm uppercase text-warm placeholder:text-warm/60 focus:border-gold focus:outline-none"
+            className="flight-code w-full max-w-[180px] rounded-md border border-opportunity/25 bg-aviation-700 px-3 py-1.5 text-sm uppercase text-warm placeholder:text-warm/60 focus:border-opportunity focus:outline-none"
           />
         </div>
       )}
 
       <p className="px-4 pb-3 pt-2 text-[0.7rem] text-warm/55">
         Online booking is launching shortly with our reservation partner. Park seats{" "}
-        <span className="font-semibold text-gold-300">{FARES.parkOneWay}</span> per person, one way.
+        <span className="font-semibold text-opportunity-300">{FARES.parkOneWay}</span> per person, one way.
       </p>
     </form>
   );
