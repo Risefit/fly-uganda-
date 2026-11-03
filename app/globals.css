@@ -29,14 +29,14 @@
 
   /* Opportunity-amber keyboard focus ring (WCAG 2.4.7) */
   :focus-visible {
-    outline: 2px solid #ffa400;
+    outline: 2px solid #fcba00;
     outline-offset: 2px;
     border-radius: 2px;
   }
 
   ::selection {
-    background: #ffc861;
-    color: #0b1f3b;
+    background: #ffd24d;
+    color: #001230;
   }
 }
 
@@ -46,7 +46,7 @@
     display: inline-block;
     width: 1px;
     height: 24px;
-    background: #ffa400;
+    background: #fcba00;
   }
   .hairline {
     @apply h-px w-full bg-aviation/10;
@@ -74,7 +74,7 @@
       font-display text-[0.78rem] font-bold uppercase tracking-wide2 text-aviation-900
       shadow-[0_6px_18px_-8px_rgba(255,164,0,0.9)]
       transition-all duration-200 hover:-translate-y-px hover:brightness-105;
-    background-image: linear-gradient(135deg, #ffc861, #ffa400);
+    background-image: linear-gradient(135deg, #ffd24d, #fcba00);
   }
 
   .btn-ghost {
@@ -187,14 +187,14 @@
     font-size: 15px;
     fill: #f6e9db;
     paint-order: stroke;
-    stroke: #0b1f3b;
+    stroke: #001230;
     stroke-width: 4px;
     stroke-linejoin: round;
     opacity: 0;
     transition: opacity 0.4s ease, fill 0.2s ease;
     pointer-events: none;
   }
-  .network-map .map-label-hub { opacity: 1; fill: #ffa400; font-size: 16px; }
+  .network-map .map-label-hub { opacity: 1; fill: #fcba00; font-size: 16px; }
   .network-map .map-country {
     font-family: var(--font-display), system-ui, sans-serif;
     font-weight: 600;
@@ -206,14 +206,14 @@
 
   .network-map .route-shadow { stroke: rgba(11, 31, 59, 0.9); stroke-width: 5; stroke-linecap: round; }
   .network-map .route-line { stroke: rgba(246, 233, 219, 0.55); stroke-width: 1.8; stroke-linecap: round; transition: stroke 0.2s ease, stroke-width 0.2s ease; }
-  .network-map .route-plane { fill: #ffa400; opacity: 0; }
+  .network-map .route-plane { fill: #fcba00; opacity: 0; }
   .network-map .route { cursor: pointer; }
   .network-map .route:not(.is-landed):not(.is-growing) .route-line,
   .network-map .route:not(.is-landed):not(.is-growing) .route-shadow { opacity: 0; }
 
   .network-map .node { cursor: pointer; opacity: 0; transition: opacity 0.35s ease; }
   .network-map .node-dot { fill: #f6e9db; transition: fill 0.2s ease, r 0.2s ease; }
-  .network-map .node-ring { stroke: #ffa400; stroke-opacity: 0; transition: stroke-opacity 0.2s ease; }
+  .network-map .node-ring { stroke: #fcba00; stroke-opacity: 0; transition: stroke-opacity 0.2s ease; }
   .network-map .node:focus { outline: none; }
   .network-map .node:focus-visible .node-ring { stroke-opacity: 1; stroke-width: 3; }
   /* The SVG scales with its box, so labels need larger user units on narrow screens */
@@ -234,43 +234,43 @@
 .network-map[data-active]:not([data-active=""]) .node-dot { fill: rgba(246, 233, 219, 0.55); }
 .network-map[data-active]:not([data-active=""]) .map-label { fill: rgba(246, 233, 219, 0.55); }
 
-.network-map[data-active="HUKH"] .route[data-code="HUKH"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUKH"] .node[data-code="HUKH"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUKH"] .route[data-code="HUKH"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUKH"] .node[data-code="HUKH"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUKH"] .node[data-code="HUKH"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUKH"] .map-label[data-code="HUKH"] { fill: #ffa400; }
-.network-map[data-active="HUKI"] .route[data-code="HUKI"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUKI"] .node[data-code="HUKI"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUKH"] .map-label[data-code="HUKH"] { fill: #fcba00; }
+.network-map[data-active="HUKI"] .route[data-code="HUKI"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUKI"] .node[data-code="HUKI"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUKI"] .node[data-code="HUKI"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUKI"] .map-label[data-code="HUKI"] { fill: #ffa400; }
-.network-map[data-active="HUKS"] .route[data-code="HUKS"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUKS"] .node[data-code="HUKS"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUKI"] .map-label[data-code="HUKI"] { fill: #fcba00; }
+.network-map[data-active="HUKS"] .route[data-code="HUKS"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUKS"] .node[data-code="HUKS"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUKS"] .node[data-code="HUKS"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUKS"] .map-label[data-code="HUKS"] { fill: #ffa400; }
-.network-map[data-active="HUGG"] .route[data-code="HUGG"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUGG"] .node[data-code="HUGG"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUKS"] .map-label[data-code="HUKS"] { fill: #fcba00; }
+.network-map[data-active="HUGG"] .route[data-code="HUGG"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUGG"] .node[data-code="HUGG"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUGG"] .node[data-code="HUGG"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUGG"] .map-label[data-code="HUGG"] { fill: #ffa400; }
-.network-map[data-active="HUKD"] .route[data-code="HUKD"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUKD"] .node[data-code="HUKD"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUGG"] .map-label[data-code="HUGG"] { fill: #fcba00; }
+.network-map[data-active="HUKD"] .route[data-code="HUKD"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUKD"] .node[data-code="HUKD"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUKD"] .node[data-code="HUKD"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUKD"] .map-label[data-code="HUKD"] { fill: #ffa400; }
-.network-map[data-active="HUKF"] .route[data-code="HUKF"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUKF"] .node[data-code="HUKF"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUKD"] .map-label[data-code="HUKD"] { fill: #fcba00; }
+.network-map[data-active="HUKF"] .route[data-code="HUKF"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUKF"] .node[data-code="HUKF"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUKF"] .node[data-code="HUKF"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUKF"] .map-label[data-code="HUKF"] { fill: #ffa400; }
-.network-map[data-active="HUAR"] .route[data-code="HUAR"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUAR"] .node[data-code="HUAR"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUKF"] .map-label[data-code="HUKF"] { fill: #fcba00; }
+.network-map[data-active="HUAR"] .route[data-code="HUAR"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUAR"] .node[data-code="HUAR"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUAR"] .node[data-code="HUAR"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUAR"] .map-label[data-code="HUAR"] { fill: #ffa400; }
-.network-map[data-active="HUGU"] .route[data-code="HUGU"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUGU"] .node[data-code="HUGU"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUAR"] .map-label[data-code="HUAR"] { fill: #fcba00; }
+.network-map[data-active="HUGU"] .route[data-code="HUGU"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUGU"] .node[data-code="HUGU"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUGU"] .node[data-code="HUGU"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUGU"] .map-label[data-code="HUGU"] { fill: #ffa400; }
-.network-map[data-active="HUMO"] .route[data-code="HUMO"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUMO"] .node[data-code="HUMO"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUGU"] .map-label[data-code="HUGU"] { fill: #fcba00; }
+.network-map[data-active="HUMO"] .route[data-code="HUMO"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUMO"] .node[data-code="HUMO"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUMO"] .node[data-code="HUMO"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUMO"] .map-label[data-code="HUMO"] { fill: #ffa400; }
-.network-map[data-active="HUEN"] .route[data-code="HUEN"] .route-line { stroke: #ffa400; stroke-width: 3; }
-.network-map[data-active="HUEN"] .node[data-code="HUEN"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUMO"] .map-label[data-code="HUMO"] { fill: #fcba00; }
+.network-map[data-active="HUEN"] .route[data-code="HUEN"] .route-line { stroke: #fcba00; stroke-width: 3; }
+.network-map[data-active="HUEN"] .node[data-code="HUEN"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUEN"] .node[data-code="HUEN"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUEN"] .map-label[data-code="HUEN"] { fill: #ffa400; }
+.network-map[data-active="HUEN"] .map-label[data-code="HUEN"] { fill: #fcba00; }

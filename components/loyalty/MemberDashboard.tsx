@@ -89,7 +89,7 @@ export function MemberDashboard() {
               <p className="mt-6 font-display text-2xl">{MEMBER.name}</p>
               <p className="flight-code mt-1 text-sm text-aviation-900/80">{MEMBER.ffNumber}</p>
             </div>
-            <TierEmblem tier={TIERS.findIndex((x) => x.key === tier.key) + 1} accent="#0B1F3B" className="h-12 w-12" />
+            <TierEmblem tier={TIERS.findIndex((x) => x.key === tier.key) + 1} accent="#001230" className="h-12 w-12" />
           </div>
           <div className="flex items-center justify-between bg-black/10 px-6 py-3">
             <span className="text-sm font-medium">{tier.name}</span>

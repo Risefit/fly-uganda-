@@ -69,7 +69,8 @@ export const metadata: Metadata = {
     description: "Uganda's domestic airline — scheduled flights across the country from Kajjansi.",
   },
   icons: {
-    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }, { url: "/brand/png/icon-192.png", type: "image/png", sizes: "192x192" }],
+    apple: [{ url: "/brand/png/apple-touch-icon-180.png", sizes: "180x180" }],
   },
   alternates: {
     canonical: SITE_URL,

@@ -2,6 +2,20 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.3.0 — November 2026
+
+- **Logo is now the supplied artwork, unchanged.** `public/brand/logo.png` (1375×380,
+  transparent) is the master; `ribbon.png` is the wing cut from it; favicon, app icons
+  and the OG image are built from those. The vector generator (`logo/`, `brand-paths.ts`)
+  is retired. The `Logo` component renders the PNG; on dark grounds it sits on a cream
+  plate rather than being recoloured.
+- **Brand colours sampled from the logo:** navy `#001230` (aviation/ink), gold `#FCBA00`
+  (opportunity), red `#EC0010` (energy), green `#005A30` (growth). Contrast guard
+  re-run — all pass.
+- **Header** is now on the cream ground (the navy wordmark needs a light bar).
+- **Homepage network section:** heading above the map; route list pinned to the map's
+  height with the ten rows filling it.
+
 ## v1.2.3 — November 2026
 
 - **Backgrounds moved to the Zulia concession-page scheme:** page ground is bone

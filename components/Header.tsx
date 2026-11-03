@@ -40,7 +40,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 bg-graphite text-cream transition-shadow duration-300",
+        "fixed inset-x-0 top-0 z-50 bg-cream text-graphite transition-shadow duration-300",
         elevated && "shadow-[0_1px_0_rgba(255,164,0,0.35),0_12px_32px_-20px_rgba(11,31,59,0.8)]"
         // NB: no backdrop-filter here. A backdrop-filter ancestor becomes the
         // containing block for position:fixed descendants and collapses the
@@ -50,7 +50,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
       <div className="container-site flex h-[72px] items-center justify-between gap-6">
         {/* No aria-label: the visible wordmark is the accessible name (WCAG 2.5.3). */}
         <Link href="/" className="shrink-0">
-          <Logo tone="dark" className="h-9 w-auto sm:h-10" />
+          <Logo priority className="h-11 w-auto sm:h-12" />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
@@ -60,18 +60,18 @@ export function Header({ solid = false }: { solid?: boolean }) {
                 <button
                   type="button"
                   aria-haspopup="true"
-                  className="inline-flex items-center gap-1 py-2 font-display text-[0.78rem] font-semibold text-cream/90 hover:text-opportunity"
+                  className="inline-flex items-center gap-1 py-2 font-display text-[0.78rem] font-semibold text-graphite hover:text-opportunity-700"
                 >
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" aria-hidden />
                 </button>
                 <div className="invisible absolute left-1/2 top-full w-60 -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="overflow-hidden rounded-xl border border-white/10 bg-graphite-700 py-2 shadow-widget">
+                  <div className="overflow-hidden rounded-xl border border-graphite/10 bg-white py-2 shadow-widget">
                     {item.children.map((c) => (
                       <Link
                         key={c.href}
                         href={c.href}
-                        className="block px-4 py-2.5 text-sm text-cream/90 hover:bg-white/[0.06] hover:text-opportunity"
+                        className="block px-4 py-2.5 text-sm text-graphite hover:bg-cream hover:text-opportunity-700"
                       >
                         {c.label}
                       </Link>
@@ -83,7 +83,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="py-2 font-display text-[0.78rem] font-semibold text-cream/90 hover:text-opportunity"
+                className="py-2 font-display text-[0.78rem] font-semibold text-graphite hover:text-opportunity-700"
               >
                 {item.label}
               </Link>
@@ -95,13 +95,13 @@ export function Header({ solid = false }: { solid?: boolean }) {
           <Link
             href="/routes"
             aria-label="Search routes"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-cream/80 hover:bg-white/[0.08] hover:text-opportunity"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-graphite hover:bg-sand hover:text-opportunity-700"
           >
             <Search className="h-4 w-4" aria-hidden />
           </Link>
           <Link
             href="/pearl-club/account"
-            className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 font-display text-[0.72rem] font-semibold uppercase tracking-wide2 text-cream hover:border-opportunity hover:text-opportunity"
+            className="inline-flex items-center gap-2 rounded-full border border-graphite/30 px-4 py-2 font-display text-[0.72rem] font-semibold uppercase tracking-wide2 text-graphite hover:border-opportunity hover:text-opportunity"
           >
             <User className="h-3.5 w-3.5" aria-hidden />
             Sign in
@@ -112,7 +112,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
         </div>
 
         <button
-          className="inline-flex items-center justify-center rounded-md p-2 text-cream lg:hidden"
+          className="inline-flex items-center justify-center rounded-md p-2 text-graphite lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}

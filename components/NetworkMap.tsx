@@ -245,7 +245,9 @@ export function NetworkMap({
   const flights = sel ? SCHEDULE.filter((f) => (f.from === sel.from && f.to === sel.to) || (f.from === sel.to && f.to === sel.from)) : [];
 
   return (
-    <div className={cn("grid items-start gap-6 lg:grid-cols-[1.15fr_0.85fr]", className)}>
+    <div className={className}>
+      {heading}
+      <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
       {/* Map */}
       <div
         className="network-map relative overflow-hidden rounded-3xl bg-aviation text-cream ring-1 ring-white/10"
@@ -268,14 +270,14 @@ export function NetworkMap({
         >
           <g id="land" fill="rgba(246,233,219,0.06)" stroke="rgba(246,233,219,0.5)" strokeLinejoin="round" />
           <g id="neighbours" fill="rgba(246,233,219,0.05)" stroke="rgba(246,233,219,0.35)" strokeWidth="0.8" strokeLinejoin="round" style={{ opacity: 0 }} />
-          <path id="uganda" fill="rgba(0,107,79,0.22)" stroke="#FFA400" strokeLinejoin="round" style={{ opacity: 0 }} />
+          <path id="uganda" fill="rgba(0,90,48,0.22)" stroke="#FCBA00" strokeLinejoin="round" style={{ opacity: 0 }} />
           <g id="lakes" fill="rgba(0,124,186,0.42)" stroke="rgba(95,185,232,0.55)" strokeWidth="0.7" style={{ opacity: 0 }} />
           <g id="rivers" fill="none" stroke="rgba(95,185,232,0.7)" strokeWidth="1.3" strokeLinecap="round" style={{ opacity: 0 }} />
           <g id="country-labels" style={{ opacity: 0 }} />
           <g id="routes" />
           <g id="hub" style={{ opacity: 0 }}>
-            <circle r="18" fill="none" stroke="#FFA400" strokeOpacity="0.45" />
-            <circle r="7" fill="#FFA400" />
+            <circle r="18" fill="none" stroke="#FCBA00" strokeOpacity="0.45" />
+            <circle r="7" fill="#FCBA00" />
             <text x="0" y="-26" textAnchor="middle" className="map-label map-label-hub">Kajjansi</text>
           </g>
           <g id="nodes" />
@@ -286,11 +288,11 @@ export function NetworkMap({
         </span>
       </div>
 
-      {/* Panel: route list and detail */}
-      <div className="min-w-0">
-        {heading}
+      {/* Panel: route list and detail — pinned to the map's height on desktop */}
+      <div className="relative min-w-0 lg:min-h-0">
+        <div className="flex flex-col lg:absolute lg:inset-0">
         {sel ? (
-          <div className="rounded-2xl border border-aviation/10 bg-warm p-6 shadow-card">
+          <div className="flex-1 overflow-y-auto rounded-2xl border border-aviation/10 bg-warm p-6 shadow-card">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <span className="flight-code text-xs font-semibold text-opportunity-700">{sel.from} → {sel.to}</span>
@@ -336,9 +338,9 @@ export function NetworkMap({
             </div>
           </div>
         ) : (
-          <ul className="divide-y divide-aviation/10 overflow-hidden rounded-2xl border border-aviation/10 bg-warm" aria-label="Scheduled routes">
+          <ul className="flex flex-1 flex-col divide-y divide-aviation/10 overflow-hidden rounded-2xl border border-aviation/10 bg-warm" aria-label="Scheduled routes">
             {routes.map((r) => (
-              <li key={r.to}>
+              <li key={r.to} className="flex flex-1">
                 <button
                   type="button"
                   onClick={() => setSelected(r.to)}
@@ -347,7 +349,7 @@ export function NetworkMap({
                   onFocus={() => setHover(r.to)}
                   onBlur={() => setHover(null)}
                   className={cn(
-                    "flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition-colors",
+                    "flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors",
                     hover === r.to ? "bg-cream" : "hover:bg-cream/60"
                   )}
                 >
@@ -373,6 +375,8 @@ export function NetworkMap({
             ))}
           </ul>
         )}
+        </div>
+      </div>
       </div>
     </div>
   );

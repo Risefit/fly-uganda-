@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.2.3 · November 2026
+Version 1.3.0 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -371,7 +371,22 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   guard from the Dawn Star system is gone. `font-bold` works on headings now.
 - Do not push from a stale Codespace — treat the Mac as the single source of truth.
 
-## 14. What changed in v1.2.3 — graphite + contour backgrounds
+## 14. What changed in v1.3.0 — the supplied logo, its colours
+
+- **Masters:** `public/brand/logo.png` and `public/brand/ribbon.png` are the artwork Phil
+  supplied, cropped from the clean lower copy of his file, nothing redrawn or recoloured.
+  Icons in `public/brand/png/`, `public/favicon.png`, `public/og-image.png` derive from
+  them. **If a vector master is ever produced, drop it in as `logo.svg` and point
+  `components/brand.tsx` at it** — the component is a thin `next/image` wrapper.
+- `Logo tone="dark"` puts the PNG on a cream plate (footer). Do not invert it.
+- Tokens now match the logo (see CHANGELOG). `heritage` `#7A0019` is no longer in the
+  mark; it stays as a token for the Crowned Crane tier trim only if wanted (currently the
+  tier uses red).
+- The logo tagline reads "UGANDA TO AFRICA AND BEYOND" because that is the artwork; the
+  site's own slogan line (hero kicker, footer, metadata) stays "Uganda's domestic
+  airline". Decide which one the brand carries before launch.
+
+## 15. What changed in v1.2.3 — graphite + contour backgrounds
 
 - Tokens: `cream`/`paper` = `#F4EFE6` (bone), `sand` = `#E9E1D2`, `graphite` =
   `#2A2824` / 700 `#35332E` / 500 `#4A4740`, `kopje` = `#8A6A4B`. Navy `aviation` is
@@ -384,7 +399,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   graphite. Hero scrims still use `aviation-900` (over the photo, reads as shadow).
 - Brand brief §4 palette table should be updated to match when next revised.
 
-## 15. What changed in v1.2.2 — ICAO codes, tier cards, widget
+## 16. What changed in v1.2.2 — ICAO codes, tier cards, widget
 
 - **Codes:** `Airport.code` is ICAO for every airport and is the `/routes/[code]` slug,
   the `data-code` on the map, the key in `lib/photos.ts`, the `public/photos/<code>.jpg`
@@ -397,7 +412,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
 - **TierLadder** uses fixed row heights (`min-h-[6.25rem]` header, `min-h-[2.75rem]`
   tagline, `min-h-[4.5rem]` qualification box) so the four cards align whatever wraps.
 
-## 16. What changed in v1.2.1 — network, fares, /book
+## 17. What changed in v1.2.1 — network, fares, /book
 
 - **Network is now ten destinations:** Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua,
   Gulu, Moroto, Kidepo, Entebbe. Mweya and Pakuba are withdrawn (their scene plates and
@@ -416,7 +431,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   the Karamoja aerial (`public/photos/humo.jpg`). Unsplash has no verifiable photo of any
   of the four. Drop KEA's own photos into `public/photos/{hukf,huar,hugu,humo}.jpg`.
 
-## 17. What changed in v1.2.0 — domestic-airline positioning, real map, hero
+## 18. What changed in v1.2.0 — domestic-airline positioning, real map, hero
 
 - **Positioning.** "Uganda's safari airline" → **"Uganda's domestic airline"** in the
   logo tagline (regenerated through `logo/`), metadata, hero, footer and about. Charter is
@@ -441,7 +456,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   launch — they were placed from published coordinates, not surveyed.
 - **Hero** is `public/photos/hero.jpg` (needs the full-res original — §6).
 
-## 18. What changed in v1.1.0 — the Brand Identity Toolkit
+## 19. What changed in v1.1.0 — the Brand Identity Toolkit
 
 Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) did not change.
 
@@ -456,7 +471,7 @@ Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) d
   suppressing the self-hosted fonts since the fork, and the unquoted "Source Sans 3" that
   voided body `font-family` — both now in §5.
 
-## 19. What changed from the South Sudan Airlines fork (v1.0.0)
+## 20. What changed from the South Sudan Airlines fork (v1.0.0)
 
 For anyone comparing the two codebases:
 

@@ -19,13 +19,13 @@ const R = (a, b) => {
 const P = {
   cream: "#F4EFE6", warm: "#FFFCF5", sand: "#E9E1D2",
   graphite: "#2A2824", graphite700: "#35332E", graphite500: "#4A4740",
-  aviation: "#0B1F3B", aviation700: "#122B4E", aviation500: "#1A3862", aviation100: "#E4E8EF",
-  opportunity: "#FFA400", opportunity300: "#FFC861", opportunity700: "#8A5600", opportunity900: "#7A4D00",
-  energy: "#D71920", energy300: "#FF6B70", energy700: "#C2151C",
+  aviation: "#001230", aviation700: "#0B2448", aviation500: "#163660", aviation100: "#E4E8EF",
+  opportunity: "#FCBA00", opportunity300: "#FFD24D", opportunity700: "#8A5600", opportunity900: "#7A4D00",
+  energy: "#EC0010", energy300: "#FF6B70", energy700: "#C2151C",
   heritage: "#7A0019",
-  growth: "#006B4F", growth300: "#4FBF95",
+  growth: "#005A30", growth300: "#4FBF95",
   connection: "#007CBA", connection300: "#5FB9E8", connection700: "#006A9F",
-  ink: "#0B1F3B", muted: "#5C5244",
+  ink: "#001230", muted: "#5C5244",
 };
 
 // [foreground, background, where it is used, minimum ratio]

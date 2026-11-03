@@ -39,25 +39,26 @@ const config: Config = {
         warm: "#FFFCF5", // card and panel surfaces
 
         // Aviation — navigation, footer, dark panels, body text
+        // Aviation — the logo's navy
         aviation: {
-          DEFAULT: "#0B1F3B",
-          900: "#0B1F3B",
-          700: "#122B4E",
-          500: "#1A3862",
+          DEFAULT: "#001230",
+          900: "#001230",
+          700: "#0B2448",
+          500: "#163660",
           100: "#E4E8EF",
         },
 
         // Opportunity — the primary call to action
         opportunity: {
-          DEFAULT: "#FFA400",
-          300: "#FFC861", // on dark
+          DEFAULT: "#FCBA00", // the logo's gold
+          300: "#FFD24D", // on dark
           700: "#8A5600", // text on light (5.16:1 on cream)
           900: "#7A4D00",
         },
 
         // Energy — urgency, alerts, the ribbon's red strand
         energy: {
-          DEFAULT: "#D71920",
+          DEFAULT: "#EC0010", // the logo's red
           300: "#FF6B70", // on dark
           700: "#C2151C", // text on light
         },
@@ -67,7 +68,7 @@ const config: Config = {
 
         // Growth — confirmations, sustainability, the ribbon's green strand
         growth: {
-          DEFAULT: "#006B4F",
+          DEFAULT: "#005A30", // the logo's green
           300: "#4FBF95", // on dark
         },
 
@@ -79,7 +80,7 @@ const config: Config = {
         },
 
         // Text
-        ink: "#0B1F3B",
+        ink: "#001230",
         muted: "#5C5244",
         slatey: "#5C5244", // alias
 

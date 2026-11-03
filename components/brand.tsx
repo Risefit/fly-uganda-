@@ -1,57 +1,47 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
-import {
-  RIBBON,
-  RIBBON_BOX,
-  WORDMARK_D,
-  WORDMARK_ADVANCE,
-  TAGLINE_D,
-  TAGLINE_ADVANCE,
-} from "@/components/brand-paths";
 
 /**
- * FLY UGANDA brand primitives — Modern Pan-African system.
+ * FLY UGANDA brand primitives.
  *
- * THE MARK — "The Ribbon". Four strands of the identity (Growth, Opportunity,
- * Energy, Heritage) caught in a tailwind: thick at the left, rising through a
- * gentle S, tapering to a flick above the wordmark. The wordmark is Montserrat
- * Bold Italic, outlined to paths; nothing here depends on a font at render time.
- *
- * Geometry is GENERATED — see logo/build.js. Edit the generator, not the paths.
+ * THE MARK is the artwork Phil supplied (v1.3): public/brand/logo.png — gold
+ * over red over green wing, navy Montserrat-style wordmark, "UGANDA TO AFRICA
+ * AND BEYOND" between gold rules. It is used as supplied, never redrawn or
+ * recoloured. public/brand/ribbon.png is the wing cut out of the same file.
+ * Brand colours are sampled from it: navy #001230, gold #FCBA00, red #EC0010,
+ * green #005A30.
  */
 
-const STRAND: Record<(typeof RIBBON)[number]["colour"], string> = {
-  growth: "#006B4F",
-  opportunity: "#FFA400",
-  energy: "#D71920",
-  heritage: "#7A0019",
+const STRAND: Record<"growth" | "opportunity" | "energy" | "heritage", string> = {
+  growth: "#005A30",
+  opportunity: "#FCBA00",
+  energy: "#EC0010",
+  heritage: "#001230",
 };
 
-/** The ribbon on its own — decorative, for heroes, cards and the app icon. */
+/**
+ * The ribbon on its own — the wing from the supplied artwork, as a cut-out
+ * raster (public/brand/ribbon.png). Decorative on heroes and cards.
+ */
 export function Ribbon({
   className,
-  mono,
   title = "Fly Uganda",
   decorative = false,
 }: {
   className?: string;
-  /** Single colour (e.g. "currentColor") for monochrome contexts. */
   mono?: string;
   title?: string;
   decorative?: boolean;
 }) {
-  const { x, y, w, h } = RIBBON_BOX;
   return (
-    <svg
-      viewBox={`${x} ${y} ${w} ${h}`}
+    <Image
+      src="/brand/ribbon.png"
+      alt={decorative ? "" : title}
+      width={654}
+      height={161}
+      aria-hidden={decorative || undefined}
       className={cn("h-10 w-auto", className)}
-      {...(decorative
-        ? { "aria-hidden": true as const, focusable: false }
-        : { role: "img", "aria-label": title })}
-    >
-      {RIBBON.map((s) => (
-        <path key={s.colour} d={s.d} fill={mono ?? STRAND[s.colour]} />
-      ))}
-    </svg>
+    />
   );
 }
 
@@ -78,49 +68,40 @@ export function Chip({
 }
 
 /**
- * The full lockup — ribbon over the wordmark, optional tagline.
- * `tone="dark"` sets a cream wordmark for navy backgrounds.
+ * The full lockup — the artwork exactly as supplied (public/brand/logo.png,
+ * 1375×380, transparent). It carries a navy wordmark, so it belongs on light
+ * grounds; `tone="dark"` places it on a cream plate rather than recolouring it.
  */
 export function Logo({
   className,
   tone = "light",
-  tagline = false,
   title = "Fly Uganda",
+  priority = false,
 }: {
   className?: string;
   tone?: "light" | "dark";
   tagline?: boolean;
   title?: string;
+  priority?: boolean;
 }) {
-  const word = tone === "light" ? "#0B1F3B" : "#FFFCF5";
-  // Same proportions as public/brand/fly-uganda-primary.svg
-  const CAP = 112, X = 70, BASE = 292;
-  const s = CAP / 700;
-  const H = tagline ? 400 : 330;
-  return (
-    <svg viewBox={`0 0 1180 ${H}`} className={cn("h-12 w-auto", className)} role="img" aria-label={title}>
-      <g transform={`translate(${X - 6} 60) scale(0.78)`}>
-        {RIBBON.map((r) => (
-          <path key={r.colour} d={r.d} fill={STRAND[r.colour]} />
-        ))}
-      </g>
-      <g transform={`translate(${X} ${BASE}) scale(${s})`} fill={word}>
-        <path d={WORDMARK_D} />
-      </g>
-      {tagline && (
-        <g>
-          <rect x={X + 4} y={BASE + 65} width="46" height="3" fill="#FFA400" />
-          <g transform={`translate(${X + 4 + 46 + 18} ${BASE + 73}) scale(${21 / 700})`} fill="#FFA400">
-            <path d={TAGLINE_D} />
-          </g>
-        </g>
-      )}
-    </svg>
+  const img = (
+    <Image
+      src="/brand/logo.png"
+      alt={title}
+      width={1375}
+      height={380}
+      priority={priority}
+      className={cn("h-12 w-auto", className)}
+    />
   );
+  if (tone === "dark") {
+    return <span className="inline-block rounded-xl bg-cream px-4 py-3">{img}</span>;
+  }
+  return img;
 }
 
 /** Exposed so layouts can reserve the right aspect ratio. */
-export const LOGO_ASPECT = { wordmark: WORDMARK_ADVANCE, tagline: TAGLINE_ADVANCE };
+export const LOGO_ASPECT = { logo: 1375 / 380, ribbon: 654 / 161 };
 
 /** The Rule — a single thin amber line. The system's quiet divider. */
 export function Rule({ className }: { className?: string }) {
