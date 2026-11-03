@@ -47,20 +47,10 @@ const STOCK: Record<string, Photo> = {
     credit: { name: "Random Institute", url: "https://unsplash.com/@randominstitute", source: "Unsplash" },
     aerial: true,
   },
-  HUMW: {
-    src: U("photo-1730276527725-4efea7694a09"),
-    alt: "The Kazinga Channel at Mweya, Queen Elizabeth National Park",
-    credit: { name: "Lisa Stockton", url: "https://unsplash.com/@lisastockton", source: "Unsplash" },
-  },
   KSE: {
     src: U("photo-1583140310426-9187b6489be3"),
     alt: "The Rwenzori Mountains at sunset, seen from the Fort Portal side",
     credit: { name: "Itote Rubombora", url: "https://unsplash.com/@itote", source: "Unsplash" },
-  },
-  PAF: {
-    src: U("photo-1663498798455-8ce6d44d4505"),
-    alt: "The Victoria Nile at Murchison Falls, Northern Uganda",
-    credit: { name: "Ivan Sabayuki", url: "https://unsplash.com/@ivansabayuki", source: "Unsplash" },
   },
   HUGG: {
     src: U("photo-1652440308509-60fecbb007c2"),

@@ -1,10 +1,12 @@
 // Single source of truth for hard-coded v1 content (CMS-ready later).
 //
 // AIRPORT CODE CONVENTION: `code` is the IATA code where one has been
-// allocated (EBB, KHX, KXO, KSE, PAF) and the ICAO code where it has not
-// (HUKJ, HUMW, HUGG, HUKD). Ugandan park airstrips are inconsistently coded and
-// this mix is what operators and ground handlers actually quote. `code` is
-// also the /routes/[code] URL slug.
+// allocated (EBB, KHX, KXO, KSE, RUA, ULU) and the ICAO code where it has not
+// (HUKJ, HUGG, HUKD, HUMO, HUKF). Ugandan up-country airports are
+// inconsistently coded and this mix is what operators and ground handlers
+// actually quote. HUKF = Kabalega International, Hoima (AC-U-KWIK also lists
+// IATA KBG — unconfirmed; verify with UCAA before launch). `code` is also the
+// /routes/[code] URL slug.
 //
 // POSITIONING: Fly Uganda is a scheduled, ticketed domestic airline. Copy in
 // this file describes places by what they are to the people who live and work
@@ -29,10 +31,12 @@ export const HUB: Airport = {
 export const DESTINATIONS: Airport[] = [
   { code: "KHX", city: "Kihihi", country: "Uganda" },
   { code: "KXO", city: "Kisoro", country: "Uganda" },
-  { code: "HUMW", city: "Mweya", country: "Uganda" },
   { code: "KSE", city: "Kasese", country: "Uganda" },
-  { code: "PAF", city: "Pakuba", country: "Uganda" },
+  { code: "HUKF", city: "Hoima", country: "Uganda" },
   { code: "HUGG", city: "Bugungu", country: "Uganda" },
+  { code: "RUA", city: "Arua", country: "Uganda" },
+  { code: "ULU", city: "Gulu", country: "Uganda" },
+  { code: "HUMO", city: "Moroto", country: "Uganda" },
   { code: "HUKD", city: "Kidepo", country: "Uganda" },
   { code: "EBB", city: "Entebbe", country: "Uganda" },
 ];
@@ -54,10 +58,12 @@ export type Route = {
 export const ROUTES: Route[] = [
   { from: "HUKJ", to: "KHX", city: "Kihihi", park: "Kanungu · Bwindi (north) & Ishasha", frequency: "2× daily", blockTime: "1h 30m", type: "Scheduled", status: "live" },
   { from: "HUKJ", to: "KXO", city: "Kisoro", park: "Kisoro town · Bwindi (south), Mgahinga & the Rwanda border", frequency: "1× daily", blockTime: "1h 40m", type: "Scheduled", status: "live" },
-  { from: "HUKJ", to: "HUMW", city: "Mweya", park: "Queen Elizabeth", frequency: "1× daily", blockTime: "1h 20m", type: "Scheduled", status: "live" },
   { from: "HUKJ", to: "KSE", city: "Kasese", park: "Kasese town · Rwenzori & Queen Elizabeth (north)", frequency: "1× daily", blockTime: "1h 10m", type: "Scheduled", status: "live" },
-  { from: "HUKJ", to: "PAF", city: "Pakuba", park: "Murchison Falls (north bank)", frequency: "1× daily", blockTime: "1h 20m", type: "Scheduled", status: "live" },
-  { from: "HUKJ", to: "HUGG", city: "Bugungu", park: "Buliisa · Murchison Falls (south bank) & the Albertine oil area", frequency: "1× daily", blockTime: "1h 15m", type: "Scheduled", status: "live" },
+  { from: "HUKJ", to: "HUKF", city: "Hoima", park: "Bunyoro · Kabalega International, the refinery & Kingfisher", frequency: "1× daily", blockTime: "0h 55m", type: "Scheduled", status: "live" },
+  { from: "HUKJ", to: "HUGG", city: "Bugungu", park: "Buliisa · Murchison Falls & the Tilenga oil area", frequency: "1× daily", blockTime: "1h 15m", type: "Scheduled", status: "live" },
+  { from: "HUKJ", to: "RUA", city: "Arua", park: "West Nile · Arua city & the DRC and South Sudan border trade", frequency: "1× daily", blockTime: "1h 30m", type: "Scheduled", status: "live" },
+  { from: "HUKJ", to: "ULU", city: "Gulu", park: "Acholi · Gulu city, the hub of the north", frequency: "2× daily", blockTime: "1h 15m", type: "Scheduled", status: "live" },
+  { from: "HUKJ", to: "HUMO", city: "Moroto", park: "Karamoja · Moroto town & Mount Moroto", frequency: "3× weekly", blockTime: "1h 25m", type: "Scheduled", status: "live" },
   { from: "HUKJ", to: "HUKD", city: "Kidepo", park: "Karamoja · Kidepo Valley", frequency: "3× weekly", blockTime: "2h 00m", type: "Scheduled", status: "live" },
   { from: "HUKJ", to: "EBB", city: "Entebbe", park: "International connections", frequency: "On demand", blockTime: "0h 15m", type: "Connection", status: "live" },
 ];
@@ -170,11 +176,11 @@ export const DESTINATION_TILES: Destination[] = [
     image: "/scenes/kasese.svg",
   },
   {
-    code: "PAF",
-    city: "Pakuba",
-    tag: "Murchison Falls",
-    blurb: "The Nile squeezed through seven metres of rock, from the air.",
-    image: "/scenes/pakuba.svg",
+    code: "ULU",
+    city: "Gulu",
+    tag: "Acholi · the north",
+    blurb: "Seventy-five minutes to the commercial capital of northern Uganda.",
+    image: "/scenes/ulu.svg",
   },
   {
     code: "HUKD",

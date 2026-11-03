@@ -2,6 +2,20 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.2.1 — November 2026
+
+- **Network:** Mweya and Pakuba withdrawn; **Hoima (Kabalega International, HUKF)**,
+  **Arua (RUA)**, **Gulu (ULU)** and **Moroto (HUMO)** added — ten destinations. Arua and
+  Gulu timetabled on the 1900D; map, geo, schedule, guides and copy updated.
+- **Fares removed from the site.** No "from USD" anywhere; the fare tiles on /book,
+  /routes, the route pages and the map panel are gone (the map and route pages show the
+  aircraft type instead). `FARES` stays in `lib/data.ts`, unused, for when a published
+  fare sheet is signed off.
+- **/book layout:** booking widget spans the page; "Already booked?" is a single row
+  beneath it.
+- Placeholder plates for Hoima, Arua and Gulu (`public/scenes/{hukf,rua,ulu}.svg`);
+  Moroto uses the Karamoja aerial. Real photography needed for all four — handover §6.
+
 ## v1.2.0 — November 2026
 
 - **Positioning: Uganda's domestic airline.** Tagline regenerated; safari/bush language

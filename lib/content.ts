@@ -21,6 +21,7 @@ export type Flight = {
 };
 
 const CARAVAN = "Grand Caravan";
+const B1900 = "Beechcraft 1900D";
 
 export const SCHEDULE: Flight[] = [
   { flightNo: "FU101", from: "HUKJ", to: "KHX", city: "Kihihi", dep: "07:30", arr: "09:00", days: "Daily", aircraft: CARAVAN },
@@ -29,14 +30,20 @@ export const SCHEDULE: Flight[] = [
   { flightNo: "FU104", from: "KHX", to: "HUKJ", city: "Kihihi", dep: "15:20", arr: "16:50", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU111", from: "HUKJ", to: "KXO", city: "Kisoro", dep: "07:30", arr: "09:10", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU112", from: "KXO", to: "HUKJ", city: "Kisoro", dep: "09:30", arr: "11:10", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU121", from: "HUKJ", to: "HUMW", city: "Mweya", dep: "08:00", arr: "09:20", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU122", from: "HUMW", to: "HUKJ", city: "Mweya", dep: "09:40", arr: "11:00", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU131", from: "HUKJ", to: "KSE", city: "Kasese", dep: "08:00", arr: "09:10", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU132", from: "KSE", to: "HUKJ", city: "Kasese", dep: "09:30", arr: "10:40", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU141", from: "HUKJ", to: "PAF", city: "Pakuba", dep: "07:45", arr: "09:05", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU142", from: "PAF", to: "HUKJ", city: "Pakuba", dep: "09:25", arr: "10:45", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU151", from: "HUKJ", to: "HUGG", city: "Bugungu", dep: "07:45", arr: "09:00", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU152", from: "HUGG", to: "HUKJ", city: "Bugungu", dep: "09:20", arr: "10:35", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU121", from: "HUKJ", to: "HUKF", city: "Hoima", dep: "08:00", arr: "08:55", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU122", from: "HUKF", to: "HUKJ", city: "Hoima", dep: "09:15", arr: "10:10", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU171", from: "HUKJ", to: "RUA", city: "Arua", dep: "07:30", arr: "09:00", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU172", from: "RUA", to: "HUKJ", city: "Arua", dep: "09:30", arr: "11:00", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU181", from: "HUKJ", to: "ULU", city: "Gulu", dep: "07:15", arr: "08:30", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU182", from: "ULU", to: "HUKJ", city: "Gulu", dep: "08:50", arr: "10:05", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU183", from: "HUKJ", to: "ULU", city: "Gulu", dep: "14:00", arr: "15:15", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU184", from: "ULU", to: "HUKJ", city: "Gulu", dep: "15:35", arr: "16:50", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU191", from: "HUKJ", to: "HUMO", city: "Moroto", dep: "08:15", arr: "09:40", days: "Tue · Thu · Sat", aircraft: CARAVAN },
+  { flightNo: "FU192", from: "HUMO", to: "HUKJ", city: "Moroto", dep: "10:00", arr: "11:25", days: "Tue · Thu · Sat", aircraft: CARAVAN },
   { flightNo: "FU161", from: "HUKJ", to: "HUKD", city: "Kidepo", dep: "07:00", arr: "09:00", days: "Mon · Wed · Fri", aircraft: CARAVAN },
   { flightNo: "FU162", from: "HUKD", to: "HUKJ", city: "Kidepo", dep: "09:30", arr: "11:30", days: "Mon · Wed · Fri", aircraft: CARAVAN },
 ];
@@ -90,16 +97,6 @@ export const GUIDES: Guide[] = [
     image: "/scenes/kisoro.svg",
   },
   {
-    code: "HUMW",
-    city: "Mweya",
-    region: "Kasese · Queen Elizabeth NP",
-    airport: "Mweya Airstrip (HUMW)",
-    intro:
-      "A strip on the peninsula inside Queen Elizabeth National Park itself, between Lake Edward and Lake George. Land after breakfast and be on a Kazinga Channel launch the same afternoon.",
-    highlights: ["Inside the park boundary", "Kazinga Channel launch trips", "Crater-lake drives"],
-    image: "/scenes/mweya.svg",
-  },
-  {
     code: "KSE",
     city: "Kasese",
     region: "Kasese · Rwenzori",
@@ -110,16 +107,6 @@ export const GUIDES: Guide[] = [
     image: "/scenes/kasese.svg",
   },
   {
-    code: "PAF",
-    city: "Pakuba",
-    region: "Nwoya · Murchison Falls NP",
-    airport: "Pakuba Airfield (PAF)",
-    intro:
-      "On the north bank of the Victoria Nile inside Murchison Falls National Park. The delta game drives and the launch to the base of the falls both start within the hour.",
-    highlights: ["North-bank game drives", "Launch to the falls", "Nile delta birding"],
-    image: "/scenes/pakuba.svg",
-  },
-  {
     code: "HUGG",
     city: "Bugungu",
     region: "Buliisa · Murchison Falls NP",
@@ -128,6 +115,46 @@ export const GUIDES: Guide[] = [
       "Buliisa district on the Albertine escarpment — the strip for the Tilenga oil project area and the south bank of Murchison Falls, with the lodges above the escarpment and the top-of-the-falls walk close by.",
     highlights: ["Buliisa & the Tilenga project area", "South-bank lodges", "Top of the falls walk"],
     image: "/scenes/bugungu.svg",
+  },
+  {
+    code: "HUKF",
+    city: "Hoima",
+    region: "Hoima · Bunyoro",
+    airport: "Kabalega International Airport, Hoima (HUKF)",
+    intro:
+      "Uganda's second international airport, at Kabaale on the Albertine escarpment west of Hoima city — built for the refinery, the Kingfisher and Tilenga oil developments and the Bunyoro region behind them. Fifty-five minutes from Kajjansi, and a long paved runway the 1900D is at home on.",
+    highlights: ["Refinery & Kingfisher project area", "Hoima city, 40 minutes by road", "Lake Albert & the escarpment"],
+    image: "/scenes/hukf.svg",
+  },
+  {
+    code: "RUA",
+    city: "Arua",
+    region: "Arua · West Nile",
+    airport: "Arua Airport (RUA)",
+    intro:
+      "The capital of West Nile and the gateway to the DRC and South Sudan borders — a trading city, an NGO hub for the refugee settlements around it, and two days by road from Kampala until you fly it in ninety minutes.",
+    highlights: ["West Nile's commercial centre", "NGO & refugee-response hub", "DRC & South Sudan border crossings"],
+    image: "/scenes/rua.svg",
+  },
+  {
+    code: "ULU",
+    city: "Gulu",
+    region: "Gulu · Acholi",
+    airport: "Gulu Airport (ULU)",
+    intro:
+      "Northern Uganda's largest city and its commercial, medical and university centre, with a paved runway and two services a day. The practical base for the whole Acholi sub-region, and the road onward to Kitgum, Pader and the South Sudan border.",
+    highlights: ["Gulu city & university", "Two services a day", "Onward to Kitgum & Nimule"],
+    image: "/scenes/ulu.svg",
+  },
+  {
+    code: "HUMO",
+    city: "Moroto",
+    region: "Moroto · Karamoja",
+    airport: "Moroto Airstrip (HUMO)",
+    intro:
+      "Karamoja's regional capital, under the bulk of Mount Moroto on the Kenya border. The base for the district administrations, the mining companies and the aid programmes working across Karamoja — and the start of the road to Kidepo for those going on.",
+    highlights: ["Karamoja's administrative centre", "Mount Moroto trailheads", "Mining & aid-programme base"],
+    image: "/photos/humo.jpg",
   },
   {
     code: "HUKD",

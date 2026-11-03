@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Clock, CalendarDays, Plane, Globe2 } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { ROUTES, FARES } from "@/lib/data";
+import { ROUTES } from "@/lib/data";
 import { SCHEDULE, GUIDES, routeByCode } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -27,14 +27,14 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
     (f) => (f.from === r.from && f.to === r.to) || (f.from === r.to && f.to === r.from)
   );
   const hasGuide = GUIDES.some((g) => g.code === r.to);
-  // Entebbe is a connection sector — no published domestic fare applies.
   const isConnection = r.type === "Connection";
-  const fare = FARES.oneWay;
+  const types = Array.from(new Set(SCHEDULE.filter((f) => f.to === r.to).map((f) => f.aircraft)));
+  const aircraft = types.length ? types.join(" / ") : "Grand Caravan";
 
   const facts = [
     { icon: Clock, label: "Block time", value: r.blockTime },
     { icon: CalendarDays, label: "Frequency", value: r.frequency },
-    { icon: Plane, label: "Aircraft", value: "Grand Caravan" },
+    { icon: Plane, label: "Aircraft", value: aircraft },
     { icon: Globe2, label: "Serving", value: r.park },
   ];
 
@@ -44,9 +44,7 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
         kicker={`${r.from} → ${r.to}`}
         title={`Kajjansi to ${r.city}`}
         subtitle={
-          isConnection
-            ? `${r.park} · ${r.frequency} · ${r.blockTime}.`
-            : `${r.park} · ${r.frequency} · ${r.blockTime} · ${fare} per person, one way.`
+          `${r.park} · ${r.frequency} · ${r.blockTime}.`
         }
         crumbs={[{ label: "Home", href: "/" }, { label: "Routes", href: "/routes" }, { label: r.city }]}
       />

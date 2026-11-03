@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeftRight, Search, Users } from "lucide-react";
-import { HUB, DESTINATIONS, FARES } from "@/lib/data";
+import { HUB, DESTINATIONS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 /**
@@ -164,8 +164,8 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
       )}
 
       <p className="px-4 pb-3 pt-2 text-[0.7rem] text-warm/55">
-        Online booking is launching shortly with our reservation partner. Seats{" "}
-        <span className="font-semibold text-opportunity-300">{FARES.oneWay}</span> per person, one way.
+        Online booking is launching shortly with our reservation partner. Fares are shown per person,
+        per sector, including taxes.
       </p>
     </form>
   );

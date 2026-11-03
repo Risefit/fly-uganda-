@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.2.0 · November 2026
+Version 1.2.1 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -24,8 +24,8 @@ in later.
 - Identity: **"The Ribbon"** — Modern Pan-African, from the Brand Identity Toolkit.
   See `01-brand-brief.md`.
 - Positioning (v1.2): **Uganda's domestic airline** — scheduled, ticketed flights from
-  **Kajjansi**, the Kampala-side alternative to Entebbe, to eight destinations across the
-  country. Sold like an airline (published fares, e-tickets, interline/codeshare-ready
+  **Kajjansi**, the Kampala-side alternative to Entebbe, to ten destinations across the
+  country. Sold like an airline (e-tickets, interline/codeshare-ready
   distribution). **No charter product** anywhere on the site; cargo is belly freight on
   the schedule. Fleet shown: Cessna 208EX Grand Caravan and Beechcraft 1900D only.
 
@@ -371,7 +371,26 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   guard from the Dawn Star system is gone. `font-bold` works on headings now.
 - Do not push from a stale Codespace — treat the Mac as the single source of truth.
 
-## 14. What changed in v1.2.0 — domestic-airline positioning, real map, hero
+## 14. What changed in v1.2.1 — network, fares, /book
+
+- **Network is now ten destinations:** Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua,
+  Gulu, Moroto, Kidepo, Entebbe. Mweya and Pakuba are withdrawn (their scene plates and
+  Unsplash entries deleted). Codes: Hoima = **HUKF** (Kabalega International; AC-U-KWIK
+  also lists IATA KBG — confirm with UCAA), Arua = RUA, Gulu = ULU, Moroto = **HUMO**
+  (no IATA). Coordinates in `lib/geo.ts`; Hoima's are from the Wikipedia entry for the
+  new airport (1.4275 N, 31.0778 E) — verify against the AIP once it is published.
+- **Block times for the four new sectors are illustrative** (Hoima 0h55, Gulu 1h15,
+  Moroto 1h25, Arua 1h30) and Arua/Gulu are timetabled on the 1900D. Replace from the
+  real timetable.
+- **No fares on the site.** Phil's call: nothing "from USD" anywhere until a fare sheet
+  is signed off. The map panel and route pages show aircraft type in the fare's place.
+  `FARES` remains in `lib/data.ts` for later; nothing reads it.
+- **Imagery:** Hoima, Arua and Gulu have first-party SVG plates
+  (`public/scenes/{hukf,rua,ulu}.svg`, generated — brand-safe, no licence); Moroto uses
+  the Karamoja aerial (`public/photos/humo.jpg`). Unsplash has no verifiable photo of any
+  of the four. Drop KEA's own photos into `public/photos/{hukf,rua,ulu,humo}.jpg`.
+
+## 15. What changed in v1.2.0 — domestic-airline positioning, real map, hero
 
 - **Positioning.** "Uganda's safari airline" → **"Uganda's domestic airline"** in the
   logo tagline (regenerated through `logo/`), metadata, hero, footer and about. Charter is
@@ -396,7 +415,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   launch — they were placed from published coordinates, not surveyed.
 - **Hero** is `public/photos/hero.jpg` (needs the full-res original — §6).
 
-## 15. What changed in v1.1.0 — the Brand Identity Toolkit
+## 16. What changed in v1.1.0 — the Brand Identity Toolkit
 
 Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) did not change.
 
@@ -411,7 +430,7 @@ Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) d
   suppressing the self-hosted fonts since the fork, and the unquoted "Source Sans 3" that
   voided body `font-family` — both now in §5.
 
-## 16. What changed from the South Sudan Airlines fork (v1.0.0)
+## 17. What changed from the South Sudan Airlines fork (v1.0.0)
 
 For anyone comparing the two codebases:
 

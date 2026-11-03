@@ -107,7 +107,7 @@ export const EARN_STEPS = [
 // Illustrative award chart — real values come from the PSS spending rules.
 export const REWARD_CHART = [
   { route: "Kajjansi–Kasese / Bugungu", pearls: "from ~9,000" },
-  { route: "Kajjansi–Kihihi / Mweya / Pakuba", pearls: "from ~11,000" },
+  { route: "Kajjansi–Kihihi / Gulu / Arua", pearls: "from ~11,000" },
   { route: "Kajjansi–Kisoro", pearls: "from ~12,000" },
   { route: "Kajjansi–Kidepo", pearls: "from ~16,000" },
 ];

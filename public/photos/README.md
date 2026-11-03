@@ -4,7 +4,8 @@ Drop a file named after the airport code and rebuild. It replaces the stock phot
 that destination everywhere on the site, with no code change:
 
     hukj.jpg   Kajjansi        khx.jpg   Kihihi         kxo.jpg   Kisoro
-    humw.jpg   Mweya           kse.jpg   Kasese         paf.jpg   Pakuba
+    hukf.jpg   Hoima           kse.jpg   Kasese         rua.jpg   Arua
+    ulu.jpg    Gulu            humo.jpg  Moroto (currently the Karamoja aerial)
     hugg.jpg   Bugungu         hukd.jpg  Kidepo         ebb.jpg   Entebbe
 
 `.jpg`, `.jpeg`, `.png` and `.webp` all work. Landscape orientation, at least 1600 px

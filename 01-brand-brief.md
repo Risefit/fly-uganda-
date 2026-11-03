@@ -18,7 +18,7 @@ interline and codeshare with other airlines. There is no charter product on the 
 
 **Tone (v1.2).** The site reads as a domestic airline for the country — people flying for
 work, family, trade and projects as well as visitors. Safari language is allowed where the
-place is a park (Mweya, Pakuba, Kidepo) and nowhere else: the hero, the network, the
+place is a park (Kidepo, and the Bwindi side of Kihihi and Kisoro) and nowhere else: the hero, the network, the
 fleet, cargo, about and the metadata are airline copy. Town strips (Kihihi, Kisoro, Kasese,
 Bugungu) lead with the town and the district, then the park.
 

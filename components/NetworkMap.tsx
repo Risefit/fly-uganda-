@@ -17,7 +17,7 @@ import { interpolateNumber } from "d3-interpolate";
 import { easeCubicInOut, easeCubicOut } from "d3-ease";
 import { ArrowRight, Clock, CalendarDays, Plane } from "lucide-react";
 import type { FeatureCollection, Feature } from "geojson";
-import { ROUTES, FARES, type Route } from "@/lib/data";
+import { ROUTES, type Route } from "@/lib/data";
 import { SCHEDULE } from "@/lib/content";
 import { AIRPORTS, blockMinutes } from "@/lib/geo";
 import { cn } from "@/lib/utils";
@@ -302,7 +302,7 @@ export function NetworkMap({
               </button>
             </div>
             <dl className="mt-5 grid grid-cols-3 gap-3 text-sm">
-              {[[Clock, "Block time", sel.blockTime], [CalendarDays, "Frequency", sel.frequency], [Plane, "Fare", sel.type === "Connection" ? "On request" : FARES.oneWay]].map(([I, k, v]) => {
+              {[[Clock, "Block time", sel.blockTime], [CalendarDays, "Frequency", sel.frequency], [Plane, "Aircraft", Array.from(new Set(SCHEDULE.filter((f) => f.to === sel.to).map((f) => f.aircraft))).join(" / ") || "On request"]].map(([I, k, v]) => {
                 const Icon = I as typeof Clock;
                 return (
                   <div key={k as string} className="rounded-xl bg-cream p-3">
