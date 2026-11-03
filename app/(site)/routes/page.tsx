@@ -17,8 +17,8 @@ export default function RoutesPage() {
     <>
       <PageHero
         kicker="Where we fly"
-        title="Seven park strips, one morning departure bank"
-        subtitle="Every national park worth flying to, served from Kajjansi — most of them before the morning game drive is over."
+        title="Eight destinations, one morning departure bank"
+        subtitle="Western Uganda, the Albertine, Karamoja and Entebbe — served from Kajjansi, most of them before mid-morning."
         crumbs={[{ label: "Home", href: "/" }, { label: "Routes & network" }]}
       />
 
@@ -54,13 +54,13 @@ export default function RoutesPage() {
 
           <div className="mt-10 flex flex-wrap gap-6 rounded-2xl bg-aviation p-7 text-cream">
             <div>
-              <p className="text-xs uppercase tracking-wide text-opportunity-300">Park seats from</p>
-              <p className="font-display text-2xl font-semibold">{FARES.parkOneWay}</p>
+              <p className="text-xs uppercase tracking-wide text-opportunity-300">Seats from</p>
+              <p className="font-display text-2xl font-semibold">{FARES.oneWay}</p>
               <p className="text-xs text-cream/60">per person, one way</p>
             </div>
             <div className="border-l border-white/15 pl-6">
               <p className="text-xs uppercase tracking-wide text-opportunity-300">Return from</p>
-              <p className="font-display text-2xl font-semibold">{FARES.parkReturn}</p>
+              <p className="font-display text-2xl font-semibold">{FARES.return}</p>
               <p className="text-xs text-cream/60">per person</p>
             </div>
             <div className="ml-auto flex items-center">

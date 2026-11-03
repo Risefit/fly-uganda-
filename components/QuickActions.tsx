@@ -6,7 +6,7 @@ import { Plane, ClipboardList, CheckSquare, Radar } from "lucide-react";
  * the identity toolkit's website panel. Overlaps the hero's bottom edge.
  */
 const ACTIONS = [
-  { label: "Book a flight", sub: "Seats and charter", href: "/book", Icon: Plane },
+  { label: "Book a flight", sub: "Domestic seats", href: "/book", Icon: Plane },
   { label: "Manage booking", sub: "Change or review", href: "/manage", Icon: ClipboardList },
   { label: "Check in", sub: "Opens 24h before", href: "/check-in", Icon: CheckSquare },
   { label: "Flight status", sub: "Today's departures", href: "/flight-status", Icon: Radar },

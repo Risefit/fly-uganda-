@@ -10,9 +10,17 @@ Identity Toolkit (Concept 6) with two deliberate departures, noted in §7.
 
 ## 1. Positioning
 
-Fly Uganda is **Uganda's safari airline**: scheduled per-seat flights from Kajjansi
-Airfield to the national parks, plus charter and cargo on the same fleet, flown under the
-Kampala Executive Aviation Air Operator Certificate.
+Fly Uganda is **Uganda's domestic airline**: scheduled, ticketed flights from Kajjansi
+Airfield across the country — district towns, the Albertine, Karamoja and the national
+parks — flown under the Kampala Executive Aviation Air Operator Certificate. It sells
+seats, not aircraft: published fares, e-tickets, and a reservation system built for
+interline and codeshare with other airlines. There is no charter product on the site.
+
+**Tone (v1.2).** The site reads as a domestic airline for the country — people flying for
+work, family, trade and projects as well as visitors. Safari language is allowed where the
+place is a park (Mweya, Pakuba, Kidepo) and nowhere else: the hero, the network, the
+fleet, cargo, about and the metadata are airline copy. Town strips (Kihihi, Kisoro, Kasese,
+Bugungu) lead with the town and the district, then the park.
 
 The commercial wedge is **Kajjansi** — the Kampala side of Entebbe, roughly thirty minutes
 off the transfer at each end of the day, with no international terminal to clear. Every
@@ -150,7 +158,8 @@ plates use navy → amber instead.
 
 | Toolkit | Site | Why |
 |---|---|---|
-| "Uganda's national airline" | "Uganda's safari airline" | Uganda Airlines is the flag carrier — §1 |
+| "Uganda's national airline" | "Uganda's domestic airline" | Uganda Airlines is the flag carrier — §1 |
+| "safari airline", "bush flights", "charter" | "domestic airline", "domestic flights", (nothing — no charter product) | Positioning, v1.2 — §1 |
 | "Uganda to Africa and Beyond" | Dropped | Contradicts a Kajjansi park network; the product did not change, only the look |
 | Entebbe International on stationery | Kajjansi on everything | The base is Kajjansi |
 | ATR-class livery | Grand Caravan | The fleet |

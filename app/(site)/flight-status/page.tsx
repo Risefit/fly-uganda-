@@ -8,7 +8,7 @@ import { CONTACT } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Flight status",
-  description: "Today's Fly Uganda departures from Kajjansi and the park strips, and how to reach operations for a live update.",
+  description: "Today's Fly Uganda departures from Kajjansi and the up-country airstrips, and how to reach operations for a live update.",
 };
 
 /**
@@ -24,7 +24,7 @@ export default function FlightStatusPage() {
       <PageHero
         kicker="Flight status"
         title="Today's departures"
-        subtitle="Scheduled times from the published timetable. Park airstrips are weather- and surface-dependent — for a live update on the day, call operations."
+        subtitle="Scheduled times from the published timetable. Unpaved airstrips are weather- and surface-dependent — for a live update on the day, call operations."
         crumbs={[{ label: "Home", href: "/" }, { label: "Flight status" }]}
       />
 
@@ -66,7 +66,7 @@ export default function FlightStatusPage() {
             <div>
               <p className="font-display text-xs font-semibold uppercase tracking-wide2 text-opportunity">On the day</p>
               <p className="mt-2 max-w-xl">
-                Delays on park airstrips are usually weather or surface. We call every passenger
+                Delays on unpaved airstrips are usually weather or surface. We call every passenger
                 before we move a departure — but if you want to check, operations are on the phone
                 from 06:00.
               </p>

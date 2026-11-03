@@ -2,6 +2,21 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.2.0 — November 2026
+
+- **Positioning: Uganda's domestic airline.** Tagline regenerated; safari/bush language
+  confined to the park strips' guide copy; charter removed everywhere (data, fleet card,
+  promises, loyalty FAQ, cargo page, oil-corridor map); cargo repositioned as belly
+  freight on scheduled flights; new "How we sell" section (direct, agents, interline &
+  codeshare). Town strips now lead with the town and district.
+- **Fleet:** Cessna 208EX Grand Caravan and Beechcraft 1900D only, with KEA's own
+  photography from flykea.com.
+- **Interactive network map** on the homepage and /routes: accurate geography
+  (world-atlas + Natural Earth), Africa → Uganda zoom, routes growing at the speed they
+  fly, click-through flight details and timetable beside the map, contour backdrop.
+- **Hero** now the Karamoja aerial (low-res placeholder pending the original).
+- Both `FARES` keys renamed (`oneWay`, `return`); `OilCorridorMap` deleted.
+
 ## v1.1.1 — November 2026
 
 - **Destination photography.** Nine licensed Unsplash photos, one per strip, verified

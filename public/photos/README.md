@@ -12,3 +12,9 @@ wide; next/image handles the resizing. Aerials from the aircraft are exactly wha
 slot is for.
 
 The resolution order is in `lib/photos.ts`.
+
+## fleet/
+
+KEA's own photography, copied from flykea.com (first-party — no licence to clear).
+`c208ex*.jpg` and `b1900*.jpg` are referenced from `FLEET` in `lib/data.ts` and the
+cargo page. Replace like for like; keep the file names.

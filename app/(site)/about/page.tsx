@@ -10,7 +10,7 @@ import { LEADERSHIP } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About us",
   description:
-    "Fly Uganda is Uganda's safari airline, flying scheduled seats and charter from Kajjansi Airfield under the Kampala Executive Aviation AOC.",
+    "Fly Uganda is a scheduled domestic airline flying ticketed services across Uganda from Kajjansi Airfield, under the Kampala Executive Aviation AOC.",
 };
 
 export default function AboutPage() {
@@ -19,7 +19,7 @@ export default function AboutPage() {
       <PageHero
         kicker="Our story"
         title="Thirty years of Ugandan flying"
-        subtitle="Uganda&rsquo;s safari airline — scheduled seats and charter from Kajjansi, flown under the Kampala Executive Aviation AOC."
+        subtitle="Uganda&rsquo;s domestic airline — scheduled, ticketed flights across the country from Kajjansi, flown under the Kampala Executive Aviation AOC."
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 
@@ -31,8 +31,9 @@ export default function AboutPage() {
             <h2 className="mt-4 font-display text-3xl font-semibold text-ink">A Kajjansi airline, end to end</h2>
             <p className="mt-4 text-muted">
               Fly Uganda grew out of the Kampala Aero Club and Flight Training Centre at Kajjansi,
-              and today flies the scheduled seat network that connects Kampala to Uganda&rsquo;s national
-              parks. We operate under the Kampala Executive Aviation Air Operator Certificate, with our
+              and today flies the scheduled network that connects Kampala to western Uganda, the
+              Albertine, Karamoja and the national parks — for the people who live and work there as
+              much as for the people visiting. We operate under the Kampala Executive Aviation Air Operator Certificate, with our
               own approved maintenance organisation on the same field.
             </p>
             <p className="mt-4 text-muted">
@@ -42,7 +43,7 @@ export default function AboutPage() {
             </p>
             <div className="mt-6 flex items-center gap-3">
               <Chip className="h-5 w-5 text-opportunity" />
-              <span className="font-display text-lg text-aviation">Scheduled · Charter · Cargo</span>
+              <span className="font-display text-lg text-aviation">Scheduled · Ticketed · Interline-ready</span>
             </div>
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
@@ -76,6 +77,33 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Distribution */}
+      <section className="bg-aviation-900 py-16 text-cream">
+        <div className="container-site grid gap-10 lg:grid-cols-[1fr_1.2fr]">
+          <div>
+            <div className="[&_.kicker]:text-opportunity-300"><Kicker>How we sell</Kicker></div>
+            <h2 className="mt-4 font-display text-3xl font-semibold">An airline ticket, end to end</h2>
+            <p className="mt-4 text-cream/80">
+              Fly Uganda sells seats, not aircraft. Every sector has a flight number, a published fare
+              and an e-ticket, issued through a reservation system built for airline distribution.
+            </p>
+          </div>
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {[
+              ["Book direct", "On this site, by phone or at Gate 1 — e-ticket by email, no paper."],
+              ["Through your agent", "Travel agents and tour operators book on the same inventory, at the same fares."],
+              ["Interline & codeshare", "The system is built to connect with partner airlines, so a Fly Uganda sector can be ticketed on one itinerary with your international flight."],
+              ["Pearl Club", "Every flight earns Pearls, whoever issued the ticket."],
+            ].map(([h, p]) => (
+              <li key={h} className="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10">
+                <h3 className="font-display text-lg">{h}</h3>
+                <p className="mt-1.5 text-sm text-cream/75">{p}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Fleet */}
       <section className="bg-cream py-16">
         <div className="container-site">
@@ -83,13 +111,18 @@ export default function AboutPage() {
           <h2 className="mt-4 font-display text-3xl font-semibold text-ink">Our aircraft</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             {FLEET.map((a) => (
-              <div key={a.name} className="rounded-2xl border border-aviation/10 bg-white p-6">
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-opportunity-700">
-                  {a.role} · {a.count}
-                </span>
-                <h3 className="mt-2 font-display text-xl text-ink">{a.name}</h3>
-                <p className="mt-2 text-sm text-muted">{a.blurb}</p>
-                <p className="mt-3 text-sm font-medium text-aviation">{a.seats}</p>
+              <div key={a.name} className="overflow-hidden rounded-2xl border border-aviation/10 bg-white">
+                <div className="relative aspect-[16/9]">
+                  <Image src={a.cabin} alt={`Cabin of the ${a.name}`} fill sizes="(max-width: 768px) 100vw, 560px" className="object-cover" />
+                </div>
+                <div className="p-6">
+                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-opportunity-700">
+                    {a.role} · {a.count}
+                  </span>
+                  <h3 className="mt-2 font-display text-xl text-ink">{a.name}</h3>
+                  <p className="mt-2 text-sm text-muted">{a.blurb}</p>
+                  <p className="mt-3 text-sm font-medium text-aviation">{a.seats}</p>
+                </div>
               </div>
             ))}
           </div>

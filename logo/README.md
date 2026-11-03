@@ -5,7 +5,7 @@ The Fly Uganda mark is generated, not drawn. Edit here, never in `public/brand/*
 ```bash
 # 1. Outline the wordmark and tagline (only if the text or font changes)
 python3 -I logo/outline.py app/fonts/montserrat-var-italic.woff2 "Fly Uganda" 700      > logo/wordmark.json
-python3 -I logo/outline.py app/fonts/montserrat-var.woff2 "UGANDA'S SAFARI AIRLINE" 600 160 > logo/tagline.json
+python3 -I logo/outline.py app/fonts/montserrat-var.woff2 "UGANDA'S DOMESTIC AIRLINE" 600 160 > logo/tagline.json
 
 # 2. Compose the lockups → public/brand/*.svg and components/brand-paths.ts
 node logo/build.js

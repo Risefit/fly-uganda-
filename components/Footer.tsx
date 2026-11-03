@@ -61,7 +61,7 @@ export function Footer() {
       <div className="container-site grid gap-10 py-14 lg:grid-cols-[1.3fr_2fr]">
         <div>
           <Logo tone="dark" />
-          <p className="mt-5 font-display text-base font-semibold uppercase tracking-wide2 text-opportunity">Uganda&rsquo;s safari airline</p>
+          <p className="mt-5 font-display text-base font-semibold uppercase tracking-wide2 text-opportunity">Uganda&rsquo;s domestic airline</p>
           <p className="mt-1 text-sm text-warm/60">
             <Webale tone="dark" /> — thank you for flying with us.
           </p>

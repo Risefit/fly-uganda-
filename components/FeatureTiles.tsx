@@ -9,10 +9,10 @@ import { photoFor } from "@/lib/photos";
  * ⚠️ Tiles use the placeholder scene plates; swap for photography.
  */
 const TILES = [
-  { title: "Destinations", blurb: "Seven park strips, six national parks.", href: "/destinations", image: photoFor("KXO", "").src },
+  { title: "Destinations", blurb: "Eight airstrips, from Kisoro to Kidepo.", href: "/destinations", image: photoFor("KXO", "").src },
   { title: "The Fly Uganda experience", blurb: "What a morning on the Caravan is actually like.", href: "/travel-info", image: "/scenes/fleet.svg" },
   { title: "About us", blurb: "Thirty years at Kajjansi, one AOC.", href: "/about", image: "/scenes/about.svg" },
-  { title: "Sustainability", blurb: "Lighter aircraft, shorter sectors, parks that pay.", href: "/sustainability", image: photoFor("HUKD", "").src },
+  { title: "Sustainability", blurb: "Lighter aircraft, shorter sectors, roads left alone.", href: "/sustainability", image: photoFor("HUKD", "").src },
 ];
 
 export function FeatureTiles() {

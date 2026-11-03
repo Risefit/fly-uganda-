@@ -17,7 +17,7 @@ export default function DestinationsPage() {
       <PageHero
         kicker="Where we fly"
         title="Destinations"
-        subtitle="Seven park strips, six national parks, and the Pearl of Africa in between."
+        subtitle="Eight airstrips across Uganda — district towns, the Albertine, the parks and Entebbe, all served from Kajjansi."
         crumbs={[{ label: "Home", href: "/" }, { label: "Destinations" }]}
       />
       <section className="bg-cream py-16">

@@ -164,8 +164,8 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
       )}
 
       <p className="px-4 pb-3 pt-2 text-[0.7rem] text-warm/55">
-        Online booking is launching shortly with our reservation partner. Park seats{" "}
-        <span className="font-semibold text-opportunity-300">{FARES.parkOneWay}</span> per person, one way.
+        Online booking is launching shortly with our reservation partner. Seats{" "}
+        <span className="font-semibold text-opportunity-300">{FARES.oneWay}</span> per person, one way.
       </p>
     </form>
   );

@@ -37,11 +37,11 @@ const display = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Fly Uganda — Scheduled safari flights from Kajjansi",
+    default: "Fly Uganda — Scheduled domestic flights from Kajjansi",
     template: "%s · Fly Uganda",
   },
   description:
-    "Uganda's safari airline. Scheduled seats from Kajjansi Airfield, Kampala to Bwindi, Queen Elizabeth, Murchison Falls and Kidepo — plus charter across Uganda and East Africa.",
+    "Uganda's domestic airline. Scheduled, ticketed flights from Kajjansi Airfield, Kampala to Kihihi, Kisoro, Mweya, Kasese, Pakuba, Bugungu, Kidepo and Entebbe.",
   keywords: [
     "Fly Uganda",
     "Uganda domestic flights",
@@ -51,21 +51,21 @@ export const metadata: Metadata = {
     "Uganda safari flights",
     "Murchison Falls flights",
     "Kidepo flights",
-    "Uganda charter flights",
+    "flights Kampala to Kidepo",
   ],
   openGraph: {
     type: "website",
     siteName: "Fly Uganda",
-    title: "Fly Uganda — scheduled safari flights from Kajjansi",
+    title: "Fly Uganda — scheduled domestic flights from Kajjansi",
     description:
-      "Scheduled safari seats from Kajjansi, 30 minutes closer to Kampala than Entebbe. Bwindi, Queen Elizabeth, Murchison Falls and Kidepo — daily.",
+      "Scheduled domestic flights from Kajjansi, 30 minutes closer to Kampala than Entebbe. Kihihi, Kisoro, Kasese, Murchison, Kidepo and more — daily.",
     url: SITE_URL,
     locale: "en",
   },
   twitter: {
     card: "summary_large_image",
     title: "Fly Uganda",
-    description: "Uganda's safari airline — scheduled seats to every national park.",
+    description: "Uganda's domestic airline — scheduled flights across the country from Kajjansi.",
   },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
@@ -90,7 +90,7 @@ const airlineJsonLd = {
   alternateName: "FlyUganda",
   url: SITE_URL,
   iataCode: "",
-  slogan: "Uganda's safari airline",
+  slogan: "Uganda's domestic airline",
   areaServed: "Uganda and East Africa",
   parentOrganization: {
     "@type": "Organization",

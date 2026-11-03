@@ -75,8 +75,8 @@ export const GUIDES: Guide[] = [
     region: "Kanungu · Western Region",
     airport: "Kihihi (Savannah) Airstrip (KHX)",
     intro:
-      "The northern gateway to Bwindi Impenetrable National Park, and the strip most gorilla itineraries use. Buhoma is a short transfer away; the Ishasha sector of Queen Elizabeth, with its tree-climbing lions, is closer still.",
-    highlights: ["Buhoma gorilla sector", "Ishasha tree-climbing lions", "Two services a day"],
+      "The airstrip for Kanungu district — the tea estates, the district headquarters and the Ishasha border area — and the northern gateway to Bwindi Impenetrable National Park. Buhoma is a short transfer away; Ishasha and its tree-climbing lions are closer still.",
+    highlights: ["Kanungu district & tea estates", "Buhoma gorilla sector", "Two services a day"],
     image: "/scenes/kihihi.svg",
   },
   {
@@ -85,8 +85,8 @@ export const GUIDES: Guide[] = [
     region: "Kisoro · Western Region",
     airport: "Kisoro Airport (KXO)",
     intro:
-      "The southern gateway, set among the Virunga volcanoes. Serves the Nkuringo and Rushaga gorilla sectors of Bwindi, and Mgahinga Gorilla National Park for golden monkeys and the volcano climbs.",
-    highlights: ["Nkuringo & Rushaga sectors", "Mgahinga golden monkeys", "Virunga volcano views on finals"],
+      "Kisoro town, set among the Virunga volcanoes in Uganda's far south-west, fifteen minutes from the Cyanika crossing into Rwanda and the Bunagana crossing into DRC. Also the southern gateway to Bwindi — the Nkuringo and Rushaga sectors — and to Mgahinga.",
+    highlights: ["Rwanda & DRC border crossings", "Nkuringo & Rushaga sectors", "Virunga volcano views on finals"],
     image: "/scenes/kisoro.svg",
   },
   {
@@ -105,8 +105,8 @@ export const GUIDES: Guide[] = [
     region: "Kasese · Rwenzori",
     airport: "Kasese Airport (KSE)",
     intro:
-      "Under the Rwenzori — Ptolemy's Mountains of the Moon — and the practical entry point for the northern sector of Queen Elizabeth as well as the Rwenzori trekking routes.",
-    highlights: ["Rwenzori trailheads", "Queen Elizabeth north", "Shortest park sector from Kampala"],
+      "Kasese town under the Rwenzori — Ptolemy's Mountains of the Moon. The commercial centre of the west, with Kilembe, Hima and the Mpondwe border trade, and the practical entry point for the Rwenzori trailheads and the northern sector of Queen Elizabeth.",
+    highlights: ["Kasese town & Kilembe", "Rwenzori trailheads", "Our shortest up-country sector"],
     image: "/scenes/kasese.svg",
   },
   {
@@ -125,8 +125,8 @@ export const GUIDES: Guide[] = [
     region: "Buliisa · Murchison Falls NP",
     airport: "Bugungu Airstrip (HUGG)",
     intro:
-      "The south-bank strip for Murchison Falls, convenient for the lodges above the escarpment and for the top-of-the-falls walk.",
-    highlights: ["South-bank lodges", "Top of the falls walk", "Albertine escarpment views"],
+      "Buliisa district on the Albertine escarpment — the strip for the Tilenga oil project area and the south bank of Murchison Falls, with the lodges above the escarpment and the top-of-the-falls walk close by.",
+    highlights: ["Buliisa & the Tilenga project area", "South-bank lodges", "Top of the falls walk"],
     image: "/scenes/bugungu.svg",
   },
   {
@@ -148,51 +148,36 @@ export function guideByCity(city: string): Guide | undefined {
 }
 
 /* ---------------------------------- Cargo ------------------------------------ */
+// Cargo is belly freight on the scheduled network — no dedicated freighters.
 export const CARGO_SERVICES = [
   {
-    title: "Albertine energy support",
-    body: "Crew rotations and time-critical freight into the Albertine Graben — Hoima, Buliisa, Kingfisher and Pakwach — for the operators and contractors working the oil corridor.",
+    title: "Parcels on the schedule",
+    body: "Documents, spares and small consignments booked at Kajjansi and collected at the airstrip the same morning. Weighed and rated per kilogram, on the next departure with space.",
+  },
+  {
+    title: "Albertine & field consignments",
+    body: "Regular freight into Bugungu and Pakuba for the operators, contractors and NGO field teams working the Albertine — spares, samples and medical supplies on the daily service.",
   },
   {
     title: "Lodge & camp resupply",
-    body: "Scheduled belly capacity and dedicated runs into the park strips, keeping remote lodges and camps supplied without a two-day road trip.",
-  },
-  {
-    title: "Humanitarian & project charter",
-    body: "Dedicated aircraft for NGO, UN and relief movements across Uganda and the region, including oversized and time-critical project freight.",
+    body: "Scheduled belly capacity into the up-country strips, keeping remote lodges and camps supplied without a two-day road trip.",
   },
 ];
 
-// Stylised node layout for OilCorridorMap — Albertine Graben, not a real projection.
-export const OIL_CORRIDOR: {
-  name: string;
-  x: number;
-  y: number;
-  hub?: boolean;
-  below?: boolean; // drop the label beneath the node to avoid a collision
-}[] = [
-  { name: "Kajjansi (base)", x: 360, y: 370, hub: true },
-  { name: "Hoima", x: 258, y: 268 },
-  { name: "Kingfisher", x: 212, y: 296, below: true },
-  { name: "Buliisa / Tilenga", x: 206, y: 206, below: true },
-  { name: "Bugungu", x: 238, y: 178, below: true },
-  { name: "Pakwach", x: 290, y: 146 },
-  { name: "Pakuba", x: 206, y: 124 },
-];
 
 export const CARGO_TARIFF = {
   outbound: "On application",
   backhaul: "On application",
-  note: "Cargo and charter are quoted per movement against routing, payload and turnaround. Contact the cargo desk for a rate.",
+  note: "Cargo travels on scheduled flights and is rated per kilogram by sector, subject to space. Contact the cargo desk for the tariff.",
 };
 
 /* -------------------------------- Leadership --------------------------------- */
 // Placeholder roles — no invented individuals. Replace with the confirmed team.
 export const LEADERSHIP = [
   { role: "Accountable Manager", name: "Appointment to be confirmed", note: "Overall accountability under the AOC" },
-  { role: "Head of Flight Operations", name: "Appointment to be confirmed", note: "Scheduled and charter operations" },
+  { role: "Head of Flight Operations", name: "Appointment to be confirmed", note: "Scheduled operations" },
   { role: "Head of Safety & Quality", name: "Appointment to be confirmed", note: "Safety management and compliance" },
-  { role: "Commercial Manager", name: "Appointment to be confirmed", note: "Network, trade sales and cargo" },
+  { role: "Commercial Manager", name: "Appointment to be confirmed", note: "Network, distribution, interline and cargo" },
 ];
 
 /* --------------------------------- Contact ----------------------------------- */
@@ -221,8 +206,8 @@ export const TRAVEL_INFO = [
     title: "Check-in times",
     items: [
       "Kajjansi: check-in opens 1 hour and closes 45 minutes before departure.",
-      "Park strips: please be at the strip 30 minutes before the scheduled departure.",
-      "Park airstrips are weather- and game-dependent. We will always call you before we move a departure.",
+      "Up-country airstrips: please be at the strip 30 minutes before the scheduled departure.",
+      "Unpaved airstrips are weather- and surface-dependent. We will always call you before we move a departure.",
     ],
   },
   {

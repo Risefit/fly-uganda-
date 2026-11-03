@@ -148,3 +148,91 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- Network map --------------------------------------------------------- */
+@layer components {
+  .network-map .map-label {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: #f6e9db;
+    paint-order: stroke;
+    stroke: #0b1f3b;
+    stroke-width: 4px;
+    stroke-linejoin: round;
+    opacity: 0;
+    transition: opacity 0.4s ease, fill 0.2s ease;
+    pointer-events: none;
+  }
+  .network-map .map-label-hub { opacity: 1; fill: #ffa400; font-size: 16px; }
+  .network-map .map-country {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    fill: rgba(246, 233, 219, 0.45);
+    pointer-events: none;
+  }
+
+  .network-map .route-shadow { stroke: rgba(11, 31, 59, 0.9); stroke-width: 5; stroke-linecap: round; }
+  .network-map .route-line { stroke: rgba(246, 233, 219, 0.55); stroke-width: 1.8; stroke-linecap: round; transition: stroke 0.2s ease, stroke-width 0.2s ease; }
+  .network-map .route-plane { fill: #ffa400; opacity: 0; }
+  .network-map .route { cursor: pointer; }
+  .network-map .route:not(.is-landed):not(.is-growing) .route-line,
+  .network-map .route:not(.is-landed):not(.is-growing) .route-shadow { opacity: 0; }
+
+  .network-map .node { cursor: pointer; opacity: 0; transition: opacity 0.35s ease; }
+  .network-map .node-dot { fill: #f6e9db; transition: fill 0.2s ease, r 0.2s ease; }
+  .network-map .node-ring { stroke: #ffa400; stroke-opacity: 0; transition: stroke-opacity 0.2s ease; }
+  .network-map .node:focus { outline: none; }
+  .network-map .node:focus-visible .node-ring { stroke-opacity: 1; stroke-width: 3; }
+  /* The SVG scales with its box, so labels need larger user units on narrow screens */
+  @media (max-width: 640px) {
+    .network-map .map-label { font-size: 26px; }
+    .network-map .map-label-hub { font-size: 28px; }
+    .network-map .map-country { font-size: 20px; }
+    .network-map .node-dot { r: 9; }
+  }
+
+}
+
+/* Reveal nodes/labels for landed routes; highlight the active one. Done with
+   attribute selectors on the container so React never re-renders the SVG. */
+.network-map[data-phase="done"] .node,
+.network-map[data-phase="done"] .map-label { opacity: 1; }
+.network-map[data-active]:not([data-active=""]) .route-line { stroke: rgba(246, 233, 219, 0.22); }
+.network-map[data-active]:not([data-active=""]) .node-dot { fill: rgba(246, 233, 219, 0.55); }
+.network-map[data-active]:not([data-active=""]) .map-label { fill: rgba(246, 233, 219, 0.55); }
+
+.network-map[data-active="KHX"] .route[data-code="KHX"] .route-line { stroke: #ffa400; stroke-width: 3; }
+.network-map[data-active="KHX"] .node[data-code="KHX"] .node-dot { fill: #ffa400; }
+.network-map[data-active="KHX"] .node[data-code="KHX"] .node-ring { stroke-opacity: 0.8; }
+.network-map[data-active="KHX"] .map-label[data-code="KHX"] { fill: #ffa400; }
+.network-map[data-active="KXO"] .route[data-code="KXO"] .route-line { stroke: #ffa400; stroke-width: 3; }
+.network-map[data-active="KXO"] .node[data-code="KXO"] .node-dot { fill: #ffa400; }
+.network-map[data-active="KXO"] .node[data-code="KXO"] .node-ring { stroke-opacity: 0.8; }
+.network-map[data-active="KXO"] .map-label[data-code="KXO"] { fill: #ffa400; }
+.network-map[data-active="HUMW"] .route[data-code="HUMW"] .route-line { stroke: #ffa400; stroke-width: 3; }
+.network-map[data-active="HUMW"] .node[data-code="HUMW"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUMW"] .node[data-code="HUMW"] .node-ring { stroke-opacity: 0.8; }
+.network-map[data-active="HUMW"] .map-label[data-code="HUMW"] { fill: #ffa400; }
+.network-map[data-active="KSE"] .route[data-code="KSE"] .route-line { stroke: #ffa400; stroke-width: 3; }
+.network-map[data-active="KSE"] .node[data-code="KSE"] .node-dot { fill: #ffa400; }
+.network-map[data-active="KSE"] .node[data-code="KSE"] .node-ring { stroke-opacity: 0.8; }
+.network-map[data-active="KSE"] .map-label[data-code="KSE"] { fill: #ffa400; }
+.network-map[data-active="PAF"] .route[data-code="PAF"] .route-line { stroke: #ffa400; stroke-width: 3; }
+.network-map[data-active="PAF"] .node[data-code="PAF"] .node-dot { fill: #ffa400; }
+.network-map[data-active="PAF"] .node[data-code="PAF"] .node-ring { stroke-opacity: 0.8; }
+.network-map[data-active="PAF"] .map-label[data-code="PAF"] { fill: #ffa400; }
+.network-map[data-active="HUGG"] .route[data-code="HUGG"] .route-line { stroke: #ffa400; stroke-width: 3; }
+.network-map[data-active="HUGG"] .node[data-code="HUGG"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUGG"] .node[data-code="HUGG"] .node-ring { stroke-opacity: 0.8; }
+.network-map[data-active="HUGG"] .map-label[data-code="HUGG"] { fill: #ffa400; }
+.network-map[data-active="HUKD"] .route[data-code="HUKD"] .route-line { stroke: #ffa400; stroke-width: 3; }
+.network-map[data-active="HUKD"] .node[data-code="HUKD"] .node-dot { fill: #ffa400; }
+.network-map[data-active="HUKD"] .node[data-code="HUKD"] .node-ring { stroke-opacity: 0.8; }
+.network-map[data-active="HUKD"] .map-label[data-code="HUKD"] { fill: #ffa400; }
+.network-map[data-active="EBB"] .route[data-code="EBB"] .route-line { stroke: #ffa400; stroke-width: 3; }
+.network-map[data-active="EBB"] .node[data-code="EBB"] .node-dot { fill: #ffa400; }
+.network-map[data-active="EBB"] .node[data-code="EBB"] .node-ring { stroke-opacity: 0.8; }
+.network-map[data-active="EBB"] .map-label[data-code="EBB"] { fill: #ffa400; }

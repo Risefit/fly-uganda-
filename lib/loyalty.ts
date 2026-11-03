@@ -122,8 +122,8 @@ export const FAQ = [
     a: "Award Pearls are what you spend on award seats — they don't expire. Status Pearls count towards your tier each year and decide whether you rise from Kingfisher up to Crowned Crane.",
   },
   {
-    q: "Can I earn on charter flights?",
-    a: "Yes. Charters booked in your name earn Pearls on the same basis as a scheduled sector, calculated on block time rather than seats.",
+    q: "Can I earn on flights sold by a partner airline?",
+    a: "Yes, when the sector is operated by Fly Uganda. A Fly Uganda flight ticketed by an interline or codeshare partner earns Pearls on the same basis as one bought from us — quote your membership number when you book.",
   },
   {
     q: "How do I use my Pearls?",

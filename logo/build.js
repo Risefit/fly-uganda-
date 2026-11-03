@@ -171,7 +171,7 @@ export const RIBBON_BOX = { x: -2, y: -96, w: 476, h: 236 };
 export const WORDMARK_D = ${JSON.stringify(WM.d)};
 export const WORDMARK_ADVANCE = ${f(WM.advance)};
 
-/** "UGANDA'S SAFARI AIRLINE" — baseline at y=0, cap height 700, advance ${f(TG.advance)}. */
+/** "UGANDA'S DOMESTIC AIRLINE" — baseline at y=0, cap height 700, advance ${f(TG.advance)}. */
 export const TAGLINE_D = ${JSON.stringify(TG.d)};
 export const TAGLINE_ADVANCE = ${f(TG.advance)};
 `;

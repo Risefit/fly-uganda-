@@ -16,7 +16,7 @@ export function LoyaltyTeaser() {
                 Earn Pearls on every sector.
               </h2>
               <p className="mt-4 max-w-md text-warm/80">
-                Join free, earn Pearls on every flight — scheduled or charter — and rise through the
+                Join free, earn Pearls on every Fly Uganda flight and rise through the
                 Birds of Uganda, from Kingfisher to Crowned Crane, to award seats on the network.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">

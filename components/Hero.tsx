@@ -12,11 +12,13 @@ import { Rule, Webale } from "@/components/brand";
 export function Hero() {
   return (
     <section className="relative isolate flex min-h-[86vh] flex-col justify-center overflow-hidden">
-      {/* ⚠️ PLACEHOLDER ART: /scenes/*.svg are brand-built illustrations, not
-          photography. Swap for Fly Uganda / KEA imagery before launch. */}
+      {/* Fly Uganda's own aerial — Karamoja ridges and a murram road. The
+          placeholder illustrations are gone from the hero. NOTE: the supplied
+          file is 996×711; it will soften on large screens. Replace with the
+          full-resolution original at the same path when available. */}
       <Image
-        src="/scenes/hero.svg"
-        alt="A Grand Caravan over the Ugandan highlands at first light"
+        src="/photos/hero.jpg"
+        alt="Granite ridges and a red murram road winding through green valleys, from the air"
         fill
         priority
         sizes="100vw"
@@ -26,11 +28,11 @@ export function Hero() {
           keep these in bracket notation. */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-aviation-900/[0.95] via-aviation-900/[0.80] to-aviation-900/[0.45] lg:from-aviation-900/[0.90] lg:via-aviation-900/[0.55] lg:to-aviation-900/[0.20]"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-aviation-900/[0.88] via-aviation-900/[0.55] to-aviation-900/[0.15] lg:from-aviation-900/[0.80] lg:via-aviation-900/[0.35] lg:to-transparent"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-aviation-900/[0.80] via-aviation-900/[0.30] to-transparent lg:block"
+        className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-aviation-900/[0.78] via-aviation-900/[0.28] to-transparent lg:block"
       />
 
       <div className="container-site pb-28 pt-36">
@@ -40,18 +42,18 @@ export function Hero() {
             <Webale tone="dark" className="text-sm" />
             <span className="text-cream/50">·</span>
             <span className="font-display text-[0.72rem] font-semibold uppercase tracking-wide2 text-cream/80">
-              Uganda&rsquo;s safari airline
+              Uganda&rsquo;s domestic airline
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-[1.04] text-white sm:text-5xl lg:text-[3.9rem]">
-            Every park,
+            Fly across Uganda,
             <br />
-            every morning
+            every day
           </h1>
           <p className="mt-5 max-w-xl text-lg text-cream/90 sm:text-xl">
-            Scheduled seats from Kajjansi to Bwindi, Queen Elizabeth, Murchison Falls and
-            Kidepo. Twelve seats, every one a window — leaving from the Kampala side of
-            Entebbe.
+            Scheduled flights from Kajjansi, Kampala to Kihihi, Kisoro, Mweya, Kasese, Pakuba,
+            Bugungu, Kidepo and Entebbe. For work, for home and for the parks — ticketed like
+            any airline, leaving from the Kampala side of Entebbe.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link href="/book" className="btn-primary !px-7 !py-3.5">

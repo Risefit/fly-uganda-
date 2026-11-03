@@ -53,12 +53,12 @@ export default function BookPage() {
               <h2 className="font-display text-xl font-semibold">Fares from</h2>
               <div className="mt-4 space-y-3">
                 <div className="flex items-baseline justify-between border-b border-white/15 pb-3">
-                  <span className="text-sm text-cream/80">Park seat, one way</span>
-                  <span className="font-display text-xl font-semibold text-opportunity-300">{FARES.parkOneWay}</span>
+                  <span className="text-sm text-cream/80">Seat, one way</span>
+                  <span className="font-display text-xl font-semibold text-opportunity-300">{FARES.oneWay}</span>
                 </div>
                 <div className="flex items-baseline justify-between">
-                  <span className="text-sm text-cream/80">Park seat, return</span>
-                  <span className="font-display text-xl font-semibold text-opportunity-300">{FARES.parkReturn}</span>
+                  <span className="text-sm text-cream/80">Seat, return</span>
+                  <span className="font-display text-xl font-semibold text-opportunity-300">{FARES.return}</span>
                 </div>
               </div>
               <p className="mt-4 text-xs text-cream/60">{FARES.note}</p>

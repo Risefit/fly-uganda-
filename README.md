@@ -1,7 +1,8 @@
 # Fly Uganda — website
 
-Marketing site for **Fly Uganda** (flyuganda.com) — Uganda's safari airline. Scheduled
-per-seat flights from Kajjansi Airfield to the national parks, plus charter and cargo.
+Marketing site for **Fly Uganda** (flyuganda.com) — Uganda's domestic airline. Scheduled,
+ticketed flights from Kajjansi Airfield to eight destinations across Uganda, with cargo
+carried on the schedule.
 
 Next.js 14 (App Router) · TypeScript · Tailwind · deployed on Vercel.
 

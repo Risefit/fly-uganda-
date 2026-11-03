@@ -5,7 +5,7 @@ import { Kicker, Chip } from "@/components/brand";
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Join Fly Uganda — fly, engineer and sell Uganda's safari airline from Kajjansi. Roles opening soon.",
+  description: "Join Fly Uganda — fly, engineer and sell Uganda's domestic airline from Kajjansi. Roles opening soon.",
 };
 
 const AREAS = [

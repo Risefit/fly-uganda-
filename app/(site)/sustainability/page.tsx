@@ -7,7 +7,7 @@ import { Kicker, Chip } from "@/components/brand";
 export const metadata: Metadata = {
   title: "Sustainability",
   description:
-    "How Fly Uganda keeps safari flying light — small aircraft, short sectors, park fees that fund conservation, and flying that replaces long road transfers.",
+    "How Fly Uganda keeps domestic flying light — small aircraft, short sectors, visitors who fund the parks, and flying that replaces long road journeys.",
 };
 
 // ⚠️ Figures below are illustrative framing, not audited data. Replace the
@@ -16,7 +16,7 @@ const PILLARS = [
   {
     Icon: Plane,
     title: "The right-sized aircraft",
-    body: "A twelve-seat Caravan burns a fraction of what a regional jet does and lands on murram strips inside the parks, so there is no second transfer to add.",
+    body: "A twelve-seat Caravan burns a fraction of what a regional jet does and lands on murram strips where people are actually going, so there is no second transfer to add.",
   },
   {
     Icon: MapPinned,
@@ -25,13 +25,13 @@ const PILLARS = [
   },
   {
     Icon: Leaf,
-    title: "Parks that pay for themselves",
+    title: "Visitors who fund the parks",
     body: "Every seat we sell puts a visitor through a Uganda Wildlife Authority gate. Park fees fund rangers, anti-poaching work and the communities on the boundary.",
   },
   {
     Icon: Users,
     title: "Crew and engineering at home",
-    body: "Pilots, engineers and station staff are based at Kajjansi and in the park communities we fly to. The value stays in Uganda.",
+    body: "Pilots, engineers and station staff are based at Kajjansi and in the towns we fly to. The value stays in Uganda.",
   },
 ];
 
@@ -41,7 +41,7 @@ export default function SustainabilityPage() {
       <PageHero
         kicker="Sustainability"
         title="Flying light, on purpose"
-        subtitle="Small aircraft into the parks, instead of big aircraft to a city and a long road after it. The case for safari by air is also the environmental one."
+        subtitle="Small aircraft to where people are actually going, instead of big aircraft to one city and a long road after it. The case for flying is also the environmental one."
         crumbs={[{ label: "Home", href: "/" }, { label: "Sustainability" }]}
       />
 
@@ -74,7 +74,7 @@ export default function SustainabilityPage() {
             <p className="mt-4 max-w-xl text-cream/85">
               We would rather tell you what is measurable than what sounds good. We publish fuel
               burn per seat once we have a full year of it, we do not sell offsets we cannot
-              verify, and we will say so plainly when a charter would be better done by road.
+              verify, and we will say so plainly when a journey would be better done by road.
             </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-aviation-700 p-7">

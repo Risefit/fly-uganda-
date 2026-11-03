@@ -27,9 +27,9 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
     (f) => (f.from === r.from && f.to === r.to) || (f.from === r.to && f.to === r.from)
   );
   const hasGuide = GUIDES.some((g) => g.code === r.to);
-  // Entebbe is an interline connection, not a park seat — no park fare applies.
+  // Entebbe is a connection sector — no published domestic fare applies.
   const isConnection = r.type === "Connection";
-  const fare = FARES.parkOneWay;
+  const fare = FARES.oneWay;
 
   const facts = [
     { icon: Clock, label: "Block time", value: r.blockTime },
@@ -99,7 +99,7 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
           </div>
           )}
           <p className="mt-3 text-xs text-muted">
-            Times are illustrative for this pre-launch website. Park airstrips are weather- and surface-dependent; confirm at booking.
+            Times are illustrative for this pre-launch website. Unpaved airstrips are weather- and surface-dependent; confirm at booking.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">

@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.1.0 · November 2026
+Version 1.2.0 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -13,7 +13,7 @@ goes live. Sections 9 and 10 are the ones to read first.
 
 ## 1. What this is
 
-A production-ready marketing site for a scheduled safari airline, built so the brand
+A production-ready marketing site for a scheduled domestic airline, built so the brand
 (colours, type, logo, copy, network, loyalty) is centralised and swappable. It is *not*
 a booking engine — booking is scaffolded to host a PSS embed (AeroCRS / Go7) that drops
 in later.
@@ -23,8 +23,11 @@ in later.
   with axe-core across every page.
 - Identity: **"The Ribbon"** — Modern Pan-African, from the Brand Identity Toolkit.
   See `01-brand-brief.md`.
-- Positioning: scheduled per-seat flights from **Kajjansi**, the Kampala-side alternative
-  to Entebbe, to Uganda's national parks. Charter and cargo on the same fleet.
+- Positioning (v1.2): **Uganda's domestic airline** — scheduled, ticketed flights from
+  **Kajjansi**, the Kampala-side alternative to Entebbe, to eight destinations across the
+  country. Sold like an airline (published fares, e-tickets, interline/codeshare-ready
+  distribution). **No charter product** anywhere on the site; cargo is belly freight on
+  the schedule. Fleet shown: Cessna 208EX Grand Caravan and Beechcraft 1900D only.
 
 ## 2. Tech stack
 
@@ -176,8 +179,14 @@ Lake Bunyonyi and the Bugungu escarpment); the rest are the real places from the
 and Bwindi is a gorilla because no landscape of it exists on Unsplash.
 
 **Your own aerials override them with no code change:** drop `public/photos/<code>.jpg`
-and rebuild — see `public/photos/README.md`. The hero, fleet and about plates are still
-the SVG illustrations below.
+and rebuild — see `public/photos/README.md`.
+
+**Update, v1.2.0:** the hero is now the Karamoja aerial at `public/photos/hero.jpg`
+(**996×711 — too small for a 1440-wide hero; replace with the full-resolution original**),
+and the fleet carries KEA's own photography copied from flykea.com into
+`public/photos/fleet/` (`c208ex.jpg`, `c208ex-landing.jpg`, `c208ex-cabin.jpg`,
+`b1900.jpg`, `b1900-sky.jpg`, `b1900-cabin.jpg`) — first-party, no licence to clear.
+The about plate and the four homepage destination tiles are still SVG illustrations.
 
 **There is no photography in this build.** The SSA fork shipped photographs of South
 Sudan Airlines aircraft, which obviously could not carry over, and shipping unverified
@@ -362,7 +371,32 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   guard from the Dawn Star system is gone. `font-bold` works on headings now.
 - Do not push from a stale Codespace — treat the Mac as the single source of truth.
 
-## 14. What changed in v1.1.0 — the Brand Identity Toolkit
+## 14. What changed in v1.2.0 — domestic-airline positioning, real map, hero
+
+- **Positioning.** "Uganda's safari airline" → **"Uganda's domestic airline"** in the
+  logo tagline (regenerated through `logo/`), metadata, hero, footer and about. Charter is
+  gone: `CHARTER_DESTINATIONS`, the charter fleet card, the charter promise, the charter
+  loyalty FAQ and the Oil-corridor charter map (`OilCorridorMap.tsx`, deleted). Cargo is
+  now belly freight on scheduled flights, rated per kg. New about-page section "How we
+  sell" states the distribution model (direct, agents, interline & codeshare). Safari tone
+  is kept only on the park strips' own guide copy.
+- **Fleet.** `FLEET` is two types — 208EX and 1900D — with `image`, `cabin` and `alt`
+  fields pointing at KEA's photography. Do not add types here without Phil's say-so.
+- **`FARES` keys renamed** `parkOneWay`/`parkReturn` → `oneWay`/`return`.
+- **Network map** (`components/NetworkMap.tsx`) replaces both route maps. Real geography
+  from world-atlas (50 m Africa, 10 m Uganda + neighbours) and Natural Earth 10 m lakes and
+  rivers, built by `node scripts/build-geo.mjs` into `public/geo/*.json` (committed; the
+  script documents the source URLs). d3-geo Mercator; Africa → Uganda zoom; routes grow
+  out of Kajjansi at **17.5 ms per block-minute** (`MS_PER_MIN`) so Kidepo takes longer
+  than Kasese; click or tap a destination (or the list beside the map) for block time,
+  frequency, fare and the timetable rows from `SCHEDULE`. Contour backdrop is
+  `public/contours.svg` (from the Zulia site). Reduced-motion users get the finished map.
+  SVG nodes are decorative (`aria-hidden`); the list is the accessible control.
+- **`lib/geo.ts`** holds the airstrip coordinates. Check them against the AIP before
+  launch — they were placed from published coordinates, not surveyed.
+- **Hero** is `public/photos/hero.jpg` (needs the full-res original — §6).
+
+## 15. What changed in v1.1.0 — the Brand Identity Toolkit
 
 Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) did not change.
 
@@ -377,7 +411,7 @@ Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) d
   suppressing the self-hosted fonts since the fork, and the unquoted "Source Sans 3" that
   voided body `font-family` — both now in §5.
 
-## 15. What changed from the South Sudan Airlines fork (v1.0.0)
+## 16. What changed from the South Sudan Airlines fork (v1.0.0)
 
 For anyone comparing the two codebases:
 
