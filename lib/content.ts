@@ -208,7 +208,7 @@ export const OFFICES = [
 export const TRAVEL_INFO = [
   {
     id: "baggage",
-    title: "Baggage on bush flights",
+    title: "Baggage on domestic flights",
     items: [
       "15 kg per person in total, checked and cabin combined, on scheduled services.",
       "Soft-sided bags only. Hard suitcases and rigid frames will not fit the Caravan's cargo pod and cannot be carried.",
@@ -222,7 +222,7 @@ export const TRAVEL_INFO = [
     items: [
       "Kajjansi: check-in opens 1 hour and closes 45 minutes before departure.",
       "Park strips: please be at the strip 30 minutes before the scheduled departure.",
-      "Bush strips are weather- and game-dependent. We will always call you before we move a departure.",
+      "Park airstrips are weather- and game-dependent. We will always call you before we move a departure.",
     ],
   },
   {
@@ -239,7 +239,7 @@ export const TRAVEL_INFO = [
     title: "Flying with children",
     items: [
       "Infants under 2 travel on an adult's lap; one infant per adult.",
-      "Children occupying a seat pay the full seat fare — bush flights are sold by the seat and by weight.",
+      "Children occupying a seat pay the full seat fare — domestic flights are sold by the seat and by weight.",
       "We ask for passenger weights at booking. This is a loading requirement on light aircraft, not a formality.",
     ],
   },
@@ -260,7 +260,7 @@ export const LEGAL: Record<string, LegalDoc> = {
       { h: "2. Tickets", p: "A ticket is valid only for the transportation shown on it, from the point of departure to the point of destination. Fares and charges are those in effect on the date of payment." },
       { h: "3. Check-in and boarding", p: "You must arrive by the check-in deadlines published in our Travel Information. We may release your seat if you fail to meet them." },
       { h: "4. Baggage and weights", p: "Allowances are as published in our Travel Information. We operate light aircraft and may refuse or offload baggage where the day's load requires it. Passenger weights are collected as a loading requirement." },
-      { h: "5. Schedules, weather and game", p: "We will take reasonable measures to carry you and your baggage on time. Bush strips are subject to weather, surface condition and wildlife on the runway; published schedules are not guaranteed and do not form part of your contract with us." },
+      { h: "5. Schedules, weather and game", p: "We will take reasonable measures to carry you and your baggage on time. Park airstrips are subject to weather, surface condition and wildlife on the runway; published schedules are not guaranteed and do not form part of your contract with us." },
       { h: "6. Liability", p: "Our liability for death, injury, delay and damage to baggage is governed by applicable Ugandan law and the international conventions that apply." },
     ],
   },

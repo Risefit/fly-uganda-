@@ -167,6 +167,18 @@ compiled CSS, with file and line, and exits non-zero. Run it before you push.
 
 ## 6. ⚠️ Imagery — the single biggest pre-launch item
 
+**Update, v1.1.1:** the nine destinations now carry real, licensed photographs — one per
+strip, resolved by `lib/photos.ts`. Each was verified against the photo's own description
+and location field on Unsplash to be the place it claims; all are under the Unsplash
+License (commercial use, no attribution required) and none are Unsplash+ paid images.
+Credited on each destination page regardless. Only two are genuine aerials (Kisoro's
+Lake Bunyonyi and the Bugungu escarpment); the rest are the real places from the ground,
+and Bwindi is a gorilla because no landscape of it exists on Unsplash.
+
+**Your own aerials override them with no code change:** drop `public/photos/<code>.jpg`
+and rebuild — see `public/photos/README.md`. The hero, fleet and about plates are still
+the SVG illustrations below.
+
 **There is no photography in this build.** The SSA fork shipped photographs of South
 Sudan Airlines aircraft, which obviously could not carry over, and shipping unverified
 stock would have been worse.
@@ -181,7 +193,7 @@ change the paths in `lib/data.ts`, `lib/content.ts`, `components/Hero.tsx` and
 `components/Fleet.tsx`) and update the `alt` text. Priority order:
 
 1. `hero.svg` — the homepage hero. Highest impact by far.
-2. `fleet.svg` — a Caravan on a bush strip.
+2. `fleet.svg` — a Caravan on a park airstrip.
 3. The eight destination plates (`kihihi`, `kisoro`, `mweya`, `kasese`, `pakuba`,
    `bugungu`, `kidepo`, `kajjansi`).
 4. `about.svg`.

@@ -11,7 +11,7 @@ export function WhyFlyUs() {
         <div className="max-w-2xl">
           <Kicker>Why fly with us</Kicker>
           <h2 id="why-heading" className="mt-4 font-display text-3xl leading-tight text-ink sm:text-4xl">
-            Bush-strip aircraft, airline discipline
+            Domestic flights, airline discipline
           </h2>
         </div>
 

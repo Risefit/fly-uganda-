@@ -11,8 +11,10 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-    // No remote image hosts: every image is first-party and version-controlled.
-    remotePatterns: [],
+    // Destination photography is served from Unsplash's CDN (see lib/photos.ts).
+    // Everything else is first-party. Drop your own files in public/photos/ and
+    // they take precedence — at which point this entry can go.
+    remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
   },
   // robots.txt is advisory; this header is not. Both are lifted together by
   // setting SITE_INDEXABLE=true in the production environment.

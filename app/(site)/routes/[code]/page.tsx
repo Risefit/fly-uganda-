@@ -99,7 +99,7 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
           </div>
           )}
           <p className="mt-3 text-xs text-muted">
-            Times are illustrative for this pre-launch website. Bush strips are weather- and surface-dependent; confirm at booking.
+            Times are illustrative for this pre-launch website. Park airstrips are weather- and surface-dependent; confirm at booking.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">

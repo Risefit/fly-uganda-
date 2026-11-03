@@ -2,6 +2,15 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.1.1 — November 2026
+
+- **Destination photography.** Nine licensed Unsplash photos, one per strip, verified
+  against each photo's own location metadata. Served via Unsplash's CDN through
+  `next/image`; credited on each destination page. `lib/photos.ts` resolves them, and a
+  file dropped into `public/photos/<code>.jpg` overrides the stock photo with no code
+  change — the slot for KEA's own aerials.
+- "Bush flights" → "domestic flights" throughout; "bush strips" → "park airstrips".
+
 ## v1.1.0 — November 2026
 
 Visual refresh to the **Brand Identity Toolkit (Concept 6 — Modern Pan-African)**. The
@@ -78,7 +87,7 @@ for Fly Uganda.
 - Cargo repositioned from the Upper Nile oil corridor to the **Albertine Graben**.
 - Loyalty: White Nile Club → **Pearl Club**; Nile Miles → Pearls; Birds of the Sudd →
   Birds of Uganda (Kingfisher, Great Blue Turaco, Shoebill, Crowned Crane).
-- Travel information rewritten for bush flying — 15 kg soft-bag limits, passenger weights,
+- Travel information rewritten for domestic flying — 15 kg soft-bag limits, passenger weights,
   weather- and surface-dependent departures.
 - i18n placeholder switched from Arabic (`/ar`) to French (`/fr`).
 

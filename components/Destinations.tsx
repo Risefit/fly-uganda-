@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { DESTINATION_TILES } from "@/lib/data";
+import { photoFor } from "@/lib/photos";
 import { Kicker } from "@/components/brand";
 
 export function Destinations() {
@@ -32,8 +33,8 @@ export function Destinations() {
               className="group relative block aspect-[3/4] overflow-hidden rounded-2xl"
             >
               <Image
-                src={d.image}
-                alt={`${d.city} — ${d.tag}`}
+                src={photoFor(d.code, `${d.city} — ${d.tag}`).src}
+                alt={photoFor(d.code, `${d.city} — ${d.tag}`).alt}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 300px"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

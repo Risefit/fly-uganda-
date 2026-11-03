@@ -7,6 +7,7 @@ import { PageHero } from "@/components/PageHero";
 import { Chip } from "@/components/brand";
 import { GUIDES, guideByCity } from "@/lib/content";
 import { ROUTES } from "@/lib/data";
+import { photoFor } from "@/lib/photos";
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ city: g.city.toLowerCase().split(" ")[0] }));
@@ -23,6 +24,7 @@ export default function DestinationPage({ params }: { params: { city: string } }
   if (!g) notFound();
 
   const route = ROUTES.find((r) => r.to === g.code);
+  const photo = photoFor(g.code, g.city);
 
   return (
     <>
@@ -36,9 +38,20 @@ export default function DestinationPage({ params }: { params: { city: string } }
       <section className="bg-cream py-16">
         <div className="container-site grid gap-10 lg:grid-cols-[1.4fr_0.9fr]">
           <div>
-            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
-              <Image src={g.image} alt={g.city} fill sizes="(max-width: 1024px) 100vw, 720px" className="object-cover" priority />
-            </div>
+            <figure>
+              <div className="relative aspect-[16/9] overflow-hidden rounded-2xl">
+                <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 1024px) 100vw, 720px" className="object-cover" priority />
+              </div>
+              {photo.credit && (
+                <figcaption className="mt-2 text-right text-xs text-muted">
+                  Photo:{" "}
+                  <a href={photo.credit.url} className="underline decoration-aviation/30 hover:text-opportunity-700" rel="noopener">
+                    {photo.credit.name}
+                  </a>{" "}
+                  / {photo.credit.source}
+                </figcaption>
+              )}
+            </figure>
             <h2 className="mt-8 font-display text-2xl font-semibold text-ink">Highlights</h2>
             <ul className="mt-4 grid gap-3 sm:grid-cols-3">
               {g.highlights.map((h) => (

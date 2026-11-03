@@ -2,7 +2,7 @@
 //
 // AIRPORT CODE CONVENTION: `code` is the IATA code where one has been
 // allocated (EBB, KHX, KXO, KSE, PAF) and the ICAO code where it has not
-// (HUKJ, HUMW, HUGG, HUKD). Ugandan bush strips are inconsistently coded and
+// (HUKJ, HUMW, HUGG, HUKD). Ugandan park airstrips are inconsistently coded and
 // this mix is what operators and ground handlers actually quote. Airstrips
 // with neither (Chobe, Semliki, Lake Mburo) are listed by name only, under
 // CHARTER_DESTINATIONS. `code` is also the /routes/[code] URL slug.
@@ -101,7 +101,7 @@ export const PROMISES = [
     body: "Flown under Kampala Executive Aviation's Uganda CAA Air Operator Certificate, with the maintenance organisation and crew standards that come with it.",
   },
   {
-    title: "Built for the bush",
+    title: "Built for the airstrips",
     body: "Grand Caravans sized for short murram strips, with big windows and a high wing that keeps the view clear. The flight is part of the safari, not a transfer between them.",
   },
   {

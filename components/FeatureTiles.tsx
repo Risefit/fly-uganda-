@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { photoFor } from "@/lib/photos";
 
 /**
  * Four editorial tiles — Destinations, The Fly Uganda Experience, About us,
@@ -8,10 +9,10 @@ import { ArrowRight } from "lucide-react";
  * ⚠️ Tiles use the placeholder scene plates; swap for photography.
  */
 const TILES = [
-  { title: "Destinations", blurb: "Seven park strips, six national parks.", href: "/destinations", image: "/scenes/kihihi.svg" },
+  { title: "Destinations", blurb: "Seven park strips, six national parks.", href: "/destinations", image: photoFor("KXO", "").src },
   { title: "The Fly Uganda experience", blurb: "What a morning on the Caravan is actually like.", href: "/travel-info", image: "/scenes/fleet.svg" },
   { title: "About us", blurb: "Thirty years at Kajjansi, one AOC.", href: "/about", image: "/scenes/about.svg" },
-  { title: "Sustainability", blurb: "Lighter aircraft, shorter sectors, parks that pay.", href: "/sustainability", image: "/scenes/mweya.svg" },
+  { title: "Sustainability", blurb: "Lighter aircraft, shorter sectors, parks that pay.", href: "/sustainability", image: photoFor("HUKD", "").src },
 ];
 
 export function FeatureTiles() {
