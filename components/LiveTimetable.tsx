@@ -89,15 +89,15 @@ function Row({ f }: { f: FlightStatus }) {
   const pct = Math.round((done ? 1 : live ? f.progress : 0) * 100);
   return (
     <li className="relative px-5 pb-4 pt-3.5 tnum" data-state={f.state}>
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="flex min-w-0 items-center gap-4">
-          <span className="flight-code w-14 shrink-0 text-sm font-semibold text-aviation">{f.flightNo}</span>
+          <span className="flight-code w-12 shrink-0 text-sm font-semibold text-aviation sm:w-14">{f.flightNo}</span>
           <span className="min-w-0">
             <span className="block text-sm font-medium text-ink">{city}</span>
-            <span className="block truncate text-xs text-muted">{f.note ?? LABEL[f.state]}{f.reg ? ` · ${f.reg}` : ""}</span>
+            <span className="block max-w-[52vw] truncate text-xs text-muted sm:max-w-none">{f.note ?? LABEL[f.state]}{f.reg ? ` · ${f.reg}` : ""}</span>
           </span>
         </div>
-        <div className="flex shrink-0 items-center gap-5 text-sm">
+        <div className="flex shrink-0 items-center gap-4 text-sm sm:gap-5">
           <Time label="Dep" sched={f.std} actual={f.atd} />
           <Time label="Arr" sched={f.sta} actual={f.ata} />
           <span
