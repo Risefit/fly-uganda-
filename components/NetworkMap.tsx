@@ -333,7 +333,7 @@ export function NetworkMap({
               <p className="mt-2 text-sm text-muted">Coming soon — not yet on the timetable. Start date will be announced here first.</p>
             )}
             <div className="mt-6 flex flex-wrap gap-3">
-              {sel.status === "live" && <Link href="/book" className="btn-primary">Book {sel.to} <ArrowRight className="h-4 w-4" aria-hidden /></Link>}
+              {sel.status === "live" && <Link href="/#book" className="btn-primary">Book {sel.to} <ArrowRight className="h-4 w-4" aria-hidden /></Link>}
               <Link href={`/routes/${sel.to.toLowerCase()}`} className="btn-ghost">Route details</Link>
             </div>
           </div>

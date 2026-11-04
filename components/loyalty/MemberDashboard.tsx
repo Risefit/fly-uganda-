@@ -104,7 +104,7 @@ export function MemberDashboard() {
             {MEMBER.awardPearls.toLocaleString()}
           </p>
           <p className="text-sm text-muted">Pearls available to spend</p>
-          <Link href="/book" className="btn-primary mt-4 w-full">
+          <Link href="/#book" className="btn-primary mt-4 w-full">
             <Plane className="h-4 w-4" aria-hidden /> Use Pearls for a seat
           </Link>
         </div>

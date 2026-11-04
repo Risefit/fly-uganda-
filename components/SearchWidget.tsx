@@ -56,7 +56,7 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
 
   return (
     <form
-      action="/book"
+      action="/contact"
       style={{ colorScheme: "dark" }}
       className="w-full overflow-hidden rounded-2xl bg-aviation-900 text-warm shadow-widget ring-1 ring-opportunity/25"
       aria-label="Search flights"
@@ -164,9 +164,12 @@ export function SearchWidget({ variant = "hero" }: { variant?: "hero" | "page" }
         </div>
       )}
 
+      <input type="hidden" name="subject" value="Bookings" />
+      <input type="hidden" name="origin" value={origin} />
+      <input type="hidden" name="destination" value={destination} />
       <p className="px-4 pb-3 pt-2 text-[0.7rem] text-warm/55">
-        Online booking is launching shortly with our reservation partner. Fares are shown per person,
-        per sector, including taxes.
+        Online booking is launching shortly with our reservation partner — until then, Search sends your
+        request to our reservations team. Fares are shown per person, per sector, including taxes.
       </p>
     </form>
   );

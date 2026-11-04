@@ -38,8 +38,8 @@ export function LaunchingNotice() {
   return (
     <div className="mt-6 rounded-xl border border-dashed border-opportunity/50 bg-opportunity/[0.06] px-5 py-4 text-sm text-ink">
       <strong className="font-semibold text-aviation">Online booking is launching shortly.</strong>{" "}
-      In the meantime, please call <a className="font-semibold text-aviation hover:underline" href="tel:+256">+256 (TBC)</a> or
-      email <a className="font-semibold text-aviation hover:underline" href="mailto:reservations@flyuganda.com">reservations@flyuganda.com</a> to make a reservation.
+      Until then our reservations team handles every booking and change —{" "}
+      <a className="font-semibold text-aviation hover:underline" href="/contact?subject=Bookings">contact us</a>.
     </div>
   );
 }

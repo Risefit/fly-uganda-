@@ -93,7 +93,7 @@ export default function RoutesPage() {
               <p className="text-xs text-cream/60">per person, per sector, including taxes</p>
             </div>
             <div className="ml-auto flex items-center">
-              <Link href="/book" className="inline-flex items-center gap-2 rounded-md bg-opportunity px-5 py-3 text-sm font-semibold text-aviation-900 hover:bg-opportunity-300">
+              <Link href="/#book" className="inline-flex items-center gap-2 rounded-md bg-opportunity px-5 py-3 text-sm font-semibold text-aviation-900 hover:bg-opportunity-300">
                 Book a flight <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>

@@ -2,6 +2,18 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.6.0 — November 2026
+
+- **/book removed**; the homepage booking window (`/#book`) is the booking entry and every
+  "Book" link points there. Until the PSS is live, Search submits to `/contact` with the
+  Bookings subject and route pre-filled.
+- Quick-action tile "Book a flight" → **Baggage & travel info** (/travel-info).
+- **Secure-payment strip** under the booking window: Visa, Mastercard, MTN MoMo, Airtel
+  Money. Shown as text badges until the official scheme artwork is dropped into
+  `/public/payments` (README there) — marks are never redrawn.
+- Booking phone/email live on the contact page only; the launching notice on Manage and
+  Check-in links there.
+
 ## v1.5.1 — November 2026
 
 - Coming-soon routes grouped at the bottom of the map's route list (dashed divider,

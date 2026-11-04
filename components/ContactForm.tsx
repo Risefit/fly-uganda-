@@ -9,9 +9,13 @@ const FIELD =
 export function ContactForm({
   subjectLabel = "How can we help?",
   subjects = ["General enquiry", "Bookings", "Cargo", "Careers", "Press / media"],
+  defaultSubject,
+  defaultMessage,
 }: {
   subjectLabel?: string;
   subjects?: string[];
+  defaultSubject?: string;
+  defaultMessage?: string;
 }) {
   const [sent, setSent] = useState(false);
 
@@ -52,7 +56,7 @@ export function ContactForm({
       </div>
       <label className="mt-4 flex flex-col gap-1.5">
         <span className="text-xs font-semibold text-ink">{subjectLabel}</span>
-        <select className={FIELD} name="subject" defaultValue={subjects[0]}>
+        <select className={FIELD} name="subject" defaultValue={defaultSubject && subjects.includes(defaultSubject) ? defaultSubject : subjects[0]}>
           {subjects.map((s) => (
             <option key={s}>{s}</option>
           ))}
@@ -60,7 +64,7 @@ export function ContactForm({
       </label>
       <label className="mt-4 flex flex-col gap-1.5">
         <span className="text-xs font-semibold text-ink">Message</span>
-        <textarea className={`${FIELD} min-h-[120px] resize-y`} name="message" required placeholder="How can we help?" />
+        <textarea className={`${FIELD} min-h-[120px] resize-y`} name="message" required placeholder="How can we help?" defaultValue={defaultMessage} />
       </label>
       <button type="submit" className="btn-primary mt-5 w-full sm:w-auto">
         <Send className="h-4 w-4" aria-hidden />

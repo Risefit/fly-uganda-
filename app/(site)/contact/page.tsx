@@ -19,7 +19,17 @@ const EMAILS = [
   { label: "Careers", value: CONTACT.careers },
 ];
 
-export default function ContactPage() {
+type Search = Record<string, string | string[] | undefined>;
+const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v) ?? "";
+
+export default function ContactPage({ searchParams = {} }: { searchParams?: Search }) {
+  // The homepage booking window sends its search here until the PSS is live.
+  const subject = one(searchParams.subject);
+  const origin = one(searchParams.origin), destination = one(searchParams.destination);
+  const defaultMessage =
+    subject === "Bookings" && origin && destination
+      ? `Booking request: ${origin} → ${destination}. Dates and passengers: `
+      : undefined;
   return (
     <>
       <PageHero
@@ -82,7 +92,7 @@ export default function ContactPage() {
             <h2 className="mt-4 font-display text-3xl font-semibold text-ink">Write to us</h2>
             <p className="mt-3 text-muted">We aim to respond within two business days.</p>
             <div className="mt-6">
-              <ContactForm />
+              <ContactForm defaultSubject={subject || undefined} defaultMessage={defaultMessage} />
             </div>
           </div>
         </div>

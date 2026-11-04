@@ -23,7 +23,7 @@ export default function SchedulePage() {
           <ScheduleTable />
           <p className="mt-6 text-sm text-muted">
             Looking to travel?{" "}
-            <Link href="/book" className="font-semibold text-aviation hover:underline">Book a flight</Link>{" "}
+            <Link href="/#book" className="font-semibold text-aviation hover:underline">Book a flight</Link>{" "}
             or view the full{" "}
             <Link href="/routes" className="font-semibold text-aviation hover:underline">route network</Link>.
           </p>

@@ -102,7 +102,7 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
           </p>
 
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/book" className="btn-primary">
+            <Link href="/#book" className="btn-primary">
               Book {r.from}–{r.to} <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             {hasGuide && (

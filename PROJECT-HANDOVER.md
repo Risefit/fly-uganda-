@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.5.1 · November 2026
+Version 1.6.0 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -365,6 +365,12 @@ The canonical URL now lives in one place, `lib/site.ts`, and is read by
 `NEXT_PUBLIC_SITE_URL` if the domain changes.
 
 ## 11. Booking integration (AeroCRS / Go7)
+
+**v1.6:** there is no /book page. The widget in the hero (`components/SearchWidget.tsx`,
+`#book` on the homepage) is the booking entry; its form posts to `/contact` with
+`subject=Bookings&origin=&destination=` until the PSS goes live, at which point the
+form `action` (or an embed in place of the widget) is the only change. The payment strip
+(`components/PaymentStrip.tsx`) reads scheme logos from `/public/payments`.
 
 Booking is scaffolding, not an engine. `SearchWidget` + `/book` + `/manage` + `/check-in`
 host placeholders ready for the embed, with a "launching shortly" state. The Pearl Club

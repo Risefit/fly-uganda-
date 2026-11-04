@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Rule, Webale } from "@/components/brand";
 import { SearchWidget } from "@/components/SearchWidget";
+import { PaymentStrip } from "@/components/PaymentStrip";
 
 /**
  * Headline, one line of proof, and the amber call to action — the hero from
@@ -36,7 +37,7 @@ export function Hero() {
         className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-aviation-900/[0.78] via-aviation-900/[0.28] to-transparent lg:block"
       />
 
-      <div className="container-site pb-24 pt-32">
+      <div className="container-site pb-32 pt-32">
         <div className="max-w-2xl">
           <div className="mb-5 flex items-center gap-3">
             <Rule className="!h-5" />
@@ -64,8 +65,11 @@ export function Hero() {
         </div>
 
         {/* The booking portal, in the hero. Same widget as /book, without the Pearl Club field. */}
-        <div className="mt-12 lg:mt-16">
+        <div id="book" className="mt-12 scroll-mt-24 lg:mt-16">
           <SearchWidget variant="hero" />
+          <div className="mt-4">
+            <PaymentStrip />
+          </div>
         </div>
       </div>
     </section>

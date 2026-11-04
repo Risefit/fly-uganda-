@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { Plane, ClipboardList, CheckSquare, Radar } from "lucide-react";
+import { Luggage, ClipboardList, CheckSquare, Radar } from "lucide-react";
 
 /**
  * The four actions a returning customer wants without reading anything — from
  * the identity toolkit's website panel. Overlaps the hero's bottom edge.
  */
 const ACTIONS = [
-  { label: "Book a flight", sub: "Domestic seats", href: "/book", Icon: Plane },
+  { label: "Baggage & travel info", sub: "What to bring, when to arrive", href: "/travel-info", Icon: Luggage },
   { label: "Manage booking", sub: "Change or review", href: "/manage", Icon: ClipboardList },
   { label: "Check in", sub: "Opens 24h before", href: "/check-in", Icon: CheckSquare },
   { label: "Flight status", sub: "Today's departures", href: "/flight-status", Icon: Radar },

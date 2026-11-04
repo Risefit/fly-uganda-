@@ -157,7 +157,7 @@ export default function AboutPage() {
         <div className="container-site flex flex-wrap items-center justify-between gap-6">
           <h2 className="font-display text-2xl font-semibold">Ready to fly with us?</h2>
           <div className="flex gap-3">
-            <Link href="/book" className="inline-flex items-center gap-2 rounded-md bg-opportunity px-5 py-3 text-sm font-semibold text-aviation-900 hover:bg-opportunity-300">
+            <Link href="/#book" className="inline-flex items-center gap-2 rounded-md bg-opportunity px-5 py-3 text-sm font-semibold text-aviation-900 hover:bg-opportunity-300">
               Book a flight <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
             <Link href="/careers" className="inline-flex items-center gap-2 rounded-md border border-white/25 px-5 py-3 text-sm font-semibold text-cream hover:bg-white/10">

@@ -7,7 +7,7 @@ const COLUMNS = [
   {
     title: "Fly",
     links: [
-      { label: "Book a flight", href: "/book" },
+      { label: "Book a flight", href: "/#book" },
       { label: "Routes & network", href: "/routes" },
       { label: "Schedule", href: "/schedule" },
       { label: "Pearl Club", href: "/pearl-club" },

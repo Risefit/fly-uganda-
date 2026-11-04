@@ -106,7 +106,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
             <User className="h-3.5 w-3.5" aria-hidden />
             Sign in
           </Link>
-          <Link href="/book" className="btn-primary !px-5 !py-2.5">
+          <Link href="/#book" className="btn-primary !px-5 !py-2.5">
             Book a flight
           </Link>
         </div>
@@ -126,7 +126,7 @@ export function Header({ solid = false }: { solid?: boolean }) {
         <div className="fixed inset-0 top-[72px] z-40 overflow-y-auto bg-graphite lg:hidden">
           <nav className="container-site flex flex-col py-6" aria-label="Mobile">
             <Link
-              href="/book"
+              href="/#book"
               onClick={() => setOpen(false)}
               className="btn-primary mb-4 w-full !py-3.5 text-center"
             >

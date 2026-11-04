@@ -80,7 +80,7 @@ export default function DestinationPage({ params }: { params: { city: string } }
                 </div>
                 <p className="flight-code mt-2 text-lg font-semibold">{route.from} → {route.to}</p>
                 <p className="mt-1 text-sm text-cream/80">{route.frequency} · {route.blockTime}</p>
-                <Link href="/book" className="mt-4 inline-flex items-center gap-2 rounded-md bg-opportunity px-4 py-2.5 text-sm font-semibold text-aviation-900 hover:bg-opportunity-300">
+                <Link href="/#book" className="mt-4 inline-flex items-center gap-2 rounded-md bg-opportunity px-4 py-2.5 text-sm font-semibold text-aviation-900 hover:bg-opportunity-300">
                   Book this route <ArrowRight className="h-4 w-4" aria-hidden />
                 </Link>
               </div>
