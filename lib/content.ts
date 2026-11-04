@@ -2,9 +2,11 @@
 //
 // ⚠️ Flight numbers use the placeholder "FU" prefix. Replace with the
 // designator actually filed with UCAA before launch.
-// ⚠️ Times below are an illustrative pattern built around the published
-// morning-out / late-morning-back rhythm the parks run on. Replace with the
-// live timetable before launch.
+// Timetable v1.4 — built for the fleet Phil assigned (2 × 208EX, 1 × 1900D):
+// one line of flying per aircraft per day, block times from the great-circle
+// distance at 160 kt (Caravan) / 260 kt (1900D) + 16 min taxi/climb, 20-min
+// turnarounds up-country, 30–40 min at Kajjansi. Rotation plan and duty-time
+// caveats are in PROJECT-HANDOVER.md §9b. Not yet a published timetable.
 
 import { ROUTES, type Route } from "@/lib/data";
 
@@ -24,28 +26,27 @@ const CARAVAN = "Grand Caravan";
 const B1900 = "Beechcraft 1900D";
 
 export const SCHEDULE: Flight[] = [
-  { flightNo: "FU101", from: "HUKJ", to: "HUKH", city: "Kihihi", dep: "07:30", arr: "09:00", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU102", from: "HUKH", to: "HUKJ", city: "Kihihi", dep: "09:20", arr: "10:50", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU103", from: "HUKJ", to: "HUKH", city: "Kihihi", dep: "13:30", arr: "15:00", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU104", from: "HUKH", to: "HUKJ", city: "Kihihi", dep: "15:20", arr: "16:50", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU111", from: "HUKJ", to: "HUKI", city: "Kisoro", dep: "07:30", arr: "09:10", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU112", from: "HUKI", to: "HUKJ", city: "Kisoro", dep: "09:30", arr: "11:10", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU131", from: "HUKJ", to: "HUKS", city: "Kasese", dep: "08:00", arr: "09:10", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU132", from: "HUKS", to: "HUKJ", city: "Kasese", dep: "09:30", arr: "10:40", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU151", from: "HUKJ", to: "HUGG", city: "Bugungu", dep: "07:45", arr: "09:00", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU152", from: "HUGG", to: "HUKJ", city: "Bugungu", dep: "09:20", arr: "10:35", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU121", from: "HUKJ", to: "HUKF", city: "Hoima", dep: "08:00", arr: "08:55", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU122", from: "HUKF", to: "HUKJ", city: "Hoima", dep: "09:15", arr: "10:10", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU171", from: "HUKJ", to: "HUAR", city: "Arua", dep: "07:30", arr: "09:00", days: "Daily", aircraft: B1900 },
-  { flightNo: "FU172", from: "HUAR", to: "HUKJ", city: "Arua", dep: "09:30", arr: "11:00", days: "Daily", aircraft: B1900 },
-  { flightNo: "FU181", from: "HUKJ", to: "HUGU", city: "Gulu", dep: "07:15", arr: "08:30", days: "Daily", aircraft: B1900 },
-  { flightNo: "FU182", from: "HUGU", to: "HUKJ", city: "Gulu", dep: "08:50", arr: "10:05", days: "Daily", aircraft: B1900 },
-  { flightNo: "FU183", from: "HUKJ", to: "HUGU", city: "Gulu", dep: "14:00", arr: "15:15", days: "Daily", aircraft: B1900 },
-  { flightNo: "FU184", from: "HUGU", to: "HUKJ", city: "Gulu", dep: "15:35", arr: "16:50", days: "Daily", aircraft: B1900 },
-  { flightNo: "FU191", from: "HUKJ", to: "HUMO", city: "Moroto", dep: "08:15", arr: "09:40", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  { flightNo: "FU192", from: "HUMO", to: "HUKJ", city: "Moroto", dep: "10:00", arr: "11:25", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  { flightNo: "FU161", from: "HUKJ", to: "HUKD", city: "Kidepo", dep: "07:00", arr: "09:00", days: "Mon · Wed · Fri", aircraft: CARAVAN },
-  { flightNo: "FU162", from: "HUKD", to: "HUKJ", city: "Kidepo", dep: "09:30", arr: "11:30", days: "Mon · Wed · Fri", aircraft: CARAVAN },
+  // ── Caravan 1 (5X-FUA placeholder): the west, daily; Bugungu Tue/Thu/Sat ──
+  { flightNo: "FU101", from: "HUKJ", to: "HUKH", city: "Kihihi", dep: "07:00", arr: "08:25", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU102", from: "HUKH", to: "HUKJ", city: "Kihihi", dep: "08:45", arr: "10:10", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU131", from: "HUKJ", to: "HUKS", city: "Kasese", dep: "10:50", arr: "12:05", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU132", from: "HUKS", to: "HUKJ", city: "Kasese", dep: "12:25", arr: "13:40", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU151", from: "HUKJ", to: "HUGG", city: "Bugungu", dep: "14:20", arr: "15:25", days: "Tue · Thu · Sat", aircraft: CARAVAN },
+  { flightNo: "FU152", from: "HUGG", to: "HUKJ", city: "Bugungu", dep: "15:45", arr: "16:50", days: "Tue · Thu · Sat", aircraft: CARAVAN },
+  // ── Caravan 2 (5X-FUB placeholder): Kisoro daily; Kidepo Mon/Wed/Fri, Moroto Tue/Thu/Sat ──
+  { flightNo: "FU111", from: "HUKJ", to: "HUKI", city: "Kisoro", dep: "07:15", arr: "08:45", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU112", from: "HUKI", to: "HUKJ", city: "Kisoro", dep: "09:05", arr: "10:35", days: "Daily", aircraft: CARAVAN },
+  { flightNo: "FU161", from: "HUKJ", to: "HUKD", city: "Kidepo", dep: "11:15", arr: "12:55", days: "Mon · Wed · Fri", aircraft: CARAVAN },
+  { flightNo: "FU162", from: "HUKD", to: "HUKJ", city: "Kidepo", dep: "13:15", arr: "14:55", days: "Mon · Wed · Fri", aircraft: CARAVAN },
+  { flightNo: "FU191", from: "HUKJ", to: "HUMO", city: "Moroto", dep: "11:15", arr: "12:40", days: "Tue · Thu · Sat", aircraft: CARAVAN },
+  { flightNo: "FU192", from: "HUMO", to: "HUKJ", city: "Moroto", dep: "13:00", arr: "14:25", days: "Tue · Thu · Sat", aircraft: CARAVAN },
+  // ── 1900D (5X-KEH): Gulu and Arua daily; Hoima Mon/Wed/Fri ──
+  { flightNo: "FU181", from: "HUKJ", to: "HUGU", city: "Gulu", dep: "07:00", arr: "07:55", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU182", from: "HUGU", to: "HUKJ", city: "Gulu", dep: "08:15", arr: "09:10", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU171", from: "HUKJ", to: "HUAR", city: "Arua", dep: "09:50", arr: "10:55", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU172", from: "HUAR", to: "HUKJ", city: "Arua", dep: "11:15", arr: "12:20", days: "Daily", aircraft: B1900 },
+  { flightNo: "FU121", from: "HUKJ", to: "HUKF", city: "Hoima", dep: "13:10", arr: "13:55", days: "Mon · Wed · Fri", aircraft: B1900 },
+  { flightNo: "FU122", from: "HUKF", to: "HUKJ", city: "Hoima", dep: "14:15", arr: "15:00", days: "Mon · Wed · Fri", aircraft: B1900 },
 ];
 
 export function routeByCode(code: string): Route | undefined {
@@ -83,7 +84,7 @@ export const GUIDES: Guide[] = [
     airport: "Kihihi (Savannah) Airstrip (HUKH)",
     intro:
       "The airstrip for Kanungu district — the tea estates, the district headquarters and the Ishasha border area — and the northern gateway to Bwindi Impenetrable National Park. Buhoma is a short transfer away; Ishasha and its tree-climbing lions are closer still.",
-    highlights: ["Kanungu district & tea estates", "Buhoma gorilla sector", "Two services a day"],
+    highlights: ["Kanungu district & tea estates", "Buhoma gorilla sector", "Daily, first departure of the morning"],
     image: "/scenes/kihihi.svg",
   },
   {
@@ -122,7 +123,7 @@ export const GUIDES: Guide[] = [
     region: "Hoima · Bunyoro",
     airport: "Kabalega International Airport, Hoima (HUKF)",
     intro:
-      "Uganda's second international airport, at Kabaale on the Albertine escarpment west of Hoima city — built for the refinery, the Kingfisher and Tilenga oil developments and the Bunyoro region behind them. Fifty-five minutes from Kajjansi, and a long paved runway the 1900D is at home on.",
+      "Uganda's second international airport, at Kabaale on the Albertine escarpment west of Hoima city — built for the refinery, the Kingfisher and Tilenga oil developments and the Bunyoro region behind them. Forty-five minutes from Kajjansi on the 1900D, three days a week.",
     highlights: ["Refinery & Kingfisher project area", "Hoima city, 40 minutes by road", "Lake Albert & the escarpment"],
     image: "/scenes/hukf.svg",
   },
@@ -143,7 +144,7 @@ export const GUIDES: Guide[] = [
     airport: "Gulu Airport (HUGU)",
     intro:
       "Northern Uganda's largest city and its commercial, medical and university centre, with a paved runway and two services a day. The practical base for the whole Acholi sub-region, and the road onward to Kitgum, Pader and the South Sudan border.",
-    highlights: ["Gulu city & university", "Two services a day", "Onward to Kitgum & Nimule"],
+    highlights: ["Gulu city & university", "Daily on the 1900D, 55 minutes", "Onward to Kitgum & Nimule"],
     image: "/scenes/hugu.svg",
   },
   {
@@ -162,7 +163,7 @@ export const GUIDES: Guide[] = [
     region: "Karamoja · Kidepo Valley NP",
     airport: "Kidepo (Apoka) Airstrip (HUKD)",
     intro:
-      "Uganda's most remote park, in the far north-east against the South Sudan border. Two hours by air; two days by road. Narus and Kidepo valleys, and almost nobody else there.",
+      "Uganda's most remote park, in the far north-east against the South Sudan border. An hour and forty minutes by air; two days by road. Narus and Kidepo valleys, and almost nobody else there.",
     highlights: ["Narus Valley game drives", "Karamojong cultural visits", "Three services a week"],
     image: "/scenes/kidepo.svg",
   },

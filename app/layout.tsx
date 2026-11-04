@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s · Fly Uganda",
   },
   description:
-    "Uganda's domestic airline. Scheduled, ticketed flights from Kajjansi Airfield, Kampala to Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua, Gulu, Moroto, Kidepo and Entebbe.",
+    "Uganda's domestic airline. Scheduled, ticketed flights from Kajjansi Airfield, Kampala to Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua, Gulu, Moroto and Kidepo.",
   keywords: [
     "Fly Uganda",
     "Uganda domestic flights",

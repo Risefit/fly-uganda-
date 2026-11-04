@@ -6,7 +6,7 @@ that destination everywhere on the site, with no code change:
     hukj.jpg   Kajjansi        hukh.jpg   Kihihi         huki.jpg   Kisoro
     hukf.jpg   Hoima           huks.jpg   Kasese         huar.jpg   Arua
     hugu.jpg    Gulu            humo.jpg  Moroto (currently the Karamoja aerial)
-    hugg.jpg   Bugungu         hukd.jpg  Kidepo         huen.jpg   Entebbe
+    hugg.jpg   Bugungu         hukd.jpg  Kidepo
 
 `.jpg`, `.jpeg`, `.png` and `.webp` all work. Landscape orientation, at least 1600 px
 wide; next/image handles the resizing. Aerials from the aircraft are exactly what this

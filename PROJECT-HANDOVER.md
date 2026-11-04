@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.3.2 · November 2026
+Version 1.4.0 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -24,7 +24,7 @@ in later.
 - Identity: **"The Ribbon"** — Modern Pan-African, from the Brand Identity Toolkit.
   See `01-brand-brief.md`.
 - Positioning (v1.2): **Uganda's domestic airline** — scheduled, ticketed flights from
-  **Kajjansi**, the Kampala-side alternative to Entebbe, to ten destinations across the
+  **Kajjansi**, the Kampala-side alternative to Entebbe, to nine destinations across the
   country. Sold like an airline (e-tickets, interline/codeshare-ready
   distribution). **No charter product** anywhere on the site; cargo is belly freight on
   the schedule. Fleet shown: Cessna 208EX Grand Caravan and Beechcraft 1900D only.
@@ -272,25 +272,44 @@ Everything below is marked in the code with `⚠️` comments.
 | **Member dashboard sample data** | `components/loyalty/MemberDashboard.tsx` | Mock member, balance, tier and activity. The sample name is a placeholder, not a real member. |
 | **Company history** | `app/(site)/about/page.tsx` | "Thirty years of Ugandan flying" and the Kampala Aero Club lineage are checkable claims about your own business — confirm the dates before publishing. |
 | **French placeholder** | `app/fr/page.tsx` | Static "coming soon" page. In the sitemap and `hreflang`, but there is no translated content behind it. |
-| **Flight status** | `app/(site)/flight-status/page.tsx` | Renders the published timetable, not live data. The page says so. Wire to the PSS/ops feed or leave the caveat. |
+| **Flight status** | `app/(site)/flight-status/page.tsx` | Live engine built (§14); runs on the replay mock until Spidertracks credentials are set. The page says so. |
 | **Sustainability figures** | `app/(site)/sustainability/page.tsx` | Framing only, no audited numbers — and the page is careful not to claim any. Add measured fuel-burn per seat when you have a year of it. |
-| **Fleet size** | `lib/data.ts → FLEET` | No aircraft counts are published. Note that the illustrative timetable implies **seven Caravans airborne simultaneously** in the morning bank — see §9a. |
+| **Fleet size** | `lib/data.ts → FLEET` | No aircraft counts are published. The timetable is sized to 2 × 208EX + 1 × 1900D — see §9a. |
 
 **On fares specifically:** the published seat fare is a commercial decision against
 Aerolink's Entebbe pricing, and the placeholder is a market-rate guess, not a
 recommendation. Nothing on the site should go live on it.
 
-### 9a. The timetable implies a fleet you may not have
+### 9a. Fleet and timetable (v1.4) — 2 × 208EX, 1 × 1900D
 
-`lib/content.ts → SCHEDULE` currently departs Kajjansi at 07:00, 07:30 ×2, 07:45 ×2 and
-08:00 ×2 — **seven simultaneous departures**, all typed Grand Caravan, none of which can
-be flown by a returning aircraft because the first inbound does not land until 09:00.
-`/routes` headlines this as "one morning departure bank".
+Phil's assignment, 4 Nov 2026. `lib/content.ts → SCHEDULE` is built as **one line of
+flying per aircraft per day**:
 
-That is a plausible shape for a mature network and an implausible one for a small fleet.
-Before this goes in front of the trade, either thin the bank to what the fleet can
-actually fly, or stagger the departures across the morning. It is the kind of detail a
-DMC planning connections will notice immediately.
+| Aircraft | Daily | Mon · Wed · Fri | Tue · Thu · Sat | Daily block |
+|---|---|---|---|---|
+| Caravan 1 | Kihihi 07:00 → back 10:10 · Kasese 10:50 → back 13:40 | — | Bugungu 14:20 → back 16:50 | 5:10 (7:20 TTS) |
+| Caravan 2 | Kisoro 07:15 → back 10:35 | Kidepo 11:15 → back 14:55 | Moroto 11:15 → back 14:25 | 3:00 / 6:20 / 5:50 |
+| 1900D | Gulu 07:00 → back 09:10 · Arua 09:50 → back 12:20 | Hoima 13:10 → back 15:00 | — | 4:10 (5:40 MWF) |
+
+Block times: great-circle from Kajjansi at 160 kt (Caravan) or 260 kt (1900D) plus
+16 min taxi/climb, rounded up to 5 min — Kihihi 1:25, Kisoro 1:30, Kasese 1:15,
+Bugungu 1:05, Kidepo 1:40, Moroto 1:25; Gulu 0:55, Arua 1:05, Hoima 0:45. No wind, no
+Entebbe-zone routing allowance; expect +5–10 min on the western legs in practice.
+
+**Caveats to clear before publishing**
+- Caravan 1 on Tue/Thu/Sat: 7:20 block over three rotations, duty roughly 06:00–17:05
+  — check against the UCAA single-pilot FDP table; if it fails, Bugungu moves to
+  Caravan 2 on Sundays/Tue/Thu or gets a second crew.
+- Sunday is the light day (Caravan 2 flies Kisoro only). Could carry a Sunday Kidepo
+  or Bugungu if demand appears.
+- Kihihi went from 2× daily to 1× daily to fit the fleet; the afternoon Kihihi is the
+  first thing to add with a third Caravan.
+- Hoima is on the 1900D because Kabalega has a 3,500 m paved runway; Bugungu stays on
+  the Caravan (murram).
+- Maintenance: there is no spare aircraft. Any downtime drops a line; the 3×-weekly
+  routes are the ones to cancel first.
+- Flight numbers kept from v1.2 (FU1x1 out / FU1x2 back); FU103/104 and FU183/184 are
+  retired.
 
 ## 10. Before you ship — checklist
 

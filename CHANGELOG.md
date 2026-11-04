@@ -2,6 +2,17 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.4.0 — November 2026
+
+- **Timetable rebuilt for the assigned fleet — 2 × 208EX, 1 × 1900D** — one line of flying
+  per aircraft per day; block times from the 160 kt / 260 kt maths. Kihihi, Kisoro,
+  Kasese, Gulu, Arua daily; Hoima and Kidepo Mon/Wed/Fri; Bugungu and Moroto
+  Tue/Thu/Sat. Rotation plan, block-time table and crew-duty caveats in handover §9a.
+- **Entebbe connection sector removed** — nine destinations.
+- Status engine: departure now requires the aircraft to have been seen at the origin
+  (or be airborne along the leg after STD) — an inbound approach no longer registers
+  as the next leg's departure.
+
 ## v1.3.2 — November 2026
 
 - Booking widget (hero variant, no Pearl Club field) placed at the foot of the homepage

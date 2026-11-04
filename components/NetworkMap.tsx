@@ -27,7 +27,7 @@ type Framing = { scale: number; centre: [number, number] };
 
 const W = 1000, H = 1000;
 const HUB = "HUKJ";
-/** ms of animation per minute of block time: Kihihi 1h30 → 1.6s, Kidepo 2h → 2.1s, Entebbe 15m → 0.3s. */
+/** ms of animation per minute of block time: Hoima 45m → 0.8s, Kidepo 1h40 → 1.75s. */
 const MS_PER_MIN = 17.5;
 const STAGGER = 140;
 
@@ -119,7 +119,7 @@ export function NetworkMap({
     const fU = fit(geo.uganda, 130);
 
     // Label placement: below the node for the strips that collide otherwise.
-    const BELOW = new Set(["HUEN", "HUGG", "HUKI"]);
+    const BELOW = new Set(["HUGG", "HUKI"]);
 
     function render(x: number) {
       const k = Math.max(0, Math.min(1, x));

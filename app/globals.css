@@ -270,7 +270,3 @@
 .network-map[data-active="HUMO"] .node[data-code="HUMO"] .node-dot { fill: #fcba00; }
 .network-map[data-active="HUMO"] .node[data-code="HUMO"] .node-ring { stroke-opacity: 0.8; }
 .network-map[data-active="HUMO"] .map-label[data-code="HUMO"] { fill: #fcba00; }
-.network-map[data-active="HUEN"] .route[data-code="HUEN"] .route-line { stroke: #fcba00; stroke-width: 3; }
-.network-map[data-active="HUEN"] .node[data-code="HUEN"] .node-dot { fill: #fcba00; }
-.network-map[data-active="HUEN"] .node[data-code="HUEN"] .node-ring { stroke-opacity: 0.8; }
-.network-map[data-active="HUEN"] .map-label[data-code="HUEN"] { fill: #fcba00; }

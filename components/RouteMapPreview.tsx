@@ -14,7 +14,7 @@ export function RouteMapPreview() {
             <div className="mb-10 max-w-3xl">
               <Kicker>The network</Kicker>
               <h2 id="map-heading" className="mt-4 font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
-                Ten destinations, one morning departure bank
+                Nine destinations, one morning departure bank
               </h2>
               <p className="mt-3 max-w-xl text-muted">
                 Every route leaves Kajjansi in the morning and is back before lunch. Click a

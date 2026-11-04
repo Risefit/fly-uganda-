@@ -50,7 +50,11 @@ export function deriveStatuses(positions: Position[], day: string, now = new Dat
       const onGround = (p.gsKt ?? 0) < GROUND_KT;
       if (!atd) {
         if (insideFence(f.from, ll)) seenAtOrigin = true;
-        else if (seenAtOrigin || minutesBetween(std, t) > -30) atd = t;
+        // Departure = first fix outside the origin fence after the aircraft was
+        // seen there. If the tracker joined late and we never saw it at the
+        // origin, accept a fix after STD that is airborne and clearly along the
+        // leg — but never an inbound aircraft still arriving on the previous leg.
+        else if (seenAtOrigin || (t >= std && !onGround && legProgress(f.from, f.to, ll) > 0.08)) atd = t;
       } else if (!ata && insideFence(f.to, ll) && onGround) {
         ata = t;
       }

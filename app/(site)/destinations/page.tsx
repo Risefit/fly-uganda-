@@ -17,7 +17,7 @@ export default function DestinationsPage() {
       <PageHero
         kicker="Where we fly"
         title="Destinations"
-        subtitle="Ten airports across Uganda — the north, West Nile, Karamoja, the Albertine, the parks and Entebbe, all served from Kajjansi."
+        subtitle="Nine airports across Uganda — the north, West Nile, Karamoja, the Albertine and the parks, all served from Kajjansi."
         crumbs={[{ label: "Home", href: "/" }, { label: "Destinations" }]}
       />
       <section className="bg-cream py-16">

@@ -63,11 +63,6 @@ const STOCK: Record<string, Photo> = {
     alt: "The Narus Valley, Kidepo Valley National Park, near Apoka",
     credit: { name: "Mark Nsubuga", url: "https://unsplash.com/@marknsubuga", source: "Unsplash" },
   },
-  HUEN: {
-    src: U("photo-1570053279529-9f2b1003c57c", 2000),
-    alt: "The water's edge on Lake Victoria at Entebbe",
-    credit: { name: "bill wegener", url: "https://unsplash.com/@wegener", source: "Unsplash" },
-  },
 };
 
 const EXT = [".jpg", ".jpeg", ".png", ".webp"];

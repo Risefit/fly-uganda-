@@ -17,8 +17,8 @@ export default function RoutesPage() {
     <>
       <PageHero
         kicker="Where we fly"
-        title="Ten destinations, one morning departure bank"
-        subtitle="The west, the Albertine, West Nile, the north, Karamoja and Entebbe — served from Kajjansi, most of them before mid-morning."
+        title="Nine destinations, one morning departure bank"
+        subtitle="The west, the Albertine, West Nile, the north and Karamoja — served from Kajjansi, most of them before mid-morning."
         crumbs={[{ label: "Home", href: "/" }, { label: "Routes & network" }]}
       />
 

@@ -13,17 +13,12 @@
 export type Assignments = Record<string, string>;
 
 const DEFAULT: Assignments = {
-  // Caravan rotations — one tail per out-and-back pair
-  FU101: "5X-FUA", FU102: "5X-FUA", FU103: "5X-FUA", FU104: "5X-FUA",
-  FU111: "5X-FUB", FU112: "5X-FUB",
-  FU131: "5X-FUC", FU132: "5X-FUC",
-  FU121: "5X-FUD", FU122: "5X-FUD",
-  FU151: "5X-FUE", FU152: "5X-FUE",
-  FU161: "5X-FUF", FU162: "5X-FUF",
-  FU191: "5X-FUG", FU192: "5X-FUG",
-  // 1900D rotations
-  FU171: "5X-KEH", FU172: "5X-KEH",
-  FU181: "5X-FUH", FU182: "5X-FUH", FU183: "5X-FUH", FU184: "5X-FUH",
+  // Caravan 1 — the west, plus Bugungu Tue/Thu/Sat
+  FU101: "5X-FUA", FU102: "5X-FUA", FU131: "5X-FUA", FU132: "5X-FUA", FU151: "5X-FUA", FU152: "5X-FUA",
+  // Caravan 2 — Kisoro daily, Kidepo Mon/Wed/Fri, Moroto Tue/Thu/Sat
+  FU111: "5X-FUB", FU112: "5X-FUB", FU161: "5X-FUB", FU162: "5X-FUB", FU191: "5X-FUB", FU192: "5X-FUB",
+  // 1900D — Gulu and Arua daily, Hoima Mon/Wed/Fri
+  FU181: "5X-KEH", FU182: "5X-KEH", FU171: "5X-KEH", FU172: "5X-KEH", FU121: "5X-KEH", FU122: "5X-KEH",
 };
 
 export function getAssignments(): Assignments {
