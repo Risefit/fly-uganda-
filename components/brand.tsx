@@ -37,8 +37,8 @@ export function Ribbon({
     <Image
       src="/brand/ribbon.png"
       alt={decorative ? "" : title}
-      width={654}
-      height={161}
+      width={656}
+      height={177}
       aria-hidden={decorative || undefined}
       className={cn("h-10 w-auto", className)}
     />
@@ -101,7 +101,7 @@ export function Logo({
 }
 
 /** Exposed so layouts can reserve the right aspect ratio. */
-export const LOGO_ASPECT = { logo: 1375 / 380, ribbon: 654 / 161 };
+export const LOGO_ASPECT = { logo: 1375 / 380, ribbon: 656 / 177 };
 
 /** The Rule — a single thin amber line. The system's quiet divider. */
 export function Rule({ className }: { className?: string }) {

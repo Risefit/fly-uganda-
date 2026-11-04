@@ -2,6 +2,16 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.3.1 — November 2026
+
+- **Live flight status infrastructure.** `lib/tracking/` — provider interface, Spidertracks
+  AFF provider (needs credentials), timetable-replay mock, geofence status engine,
+  tail assignments; `GET /api/flight-status` (60 s edge cache); `LiveTimetable` on
+  /flight-status with a progress line per flight that fills in flight and turns green on
+  landing, actual vs scheduled times, one-minute polling, "simulated" badge until the
+  real feed is on. Handover §14 has the switch-on steps.
+- Ribbon watermark re-cut by colour (it was sliced flat at the wordmark line).
+
 ## v1.3.0 — November 2026
 
 - **Logo is now the supplied artwork, unchanged.** `public/brand/logo.png` (1375×380,

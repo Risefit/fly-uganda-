@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.3.0 · November 2026
+Version 1.3.1 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -371,7 +371,51 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   guard from the Dawn Star system is gone. `font-bold` works on headings now.
 - Do not push from a stale Codespace — treat the Mac as the single source of truth.
 
-## 14. What changed in v1.3.0 — the supplied logo, its colours
+## 14. Live flight status (v1.3.1) — how to switch it on
+
+Everything is built and running against a replay of the timetable. The page says
+"Simulated feed" until the real provider is configured.
+
+**Code map** — `lib/tracking/`
+- `types.ts` — `Position`, `TrackingProvider`, `FlightStatus`, `StatusResponse`.
+- `providers/spidertracks.ts` — POSTs an AFF 1.1 `dataRequest` to
+  `https://apigw.spidertracks.io/go/aff/feed` with HTTP Basic auth. **The response
+  parser is written to the AFF JSON spec but has not seen a live reply** — expect to
+  adjust field names in `parse()` once; nothing else depends on them.
+- `providers/mock.ts` — synthesises fixes along each scheduled leg (taxi 8 min, cruise
+  165 kt, 2-minute reports). Selected automatically when no credentials are set.
+- `status.ts` — pure function: positions + timetable + assignments → statuses. Geofences
+  are 4 km around strips, 5–6 km around Entebbe/Hoima/Gulu/Arua (`geo.ts: FENCE_KM`);
+  "on the ground" is < 30 kt; "delayed" after 20 min past STD with no departure;
+  "boarding" when the aircraft is at the strip inside 40 min of STD.
+- `assignments.ts` — flight number → registration for the day. Placeholder tails
+  `5X-FUA…` for the mock. Override without a deploy with the `ASSIGNMENTS` env var
+  (JSON). Replace with the PSS feed when Go7 is live.
+- `app/api/flight-status/route.ts` — JSON for the client, `s-maxage=60` so the upstream
+  feed is hit at most once a minute regardless of traffic.
+- `components/LiveTimetable.tsx` — the rows and progress lines; polls every 60 s.
+
+**Switch-on checklist**
+1. Spidertracks org admin: submit the *API Consumer Application* (Help Centre →
+   "How To Request A New Real Time API Integration"), choose *Private AFF consumer*.
+2. In Spidertracks: Aircraft → AFF/API → tick every Fly Uganda aircraft for the new
+   consumer. Only data from that moment on is served.
+3. Vercel → Project → Settings → Environment Variables (Production):
+   `SPIDERTRACKS_USER`, `SPIDERTRACKS_PASSWORD`, `TRACKING_PROVIDER=spidertracks`.
+   Redeploy.
+4. Open `/api/flight-status` — `"provider":"spidertracks"`, `"simulated":false`. If
+   `flights[].state` is all `unknown`, the parser needs the real field names: log one raw
+   response and align `parse()`.
+5. Put the real registrations in `assignments.ts` (or `ASSIGNMENTS`) and check the
+   registrations match the tracker's spelling exactly (`5X-KEH`, not `5XKEH`).
+6. Tune `FENCE_KM` if a strip's fence is too tight (Kajjansi's circuit overlaps Entebbe's
+   control zone but the fences do not touch at 4/6 km).
+
+**Why not Flightradar24:** ground-receiver ADS-B coverage is unreliable at Kidepo,
+Moroto and the Albertine, and their data API is a paid redistribution licence. The
+provider interface would take an FR24 implementation if ever wanted.
+
+## 15. What changed in v1.3.0 — the supplied logo, its colours
 
 - **Masters:** `public/brand/logo.png` and `public/brand/ribbon.png` are the artwork Phil
   supplied, cropped from the clean lower copy of his file, nothing redrawn or recoloured.
@@ -386,7 +430,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   site's own slogan line (hero kicker, footer, metadata) stays "Uganda's domestic
   airline". Decide which one the brand carries before launch.
 
-## 15. What changed in v1.2.3 — graphite + contour backgrounds
+## 16. What changed in v1.2.3 — graphite + contour backgrounds
 
 - Tokens: `cream`/`paper` = `#F4EFE6` (bone), `sand` = `#E9E1D2`, `graphite` =
   `#2A2824` / 700 `#35332E` / 500 `#4A4740`, `kopje` = `#8A6A4B`. Navy `aviation` is
@@ -399,7 +443,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   graphite. Hero scrims still use `aviation-900` (over the photo, reads as shadow).
 - Brand brief §4 palette table should be updated to match when next revised.
 
-## 16. What changed in v1.2.2 — ICAO codes, tier cards, widget
+## 17. What changed in v1.2.2 — ICAO codes, tier cards, widget
 
 - **Codes:** `Airport.code` is ICAO for every airport and is the `/routes/[code]` slug,
   the `data-code` on the map, the key in `lib/photos.ts`, the `public/photos/<code>.jpg`
@@ -412,7 +456,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
 - **TierLadder** uses fixed row heights (`min-h-[6.25rem]` header, `min-h-[2.75rem]`
   tagline, `min-h-[4.5rem]` qualification box) so the four cards align whatever wraps.
 
-## 17. What changed in v1.2.1 — network, fares, /book
+## 18. What changed in v1.2.1 — network, fares, /book
 
 - **Network is now ten destinations:** Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua,
   Gulu, Moroto, Kidepo, Entebbe. Mweya and Pakuba are withdrawn (their scene plates and
@@ -431,7 +475,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   the Karamoja aerial (`public/photos/humo.jpg`). Unsplash has no verifiable photo of any
   of the four. Drop KEA's own photos into `public/photos/{hukf,huar,hugu,humo}.jpg`.
 
-## 18. What changed in v1.2.0 — domestic-airline positioning, real map, hero
+## 19. What changed in v1.2.0 — domestic-airline positioning, real map, hero
 
 - **Positioning.** "Uganda's safari airline" → **"Uganda's domestic airline"** in the
   logo tagline (regenerated through `logo/`), metadata, hero, footer and about. Charter is
@@ -456,7 +500,7 @@ in `SearchWidget.tsx`. See `02-loyalty-program-design.md` for the module mapping
   launch — they were placed from published coordinates, not surveyed.
 - **Hero** is `public/photos/hero.jpg` (needs the full-res original — §6).
 
-## 19. What changed in v1.1.0 — the Brand Identity Toolkit
+## 20. What changed in v1.1.0 — the Brand Identity Toolkit
 
 Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) did not change.
 
@@ -471,7 +515,7 @@ Visual refresh only; the product (Kajjansi, park strips, Caravans, Pearl Club) d
   suppressing the self-hosted fonts since the fork, and the unquoted "Source Sans 3" that
   voided body `font-family` — both now in §5.
 
-## 20. What changed from the South Sudan Airlines fork (v1.0.0)
+## 21. What changed from the South Sudan Airlines fork (v1.0.0)
 
 For anyone comparing the two codebases:
 
