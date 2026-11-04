@@ -2,6 +2,11 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.3.2 — November 2026
+
+- Booking widget (hero variant, no Pearl Club field) placed at the foot of the homepage
+  hero; the hero's "Book a flight" button is dropped in favour of the widget's Search.
+
 ## v1.3.1 — November 2026
 
 - **Live flight status infrastructure.** `lib/tracking/` — provider interface, Spidertracks

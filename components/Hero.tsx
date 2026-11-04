@@ -2,12 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Rule, Webale } from "@/components/brand";
+import { SearchWidget } from "@/components/SearchWidget";
 
 /**
  * Headline, one line of proof, and the amber call to action — the hero from
  * the identity toolkit's website panel. The quick-action bar that follows it
- * carries Book / Manage / Check-in / Flight status; the flight search itself
- * lives on /book.
+ * carries Book / Manage / Check-in / Flight status; the flight search sits
+ * at the foot of the hero (and again, with the Pearl Club field, on /book).
  */
 export function Hero() {
   return (
@@ -35,7 +36,7 @@ export function Hero() {
         className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-aviation-900/[0.78] via-aviation-900/[0.28] to-transparent lg:block"
       />
 
-      <div className="container-site pb-28 pt-36">
+      <div className="container-site pb-24 pt-32">
         <div className="max-w-2xl">
           <div className="mb-5 flex items-center gap-3">
             <Rule className="!h-5" />
@@ -56,13 +57,15 @@ export function Hero() {
             any airline, leaving from the Kampala side of Entebbe.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link href="/book" className="btn-primary !px-7 !py-3.5">
-              Book a flight <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
             <Link href="/schedule" className="btn-ghost-dark">
-              See the schedule
+              See the schedule <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
           </div>
+        </div>
+
+        {/* The booking portal, in the hero. Same widget as /book, without the Pearl Club field. */}
+        <div className="mt-12 lg:mt-16">
+          <SearchWidget variant="hero" />
         </div>
       </div>
     </section>
