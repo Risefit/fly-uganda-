@@ -144,7 +144,7 @@ export const FLEET: Aircraft[] = [
       "A pressurised 19-seat airliner for the higher-demand sectors and the longer legs — the same airstair, the same crews, and the same ticket as the Caravan.",
     image: "/photos/fleet/b1900.jpg",
     cabin: "/photos/fleet/b1900-cabin.jpg",
-    alt: "Beechcraft 1900D 5X-KEH with its airstair down at Kajjansi",
+    alt: "Beechcraft 1900D 5X-KAI with its airstair down at Kajjansi",
   },
 ];
 

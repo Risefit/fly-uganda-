@@ -7,18 +7,18 @@
  * without a deploy). Keys are flight numbers, values registrations exactly
  * as the Spiders report them.
  *
- * ⚠️ Registrations below are PLACEHOLDERS for the mock. Replace with the
- * real fleet before enabling the Spidertracks provider.
+ * Registrations are the real fleet (Phil, 4 Nov 2026). They must match the
+ * tracker's spelling exactly — check the first live response.
  */
 export type Assignments = Record<string, string>;
 
 const DEFAULT: Assignments = {
-  // Caravan 1 — the west, plus Bugungu Tue/Thu/Sat
-  FU101: "5X-FUA", FU102: "5X-FUA", FU131: "5X-FUA", FU132: "5X-FUA", FU151: "5X-FUA", FU152: "5X-FUA",
-  // Caravan 2 — Kisoro daily, Kidepo Mon/Wed/Fri, Moroto Tue/Thu/Sat
-  FU111: "5X-FUB", FU112: "5X-FUB", FU161: "5X-FUB", FU162: "5X-FUB", FU191: "5X-FUB", FU192: "5X-FUB",
-  // 1900D — Gulu and Arua daily, Hoima Mon/Wed/Fri
-  FU181: "5X-KEH", FU182: "5X-KEH", FU171: "5X-KEH", FU172: "5X-KEH", FU121: "5X-KEH", FU122: "5X-KEH",
+  // Caravan 1 — 5X-PJG: Kihihi and Kasese daily
+  FU101: "5X-PJG", FU102: "5X-PJG", FU131: "5X-PJG", FU132: "5X-PJG",
+  // Caravan 2 — 5X-AIG: Kisoro daily; Kidepo Mon/Wed/Fri; Moroto then Bugungu Tue/Thu/Sat
+  FU111: "5X-AIG", FU112: "5X-AIG", FU161: "5X-AIG", FU162: "5X-AIG", FU191: "5X-AIG", FU192: "5X-AIG", FU151: "5X-AIG", FU152: "5X-AIG",
+  // 1900D — 5X-KAI: Gulu and Arua daily; Hoima Mon/Wed/Fri
+  FU181: "5X-KAI", FU182: "5X-KAI", FU171: "5X-KAI", FU172: "5X-KAI", FU121: "5X-KAI", FU122: "5X-KAI",
 };
 
 export function getAssignments(): Assignments {

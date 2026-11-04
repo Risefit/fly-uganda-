@@ -8,7 +8,7 @@
  */
 
 export type Position = {
-  /** Aircraft registration as the tracker reports it, e.g. "5X-KEH". */
+  /** Aircraft registration as the tracker reports it, e.g. "5X-KAI". */
   reg: string;
   /** ISO-8601 UTC timestamp of the fix. */
   at: string;

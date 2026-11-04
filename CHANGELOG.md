@@ -2,6 +2,12 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.4.1 — November 2026
+
+- Bugungu (Tue/Thu/Sat) moved to Caravan 2's afternoon after Moroto (15:05 / 16:30).
+- Real registrations: 5X-PJG and 5X-AIG (208EX), 5X-KAI (1900D) in the tail assignments.
+- Handover §9a: monthly air/block hours per aircraft and FDP caveat.
+
 ## v1.4.0 — November 2026
 
 - **Timetable rebuilt for the assigned fleet — 2 × 208EX, 1 × 1900D** — one line of flying

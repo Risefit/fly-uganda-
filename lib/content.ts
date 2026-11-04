@@ -26,21 +26,21 @@ const CARAVAN = "Grand Caravan";
 const B1900 = "Beechcraft 1900D";
 
 export const SCHEDULE: Flight[] = [
-  // ── Caravan 1 (5X-FUA placeholder): the west, daily; Bugungu Tue/Thu/Sat ──
+  // ── Caravan 1 (5X-PJG): the west, daily ──
   { flightNo: "FU101", from: "HUKJ", to: "HUKH", city: "Kihihi", dep: "07:00", arr: "08:25", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU102", from: "HUKH", to: "HUKJ", city: "Kihihi", dep: "08:45", arr: "10:10", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU131", from: "HUKJ", to: "HUKS", city: "Kasese", dep: "10:50", arr: "12:05", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU132", from: "HUKS", to: "HUKJ", city: "Kasese", dep: "12:25", arr: "13:40", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU151", from: "HUKJ", to: "HUGG", city: "Bugungu", dep: "14:20", arr: "15:25", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  { flightNo: "FU152", from: "HUGG", to: "HUKJ", city: "Bugungu", dep: "15:45", arr: "16:50", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  // ── Caravan 2 (5X-FUB placeholder): Kisoro daily; Kidepo Mon/Wed/Fri, Moroto Tue/Thu/Sat ──
+  // ── Caravan 2 (5X-AIG): Kisoro daily; Kidepo Mon/Wed/Fri; Moroto then Bugungu Tue/Thu/Sat ──
   { flightNo: "FU111", from: "HUKJ", to: "HUKI", city: "Kisoro", dep: "07:15", arr: "08:45", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU112", from: "HUKI", to: "HUKJ", city: "Kisoro", dep: "09:05", arr: "10:35", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU161", from: "HUKJ", to: "HUKD", city: "Kidepo", dep: "11:15", arr: "12:55", days: "Mon · Wed · Fri", aircraft: CARAVAN },
   { flightNo: "FU162", from: "HUKD", to: "HUKJ", city: "Kidepo", dep: "13:15", arr: "14:55", days: "Mon · Wed · Fri", aircraft: CARAVAN },
   { flightNo: "FU191", from: "HUKJ", to: "HUMO", city: "Moroto", dep: "11:15", arr: "12:40", days: "Tue · Thu · Sat", aircraft: CARAVAN },
   { flightNo: "FU192", from: "HUMO", to: "HUKJ", city: "Moroto", dep: "13:00", arr: "14:25", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  // ── 1900D (5X-KEH): Gulu and Arua daily; Hoima Mon/Wed/Fri ──
+  { flightNo: "FU151", from: "HUKJ", to: "HUGG", city: "Bugungu", dep: "15:05", arr: "16:10", days: "Tue · Thu · Sat", aircraft: CARAVAN },
+  { flightNo: "FU152", from: "HUGG", to: "HUKJ", city: "Bugungu", dep: "16:30", arr: "17:35", days: "Tue · Thu · Sat", aircraft: CARAVAN },
+  // ── 1900D (5X-KAI): Gulu and Arua daily; Hoima Mon/Wed/Fri ──
   { flightNo: "FU181", from: "HUKJ", to: "HUGU", city: "Gulu", dep: "07:00", arr: "07:55", days: "Daily", aircraft: B1900 },
   { flightNo: "FU182", from: "HUGU", to: "HUKJ", city: "Gulu", dep: "08:15", arr: "09:10", days: "Daily", aircraft: B1900 },
   { flightNo: "FU171", from: "HUKJ", to: "HUAR", city: "Arua", dep: "09:50", arr: "10:55", days: "Daily", aircraft: B1900 },

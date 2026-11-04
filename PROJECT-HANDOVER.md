@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.4.0 · November 2026
+Version 1.4.1 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
@@ -280,34 +280,44 @@ Everything below is marked in the code with `⚠️` comments.
 Aerolink's Entebbe pricing, and the placeholder is a market-rate guess, not a
 recommendation. Nothing on the site should go live on it.
 
-### 9a. Fleet and timetable (v1.4) — 2 × 208EX, 1 × 1900D
+### 9a. Fleet and timetable (v1.4.1) — 5X-PJG, 5X-AIG (208EX), 5X-KAI (1900D)
 
 Phil's assignment, 4 Nov 2026. `lib/content.ts → SCHEDULE` is built as **one line of
 flying per aircraft per day**:
 
-| Aircraft | Daily | Mon · Wed · Fri | Tue · Thu · Sat | Daily block |
-|---|---|---|---|---|
-| Caravan 1 | Kihihi 07:00 → back 10:10 · Kasese 10:50 → back 13:40 | — | Bugungu 14:20 → back 16:50 | 5:10 (7:20 TTS) |
-| Caravan 2 | Kisoro 07:15 → back 10:35 | Kidepo 11:15 → back 14:55 | Moroto 11:15 → back 14:25 | 3:00 / 6:20 / 5:50 |
-| 1900D | Gulu 07:00 → back 09:10 · Arua 09:50 → back 12:20 | Hoima 13:10 → back 15:00 | — | 4:10 (5:40 MWF) |
+| Aircraft | Daily | Mon · Wed · Fri | Tue · Thu · Sat |
+|---|---|---|---|
+| 5X-PJG Caravan | Kihihi 07:00 → back 10:10 · Kasese 10:50 → back 13:40 | — | — |
+| 5X-AIG Caravan | Kisoro 07:15 → back 10:35 | Kidepo 11:15 → back 14:55 | Moroto 11:15 → back 14:25 · Bugungu 15:05 → back 17:35 |
+| 5X-KAI 1900D | Gulu 07:00 → back 09:10 · Arua 09:50 → back 12:20 | Hoima 13:10 → back 15:00 | — |
 
 Block times: great-circle from Kajjansi at 160 kt (Caravan) or 260 kt (1900D) plus
 16 min taxi/climb, rounded up to 5 min — Kihihi 1:25, Kisoro 1:30, Kasese 1:15,
 Bugungu 1:05, Kidepo 1:40, Moroto 1:25; Gulu 0:55, Arua 1:05, Hoima 0:45. No wind, no
 Entebbe-zone routing allowance; expect +5–10 min on the western legs in practice.
 
+**Monthly utilisation** (30.4 days; 3×-weekly = 13 per month; air = still-air time,
+block = air + 16 min per sector):
+
+| Aircraft | Air h/month | Block h/month | Sectors/month |
+|---|---|---|---|
+| 5X-PJG | 124 | 157 | 122 |
+| 5X-AIG | 161 | 198 | 139 |
+| 5X-KAI | 95 | 134 | 148 |
+
 **Caveats to clear before publishing**
-- Caravan 1 on Tue/Thu/Sat: 7:20 block over three rotations, duty roughly 06:00–17:05
-  — check against the UCAA single-pilot FDP table; if it fails, Bugungu moves to
-  Caravan 2 on Sundays/Tue/Thu or gets a second crew.
-- Sunday is the light day (Caravan 2 flies Kisoro only). Could carry a Sunday Kidepo
-  or Bugungu if demand appears.
+- 5X-AIG on Tue/Thu/Sat flies three rotations, **8:00 block**, duty about 06:15–17:50 —
+  check against the UCAA single-pilot FDP table; a second crew for the Bugungu rotation
+  is the clean answer. (Bugungu on 5X-PJG's free afternoon instead would give 146/139
+  air hours and a 7:20 day — the alternative if FDP fails.)
+- 5X-AIG at ~160 air hours a month means a 100-hour inspection roughly every three
+  weeks; with no spare aircraft, the 3×-weekly routes are the ones to drop on
+  maintenance days.
+- Sunday is the light day (5X-AIG flies Kisoro only).
 - Kihihi went from 2× daily to 1× daily to fit the fleet; the afternoon Kihihi is the
   first thing to add with a third Caravan.
 - Hoima is on the 1900D because Kabalega has a 3,500 m paved runway; Bugungu stays on
   the Caravan (murram).
-- Maintenance: there is no spare aircraft. Any downtime drops a line; the 3×-weekly
-  routes are the ones to cancel first.
 - Flight numbers kept from v1.2 (FU1x1 out / FU1x2 back); FU103/104 and FU183/184 are
   retired.
 
