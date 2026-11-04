@@ -42,7 +42,7 @@ export const DESTINATIONS: Airport[] = [
   { code: "HUKD", city: "Kidepo", country: "Uganda" },
 ];
 
-export type RouteStatus = "live" | "planned";
+export type RouteStatus = "live" | "planned"; // planned = on the map and the destinations page as "coming soon"; no timetable, not bookable
 
 export type Route = {
   from: string;
@@ -59,12 +59,12 @@ export type Route = {
 export const ROUTES: Route[] = [
   { from: "HUKJ", to: "HUKH", city: "Kihihi", park: "Kanungu · Bwindi (north) & Ishasha", frequency: "1× daily", blockTime: "1h 25m", type: "Scheduled", status: "live" },
   { from: "HUKJ", to: "HUKI", city: "Kisoro", park: "Kisoro town · Bwindi (south), Mgahinga & the Rwanda border", frequency: "1× daily", blockTime: "1h 30m", type: "Scheduled", status: "live" },
-  { from: "HUKJ", to: "HUKS", city: "Kasese", park: "Kasese town · Rwenzori & Queen Elizabeth (north)", frequency: "1× daily", blockTime: "1h 15m", type: "Scheduled", status: "live" },
-  { from: "HUKJ", to: "HUKF", city: "Hoima", park: "Bunyoro · Kabalega International, the refinery & Kingfisher", frequency: "3× weekly", blockTime: "0h 45m", type: "Scheduled", status: "live" },
-  { from: "HUKJ", to: "HUGG", city: "Bugungu", park: "Buliisa · Murchison Falls & the Tilenga oil area", frequency: "3× weekly", blockTime: "1h 05m", type: "Scheduled", status: "live" },
+  { from: "HUKJ", to: "HUKS", city: "Kasese", park: "Kasese town · Rwenzori & Queen Elizabeth (north)", frequency: "4× weekly", blockTime: "1h 15m", type: "Scheduled", status: "live" },
+  { from: "HUKJ", to: "HUKF", city: "Hoima", park: "Bunyoro · Kabalega International, the refinery & Kingfisher", frequency: "Coming soon", blockTime: "0h 45m", type: "Scheduled", status: "planned" },
+  { from: "HUKJ", to: "HUGG", city: "Bugungu", park: "Buliisa · Murchison Falls & the Tilenga oil area", frequency: "Fri · Sat · Sun", blockTime: "1h 05m", type: "Scheduled", status: "live" },
   { from: "HUKJ", to: "HUAR", city: "Arua", park: "West Nile · Arua city & the DRC and South Sudan border trade", frequency: "1× daily", blockTime: "1h 05m", type: "Scheduled", status: "live" },
   { from: "HUKJ", to: "HUGU", city: "Gulu", park: "Acholi · Gulu city, the hub of the north", frequency: "1× daily", blockTime: "0h 55m", type: "Scheduled", status: "live" },
-  { from: "HUKJ", to: "HUMO", city: "Moroto", park: "Karamoja · Moroto town & Mount Moroto", frequency: "3× weekly", blockTime: "1h 25m", type: "Scheduled", status: "live" },
+  { from: "HUKJ", to: "HUMO", city: "Moroto", park: "Karamoja · Moroto town & Mount Moroto", frequency: "Coming soon", blockTime: "1h 25m", type: "Scheduled", status: "planned" },
   { from: "HUKJ", to: "HUKD", city: "Kidepo", park: "Karamoja · Kidepo Valley", frequency: "3× weekly", blockTime: "1h 40m", type: "Scheduled", status: "live" },
 ];
 

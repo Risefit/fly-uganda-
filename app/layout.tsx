@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s · Fly Uganda",
   },
   description:
-    "Uganda's domestic airline. Scheduled, ticketed flights from Kajjansi Airfield, Kampala to Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua, Gulu, Moroto and Kidepo.",
+    "Uganda's domestic airline. Scheduled, ticketed flights from Kajjansi Airfield, Kampala to Kihihi, Kisoro, Kasese, Bugungu, Arua, Gulu and Kidepo — Hoima and Moroto coming soon.",
   keywords: [
     "Fly Uganda",
     "Uganda domestic flights",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     siteName: "Fly Uganda",
     title: "Fly Uganda — scheduled domestic flights from Kajjansi",
     description:
-      "Scheduled domestic flights from Kajjansi, 30 minutes closer to Kampala than Entebbe. Kihihi, Kisoro, Kasese, Hoima, Arua, Gulu, Moroto, Kidepo and more — daily.",
+      "Scheduled domestic flights from Kajjansi, 30 minutes closer to Kampala than Entebbe. Kihihi, Kisoro, Kasese, Bugungu, Arua, Gulu and Kidepo.",
     url: SITE_URL,
     locale: "en",
   },

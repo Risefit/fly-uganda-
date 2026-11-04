@@ -29,7 +29,8 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
   const hasGuide = GUIDES.some((g) => g.code === r.to);
   const isConnection = r.type === "Connection";
   const types = Array.from(new Set(SCHEDULE.filter((f) => f.to === r.to).map((f) => f.aircraft)));
-  const aircraft = types.length ? types.join(" / ") : "Grand Caravan";
+  const aircraftHint = r.to === "HUKF" ? "1900D" : "Caravan";
+  const aircraft = types.length ? types.join(" / ") : r.status === "planned" ? `${aircraftHint} (planned)` : "Grand Caravan";
 
   const facts = [
     { icon: Clock, label: "Block time", value: r.blockTime },
@@ -44,7 +45,7 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
         kicker={`${r.from} → ${r.to}`}
         title={`Kajjansi to ${r.city}`}
         subtitle={
-          `${r.park} · ${r.frequency} · ${r.blockTime}.`
+          r.status === "planned" ? `${r.park} · coming soon · ${r.blockTime} on the ${aircraftHint}.` : `${r.park} · ${r.frequency} · ${r.blockTime}.`
         }
         crumbs={[{ label: "Home", href: "/" }, { label: "Routes", href: "/routes" }, { label: r.city }]}
       />
@@ -65,9 +66,9 @@ export default function RouteDetailPage({ params }: { params: { code: string } }
           <h2 className="mt-12 font-display text-2xl font-semibold text-ink">Flights on this route</h2>
           {flights.length === 0 ? (
             <div className="mt-4 rounded-2xl border border-dashed border-aviation/20 bg-white px-6 py-10 text-center">
-              <p className="text-ink">This sector runs on demand rather than to a published timetable.</p>
+              <p className="text-ink">Coming soon — this route is not yet on the timetable.</p>
               <p className="mx-auto mt-2 max-w-md text-sm text-muted">
-                Tell us your connecting flight and we will position around it.
+                Leave your email with reservations and we will tell you the start date before it is published.
               </p>
             </div>
           ) : (

@@ -13,12 +13,12 @@
 export type Assignments = Record<string, string>;
 
 const DEFAULT: Assignments = {
-  // Caravan 1 — 5X-PJG: Kihihi and Kasese daily
-  FU101: "5X-PJG", FU102: "5X-PJG", FU131: "5X-PJG", FU132: "5X-PJG",
-  // Caravan 2 — 5X-AIG: Kisoro daily; Kidepo Mon/Wed/Fri; Moroto then Bugungu Tue/Thu/Sat
-  FU111: "5X-AIG", FU112: "5X-AIG", FU161: "5X-AIG", FU162: "5X-AIG", FU191: "5X-AIG", FU192: "5X-AIG", FU151: "5X-AIG", FU152: "5X-AIG",
-  // 1900D — 5X-KAI: Gulu and Arua daily; Hoima Mon/Wed/Fri
-  FU181: "5X-KAI", FU182: "5X-KAI", FU171: "5X-KAI", FU172: "5X-KAI", FU121: "5X-KAI", FU122: "5X-KAI",
+  // 5X-PJG Caravan — Kihihi daily; Kasese Mon–Thu; Bugungu Fri–Sun
+  FU101: "5X-PJG", FU102: "5X-PJG", FU131: "5X-PJG", FU132: "5X-PJG", FU151: "5X-PJG", FU152: "5X-PJG",
+  // 5X-AIG Caravan — Kisoro daily; Kidepo Mon/Wed/Fri
+  FU111: "5X-AIG", FU112: "5X-AIG", FU161: "5X-AIG", FU162: "5X-AIG",
+  // 5X-KAI 1900D — Gulu and Arua daily
+  FU181: "5X-KAI", FU182: "5X-KAI", FU171: "5X-KAI", FU172: "5X-KAI",
 };
 
 export function getAssignments(): Assignments {

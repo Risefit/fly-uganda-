@@ -2,6 +2,13 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.4.2 — November 2026
+
+- Hoima and Moroto moved to **coming soon** (`status: "planned"`): dashed on the map, badged
+  on /routes and /destinations, excluded from the booking widget, no timetable.
+- Kasese Mon–Thu; Bugungu Fri/Sat/Sun on 5X-PJG's midday slot (long-weekend pattern).
+  5X-AIG is Kisoro daily + Kidepo Mon/Wed/Fri; 5X-KAI Gulu + Arua daily. Hours in §9a.
+
 ## v1.4.1 — November 2026
 
 - Bugungu (Tue/Thu/Sat) moved to Caravan 2's afternoon after Moroto (15:05 / 16:30).

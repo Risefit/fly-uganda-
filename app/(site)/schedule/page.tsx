@@ -6,7 +6,7 @@ import { ScheduleTable } from "@/components/ScheduleTable";
 export const metadata: Metadata = {
   title: "Schedule & timetable",
   description:
-    "Fly Uganda scheduled timetable — daily departures from Kajjansi to Kihihi, Kisoro, Kasese, Hoima, Bugungu, Arua, Gulu, Moroto and Kidepo.",
+    "Fly Uganda scheduled timetable — daily departures from Kajjansi to Kihihi, Kisoro, Kasese, Bugungu, Arua, Gulu and Kidepo.",
 };
 
 export default function SchedulePage() {

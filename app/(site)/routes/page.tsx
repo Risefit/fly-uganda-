@@ -17,7 +17,7 @@ export default function RoutesPage() {
     <>
       <PageHero
         kicker="Where we fly"
-        title="Nine destinations, one morning departure bank"
+        title="Seven destinations, one morning departure bank"
         subtitle="The west, the Albertine, West Nile, the north and Karamoja — served from Kajjansi, most of them before mid-morning."
         crumbs={[{ label: "Home", href: "/" }, { label: "Routes & network" }]}
       />
@@ -44,7 +44,11 @@ export default function RoutesPage() {
                   <h3 className="mt-1 font-display text-xl text-ink">Kajjansi — {r.city}</h3>
                   <p className="mt-0.5 text-xs text-opportunity-700">{r.park}</p>
                   <p className="mt-1 text-sm text-muted">
-                    {r.frequency} · {r.blockTime} · {r.type}
+                    {r.status === "planned" ? (
+                      <span className="inline-block rounded-full bg-opportunity/15 px-2 py-0.5 text-xs font-semibold text-opportunity-700">Coming soon</span>
+                    ) : (
+                      <>{r.frequency} · {r.blockTime} · {r.type}</>
+                    )}
                   </p>
                 </div>
                 <ArrowRight className="h-5 w-5 text-aviation transition-transform group-hover:translate-x-1" aria-hidden />

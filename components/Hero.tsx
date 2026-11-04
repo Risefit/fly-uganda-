@@ -52,8 +52,8 @@ export function Hero() {
             every day
           </h1>
           <p className="mt-5 max-w-xl text-lg text-cream/90 sm:text-xl">
-            Scheduled flights from Kajjansi, Kampala to Kihihi, Kisoro, Kasese, Hoima, Bugungu,
-            Arua, Gulu, Moroto and Kidepo. For work, for home and for the parks — ticketed like
+            Scheduled flights from Kajjansi, Kampala to Kihihi, Kisoro, Kasese, Bugungu, Arua,
+            Gulu and Kidepo — Hoima and Moroto next. For work, for home and for the parks — ticketed like
             any airline, leaving from the Kampala side of Entebbe.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">

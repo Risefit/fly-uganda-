@@ -3,14 +3,15 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeftRight, Search, Users } from "lucide-react";
-import { HUB, DESTINATIONS } from "@/lib/data";
+import { HUB, DESTINATIONS, ROUTES } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 /**
  * AeroCRS / Go7-ready search widget — the brand's signature midnight booking
  * panel (dark contrast on light pages). Swapped for the Go7 embed at launch.
  */
-const ALL_AIRPORTS = [HUB, ...DESTINATIONS];
+const LIVE = new Set(ROUTES.filter((r) => r.status === "live").map((r) => r.to));
+const ALL_AIRPORTS = [HUB, ...DESTINATIONS.filter((d) => LIVE.has(d.code))];
 
 function Field({
   label,

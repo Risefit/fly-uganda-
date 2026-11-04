@@ -13,7 +13,7 @@ export function Destinations() {
           <div className="max-w-2xl">
             <Kicker>Where we fly</Kicker>
             <h2 id="dest-heading" className="mt-4 font-display text-3xl leading-tight text-ink sm:text-4xl">
-              Nine destinations, on the daily schedule
+              Seven destinations flying, two coming soon
             </h2>
           </div>
           <Link

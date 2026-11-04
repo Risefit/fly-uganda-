@@ -4,12 +4,15 @@ import Link from "next/link";
 import { PageHero } from "@/components/PageHero";
 import { GUIDES } from "@/lib/content";
 import { photoFor } from "@/lib/photos";
+import { ROUTES } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Destinations",
   description:
     "Where Fly Uganda flies — Bwindi, Queen Elizabeth, Murchison Falls, the Rwenzori and Kidepo, from Kajjansi.",
 };
+
+const PLANNED = new Set(ROUTES.filter((r) => r.status === "planned").map((r) => r.to));
 
 export default function DestinationsPage() {
   return (
@@ -42,7 +45,11 @@ export default function DestinationsPage() {
                 <span className="absolute left-4 top-4 flight-code rounded bg-aviation/90 px-2 py-1 text-xs font-semibold text-cream">
                   {g.code}
                 </span>
-                {photo.aerial && (
+                {PLANNED.has(g.code) ? (
+                  <span className="absolute right-4 top-4 rounded-full bg-cream px-2.5 py-1 font-display text-[0.62rem] font-bold uppercase tracking-wide2 text-aviation">
+                    Coming soon
+                  </span>
+                ) : photo.aerial && (
                   <span className="absolute right-4 top-4 rounded-full bg-opportunity px-2.5 py-1 font-display text-[0.62rem] font-bold uppercase tracking-wide2 text-aviation">
                     Aerial
                   </span>

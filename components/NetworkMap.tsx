@@ -97,14 +97,14 @@ export function NetworkMap({
     const riverEls = geo.rivers.features.map((f) => ({ el: mk(gRivers, "path"), f }));
 
     const routeEls = routes.map((r) => {
-      const g = mk(gRoutes, "g", { "data-code": r.to, class: "route" });
+      const g = mk(gRoutes, "g", { "data-code": r.to, class: r.status === "planned" ? "route route--planned" : "route" });
       const shadow = mk<SVGPathElement>(g, "path", { class: "route-shadow", fill: "none" });
       const line = mk<SVGPathElement>(g, "path", { class: "route-line", fill: "none" });
       const plane = mk<SVGCircleElement>(g, "circle", { class: "route-plane", r: "4.5" });
       return { r, g, shadow, line, plane };
     });
     const nodeEls = routes.map((r) => {
-      const g = mk(gNodes, "g", { "data-code": r.to, class: "node", "aria-hidden": "true" });
+      const g = mk(gNodes, "g", { "data-code": r.to, class: r.status === "planned" ? "node node--planned" : "node", "aria-hidden": "true" });
       mk(g, "circle", { class: "node-ring", r: "11", fill: "none" });
       mk(g, "circle", { class: "node-dot", r: "5" });
       const t = mk(gLabels, "text", { class: "map-label", "data-code": r.to, "text-anchor": "middle" });
@@ -304,7 +304,7 @@ export function NetworkMap({
               </button>
             </div>
             <dl className="mt-5 grid grid-cols-3 gap-3 text-sm">
-              {[[Clock, "Block time", sel.blockTime], [CalendarDays, "Frequency", sel.frequency], [Plane, "Aircraft", Array.from(new Set(SCHEDULE.filter((f) => f.to === sel.to).map((f) => f.aircraft))).join(" / ") || "On request"]].map(([I, k, v]) => {
+              {[[Clock, "Block time", sel.blockTime], [CalendarDays, sel.status === "planned" ? "Status" : "Frequency", sel.frequency], [Plane, "Aircraft", Array.from(new Set(SCHEDULE.filter((f) => f.to === sel.to).map((f) => f.aircraft))).join(" / ") || (sel.to === "HUKF" ? "1900D (planned)" : "Caravan (planned)")]].map(([I, k, v]) => {
                 const Icon = I as typeof Clock;
                 return (
                   <div key={k as string} className="rounded-xl bg-cream p-3">
@@ -330,10 +330,10 @@ export function NetworkMap({
                 </tbody>
               </table>
             ) : (
-              <p className="mt-2 text-sm text-muted">On demand — we position around your connecting flight.</p>
+              <p className="mt-2 text-sm text-muted">Coming soon — not yet on the timetable. Start date will be announced here first.</p>
             )}
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/book" className="btn-primary">Book {sel.to} <ArrowRight className="h-4 w-4" aria-hidden /></Link>
+              {sel.status === "live" && <Link href="/book" className="btn-primary">Book {sel.to} <ArrowRight className="h-4 w-4" aria-hidden /></Link>}
               <Link href={`/routes/${sel.to.toLowerCase()}`} className="btn-ghost">Route details</Link>
             </div>
           </div>
@@ -367,7 +367,7 @@ export function NetworkMap({
                     </span>
                   </span>
                   <span className="text-right text-xs text-muted">
-                    <span className="block font-semibold text-ink">{r.frequency}</span>
+                    <span className={cn("block font-semibold", r.status === "planned" ? "text-opportunity-700" : "text-ink")}>{r.frequency}</span>
                     <span>{r.blockTime}</span>
                   </span>
                 </button>

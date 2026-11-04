@@ -26,27 +26,23 @@ const CARAVAN = "Grand Caravan";
 const B1900 = "Beechcraft 1900D";
 
 export const SCHEDULE: Flight[] = [
-  // ── Caravan 1 (5X-PJG): the west, daily ──
+  // ── 5X-PJG Caravan: Kihihi daily, then one midday rotation — Kasese Mon–Thu, Bugungu Fri–Sun ──
   { flightNo: "FU101", from: "HUKJ", to: "HUKH", city: "Kihihi", dep: "07:00", arr: "08:25", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU102", from: "HUKH", to: "HUKJ", city: "Kihihi", dep: "08:45", arr: "10:10", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU131", from: "HUKJ", to: "HUKS", city: "Kasese", dep: "10:50", arr: "12:05", days: "Daily", aircraft: CARAVAN },
-  { flightNo: "FU132", from: "HUKS", to: "HUKJ", city: "Kasese", dep: "12:25", arr: "13:40", days: "Daily", aircraft: CARAVAN },
-  // ── Caravan 2 (5X-AIG): Kisoro daily; Kidepo Mon/Wed/Fri; Moroto then Bugungu Tue/Thu/Sat ──
+  { flightNo: "FU131", from: "HUKJ", to: "HUKS", city: "Kasese", dep: "10:50", arr: "12:05", days: "Mon · Tue · Wed · Thu", aircraft: CARAVAN },
+  { flightNo: "FU132", from: "HUKS", to: "HUKJ", city: "Kasese", dep: "12:25", arr: "13:40", days: "Mon · Tue · Wed · Thu", aircraft: CARAVAN },
+  { flightNo: "FU151", from: "HUKJ", to: "HUGG", city: "Bugungu", dep: "10:50", arr: "11:55", days: "Fri · Sat · Sun", aircraft: CARAVAN },
+  { flightNo: "FU152", from: "HUGG", to: "HUKJ", city: "Bugungu", dep: "12:15", arr: "13:20", days: "Fri · Sat · Sun", aircraft: CARAVAN },
+  // ── 5X-AIG Caravan: Kisoro daily; Kidepo Mon/Wed/Fri ──
   { flightNo: "FU111", from: "HUKJ", to: "HUKI", city: "Kisoro", dep: "07:15", arr: "08:45", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU112", from: "HUKI", to: "HUKJ", city: "Kisoro", dep: "09:05", arr: "10:35", days: "Daily", aircraft: CARAVAN },
   { flightNo: "FU161", from: "HUKJ", to: "HUKD", city: "Kidepo", dep: "11:15", arr: "12:55", days: "Mon · Wed · Fri", aircraft: CARAVAN },
   { flightNo: "FU162", from: "HUKD", to: "HUKJ", city: "Kidepo", dep: "13:15", arr: "14:55", days: "Mon · Wed · Fri", aircraft: CARAVAN },
-  { flightNo: "FU191", from: "HUKJ", to: "HUMO", city: "Moroto", dep: "11:15", arr: "12:40", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  { flightNo: "FU192", from: "HUMO", to: "HUKJ", city: "Moroto", dep: "13:00", arr: "14:25", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  { flightNo: "FU151", from: "HUKJ", to: "HUGG", city: "Bugungu", dep: "15:05", arr: "16:10", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  { flightNo: "FU152", from: "HUGG", to: "HUKJ", city: "Bugungu", dep: "16:30", arr: "17:35", days: "Tue · Thu · Sat", aircraft: CARAVAN },
-  // ── 1900D (5X-KAI): Gulu and Arua daily; Hoima Mon/Wed/Fri ──
+  // ── 5X-KAI 1900D: Gulu and Arua daily ──
   { flightNo: "FU181", from: "HUKJ", to: "HUGU", city: "Gulu", dep: "07:00", arr: "07:55", days: "Daily", aircraft: B1900 },
   { flightNo: "FU182", from: "HUGU", to: "HUKJ", city: "Gulu", dep: "08:15", arr: "09:10", days: "Daily", aircraft: B1900 },
   { flightNo: "FU171", from: "HUKJ", to: "HUAR", city: "Arua", dep: "09:50", arr: "10:55", days: "Daily", aircraft: B1900 },
   { flightNo: "FU172", from: "HUAR", to: "HUKJ", city: "Arua", dep: "11:15", arr: "12:20", days: "Daily", aircraft: B1900 },
-  { flightNo: "FU121", from: "HUKJ", to: "HUKF", city: "Hoima", dep: "13:10", arr: "13:55", days: "Mon · Wed · Fri", aircraft: B1900 },
-  { flightNo: "FU122", from: "HUKF", to: "HUKJ", city: "Hoima", dep: "14:15", arr: "15:00", days: "Mon · Wed · Fri", aircraft: B1900 },
 ];
 
 export function routeByCode(code: string): Route | undefined {
@@ -123,7 +119,7 @@ export const GUIDES: Guide[] = [
     region: "Hoima · Bunyoro",
     airport: "Kabalega International Airport, Hoima (HUKF)",
     intro:
-      "Uganda's second international airport, at Kabaale on the Albertine escarpment west of Hoima city — built for the refinery, the Kingfisher and Tilenga oil developments and the Bunyoro region behind them. Forty-five minutes from Kajjansi on the 1900D, three days a week.",
+      "Uganda's second international airport, at Kabaale on the Albertine escarpment west of Hoima city — built for the refinery, the Kingfisher and Tilenga oil developments and the Bunyoro region behind them. Forty-five minutes from Kajjansi on the 1900D. Coming soon.",
     highlights: ["Refinery & Kingfisher project area", "Hoima city, 40 minutes by road", "Lake Albert & the escarpment"],
     image: "/scenes/hukf.svg",
   },
@@ -153,7 +149,7 @@ export const GUIDES: Guide[] = [
     region: "Moroto · Karamoja",
     airport: "Moroto Airstrip (HUMO)",
     intro:
-      "Karamoja's regional capital, under the bulk of Mount Moroto on the Kenya border. The base for the district administrations, the mining companies and the aid programmes working across Karamoja — and the start of the road to Kidepo for those going on.",
+      "Karamoja's regional capital, under the bulk of Mount Moroto on the Kenya border. The base for the district administrations, the mining companies and the aid programmes working across Karamoja. Coming soon.",
     highlights: ["Karamoja's administrative centre", "Mount Moroto trailheads", "Mining & aid-programme base"],
     image: "/photos/humo.jpg",
   },
