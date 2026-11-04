@@ -2,6 +2,12 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.5.1 — November 2026
+
+- Coming-soon routes grouped at the bottom of the map's route list (dashed divider,
+  hollow status dot) and in their own "Coming soon" section on /routes. `ROUTES` is
+  ordered live-first so every list inherits the grouping.
+
 ## v1.5.0 — November 2026
 
 - **Permanent tagline "The Smarter Way Across Uganda"** composed beneath the supplied logo

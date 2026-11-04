@@ -33,7 +33,7 @@ export default function RoutesPage() {
           <Kicker>Route detail</Kicker>
           <h2 className="mt-4 font-display text-3xl font-semibold text-ink">The scheduled network</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {ROUTES.map((r) => (
+            {ROUTES.filter((r) => r.status === "live").map((r) => (
               <Link
                 key={r.to}
                 href={`/routes/${r.to.toLowerCase()}`}
@@ -54,6 +54,36 @@ export default function RoutesPage() {
                 <ArrowRight className="h-5 w-5 text-aviation transition-transform group-hover:translate-x-1" aria-hidden />
               </Link>
             ))}
+          </div>
+
+          <div className="mt-10 border-t-2 border-dashed border-aviation/20 pt-6">
+            <Kicker>Coming soon</Kicker>
+            <p className="mt-2 max-w-xl text-sm text-muted">
+              On the map, not yet on the timetable. Start dates will be announced here first.
+            </p>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              {ROUTES.filter((r) => r.status === "planned").map((r) => (
+              <Link
+                key={r.to}
+                href={`/routes/${r.to.toLowerCase()}`}
+                className="group flex items-center justify-between rounded-2xl border border-aviation/10 bg-cream p-6 transition-colors hover:border-aviation/30"
+              >
+                <div>
+                  <span className="flight-code text-sm font-semibold text-aviation">{r.from} → {r.to}</span>
+                  <h3 className="mt-1 font-display text-xl text-ink">Kajjansi — {r.city}</h3>
+                  <p className="mt-0.5 text-xs text-opportunity-700">{r.park}</p>
+                  <p className="mt-1 text-sm text-muted">
+                    {r.status === "planned" ? (
+                      <span className="inline-block rounded-full bg-opportunity/15 px-2 py-0.5 text-xs font-semibold text-opportunity-700">Coming soon</span>
+                    ) : (
+                      <>{r.frequency} · {r.blockTime} · {r.type}</>
+                    )}
+                  </p>
+                </div>
+                <ArrowRight className="h-5 w-5 text-aviation transition-transform group-hover:translate-x-1" aria-hidden />
+              </Link>
+            ))}
+            </div>
           </div>
 
           <div className="mt-10 flex flex-wrap gap-6 rounded-2xl bg-graphite p-7 text-cream">

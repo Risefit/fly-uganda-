@@ -339,8 +339,14 @@ export function NetworkMap({
           </div>
         ) : (
           <ul className="flex flex-1 flex-col divide-y divide-aviation/10 overflow-hidden rounded-2xl border border-aviation/10 bg-warm" aria-label="Scheduled routes">
-            {routes.map((r) => (
-              <li key={r.to} className="flex flex-1">
+            {routes.map((r, i) => (
+              <li
+                key={r.to}
+                className={cn(
+                  "flex flex-1",
+                  r.status === "planned" && routes[i - 1]?.status !== "planned" && "mt-3 border-t-2 border-dashed border-aviation/20 bg-cream/60"
+                )}
+              >
                 <button
                   type="button"
                   onClick={() => setSelected(r.to)}
@@ -358,7 +364,9 @@ export function NetworkMap({
                       aria-hidden
                       className={cn(
                         "h-2 w-2 shrink-0 rounded-full transition-colors",
-                        landed.has(r.to) || phase === "done" ? "bg-opportunity" : "bg-aviation/[0.2]"
+                        r.status === "planned"
+                          ? "border border-opportunity-700 bg-transparent"
+                          : landed.has(r.to) || phase === "done" ? "bg-opportunity" : "bg-aviation/[0.2]"
                       )}
                     />
                     <span>

@@ -3,7 +3,7 @@
 **Marketing website for Fly Uganda (flyuganda.com)** — forked from the South Sudan
 Airlines codebase and rebranded end to end.
 
-Version 1.5.0 · November 2026
+Version 1.5.1 · November 2026
 
 This document is the single source of truth for this codebase: what it is, where the
 brand lives, what is real and what is placeholder, and what has to happen before it
