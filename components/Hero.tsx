@@ -43,13 +43,13 @@ export function Hero() {
             <Webale tone="dark" className="text-sm" />
             <span className="text-cream/50">·</span>
             <span className="font-display text-[0.72rem] font-semibold uppercase tracking-wide2 text-cream/80">
-              Uganda&rsquo;s domestic airline
+              The smarter way across Uganda
             </span>
           </div>
           <h1 className="font-display text-4xl font-bold leading-[1.04] text-white sm:text-5xl lg:text-[3.9rem]">
-            Fly across Uganda,
+            Your time is worth
             <br />
-            every day
+            flying for.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-cream/90 sm:text-xl">
             Scheduled flights from Kajjansi, Kampala to Kihihi, Kisoro, Kasese, Bugungu, Arua,

@@ -19,7 +19,7 @@ export default function AboutPage() {
       <PageHero
         kicker="Our story"
         title="Thirty years of Ugandan flying"
-        subtitle="Uganda&rsquo;s domestic airline — scheduled, ticketed flights across the country from Kajjansi, flown under the Kampala Executive Aviation AOC."
+        subtitle="The smarter way across Uganda — scheduled, ticketed flights across the country from Kajjansi, flown under the Kampala Executive Aviation AOC."
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
       />
 

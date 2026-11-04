@@ -1,12 +1,16 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+/** Bump when a file in public/brand changes — busts next/image and CDN caches. */
+const BRAND_V = 2;
+
 /**
  * FLY UGANDA brand primitives.
  *
  * THE MARK is the artwork Phil supplied (v1.3): public/brand/logo.png — gold
- * over red over green wing, navy Montserrat-style wordmark, "UGANDA TO AFRICA
- * AND BEYOND" between gold rules. It is used as supplied, never redrawn or
+ * over red over green wing, navy Montserrat-style wordmark, and the permanent
+ * tagline "THE SMARTER WAY ACROSS UGANDA" between gold rules (set in Montserrat
+ * 600 to match the supplied lockup; logo-mark.png is the lockup without it). It is used as supplied, never redrawn or
  * recoloured. public/brand/ribbon.png is the wing cut out of the same file.
  * Brand colours are sampled from it: navy #001230, gold #FCBA00, red #EC0010,
  * green #005A30.
@@ -35,7 +39,7 @@ export function Ribbon({
 }) {
   return (
     <Image
-      src="/brand/ribbon.png"
+      src={`/brand/ribbon.png?v=${BRAND_V}`}
       alt={decorative ? "" : title}
       width={656}
       height={177}
@@ -86,10 +90,10 @@ export function Logo({
 }) {
   const img = (
     <Image
-      src="/brand/logo.png"
+      src={`/brand/logo.png?v=${BRAND_V}`}
       alt={title}
       width={1375}
-      height={380}
+      height={382}
       priority={priority}
       className={cn("h-12 w-auto", className)}
     />
@@ -101,7 +105,7 @@ export function Logo({
 }
 
 /** Exposed so layouts can reserve the right aspect ratio. */
-export const LOGO_ASPECT = { logo: 1375 / 380, ribbon: 656 / 177 };
+export const LOGO_ASPECT = { logo: 1375 / 382, ribbon: 656 / 177 };
 
 /** The Rule — a single thin amber line. The system's quiet divider. */
 export function Rule({ className }: { className?: string }) {

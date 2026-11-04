@@ -8,6 +8,19 @@ Identity Toolkit (Concept 6) with two deliberate departures, noted in §7.
 
 ---
 
+## 0. Tagline and advertising message (fixed, 4 Nov 2026)
+
+- **Permanent brand tagline — "The Smarter Way Across Uganda."** Sits beneath the logo
+  in every lockup (`public/brand/logo.png`), replacing "Uganda to Africa and Beyond". It
+  states practical value, affordability and purpose. It is also the site's slogan line
+  (hero kicker, footer, metadata).
+- **Advertising message — "Your Time Is Worth Flying For."** The central line for
+  billboards, website campaigns, social and launch advertising; the homepage hero
+  headline carries it. It asks Ugandans to value their time differently.
+- The two complement each other and are never swapped: tagline with the logo, message
+  as the headline. Neither is set in the logo artwork's letterforms by hand — the tagline
+  is composed in Montserrat 600 caps with gold rules to match the supplied lockup.
+
 ## 1. Positioning
 
 Fly Uganda is **Uganda's domestic airline**: scheduled, ticketed flights from Kajjansi

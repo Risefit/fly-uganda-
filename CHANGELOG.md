@@ -2,6 +2,15 @@
 
 Format: `vMAJOR.MINOR.PATCH`.
 
+## v1.5.0 — November 2026
+
+- **Permanent tagline "The Smarter Way Across Uganda"** composed beneath the supplied logo
+  (Montserrat 600 caps, gold rules, same size and position as the line it replaces);
+  `logo-mark.png` is the lockup without a tagline. Site slogan lines, footer, metadata and
+  OG image follow. Brand asset URLs carry `?v=2` to bust image caches.
+- **Advertising message "Your Time Is Worth Flying For"** is the homepage hero headline.
+- Brand brief §0 records both lines and where each is used.
+
 ## v1.4.2 — November 2026
 
 - Hoima and Moroto moved to **coming soon** (`status: "planned"`): dashed on the map, badged

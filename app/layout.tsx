@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: "%s · Fly Uganda",
   },
   description:
-    "Uganda's domestic airline. Scheduled, ticketed flights from Kajjansi Airfield, Kampala to Kihihi, Kisoro, Kasese, Bugungu, Arua, Gulu and Kidepo — Hoima and Moroto coming soon.",
+    "The smarter way across Uganda. Scheduled, ticketed flights from Kajjansi Airfield, Kampala to Kihihi, Kisoro, Kasese, Bugungu, Arua, Gulu and Kidepo — Hoima and Moroto coming soon.",
   keywords: [
     "Fly Uganda",
     "Uganda domestic flights",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Fly Uganda",
-    description: "Uganda's domestic airline — scheduled flights across the country from Kajjansi.",
+    description: "The smarter way across Uganda — scheduled flights across the country from Kajjansi. Your time is worth flying for.",
   },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png", sizes: "64x64" }, { url: "/brand/png/icon-192.png", type: "image/png", sizes: "192x192" }],
@@ -92,7 +92,7 @@ const airlineJsonLd = {
   alternateName: "FlyUganda",
   url: SITE_URL,
   iataCode: "",
-  slogan: "Uganda's domestic airline",
+  slogan: "The smarter way across Uganda",
   areaServed: "Uganda and East Africa",
   parentOrganization: {
     "@type": "Organization",
